@@ -11,6 +11,7 @@ CHAMPION
 		<a href="/tactics/read/${row.num }" >
 			${row.num }/${row.title }/${row.writer }/${row.writeDate }
 		</a>
+		<input type="button" id="reply">
 	</div>	
 </c:forEach>
 
