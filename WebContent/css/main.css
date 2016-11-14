@@ -1,0 +1,18 @@
+@CHARSET "EUC-KR";
+
+body{
+	margin: 0px;
+}
+
+div{
+	width: 200px;
+	height: 500px;
+	color: red;
+	background-color: black;
+}
+
+.test{
+	width: 200px;
+	height: 500px;
+	background-color: black;
+}
