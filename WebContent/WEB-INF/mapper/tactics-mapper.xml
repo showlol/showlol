@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tactics">
+	<insert id="write" parameterType="tactics.model.pojo.Tactics">
+		insert into tactics_content values(
+			tactics_seq.nextval, #{champ}, #{writer}, #{content1}, #{content2},
+			#{skill}, #{item}, 0, 0, #{imageLink}, sysdate, #{title})		
+	</insert>
+	<select id="page" parameterType="java.lang.Integer" resultType="tactics.model.pojo.Tactics">
+		select * from tactics_content
+	</select>
+	<select id="read"  resultType="tactics.model.pojo.Tactics">
+		select * from tactics_content where num=#{num}
+	</select>
+	<select id="readAll" resultType="java.util.HashMap">
+		select review.* from review order by writedate desc
+	</select>
+</mapper>
