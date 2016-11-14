@@ -28,8 +28,7 @@
 	});
 	
 	
-	function write(){	
-		
+	function write(){		
 		$.ajax({
 			type : "POST",
 			url : "/tactics/write",
