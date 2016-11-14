@@ -11,7 +11,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:component-scan base-package="staticData"/>
-	
+	<context:component-scan base-package="tactics"/>
+	<mvc:default-servlet-handler/>
 	<!-- responseBody -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -52,6 +53,7 @@
  		<property name="mapperLocations">
  			<list>
  				<value>/WEB-INF/mapper/staticData-mapper.xml</value>
+ 				<value>/WEB-INF/mapper/tactics-mapper.xml</value>
  			</list>
  		</property>
  	</bean>
