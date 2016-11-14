@@ -87,4 +87,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteSpell" parameterType="java.lang.Integer">
 		delete from spell where id = #{id}
 	</delete>
+	
+	<!-- Item -->
+	<insert id="insertItem" parameterType="staticData.model.ItemData">
+		insert into item values(#{id}, #{name}, #{description})
+	</insert>
+	
+	<select id="showItemAll" resultType="staticData.model.ItemData">
+		select * from item order by id
+	</select>
+	
+	<select id="showItem" parameterType="java.lang.Integer" resultType="staticData.model.ItemData">
+		select * from item where id = #{id}
+	</select>
+	
+	<delete id="deleteItemAll">
+		delete from item
+	</delete>
+	
+	<delete id="deleteItem" parameterType="java.lang.Integer">
+		delete from item where id = #{id}
+	</delete>
 </mapper>
