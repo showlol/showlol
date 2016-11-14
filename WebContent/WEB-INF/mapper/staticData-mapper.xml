@@ -3,5 +3,88 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="staticData">
-	<insert id=""></insert>
+
+	<!-- Champion -->
+	<insert id="insertChamp" parameterType="staticData.model.ChampData">
+		insert into champion values(#{id}, #{key}, #{name}, #{title}, #{image1}, #{image2})
+	</insert>
+	
+	<select id="showChampAll" resultType="staticData.model.ChampData">
+		select * from champion order by name
+	</select>
+	
+	<select id="showChamp" parameterType="java.lang.Integer" resultType="staticData.model.ChampData">
+		select * from champion where id = #{id}
+	</select>
+	
+	<delete id="deleteChampAll">
+		delete from champion
+	</delete>
+	
+	<delete id="deleteChamp" parameterType="java.lang.Integer">
+		delete from champion where id = #{id}
+	</delete>
+	
+	<!-- Mastery -->
+	<insert id="insertMastery" parameterType="staticData.model.MasteryData">
+		insert into mastery values(#{id}, #{name}, #{description})
+	</insert>
+	
+	<select id="showMasteryAll" resultType="staticData.model.MasteryData">
+		select * from mastery order by id
+	</select>
+	
+	<select id="showMastery" parameterType="java.lang.Integer" resultType="staticData.model.MasteryData">
+		select * from mastery where id = #{id}
+	</select>
+	
+	<delete id="deleteMasteryAll">
+		delete from mastery
+	</delete>
+	
+	<delete id="deleteMastery" parameterType="java.lang.Integer">
+		delete from mastery where id = #{id}
+	</delete>
+	
+	<!-- Rune -->
+	<insert id="insertRune" parameterType="staticData.model.RuneData">
+		insert into rune values(#{id}, #{name}, #{description}, #{tier}, #{type})
+	</insert>
+	
+	<select id="showRuneAll" resultType="staticData.model.RuneData">
+		select * from rune order by id
+	</select>
+	
+	<select id="showRune" parameterType="java.lang.Integer" resultType="staticData.model.RuneData">
+		select * from rune where id = #{id}
+	</select>
+	
+	<delete id="deleteRuneAll">
+		delete from rune
+	</delete>
+	
+	<delete id="deleteRune" parameterType="java.lang.Integer">
+		delete from rune where id = #{id}
+	</delete>
+	
+	<!-- Spell -->
+	<insert id="insertSpell" parameterType="staticData.model.SpellData">
+		insert into spell values(#{id}, #{name}, #{description}, #{key})
+	</insert>
+	
+	<select id="showSpellAll" resultType="staticData.model.SpellData">
+		select * from spell order by id
+	</select>
+	
+	<select id="showSpell" parameterType="java.lang.Integer" resultType="staticData.model.SpellData">
+		select * from spell where id = #{id}
+	</select>
+	
+	<delete id="deleteSpellAll">
+		delete from spell
+	</delete>
+	
+	<delete id="deleteSpell" parameterType="java.lang.Integer">
+		delete from spell where id = #{id}
+	</delete>
 </mapper>

@@ -11,22 +11,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class ChampDbService {
+public class RuneDbService {
 	
 	@Autowired
 	SqlSessionFactory fac;
 	
-	public int insert(ChampData cd) {
+	public int insert(RuneData rd) {
 		SqlSession sql = fac.openSession();
-		int res = sql.insert("staticData.insertChamp", cd);
+		int res = sql.insert("staticData.insertRune", rd);
 		sql.close();
 		
 		return res;
 	}
 	
-	public List<ChampData> showAll() {
+	public List<RuneData> showAll() {
 		SqlSession sql = fac.openSession();
-		List<ChampData> list = sql.selectList("staticData.showChampAll");
+		List<RuneData> list = sql.selectList("staticData.showRuneAll");
 		sql.close();
 		
 		if(list != null)
@@ -35,9 +35,9 @@ public class ChampDbService {
 			return null;
 	}
 	
-	public ChampData show(int id) {
+	public RuneData show(int id) {
 		SqlSession sql = fac.openSession();
-		ChampData data = sql.selectOne("staticData.showChamp", id);
+		RuneData data = sql.selectOne("staticData.showRune", id);
 		sql.close();
 		
 		if(data != null)
@@ -48,7 +48,7 @@ public class ChampDbService {
 	
 	public int deleteAll() {
 		SqlSession sql = fac.openSession();
-		int res = sql.delete("staticData.deleteChampAll");
+		int res = sql.delete("staticData.deleteRuneAll");
 		sql.close();
 		
 		return res;
@@ -56,30 +56,29 @@ public class ChampDbService {
 	
 	public int delete(int id) {
 		SqlSession sql = fac.openSession();
-		int res = sql.delete("staticData.deleteChamp", id);
+		int res = sql.delete("staticData.deleteRune", id);
 		sql.close();
 		
 		return res;
 	}
 	//==============================================================================
-	public void putChampDB() {
+	public void putRuneDB() {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://global.api.pvp.net/api/lol/static-data/kr/v1.2/champion?champData=image&api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
+		LinkedHashMap map = rt.getForObject("https://global.api.pvp.net/api/lol/static-data/kr/v1.2/rune?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
 		
 		deleteAll();
 		LinkedHashMap data = (LinkedHashMap)map.get("data");
 		for(Object s : data.keySet()) {
 			LinkedHashMap info = (LinkedHashMap)data.get(s);
 			int id = (int)info.get("id");
-			String key = (String)info.get("key");
 			String name = (String)info.get("name");
-			String title = (String)info.get("title");
-			LinkedHashMap img = (LinkedHashMap)info.get("image");
-			String image1 = (String)img.get("full");
-			String image2 = (String)img.get("sprite");
+			String description = (String)info.get("description");
+			LinkedHashMap rune = (LinkedHashMap)info.get("rune");
+			String tier = (String)rune.get("tier");
+			String type = (String)rune.get("type");
 			
-			ChampData cd = new ChampData(id, key, name, title, image1, image2);
-			insert(cd);
+			RuneData md = new RuneData(id, name, description, tier, type);
+			insert(md);
 		}
 	}
 }

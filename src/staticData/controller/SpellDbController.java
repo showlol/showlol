@@ -1,34 +1,35 @@
 package staticData.controller;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import staticData.model.ChampDbService;
+import staticData.model.SpellDbService;
 
 @Controller
 @RequestMapping("/staticData")
-public class ChampDbController {
+public class SpellDbController {
 	
 	@Autowired
-	ChampDbService service;
+	SpellDbService service;
 	
-	@RequestMapping("/putChampDB")
-	public String putChampDB() {
-		service.putChampDB();
+	@RequestMapping("/dataInfo")
+	public String dataInfo() {
+		return "staticData/dataInfo";
+	}
+	@RequestMapping("/putSpellDB")
+	public String putSpellDB() {
+		service.putSpellDB();
 		
 		return "aaa";
 	}
 	
-	@RequestMapping("/showChampDB")
-	public ModelAndView showChampDB() {
-		ModelAndView mav = new ModelAndView("staticData/champList");
+	@RequestMapping("/showSpellDB")
+	public ModelAndView showSpellDB() {
+		ModelAndView mav = new ModelAndView("/staticData/spellList");
 		List list = service.showAll();
 		mav.addObject("list", list);
 		

@@ -11,24 +11,25 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import staticData.model.ChampDbService;
+import staticData.model.MasteryDbService;
 
 @Controller
 @RequestMapping("/staticData")
-public class ChampDbController {
+public class MasteryDbController {
 	
 	@Autowired
-	ChampDbService service;
+	MasteryDbService service;
 	
-	@RequestMapping("/putChampDB")
-	public String putChampDB() {
-		service.putChampDB();
+	@RequestMapping("/putMasteryDB")
+	public String putMasteryDB() {
+		service.putMasteryDB();
 		
 		return "aaa";
 	}
 	
-	@RequestMapping("/showChampDB")
-	public ModelAndView showChampDB() {
-		ModelAndView mav = new ModelAndView("staticData/champList");
+	@RequestMapping("/showMasteryDB")
+	public ModelAndView showMasteryDB() {
+		ModelAndView mav = new ModelAndView("/staticData/masteryList");
 		List list = service.showAll();
 		mav.addObject("list", list);
 		
