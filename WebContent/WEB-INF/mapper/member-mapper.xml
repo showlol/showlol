@@ -6,4 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="regist" parameterType="member.model.pojo.MemberData">
 		insert into member values(#{email}, #{pass}, #{nick}, 0, 0, #{gameid}, sysdate) 
 	</insert>
+	<select id="data" parameterType="member.model.pojo.MemberData" resultType="member.model.pojo.MemberData">
+		select * from member
+	</select>
 </mapper>
