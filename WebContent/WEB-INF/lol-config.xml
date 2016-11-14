@@ -13,6 +13,9 @@
 	<context:component-scan base-package="staticData"/>
 	<context:component-scan base-package="tactics"/>
 	<context:component-scan base-package="summoner"/>
+	<context:component-scan base-package="login"/>
+	<context:component-scan base-package="common"/>
+	<context:component-scan base-package="member"/>
 	<mvc:default-servlet-handler/>
 	<!-- responseBody -->
 	<mvc:annotation-driven>
@@ -55,6 +58,7 @@
  			<list>
  				<value>/WEB-INF/mapper/staticData-mapper.xml</value>
  				<value>/WEB-INF/mapper/tactics-mapper.xml</value>
+ 				<value>/WEB-INF/mapper/member-mapper.xml</value>
  			</list>
  		</property>
  	</bean>
