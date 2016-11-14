@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
-<ul>
-	<li>home
-	<li>static
-	<li>tactics
-	<div id="hihi"></div>
-</ul>
+
+	
+		
+			<ul>				
+				<div><li><a>home</a></li></div>
+				<div><li><a>static</a></li></div>
+				<div><li><a>tactics</a></li></div>						
+			</ul>
+		
+		<br/>
+	
+
