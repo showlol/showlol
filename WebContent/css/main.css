@@ -1,15 +1,25 @@
 @CHARSET "EUC-KR";
 
-body{
+header{
+	background-color: #353535;
+	list-style-type: none;
+}
+header li{	
+	list-style-type: none;
+	float: left;
+	margin: 5px;
+}
+nav{
+	background-color: #bdbdbd;
+}
+article{
+	background-color: #bdbdbd;
 	margin: 0px;
 }
-
-div{
-	width: 200px;
-	height: 500px;
-	color: red;
-	background-color: black;
+footer{
+	background-color: #353535;
 }
+
 
 .test{
 	width: 200px;
