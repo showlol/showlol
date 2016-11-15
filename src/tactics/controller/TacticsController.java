@@ -1,5 +1,6 @@
 package tactics.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class TacticsController {
 		Tactics tac = cm.read(num);
 		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
+		mav.addObject("readReply", cm.readReply(num));
 		return mav;
 	}
 	@RequestMapping("/mastery")
@@ -47,8 +49,12 @@ public class TacticsController {
 		return "tactics/mastery";
 	}
 	@RequestMapping("/reply")
-	public String reply(String nick, String area) {
-		
+	public String reply(String nick, String area, String parentNum) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("nick", nick);
+		map.put("area", area);
+		map.put("parentNum", parentNum);
+		cm.reply(map);
 		return null;
 	}
 }
