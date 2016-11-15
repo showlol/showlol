@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h2>특성</h2>
-<form action="/summoner/mastery" method="post">
+<h2>룬</h2>
+<form action="/summoner/rune" method="post">
    <input type="text" name="name" />
    <input type="submit"/>
 </form>
@@ -28,7 +28,7 @@
          <div id="div${j }" name="cls" style="display:none">
       </c:otherwise>
       </c:choose>
-         ${m.masteries} 
+         ${m.slots} 
       </div>
       <c:set var="j" value="${j+1}"/>
    </c:forEach>
@@ -36,7 +36,7 @@
 
 <script>
    function show(index) {
-      var tmp = document.getElementsByName("cls");
+	  var tmp = document.getElementsByName("cls");
       for(var i=0; i<tmp.length; i++) {
          tmp[i].style.display = "none";
       }

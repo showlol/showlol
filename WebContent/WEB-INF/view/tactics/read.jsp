@@ -7,6 +7,7 @@
 <div>${tactics.writer }</div><br/>
 <div>${tactics.content1 }</div><br/>
 <hr/>
+<<<<<<< HEAD
 <c:if test="${nick!=null }">
 	<form action="/tactics/reply">
 	${nick }<br/>
@@ -14,3 +15,5 @@
 	<input type="submit" value="입력 완료"/>
 	</form>
 </c:if>
+=======
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
