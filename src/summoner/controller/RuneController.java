@@ -19,7 +19,7 @@ public class RuneController {
 	
 	@RequestMapping(value="/summoner/rune",method=RequestMethod.GET)
 	public String rune(String id){
-			return "summoner/rune";
+			return "cm:summoner/rune";
 	}
 	@RequestMapping(value="/summoner/rune", method=RequestMethod.POST)
 	public ModelAndView rune2(String name) {
