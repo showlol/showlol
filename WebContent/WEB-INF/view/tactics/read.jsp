@@ -7,4 +7,3 @@
 <div>${tactics.writer }</div><br/>
 <div>${tactics.content1 }</div><br/>
 <hr/>
-<textarea 
