@@ -1,5 +1,6 @@
 package tactics.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,5 +34,15 @@ public class ContentsManager {
 		SqlSession sql = fac.openSession();
 		Tactics tac = sql.selectOne("tactics.read", num);
 		return tac;
+	}
+	public boolean reply(HashMap map) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.insert("tactics.reply", map)==1? true : false;
+		return r;
+	}
+	public List readReply(int parentNum) {
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("tactics.readReply", parentNum);
+		return list;
 	}
 }

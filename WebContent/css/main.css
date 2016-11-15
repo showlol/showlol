@@ -17,7 +17,7 @@ header{
 	
 }
 #navigation ul{
-	position: relative;
+	
 }
 #navigation li{
 	display: table-cell;
@@ -31,7 +31,7 @@ header{
 	content: "";
 }
 #mi{
-	position: relative;
+	
 	display: block;
 	margin: 13px 10px;
 }
@@ -43,10 +43,14 @@ li a{
 	text-decoration: none;
 	margin: 10px 5px;
 }
+li a:link{
+	color: white;
+}
 li:hover{
-	background-image:linear-gradient(-90deg, #887963, #0b0a09);
-	box-shadow: 0px 0px 2px #69635a;
-	border-radius: 5px;
+/* 	background-image:linear-gradient(-90deg, #887963, #0b0a09); */
+/* 	box-shadow: 0px 0px 2px #69635a; */
+/* 	border-radius: 5px; */
+	color: #ff3333;
 }
 
 #left{	
@@ -62,7 +66,11 @@ article{
 	background-color: #353535;
 	margin-left: 200px;
 	padding-left: 50px;
-	
+	padding-top: 20px;
+}
+article textarea {
+	width: 80%;
+	resize: none;
 }
 footer{
 	clear: both;
