@@ -4,24 +4,24 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link href="/css/main.css" rel="stylesheet" >
+<link href="/css/main.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="container">
-		<header>			
-			<tiles:insertAttribute name="header" />
-		</header>		
-		<nav id="left">			
-			<tiles:insertAttribute name="nav" />
-		</nav>
-		<article>			
-			<tiles:insertAttribute name="article" />					
-		</article>		
-		<footer>
-			<tiles:insertAttribute name="footer" />
-		</footer>
-	</div>	
+	<header>			
+		<tiles:insertAttribute name="header" />
+	</header>
+	
+	<div class="jumbotron text-center">		
+			<article class="success">			
+				<tiles:insertAttribute name="article" />					
+			</article>
+		
+	</div>
+	<div class="right"></div>		
+	<footer>
+		<tiles:insertAttribute name="footer" />
+	</footer>		
 </body>
 </html>

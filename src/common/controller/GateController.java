@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GateController {
 	@RequestMapping({"/","index"})
 	public String gate() {
-		return "cm:layout";
+		return "frontGate";
 	}
 }
