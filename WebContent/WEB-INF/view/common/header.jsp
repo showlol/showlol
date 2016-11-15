@@ -4,7 +4,7 @@
 <div class="container" >
 	<nav id="navigation">
 		<ul class="clearfix">				
-			<li><div id="mi"><a>tactics</a></div></li>
+			<li><div id="mi"><a href="/tactics/1/10">tactics</a></div></li>
 			<li><div id="mi"><a>static</a></div></li>			
 			<li><div id="mi"><a>home</a></div></li>					
 		</ul>

@@ -31,14 +31,14 @@ public class TacticsController {
 	@RequestMapping("/{page}/{length}")
 	public ModelAndView index(@PathVariable int page, @PathVariable int length){
 		List list = cm.listPage(page, length);
-		ModelAndView mav = new ModelAndView("/tactics/index");
+		ModelAndView mav = new ModelAndView("cm:tactics/index");
 		mav.addObject("list", list);
 		return mav;
 	}
 	@RequestMapping("/read/{num}")
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
-		ModelAndView mav = new ModelAndView("/tactics/read");
+		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
 		return mav;
 	}

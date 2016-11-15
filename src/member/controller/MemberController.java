@@ -15,7 +15,7 @@ public class MemberController {
 	
 	@RequestMapping("/join")
 	public String join() {
-		return "member/join";
+		return "cm:member/join";
 	}
 	@RequestMapping("/member/regist")
 	@ResponseBody
