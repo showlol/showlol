@@ -13,7 +13,7 @@
 		<header>			
 			<tiles:insertAttribute name="header" />
 		</header>		
-		<nav>			
+		<nav id="left">			
 			<tiles:insertAttribute name="nav" />
 		</nav>
 		<article>

@@ -4,7 +4,8 @@
 <h2>* * 로그인 * *</h2>
 ID : <input type="email" id="id" placeholder="email을 입력하세요." /><br/>
 PASS : <input type="password" id="pass" /><br/>
-<input type="button" value="로그인" id="login" /><input type="button" value="회원가입" id="bt" /><br/>
+<input type="button" value="로그인" id="login" />
+<input type="button" value="회원가입" id="bt" /><br/>
 <script>
 	window.onload=function() {
 		document.getElementById("bt").addEventListener("click", function() {

@@ -2,21 +2,23 @@
 body{
 	margin: 0px;
 }
-#navigation{
+header{
 	height: 70px;
+}
+#navigation{
+	position: fixed;
+	top: 0;
+	left: 0;
+	clear: both;
+	height: 70px;
+	width: 100%;
 	color : white;
 	background-image: linear-gradient(to right, #1b1b1b, #626262);
 	
 }
-/* header ul{ */
-/* 	display: inline-block; */
-/* 	width: auto; */
-/* 	height: 100%;	 */
-/* 	text-transform: uppercase;	 */
-/* 	margin: 0; */
-/* 	padding: 0; */
-/* } */
-
+#navigation ul{
+	position: relative;
+}
 #navigation li{
 	display: table-cell;
 	height: 100%;
@@ -47,14 +49,20 @@ li:hover{
 	border-radius: 5px;
 }
 
-/* nav{ */
-/* 	background-color: #bdbdbd; */
-/* } */
-article{
+#left{	
+	width: 200px;
+	color: red;
+	float: left;
 	background-color: #bdbdbd;
-	margin: 0px;
+}
+article{
+	height: 100%;
+	display: block;	
+	background-color: #353535;
+	margin-left: 200px;
 }
 footer{
+	clear: both;
 	font-style: italic;
 	font-weight: 500;
 	text-align: center;
