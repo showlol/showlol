@@ -18,4 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="readAll" resultType="java.util.HashMap">
 		select review.* from review order by writedate desc
 	</select>
+	<insert id="reply" parameterType="java.util.HashMap">
+		insert into tactics_reply1 values(tactics_reply1_seq.nextval, #{parentNum}, #{nick}, #{area}, sysdate)
+	</insert>
+	<select id="readReply" resultType="java.util.HashMap">
+		select * from tactics_reply1 order by num desc
+	</select>
 </mapper>

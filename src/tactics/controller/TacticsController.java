@@ -1,5 +1,6 @@
 package tactics.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +32,29 @@ public class TacticsController {
 	@RequestMapping("/{page}/{length}")
 	public ModelAndView index(@PathVariable int page, @PathVariable int length){
 		List list = cm.listPage(page, length);
-		ModelAndView mav = new ModelAndView("/tactics/index");
+		ModelAndView mav = new ModelAndView("cm:tactics/index");
 		mav.addObject("list", list);
 		return mav;
 	}
 	@RequestMapping("/read/{num}")
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
-		ModelAndView mav = new ModelAndView("/tactics/read");
+		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
+		mav.addObject("readReply", cm.readReply(num));
 		return mav;
 	}
 	@RequestMapping("/mastery")
 	public String mastery(){
 		return "tactics/mastery";
+	}
+	@RequestMapping("/reply")
+	public String reply(String nick, String area, String parentNum) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("nick", nick);
+		map.put("area", area);
+		map.put("parentNum", parentNum);
+		cm.reply(map);
+		return null;
 	}
 }
