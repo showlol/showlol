@@ -20,6 +20,7 @@ GAMEID : <input type="text" id="gameid" ><br/>
 			url : "/member/regist?email="+memberid.value+"&pass="+memberpass.value+"&nick="+nick.value+"&gameid="+gameid.value
 		}).done(function(r) {
 			window.alert(r);
+			location.href="/";
 		});
 	};
 </script>

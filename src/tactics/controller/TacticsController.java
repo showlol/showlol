@@ -46,4 +46,9 @@ public class TacticsController {
 	public String mastery(){
 		return "tactics/mastery";
 	}
+	@RequestMapping("/reply")
+	public String reply(String nick, String area) {
+		
+		return null;
+	}
 }

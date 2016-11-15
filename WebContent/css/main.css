@@ -68,6 +68,10 @@ article{
 	padding-left: 50px;
 	padding-top: 20px;
 }
+article textarea {
+	width: 80%;
+	resize: none;
+}
 footer{
 	clear: both;
 	font-style: italic;

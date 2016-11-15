@@ -7,4 +7,10 @@
 <div>${tactics.writer }</div><br/>
 <div>${tactics.content1 }</div><br/>
 <hr/>
-<textarea 
+<c:if test="${nick!=null }">
+	<form action="/tactics/reply">
+	${nick }<br/>
+	<textarea rows="4"></textarea><br/>
+	<input type="submit" value="입력 완료"/>
+	</form>
+</c:if>
