@@ -1,13 +1,13 @@
 package summoner.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -72,13 +72,16 @@ public class MatchesService {
 			String champName = bsvc.getChampName((int)data.get("championId"));
 			String spell1 = bsvc.getSpellName((int)data.get("spell1"));
 			String spell2 = bsvc.getSpellName((int)data.get("spell2"));
-			PlayerDto[] players = new PlayerDto[]{};
+			
 			ArrayList fellowPlayers = (ArrayList)data.get("fellowPlayers");
 			String playerIds = "";
-			List<HashMap> ally = new ArrayList<>();
-			List<HashMap> enemy = new ArrayList<>();
-			LinkedHashMap users = new LinkedHashMap<>();
+			List<HashMap> players = new ArrayList<>();
 			if(fellowPlayers != null) {
+				for(int j=0; j<fellowPlayers.size(); j++) {
+					LinkedHashMap player = (LinkedHashMap)fellowPlayers.get(j);
+					playerIds += (int)player.get("summonerId") + ",";
+				}
+				LinkedHashMap users = bsvc.getSummonerNames(playerIds); 
 				for(int j=0; j<fellowPlayers.size(); j++) {
 					LinkedHashMap player = (LinkedHashMap)fellowPlayers.get(j);
 					int tId = (int)player.get("teamId");
@@ -86,16 +89,14 @@ public class MatchesService {
 					int sid = (int)player.get("summonerId");
 					String cName = bsvc.getChampName(cid);
 					HashMap p = new HashMap<>();
-					p.put(sid+"", cName);
-					if(teamId == tId)
-						ally.add(p);
-					else
-						enemy.add(p);
-					
-					playerIds += sid + ",";
+					p.put("teamId", tId);
+					p.put("cName", cName);
+					p.put("sid", sid);
+					p.put("sName",  users.get(sid+""));
+					players.add(p);
 				}
-				users = bsvc.getSummonerNames(playerIds);
 			}
+			
 			int item0, item1, item2, item3, item4, item5, item6; 
 			try {
 				item0 = (int)stats.get("item0");
@@ -134,8 +135,8 @@ public class MatchesService {
 			}
 			int[] items = new int[]{item0, item1, item2, item3, item4, item5, item6};
 			
-			RecentGamesDto rgd = new RecentGamesDto(gameMode, gameType, subType, createDate, kill, death, assist, 
-					gamelv, cs, champName, items, ally, enemy, users, spell1, spell2, teamId, win, kda, largestMultiKill);
+			RecentGamesDto rgd = new RecentGamesDto(sname, gameMode, gameType, subType, createDate, kill, death, assist, 
+					gamelv, cs, champName, items, players, spell1, spell2, teamId, win, kda, largestMultiKill);
 			
 			list.add(rgd);
 			

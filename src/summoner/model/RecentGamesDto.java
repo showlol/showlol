@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RecentGamesDto {
+	String summonerName;
 	String gameMode;
 	String gameType;
 	String subType;
@@ -16,9 +17,7 @@ public class RecentGamesDto {
 	int cs;
 	String champName;
 	int[] items;
-	List<HashMap> ally;
-	List<HashMap> enemy;
-	LinkedHashMap users;
+	List<HashMap> players;
 	String spell1;
 	String spell2;
 	int teamId;
@@ -30,10 +29,11 @@ public class RecentGamesDto {
 		super();
 	}
 
-	public RecentGamesDto(String gameMode, String gameType, String subType, long createDate, int kill, int death, int assist, int gamelv,
-			int cs, String champName, int[] items, List<HashMap> ally, List<HashMap> enemy, LinkedHashMap users, String spell1, String spell2, 
+	public RecentGamesDto(String summonerName, String gameMode, String gameType, String subType, long createDate, int kill, int death, int assist, int gamelv,
+			int cs, String champName, int[] items, List<HashMap> players, String spell1, String spell2, 
 			int teamId, boolean win, float kda, int largestMultiKill) {
 		super();
+		this.summonerName = summonerName;
 		this.gameMode = gameMode;
 		this.gameType = gameType;
 		this.subType = subType;
@@ -45,15 +45,21 @@ public class RecentGamesDto {
 		this.cs = cs;
 		this.champName = champName;
 		this.items = items;
-		this.ally = ally;
-		this.enemy = enemy;
-		this.users = users;
+		this.players = players;
 		this.spell1 = spell1;
 		this.spell2 = spell2;
 		this.teamId = teamId;
 		this.win = win;
 		this.kda = kda;
 		this.largestMultiKill = largestMultiKill;
+	}
+	
+	public String getSummonerName() {
+		return summonerName;
+	}
+
+	public void setSummonerName(String summonerName) {
+		this.summonerName = summonerName;
 	}
 
 	public String getGameMode() {
@@ -144,28 +150,12 @@ public class RecentGamesDto {
 		this.items = items;
 	}
 
-	public List<HashMap> getAlly() {
-		return ally;
+	public List<HashMap> getPlayers() {
+		return players;
 	}
 
-	public void setAlly(List<HashMap> ally) {
-		this.ally = ally;
-	}
-	
-	public List<HashMap> getEnemy() {
-		return enemy;
-	}
-
-	public void setEnemy(List<HashMap> enemy) {
-		this.enemy = enemy;
-	}
-	
-	public LinkedHashMap getUsers() {
-		return users;
-	}
-
-	public void setUsers(LinkedHashMap users) {
-		this.users = users;
+	public void setPlayers(List<HashMap> players) {
+		this.players = players;
 	}
 	
 	public String getSpell1() {

@@ -1,5 +1,6 @@
 package summoner.model;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.apache.ibatis.session.SqlSession;
