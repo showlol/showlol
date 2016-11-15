@@ -19,7 +19,11 @@ public class LoginController {
 	}
 	@RequestMapping("/login/loginData")
 	@ResponseBody
-	public MemberData logindata(MemberData data) {
-		return ls.loginservice(data);
+	public String logindata(MemberData data) {
+		if(ls.loginservice(data)==null) {
+			return "false";
+		} else {
+			return "true";
+		}
 	}
 }
