@@ -16,6 +16,6 @@ public class ChampionController {
 	@RequestMapping("/champion/list")
 	public String championList(Map map){
 		map.put("champList", cs.championList());
-		return "cm:layout";
+		return "cm:tactics/read";
 	}
 }

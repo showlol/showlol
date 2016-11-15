@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+챔프목록<br/>
+<c:if test="${champList!=null }">
+	<c:forEach var="list" items="${champList}">
+		${list.NAME }
+		<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }" height="30" width="30"/>
+	</c:forEach>
+</c:if>
 글읽기
 <div>${tactics.title }</div><br/>
 <div>${tactics.writer }</div><br/>
