@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<h2>* * ·Î±×ÀÎ * *</h2>
+<h2>* * ë¡œê·¸ì¸ * *</h2>
 <div id="danger">
 </div>
-ID : <input type="email" id="id" placeholder="emailÀ» ÀÔ·ÂÇÏ¼¼¿ä." /><br/>
+ID : <input type="email" id="id" placeholder="emailì„ ì…ë ¥í•˜ì„¸ìš”." /><br/>
 PASS : <input type="password" id="pass" /><br/>
-<input type="button" value="·Î±×ÀÎ" id="login" />
-<input type="button" value="È¸¿ø°¡ÀÔ" id="bt" /><br/>
+<input type="button" value="ë¡œê·¸ì¸" id="login" />
+<input type="button" value="íšŒì›ê°€ì…" id="bt" /><br/>
 <script>
 	window.onload=function() {
 		document.getElementById("bt").addEventListener("click", function() {
@@ -22,11 +23,11 @@ PASS : <input type="password" id="pass" /><br/>
 			method:"get",
 			url : "/login/loginData?email="+id.value+"&pass="+pass.value
 		}).done(function(r) {
-			window.alert(r);
 			if(r=="false") {
-				document.getElementById("danger").innerHTML = "·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¼Ì½À´Ï´Ù.";
+				document.getElementById("danger").innerHTML = "ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì…¨ìŠµë‹ˆë‹¤.";
 			} else {
-				location.href="";
+				window.alert(r);
+				location.href="/";
 			}
 		});
 	};

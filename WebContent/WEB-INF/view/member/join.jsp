@@ -1,23 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<h2>* * È¸¿ø°¡ÀÔ * *</h2>
-ID : <input type="email" id="id" placeholder="emailÀ» ÀÔ·ÂÇÏ¼¼¿ä."><br/>
-PASS : <input type="password" id="pass" ><br/>
+<h2>* * íšŒì›ê°€ì… * *</h2>
+ID : <input type="email" id="memberid" placeholder="emailì„ ì…ë ¥í•˜ì„¸ìš”."><br/>
+PASS : <input type="password" id="memberpass" ><br/>
 NICK : <input type="text" id="nick" ><br/>
 GAMEID : <input type="text" id="gameid" ><br/>
-<input type="button" value="ÀÔ·Â ¿Ï·á" id="bt" >
+<input type="button" value="ì…ë ¥ ì™„ë£Œ" id="create" >
 <script>
 	window.onload=function() {
-		document.getElementById("bt").addEventListener("click", function() {
+		document.getElementById("create").addEventListener("click", function() {
 			memberJoin();
 		});
 	}
 	function memberJoin(){
-		alert(id.value+"/"+pass.value)
+		alert(memberid.value+"/"+memberpass.value)
 		$.ajax({
 			method:"get",
-			url : "/member/regist?email="+id.value+"&pass="+pass.value+"&nick="+nick.value+"&gameid="+gameid.value
+			url : "/member/regist?email="+memberid.value+"&pass="+memberpass.value+"&nick="+nick.value+"&gameid="+gameid.value
 		}).done(function(r) {
 			window.alert(r);
 		});
