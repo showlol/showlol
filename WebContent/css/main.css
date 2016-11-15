@@ -57,9 +57,12 @@ li:hover{
 }
 article{
 	height: 100%;
-	display: block;	
+	display: block;
+	color: white;
 	background-color: #353535;
 	margin-left: 200px;
+	padding-left: 50px;
+	
 }
 footer{
 	clear: both;
@@ -68,7 +71,7 @@ footer{
 	text-align: center;
 	vertical-align: middle;
 	height: 2em;
-	background-image: linear-gradient(to right, #1b1b1b, #626262);
+	background-image: linear-gradient(to right, #1b1b1b, #626262);	
 }
 footer a{
 	font-size: 20;
