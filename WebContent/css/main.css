@@ -17,7 +17,7 @@ header{
 	
 }
 #navigation ul{
-	position: relative;
+	
 }
 #navigation li{
 	display: table-cell;
@@ -31,7 +31,7 @@ header{
 	content: "";
 }
 #mi{
-	position: relative;
+	
 	display: block;
 	margin: 13px 10px;
 }

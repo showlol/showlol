@@ -16,7 +16,7 @@
 		<nav id="left">			
 			<tiles:insertAttribute name="nav" />
 		</nav>
-		<article>
+		<article>			
 			<tiles:insertAttribute name="article" />					
 		</article>		
 		<footer>
