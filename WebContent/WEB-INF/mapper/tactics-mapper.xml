@@ -27,4 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyfollow" parameterType="java.lang.Integer" resultType="java.util.HashMap">
 		select * from tactics_reply2 where parentNum=#{parentNum} order by num desc
 	</select>
+	<insert id="refollow" parameterType="java.util.HashMap">
+		insert into tactics_reply2 values(tactics_reply2_seq.nextval, #{parentNum}, #{nick}, #{follow}, sysdate)
+	</insert>
 </mapper>

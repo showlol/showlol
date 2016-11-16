@@ -44,7 +44,7 @@ public class TacticsController {
 	@RequestMapping("/{name}")
 	@ResponseBody
 	public List champTactics(@PathVariable String name){
-		System.out.println(name+": 검색중...");
+		System.out.println(name+": 寃��깋以�...");
 		System.out.println(cm.champTactics(name).toString());
 		return cm.champTactics(name);		
 	}
@@ -60,6 +60,12 @@ public class TacticsController {
 		mav.addObject("replyFollow", replyFollow);
 		return mav;
 	}
+	@RequestMapping("/follow")
+	@ResponseBody
+	public String reFollow() {
+		return null;
+	}
+	
 	@RequestMapping("/mastery")
 	public String mastery(){
 		return "tactics/mastery";
