@@ -50,8 +50,8 @@ public class ContentsManager {
 
 	public List champTactics(String name) {
 		SqlSession sql = fac.openSession();
-		List list = sql.selectList("tactics.champTactics");
+		List list = sql.selectList("tactics.champTactics", name);
 		sql.close();
-		return null;
+		return list;
 	}
 }

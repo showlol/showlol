@@ -33,7 +33,8 @@
 			type : "POST",
 			url : "/tactics/write",
 			data : {
-						writer : $("#writer").val(),
+						writer : "${nick }",
+						champ : "라이즈",
 						title : $("#title").val(),
 						content1 : CKEDITOR.instances.content1.getData()
 					},		

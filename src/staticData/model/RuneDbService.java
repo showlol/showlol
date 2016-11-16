@@ -64,7 +64,7 @@ public class RuneDbService {
 	//==============================================================================
 	public void putRuneDB() {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://global.api.pvp.net/api/lol/static-data/kr/v1.2/rune?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
+		LinkedHashMap map = rt.getForObject("https://global.api.pvp.net/api/lol/static-data/kr/v1.2/rune?runeListData=image&api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
 		
 		deleteAll();
 		LinkedHashMap data = (LinkedHashMap)map.get("data");
@@ -76,8 +76,10 @@ public class RuneDbService {
 			LinkedHashMap rune = (LinkedHashMap)info.get("rune");
 			String tier = (String)rune.get("tier");
 			String type = (String)rune.get("type");
+			LinkedHashMap image = (LinkedHashMap)info.get("image");
+			String img = (String)image.get("full");
 			
-			RuneData md = new RuneData(id, name, description, tier, type);
+			RuneData md = new RuneData(id, name, description, tier, type, img);
 			insert(md);
 		}
 	}

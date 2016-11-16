@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Tactics {
 	int num;	
-	int champ;
+	String champ;
 	String writer;	
 	String content1;
 	String content2="";
@@ -21,10 +21,10 @@ public class Tactics {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getChamp() {
+	public String getChamp() {
 		return champ;
 	}
-	public void setChamp(int champ) {
+	public void setChamp(String champ) {
 		this.champ = champ;
 	}
 	public String getWriter() {

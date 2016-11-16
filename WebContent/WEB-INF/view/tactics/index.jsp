@@ -25,14 +25,25 @@ CHAMPION<br/><hr/>
 		<a href="/tactics/read/${row.num }" >
 			${row.num }/${row.title }/${row.writer }/${row.writeDate }
 		</a>
-		<input type="button" id="reply">
 	</div>	
 </c:forEach>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>글번호<th>제목<th>작성자<th>작성일
+		</tr>
+		
+	</thead>
+</table>
 
 <script>
-	
+		
 	function champTactics(name){
-		$.get("");
+		$.get("/tactics/"+name, function(r){
+			r.replace
+			var tacticsList = JSON.parse(r);
+			
+		});
 	}
 </script>
 
