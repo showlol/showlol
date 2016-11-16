@@ -46,4 +46,10 @@ public class ContentsManager {
 		sql.close();
 		return list;
 	}
+	public List replyFollow(int parentNum) {
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("tactics.replyfollow", parentNum);
+		sql.close();
+		return list;
+	}
 }

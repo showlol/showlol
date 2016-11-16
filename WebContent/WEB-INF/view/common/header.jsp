@@ -66,12 +66,10 @@
 		document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
 	}
 	function logout(){
-		alert("out");
 		$.ajax({
 			type : "get",
 			url : "/logout"
 		}).done(function(out) {
-			alert(out);
 			if(out=="success") {
 				document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
 			}
@@ -92,7 +90,6 @@
 			if(r=="false") {
 				document.getElementById("danger").innerHTML = "로그인에 실패하셨습니다.";
 			} else {
-				window.alert(r);
 				location.href="/";
 			}
 		});

@@ -45,9 +45,11 @@ public class TacticsController {
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
 		List list = cm.readReply(num);
+		List replyFollow = cm.replyFollow(num);
 		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
 		mav.addObject("readReply", list);
+		mav.addObject("replyFollow", replyFollow);
 		return mav;
 	}
 	@RequestMapping("/mastery")

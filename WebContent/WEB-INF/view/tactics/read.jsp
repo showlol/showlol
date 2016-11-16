@@ -43,5 +43,6 @@
 			type : "get",
 			url : "/tactics/follow"
 		});
+		alert("success");
 	};
 </script>
