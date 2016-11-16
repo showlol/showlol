@@ -1,39 +1,53 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <h2>최근게임</h2>
 <form action="/summoner/matches" method="post">
-	<input type="radio" name="type" />일반
-	<input type="radio" name="type" />랭크
-	<input type="text" name="sname" />
+	<input type="text" name="userName" value="${sname }"/>
 	<input type="submit" />
 </form>
-String gameMode;
-	String gameType;
-	String subType;
-	long createDate;
-	int kill;
-	int death;
-	int assist;
-	int gamelv;
-	int cs;
-	String champName;
-	int[] items;
-	List<HashMap> ally;
-	List<HashMap> enemy;
-	LinkedHashMap users;
-	String spell1;
-	String spell2;
-	int teamId;
-	
+
 <c:if test="${list != null }">
 	<c:forEach var="g" items="${list }">
 		<table>
 			<tr>	
-				<td>
+				<td width="100px">
 					<table>
 						<tr>
-							<td>${g.gameType }</td>
+							<td>
+								<c:choose>
+									<c:when test="${g.gameType == 'CUSTOM_GAME' }">
+									커스텀
+									</c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${g.subType == 'NORMAL' }">
+											일반
+											</c:when>
+											<c:otherwise>
+											랭크
+											</c:otherwise>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+						<tr>
+							<td><a href="#" style="text-decoration:none;color:black;" title="<fmt:formatDate value="${g.createDate }" pattern="yyyy-MM-dd KK:mm:ss"/>" >
+								<c:choose>
+									<c:when test="${g.dTime >= 24 }">
+									<fmt:parseNumber integerOnly="true" value="${g.dTime/24 }"/>일 전
+									</c:when>
+									<c:otherwise>
+									${g.dTime }시간 전
+									</c:otherwise>
+								</c:choose>
+							</a></td>
 						</tr>
 						<tr>
 							<td>
@@ -48,8 +62,8 @@ String gameMode;
 							</td>
 						</tr>
 					</table>
-				<td>
-				<td>
+				</td>
+				<td width="50px">
 					<table>
 						<tr>
 							<td>
@@ -72,7 +86,7 @@ String gameMode;
 						</tr>
 					</table>
 				</td>
-				<td>
+				<td width="100px">
 					<table>
 						<tr><td>${g.kill } / <font color="red">${g.death }</font> / ${g.assist }</td></tr>
 						<tr>
@@ -82,7 +96,7 @@ String gameMode;
 										Perfect
 									</c:when>
 									<c:otherwise>
-										${g.kda }
+										<fmt:formatNumber value="${g.kda }" pattern="0.00"/>:1  
 									</c:otherwise>
 								</c:choose>
 								 평점
@@ -111,7 +125,7 @@ String gameMode;
 						</tr>
 					</table>
 				</td>
-				<td>
+				<td width="80px">
 					<table>
 						<tr><td>레벨${g.gamelv }</td></tr>
 						<tr><td>${g.cs } cs</td></tr>
@@ -123,7 +137,7 @@ String gameMode;
 							<td><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[0] }.png"></td>
 							<td><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[1] }.png"></td>
 							<td><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[2] }.png"></td>
-							<td colspan="2"><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[6] }.png"></td>
+							<td><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[6] }.png"></td>
 						</tr>
 						<tr>
 							<td><img width="30" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${g.items[3] }.png"></td>
@@ -135,24 +149,134 @@ String gameMode;
 				<td>
 					<table>
 						<tr>
-							<td>
+							<td width="90px">
 								<table>
-									<c:forEach var="i" items="${g.ally }">
-										<tr><td>${i }</td></tr>
+									<c:forEach var="p" items="${g.players }">
+										<c:if test="${p.teamId == 100}">
+											<tr>
+												<td style="line-height:5px">
+													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
+													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<font size="1">
+													<c:set var="len" value="${fn:length(p.sName) }"/>
+													<c:choose>
+														<c:when test="${len > 6 }">
+															${fn:substring(p.sName,0,5) }…
+														</c:when>
+														<c:otherwise>
+															${fn:substring(p.sName,0,6) }
+														</c:otherwise>
+													</c:choose>
+													</font>
+													</a>
+												</td>
+											</tr>
+										</c:if>
 									</c:forEach>
+									<c:if test="${g.teamId == 100 }">
+										<tr>
+											<td style="line-height:5px">
+												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
+												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<font size="1">
+													<c:set var="len" value="${fn:length(g.summonerName) }"/>
+													<c:choose>
+														<c:when test="${len > 6 }">
+															${fn:substring(g.summonerName,0,5) }…
+														</c:when>
+														<c:otherwise>
+															${fn:substring(g.summonerName,0,6) }
+														</c:otherwise>
+													</c:choose>
+												</font>
+												</a>
+											</td>
+										</tr>
+									</c:if>
 								</table>
 							</td>
-							<td>
+							<td width="90px">
 								<table>
-									<c:forEach var="i" items="${g.enemy }">
-										<tr><td>${i }</td></tr>
+									<c:forEach var="p" items="${g.players }">
+										<c:if test="${p.teamId == 200}">
+											<tr>
+												<td style="line-height:5px">
+													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
+													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<font size="1">
+													<c:set var="len" value="${fn:length(p.sName) }"/>
+													<c:choose>
+														<c:when test="${len > 6 }">
+															${fn:substring(p.sName,0,5) }…
+														</c:when>
+														<c:otherwise>
+															${fn:substring(p.sName,0,6) }
+														</c:otherwise>
+													</c:choose>
+													</font>
+													</a>
+												</td>
+											</tr>
+										</c:if>
 									</c:forEach>
+									<c:if test="${g.teamId == 200 }">
+										<tr>
+											<td style="line-height:5px">
+												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
+												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<font size="1">
+													<c:set var="len" value="${fn:length(g.summonerName) }"/>
+													<c:choose>
+														<c:when test="${len > 6 }">
+															${fn:substring(g.summonerName,0,5) }…
+														</c:when>
+														<c:otherwise>
+															${fn:substring(g.summonerName,0,6) }
+														</c:otherwise>
+													</c:choose>
+												</font>
+												</a>
+											</td>
+										</tr>
+									</c:if>
 								</table>
 							</td>
 						</tr>
 					</table>
 				</td>
+				<td>
+					<table>
+						<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId })"/></td></tr>
+					</table>
+				</td>
 			</tr>
+		</table>
+		<table id="table_${g.gameId }" style="display:none;">
+			<tr>
+				<td>${g.gameId }</td>
+			<tr>
 		</table>
 	</c:forEach>
 </c:if>
+
+<script>
+	function openDetail(gid, tid) {
+		if(document.getElementById("table_"+gid).style.display == "none") {
+			$.ajax(
+				{
+				"method" : "get",
+				"url" : "/summoner/matchDetail?gid="+gid+"&tid="+tid,
+				"async" : false
+				}
+			).done(function(obj) {
+				document.getElementById("table_"+gid).style.display = "block";
+				$("#table_"+gid).html(obj);
+			}).fail(function() {
+				alert("ERROR");
+			});
+		}else {
+			document.getElementById("table_"+gid).style.display = "none";
+		}
+	}
+	
+</script>

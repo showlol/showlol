@@ -6,19 +6,21 @@ public class RuneData {
 	String description;
 	String tier;
 	String type;
+	String image;
 	
 	//=====================================================================================================
 	public RuneData() {
 		super();
 	}
 
-	public RuneData(int id, String name, String description, String tier, String type) {
+	public RuneData(int id, String name, String description, String tier, String type, String image) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.tier = tier;
 		this.type = type;
+		this.image = image;
 	}
 	
 	//=====================================================================================================
@@ -60,6 +62,14 @@ public class RuneData {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

@@ -7,20 +7,16 @@
     <title>공략 글쓰기</title>
 </head>
 
-       
-<body>
-	<form id="reg" method="post">
-		작성자: <input type="text" name="writer" id="writer" value="aa"><br/>
-		제목 : <input type="text" name="title" id="title" >
-		<textarea name="content1" id="content1"></textarea>
-	    <script>CKEDITOR.replace( 'content1' );</script>
-	   	<input type="submit" id="submit" value="입력" >
-	</form>
-	<button id="wr" >wr</button>	
-</body>
+<h4>${param.champ } 공략 쓰기</h4>
+<form id="reg" method="post">
+	제목 : <input type="text" name="title" id="title">
+	<textarea name="content1" id="content1"></textarea>
+	<script>CKEDITOR.replace('content1');
+	</script>
+</form>
+<button id="wr">글쓰기</button>
 
-<script>
-	
+<script>	
 	$(document).ready(function(){
 		$("#wr").click(function(){			
 			write();
@@ -33,12 +29,13 @@
 			type : "POST",
 			url : "/tactics/write",
 			data : {
-						writer : $("#writer").val(),
+						writer : "${nick }",
+						champ : "${param.champ }",
 						title : $("#title").val(),
 						content1 : CKEDITOR.instances.content1.getData()
 					},		
 		}).done(function(r){
-			alert(r);
+			location.href="/tactics/"
 		});
 		
 	}

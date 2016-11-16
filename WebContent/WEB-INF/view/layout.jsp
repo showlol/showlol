@@ -4,24 +4,24 @@
 
 <html>
 <head>
-<title>Insert title here</title>
-<link href="/css/main.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Case</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/main.css" >
 </head>
 <body>
-	<header>			
-		<tiles:insertAttribute name="header" />
-	</header>
-	
-	<div class="jumbotron text-center">		
-			<article class="success">			
-				<tiles:insertAttribute name="article" />					
-			</article>
-		
-	</div>
-	<div class="right"></div>		
-	<footer>
-		<tiles:insertAttribute name="footer" />
-	</footer>		
+	<div style="height: auto;">	
+		<header>			
+			<tiles:insertAttribute name="header" />
+		</header>
+	</div>		
+		<article>			
+			<tiles:insertAttribute name="article" />					
+		</article>		
+		<footer>
+			<tiles:insertAttribute name="footer" />
+		</footer>			
 </body>
 </html>

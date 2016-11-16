@@ -8,14 +8,22 @@
 		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>
 		<put-attribute name="nav" value="/WEB-INF/view/login/login.jsp"/>
 		<put-attribute name="article" value="/WEB-INF/view/common/main.jsp"/>	
+
 		<put-attribute name="footer" value="/WEB-INF/view/common/footer.jsp"/>
 	</definition>
-	<definition name="frontGate" template="/WEB-INF/view/layout.jsp">
+	
+	<definition name="frontgate" template="/WEB-INF/view/layout.jsp">
 		<put-attribute name="title" value="ROOT"/>
-		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>	
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>
 		<put-attribute name="article" value="/WEB-INF/view/common/main.jsp"/>	
 		<put-attribute name="footer" value="/WEB-INF/view/common/footer.jsp"/>
-	</definition>	
+	</definition>
+	<definition name="tactics/*" extends="frontgate">
+		<put-attribute name="article" value="/WEB-INF/view/tactics/{1}.jsp"/>
+	</definition>
+	<definition name="tactics/champ/*" extends="frontgate">
+		<put-attribute name="article" value="/WEB-INF/view/tactics/{1}"/>
+	</definition>
 	<definition name="cm:*/*" extends="cm:layout">
 		<put-attribute name="article" value="/WEB-INF/view/{1}/{2}.jsp"/>
 	</definition>

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<div style="width: 200px; display: inline-block;">
-	<div class="alert alert-success" ></div>
-</div>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div >
-	<input type="text" ><hr/>
-</div>
+Main 채워주세요
+

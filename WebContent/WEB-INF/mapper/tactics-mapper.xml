@@ -9,19 +9,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			tactics_seq.nextval, #{champ}, #{writer}, #{content1}, #{content2},
 			#{skill}, #{item}, 0, 0, #{imageLink}, sysdate, #{title})		
 	</insert>
+	<insert id="refollow" parameterType="java.util.HashMap">
+		insert into tactics_reply2 values(tactics_reply2_seq.nextval, #{parentNum}, #{nick}, #{follow}, sysdate)
+	</insert>
 	<select id="page" parameterType="java.lang.Integer" resultType="tactics.model.pojo.Tactics">
 		select * from tactics_content
 	</select>
 	<select id="read"  resultType="tactics.model.pojo.Tactics">
 		select * from tactics_content where num=#{num}
 	</select>
-	<select id="readAll" resultType="java.util.HashMap">
-		select review.* from review order by writedate desc
+	<select id="bestList" resultType="tactics.model.pojo.Tactics">
+		<![CDATA[select temp.r, temp.* from 
+			(select rownum r, tc.* from tactics_content tc order by writedate desc)temp
+			 where rownum<=3]]>
 	</select>
+	<select id="champTactics" resultType="tactics.model.pojo.Tactics">
+      select * from tactics_content where champ=#{name }
+   </select>
 	<insert id="reply" parameterType="java.util.HashMap">
 		insert into tactics_reply1 values(tactics_reply1_seq.nextval, #{parentNum}, #{nick}, #{area}, sysdate)
 	</insert>
-	<select id="readReply" resultType="java.util.HashMap">
-		select * from tactics_reply1 order by num desc
+	<select id="readReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from tactics_reply1 where parentNum=#{parentNum} order by num desc
 	</select>
+	<select id="replyfollow" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from tactics_reply2 where parentNum=#{parentNum} order by num desc
+	</select>
+	
 </mapper>

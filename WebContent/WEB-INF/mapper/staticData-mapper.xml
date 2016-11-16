@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- Rune -->
 	<insert id="insertRune" parameterType="staticData.model.RuneData">
-		insert into rune values(#{id}, #{name}, #{description}, #{tier}, #{type})
+		insert into rune values(#{id}, #{name}, #{description}, #{tier}, #{type}, #{image})
 	</insert>
 	
 	<select id="showRuneAll" resultType="staticData.model.RuneData">

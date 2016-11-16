@@ -16,3 +16,31 @@
 	<input type="submit" value="입력 완료"/>
 	</form>
 </c:if>
+<c:forEach var="r" items="${readReply }">
+	<div>
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" value="댓글 남기기" style="font-size:9;" id="rep"/><br/>
+		${r.CONTENT }
+		<hr/>
+	</div>
+</c:forEach>
+<script>
+	$(document).ready(function() {
+		$("input").click(function() {
+			console.log($(this));
+			rep($(this));
+		});
+	});
+	var replyBox = document.createElement("div");
+		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
+	function rep(button) {
+		button.parent().append(replyBox);
+		document.getElementById("repbt").addEventListener("click", function() {
+			alert(follow.value);
+			
+			$.ajax({
+				method : "get",
+				url : "/tactics/follow?writer=${nick}&follow="+follow.value
+			});
+		});
+	};
+</script>
