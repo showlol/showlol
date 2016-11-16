@@ -32,7 +32,7 @@ public class TacticsController {
 	@RequestMapping("/{page}/{length}")
 	public ModelAndView index(@PathVariable int page, @PathVariable int length){
 		List list = cm.listPage(page, length);
-		ModelAndView mav = new ModelAndView("cm:tactics/index");
+		ModelAndView mav = new ModelAndView("tactics/index");
 		mav.addObject("list", list);
 		return mav;
 	}

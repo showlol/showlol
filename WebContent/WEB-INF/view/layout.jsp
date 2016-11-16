@@ -13,16 +13,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/css/main.css" >
 </head>
-<body>	
+<body>
+	<div style="height: auto;">	
 		<header>			
 			<tiles:insertAttribute name="header" />
-		</header>		
+		</header>
+	</div>		
 		<article>			
 			<tiles:insertAttribute name="article" />					
 		</article>		
 		<footer>
 			<tiles:insertAttribute name="footer" />
 		</footer>
-		
+			
 </body>
 </html>

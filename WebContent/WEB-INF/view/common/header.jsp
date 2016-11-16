@@ -14,7 +14,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>        
+        <li class="active"><a href="/">Home</a></li>        
         <li><a href="#">STATICS</a></li>
         <li><a href="/tactics/1/10">TACTICS</a></li>
       </ul>
@@ -58,8 +58,9 @@
 <script>
 
 	var logInfo = "<div style='height: inherit;'>"+
-					"<a>김성욱</a><br/><a href='javascript:logout()'>logout</a><div>";
-	if(${nick!=null}){
+					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";
+	var nick="${nick}";					
+	if(nick!=null){
 		document.getElementById("logInfo").innerHTML = logInfo;	
 	}
 	function logout(){
