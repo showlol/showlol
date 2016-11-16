@@ -1,15 +1,17 @@
 package summoner.model;
 
+import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RecentGamesDto {
+	long gameId;
 	String summonerName;
 	String gameMode;
 	String gameType;
 	String subType;
-	long createDate;
+	long dTime;
+	Date createDate;
 	int kill;
 	int death;
 	int assist;
@@ -29,14 +31,16 @@ public class RecentGamesDto {
 		super();
 	}
 
-	public RecentGamesDto(String summonerName, String gameMode, String gameType, String subType, long createDate, int kill, int death, int assist, int gamelv,
-			int cs, String champName, int[] items, List<HashMap> players, String spell1, String spell2, 
-			int teamId, boolean win, float kda, int largestMultiKill) {
+	public RecentGamesDto(long gameId, String summonerName, String gameMode, String gameType, String subType, long dTime, Date createDate, 
+			int kill, int death, int assist, int gamelv, int cs, String champName, int[] items, 
+			List<HashMap> players, String spell1, String spell2, int teamId, boolean win, float kda, int largestMultiKill) {
 		super();
+		this.gameId = gameId;
 		this.summonerName = summonerName;
 		this.gameMode = gameMode;
 		this.gameType = gameType;
 		this.subType = subType;
+		this.dTime = dTime;
 		this.createDate = createDate;
 		this.kill = kill;
 		this.death = death;
@@ -54,6 +58,14 @@ public class RecentGamesDto {
 		this.largestMultiKill = largestMultiKill;
 	}
 	
+	public long getGameId() {
+		return gameId;
+	}
+
+	public void setGameId(long gameId) {
+		this.gameId = gameId;
+	}
+
 	public String getSummonerName() {
 		return summonerName;
 	}
@@ -86,11 +98,19 @@ public class RecentGamesDto {
 		this.gameMode = subType;
 	}
 
-	public long getCreateDate() {
+	public long getdTime() {
+		return dTime;
+	}
+
+	public void setdTime(long dTime) {
+		this.dTime = dTime;
+	}
+	
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(long createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 

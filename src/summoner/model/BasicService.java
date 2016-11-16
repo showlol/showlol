@@ -21,11 +21,26 @@ public class BasicService {
 	// 이름을 이용하여 아이디 가져오기
 	public int getSummonerId(String name) {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
-		LinkedHashMap data = (LinkedHashMap)map.get(name);
+		String url = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
+		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		String name1 = name.replaceAll(" ", "");
+		String name2 = name1.toLowerCase();
+		LinkedHashMap data = (LinkedHashMap)map.get(name2);
 		int id = (int)data.get("id");
 		
 		return id;
+	}
+	
+	// 이름을 이용하여 소환사 정보 가져오기
+	public LinkedHashMap getSummonerInfo(String name) {
+		RestTemplate rt = new RestTemplate();	
+		String url = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
+		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		String name1 = name.replaceAll(" ", "");
+		String name2 = name1.toLowerCase();
+		LinkedHashMap data = (LinkedHashMap)map.get(name2);
+		
+		return data;
 	}
 	
 	// ID를 이용하여 이름 가져오기
