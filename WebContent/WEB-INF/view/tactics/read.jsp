@@ -34,8 +34,14 @@
 		replyBox.innerHTML = "<textarea rows='4'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
 	function rep(button) {
 		button.parent().append(replyBox);
-		document.getElementById("repbt").addEventListener("click", function() {
-			
+	};
+	document.getElementById("repbt").addEventListener("click", function() {
+		bt2();
+	});
+	function bt2() {
+		$.ajax({
+			type : "get",
+			url : "/tactics/follow"
 		});
 	};
 </script>
