@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="reply" parameterType="java.util.HashMap">
 		insert into tactics_reply1 values(tactics_reply1_seq.nextval, #{parentNum}, #{nick}, #{area}, sysdate)
 	</insert>
-	<select id="readReply" resultType="java.util.HashMap">
-		select * from tactics_reply1 order by num desc
+	<select id="readReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from tactics_reply1 where parentNum=#{parentNum} order by num desc
 	</select>
 </mapper>

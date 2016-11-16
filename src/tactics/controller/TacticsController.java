@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,9 +40,10 @@ public class TacticsController {
 	@RequestMapping("/read/{num}")
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
+		List list = cm.readReply(num);
 		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
-		mav.addObject("readReply", cm.readReply(num));
+		mav.addObject("readReply", list);
 		return mav;
 	}
 	@RequestMapping("/mastery")
