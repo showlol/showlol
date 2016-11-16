@@ -9,17 +9,17 @@ CHAMPION<br/><hr/>
 	<div id="champContainer">
 		<c:set var="col" value="0" />
 		<c:forEach var="list" items="${champList}">
-			${col=col+1 }
-			<div id="champPortrait">			
+			<a href="javascript:champTactics('${list.NAME }')">
+				<div id="champPortrait">			
 				<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
-					 height="30" width="30"/><br/>
+					 height="50" width="50"/><br/>
 				${list.NAME }
-			</div>
-			
+				</div>
+			</a>			
 		</c:forEach>
-	</div>
-	
+	</div>	
 </c:if>
+<hr/>
 <c:forEach var="row" items="${list }">
 	<div class="content">
 		<a href="/tactics/read/${row.num }" >
@@ -30,5 +30,11 @@ CHAMPION<br/><hr/>
 </c:forEach>
 
 <script>
-
+	
+	function champTactics(name){
+		$.get("");
+	}
 </script>
+
+
+

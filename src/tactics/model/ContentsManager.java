@@ -33,6 +33,7 @@ public class ContentsManager {
 	public Tactics read(int num) {
 		SqlSession sql = fac.openSession();
 		Tactics tac = sql.selectOne("tactics.read", num);
+		sql.close();
 		return tac;
 	}
 	public boolean reply(HashMap map) {
@@ -45,5 +46,12 @@ public class ContentsManager {
 		List list = sql.selectList("tactics.readReply", parentNum);
 		sql.close();
 		return list;
+	}
+
+	public List champTactics(String name) {
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("tactics.champTactics");
+		sql.close();
+		return null;
 	}
 }

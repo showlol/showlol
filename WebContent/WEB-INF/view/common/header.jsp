@@ -58,9 +58,7 @@
 <script>
 
 	var logInfo = "<div style='height: inherit;'>"+
-					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";
-	var nick="${nick}";
-	alert(nick);
+					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";	
 	if(${nick!=null}){
 		document.getElementById("logInfo").innerHTML = logInfo;	
 	} else {

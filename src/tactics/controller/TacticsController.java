@@ -41,6 +41,13 @@ public class TacticsController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	@RequestMapping("/name")
+	public ModelAndView champTactics(String name){
+		List list = cm.champTactics(name);		
+		ModelAndView mav = new ModelAndView("tactics/index");
+		mav.addObject("list", list);
+		return mav;
+	}
 	@RequestMapping("/read/{num}")
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
