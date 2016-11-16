@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-inverse" style="margin: 0px;">
+<nav class="navbar navbar-inverse navbar-fixed-top" >
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -20,15 +20,15 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="logInfo"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Modal -->
-<div id="login" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -56,6 +56,16 @@
 </div>
 
 <script>
+
+	var logInfo = "<div style='height: inherit;'>"+
+					"<a>김성욱</a><br/><a href='javascript:logout()'>logout</a><div>";
+	if(${nick!=null}){
+		document.getElementById("logInfo").innerHTML = logInfo;	
+	}
+	function logout(){
+		alert("out");
+	}	
+
 	document.getElementById("bt").addEventListener("click", function() {
 		location.href="/join"
 	});
