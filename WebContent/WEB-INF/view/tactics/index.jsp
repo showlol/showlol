@@ -9,26 +9,44 @@ CHAMPION<br/><hr/>
 	<div id="champContainer">
 		<c:set var="col" value="0" />
 		<c:forEach var="list" items="${champList}">
-			${col=col+1 }
-			<div id="champPortrait">			
+			<a href="javascript:champTactics('${list.NAME }')">
+				<div id="champPortrait">			
 				<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
-					 height="30" width="30"/><br/>
+					 height="50" width="50"/><br/>
 				${list.NAME }
-			</div>
-			
+				</div>
+			</a>			
 		</c:forEach>
-	</div>
-	
+	</div>	
 </c:if>
+<hr/>
 <c:forEach var="row" items="${list }">
 	<div class="content">
 		<a href="/tactics/read/${row.num }" >
 			${row.num }/${row.title }/${row.writer }/${row.writeDate }
 		</a>
-		<input type="button" id="reply">
 	</div>	
 </c:forEach>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>글번호<th>제목<th>작성자<th>작성일
+		</tr>
+		
+	</thead>
+</table>
 
 <script>
-
+		
+	function champTactics(name){
+		$.get("/tactics/"+name, function(r){
+			console.log(r);
+			for(var i=0; i<r.length; i++){
+				console.log(r[i]);
+			}
+		});
+	}
 </script>
+
+
+

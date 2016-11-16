@@ -25,7 +25,7 @@ public class TacticsController {
 	
 	@RequestMapping("/")
 	public String writePage(){
-		return "tactics/";
+		return "tactics/write";
 	}
 	@RequestMapping("/write")
 	@ResponseBody
@@ -41,6 +41,14 @@ public class TacticsController {
 		mav.addObject("list", list);
 		return mav;
 	}
+	@RequestMapping("/{name}")
+	@ResponseBody
+	public List champTactics(@PathVariable String name){
+		System.out.println(name+": 검색중...");
+		System.out.println(cm.champTactics(name).toString());
+		return cm.champTactics(name);		
+	}
+	
 	@RequestMapping("/read/{num}")
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);

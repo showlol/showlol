@@ -5,6 +5,9 @@ body{
 .container{
 	padding: 0;
 }
+a, a:link {
+	text-decoration: none;
+}
 article{
 	height: 100%;
 	padding: 80px;
@@ -17,11 +20,14 @@ footer{
 	vertical-align: middle;
 }
 #champPortrait{
-	display: inline-block;	
+	display: inline-block;
+	width: 50px;
+	font-size: 8pt;
 }
 #champContainer{
-	height: 500px;
+	height: 300px;
 	overflow-y: scroll;
+	border: 1px solid gray;	
 }
 /* footer div{ */
 /* 	maring: auto; */
