@@ -59,15 +59,23 @@
 
 	var logInfo = "<div style='height: inherit;'>"+
 					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";
-	var nick="${nick}";					
-	if(nick!=null){
+	var nick="${nick}";
+	alert(nick);
+	if(${nick!=null}){
 		document.getElementById("logInfo").innerHTML = logInfo;	
+	} else {
+		document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
 	}
 	function logout(){
 		alert("out");
 		$.ajax({
 			type : "get",
 			url : "/logout"
+		}).done(function(out) {
+			alert(out);
+			if(out=="success") {
+				document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
+			}
 		});
 	}	
 
