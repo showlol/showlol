@@ -27,7 +27,7 @@ CHAMPION<br/><hr/>
 		</a>
 	</div>	
 </c:forEach>
-<table class="table table-striped">
+<table class="table table-striped" id="tacticsList">
 	<thead>
 		<tr>
 			<th>글번호<th>제목<th>작성자<th>작성일
@@ -41,10 +41,14 @@ CHAMPION<br/><hr/>
 	function champTactics(name){
 		$.get("/tactics/"+name, function(r){
 			console.log(r);
-			for(var i=0; i<r.length; i++){
-				console.log(r[i]);
-			}
+			appendList(r);
 		});
+	}
+	function appendList(r){
+		for(var i=0; i<r.length; i++){
+			$("#tacticsList").append("<tr><td>"+r[i].num+"<td>"+r[i].title+"<td>"+r[i].writer+"<td>"+r[i].writedate);
+			
+		}
 	}
 </script>
 
