@@ -24,4 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="readReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
 		select * from tactics_reply1 where parentNum=#{parentNum} order by num desc
 	</select>
+	<select id="replyReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from tactics_reply2 where parentNum=#{parentNum} order by num desc
+	</select>
 </mapper>
