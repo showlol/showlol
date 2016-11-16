@@ -13,8 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/css/main.css" >
 </head>
-<body>
-	<div class="container">
+<body>	
 		<header>			
 			<tiles:insertAttribute name="header" />
 		</header>		
@@ -24,6 +23,6 @@
 		<footer>
 			<tiles:insertAttribute name="footer" />
 		</footer>
-	</div>	
+		
 </body>
 </html>
