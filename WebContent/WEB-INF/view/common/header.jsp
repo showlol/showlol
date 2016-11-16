@@ -1,25 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<div class="container" >
-	<nav id="navigation">
-		<span id="nickname" style="float: left;">
-		</span>
-		<ul class="clearfix">				
-			<li><div id="mi"><a href="/tactics/1/10">tactics</a></div></li>
-			<li><div id="mi"><a>static</a></div></li>			
-			<li><div id="mi"><a>home</a></div></li>					
-		</ul>
-	</nav>	
-		<br/>
+<nav class="navbar navbar-inverse" style="margin: 0px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">LolStatus</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>        
+        <li><a href="#">STATICS</a></li>
+        <li><a href="/tactics/1/10">TACTICS</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div id="login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">로그인</h4>
+      </div>
+      <div class="modal-body">
+        <div id="danger"></div>
+			ID :
+			<input type="email" id="id" placeholder="email을 입력하세요." />
+			<br />
+			PASS :
+			<input type="password" id="pass" />
+			<br />
+			<input type="button" value="로그인" id="login" />
+			<input type="button" value="회원가입" id="bt" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <script>
-	if(${nick==null}) {
-		$("#nickname").html("login");
-	} else {
-		$("#nickname").html("${nick} 님");
-	}
-</script>		
+	document.getElementById("bt").addEventListener("click", function() {
+		location.href="/join"
+	});
+	document.getElementById("login").addEventListener("click", function() {
+		login();
+	});
+	function login(){
+		$.ajax({
+			method:"get",
+			url : "/login/loginData?email="+id.value+"&pass="+pass.value
+		}).done(function(r) {
+			if(r=="false") {
+				document.getElementById("danger").innerHTML = "로그인에 실패하셨습니다.";
+			} else {
+				window.alert(r);
+				location.href="/";
+			}
+		});
+	};
+</script>
