@@ -162,11 +162,27 @@ public class MatchesService {
 	}
 	
 	// 게임상세정보 가져오기
-	public List<HashMap> getGameDetailInfo(long gid) {
-		List<HashMap> list = new ArrayList<>();
+	public HashMap getGameDetailInfo(long gid) {
+		HashMap resMap = new HashMap<>();
 		RestTemplate rt = new RestTemplate();
 		String url = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/"+gid+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
 		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		
+		ArrayList participantIdentities = (ArrayList)map.get("participantIdentities");
+		int matchDuration = (int)map.get("matchDuration");
+		resMap.put("matchDuration", new Date(matchDuration));
+		
+		HashMap sNameMap = new HashMap<>();
+		for(int i=0; i<participantIdentities.size(); i++) {
+			LinkedHashMap data = (LinkedHashMap)participantIdentities.get(i);
+			int participantId = (int)data.get("participantId");
+			LinkedHashMap player = (LinkedHashMap)data.get("player");
+			String summonerName = (String)player.get("summonerName");
+			
+			sNameMap.put(participantId, summonerName);
+		}
+		
+		List<HashMap> plist = new ArrayList<>();
 		ArrayList participants = (ArrayList)map.get("participants");
 		for(int i=0; i<participants.size(); i++) {
 			LinkedHashMap data = (LinkedHashMap)participants.get(i);
@@ -220,10 +236,22 @@ public class MatchesService {
 			participant.put("cs", cs);
 			int goldEarned = (int)stats.get("goldEarned");
 			participant.put("goldEarned", goldEarned);
+			int participantId = (int)data.get("participantId");
+			String summonerName = (String)sNameMap.get(participantId);
+			participant.put("summonerName", summonerName);
 			
-			list.add(participant);
+			plist.add(participant);
 		}
+		resMap.put("plist", plist);
 		
-		return list;
+		return resMap;
+	}
+	
+	public LinkedHashMap getGameDetailInfo2(long gid) {
+		RestTemplate rt = new RestTemplate();
+		String url = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/"+gid+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
+		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		System.out.println(map);
+		return map;
 	}
 }

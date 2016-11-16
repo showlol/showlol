@@ -5,7 +5,7 @@
 ${tid }
 <table>
 	<tr>
-		<td>승패</td>
+		<td colspan="2">승패</td>
 		<td>아이템</td>
 		<td>평점</td>
 		<td>피해량</td>
@@ -13,7 +13,7 @@ ${tid }
 		<td>CS</td>
 		<td>골드</td>
 	<tr>
-	<c:forEach var="p" items="${list }">
+	<c:forEach var="p" items="${map.plist }">
 		<tr>
 			<td>
 				<table>
@@ -28,6 +28,7 @@ ${tid }
 					<tr>
 				</table>
 			</td>
+			<td><font size="2">${p.summonerName }</font></td>
 			<td>
 				<img width="20" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${p.item0 }.png">
 				<img width="20" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/${p.item1 }.png">
@@ -39,7 +40,18 @@ ${tid }
 			</td>
 			<td>
 				<table>
-					<tr><td><font size="2"><fmt:formatNumber value="${p.kda }" pattern="0.00"/> : 1</font></td></tr>
+					<tr>
+						<td><font size="2">
+							<c:choose>
+								<c:when test="${p.kda == -1 }">
+								Perfect
+								</c:when>
+								<c:otherwise>
+								<fmt:formatNumber value="${p.kda }" pattern="0.00"/> : 1
+								</c:otherwise>
+							</c:choose>
+						</font></td>
+					</tr>
 					<tr><td><font size="2">${p.kills }/${p.deaths}/${p.assists }</font></td></tr>
 				</table>
 			</td>
@@ -58,4 +70,3 @@ ${tid }
 		<tr/>
 	</c:forEach>
 </table>
-${map}

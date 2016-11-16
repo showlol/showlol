@@ -38,8 +38,9 @@ public class MatchesController {
 	@RequestMapping("/matchDetail")
 	public ModelAndView matchDetail(long gid, int tid) {
 		ModelAndView mav = new ModelAndView("summoner/matchDetail");
-		List list = msvc.getGameDetailInfo(gid);
-		mav.addObject("list", list);
+		HashMap map = msvc.getGameDetailInfo(gid);
+		//LinkedHashMap list = msvc.getGameDetailInfo2(gid);
+		mav.addObject("map", map);
 		mav.addObject("tid", tid);
 		
 		return mav;
