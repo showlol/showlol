@@ -17,7 +17,11 @@ footer{
 	vertical-align: middle;
 }
 #champPortrait{
-	display: inline-block;
+	display: inline-block;	
+}
+#champContainer{
+	height: 500px;
+	overflow-y: scroll;
 }
 /* footer div{ */
 /* 	maring: auto; */

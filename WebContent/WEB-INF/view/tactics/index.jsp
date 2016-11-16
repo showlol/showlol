@@ -6,16 +6,19 @@
 CHAMPION<br/><hr/>
 
 <c:if test="${champList!=null }">
-	<c:set var="col" value="0" />
-	<c:forEach var="list" items="${champList}">
-		${col=col+1 }
-		<div id="champPortrait">			
-			<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
-				 height="30" width="30"/><br/>
-			${list.NAME }
-		</div>
-		
-	</c:forEach>
+	<div id="champContainer">
+		<c:set var="col" value="0" />
+		<c:forEach var="list" items="${champList}">
+			${col=col+1 }
+			<div id="champPortrait">			
+				<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
+					 height="30" width="30"/><br/>
+				${list.NAME }
+			</div>
+			
+		</c:forEach>
+	</div>
+	
 </c:if>
 <c:forEach var="row" items="${list }">
 	<div class="content">
