@@ -16,6 +16,9 @@ footer{
 	text-align: center;
 	vertical-align: middle;
 }
+#champPortrait{
+	display: inline-block;
+}
 /* footer div{ */
 /* 	maring: auto; */
 /* 	vertical-align: middle; */

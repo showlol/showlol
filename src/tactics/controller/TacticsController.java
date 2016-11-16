@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import tactics.model.ChampionService;
 import tactics.model.ContentsManager;
 import tactics.model.pojo.Tactics;
 
@@ -19,6 +20,8 @@ import tactics.model.pojo.Tactics;
 public class TacticsController {
 	@Autowired
 	ContentsManager cm;	
+	@Autowired
+	ChampionService cs;
 	
 	@RequestMapping("/")
 	public String writePage(){
@@ -32,8 +35,9 @@ public class TacticsController {
 	}
 	@RequestMapping("/{page}/{length}")
 	public ModelAndView index(@PathVariable int page, @PathVariable int length){
-		List list = cm.listPage(page, length);
+		List list = cm.listPage(page, length);		
 		ModelAndView mav = new ModelAndView("tactics/index");
+		mav.addObject("champList", cs.championList());
 		mav.addObject("list", list);
 		return mav;
 	}
