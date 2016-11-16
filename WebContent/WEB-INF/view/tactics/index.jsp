@@ -40,9 +40,10 @@ CHAMPION<br/><hr/>
 		
 	function champTactics(name){
 		$.get("/tactics/"+name, function(r){
-			r.replace
-			var tacticsList = JSON.parse(r);
-			
+			console.log(r);
+			for(var i=0; i<r.length; i++){
+				console.log(r[i]);
+			}
 		});
 	}
 </script>
