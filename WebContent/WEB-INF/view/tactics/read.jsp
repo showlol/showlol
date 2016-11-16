@@ -16,3 +16,8 @@
 	<input type="submit" value="입력 완료"/>
 	</form>
 </c:if>
+<c:forEach var="r" items="${readReply }">
+	<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE })<br/>
+	${r.CONTENT }
+	<hr/>
+</c:forEach>
