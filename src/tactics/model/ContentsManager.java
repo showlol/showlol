@@ -43,6 +43,7 @@ public class ContentsManager {
 	public List readReply(int parentNum) {
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("tactics.readReply", parentNum);
+		sql.close();
 		return list;
 	}
 }

@@ -65,6 +65,10 @@
 	}
 	function logout(){
 		alert("out");
+		$.ajax({
+			type : "get",
+			url : "/logout"
+		});
 	}	
 
 	document.getElementById("bt").addEventListener("click", function() {
