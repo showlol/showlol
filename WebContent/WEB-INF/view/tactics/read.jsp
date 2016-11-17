@@ -18,9 +18,18 @@
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" value="댓글 남기기" style="font-size:9;" id="rep"/><br/>
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" value="댓글 남기기" style="font-size:9;" id="${r.NUM }"/><br/>
 		${r.CONTENT }
 		<hr/>
+	<c:forEach var="f" items="${followList }">
+	<div>
+		<c:if test="${f.PARENTNUM==r.NUM }">
+		└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE })<br/>
+		${f.CONTENT }
+		<hr/>
+		</c:if>
+	</div>
+</c:forEach>
 	</div>
 </c:forEach>
 <script>
@@ -39,7 +48,7 @@
 			
 			$.ajax({
 				method : "get",
-				url : "/tactics/follow?writer=${nick}&follow="+follow.value
+				url : "/tactics/follow?writer=${nick}&follow="+follow.value+"&parentNum="+button.attr("id")
 			});
 		});
 	};

@@ -1,5 +1,6 @@
 package tactics.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tactics.model.ChampionService;
 import tactics.model.ContentsManager;
+import tactics.model.ReplyFollowService;
 import tactics.model.pojo.Tactics;
 
 @Controller
@@ -22,6 +24,8 @@ public class TacticsController {
 	ContentsManager cm;	
 	@Autowired
 	ChampionService cs;
+	@Autowired
+	ReplyFollowService rfs;
 	
 	@RequestMapping("/regArticle/{name}")
 	public String writePage(@PathVariable String name){
@@ -60,20 +64,14 @@ public class TacticsController {
 	@RequestMapping("/read/{num}") // 공략 글 읽기
 	public ModelAndView read(@PathVariable int num){
 		Tactics tac = cm.read(num);
-		List list = cm.readReply(num);
-		List replyFollow = cm.replyFollow(num);
+		List<HashMap> list = cm.readReply(num);		
+		List followList = rfs.followList();
 		ModelAndView mav = new ModelAndView("cm:tactics/read");
 		mav.addObject("tactics", tac);
 		mav.addObject("readReply", list);
-		mav.addObject("replyFollow", replyFollow);
+		mav.addObject("followList", followList);
 		return mav;
 	}
-	@RequestMapping("/follow")
-	@ResponseBody
-	public String reFollow() {
-		return null;
-	}
-	
 	@RequestMapping("/mastery")
 	public String mastery(){
 		return "tactics/mastery";
