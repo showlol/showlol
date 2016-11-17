@@ -83,6 +83,6 @@ public class TacticsController {
 		map.put("area", area);
 		map.put("parentNum", parentNum);
 		cm.reply(map);
-		return null;
+		return "redirect:/read/{num}";
 	}
 }

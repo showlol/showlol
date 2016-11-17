@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-글읽기
+글읽기 <input type="button" value="수정하기" id="update"/><input type="button" value="삭제" id="delete"/>
 <div>${tactics.title }</div><br/>
 <div>${tactics.writer }</div><br/>
 <div>${tactics.content1 }</div><br/>
@@ -51,5 +51,17 @@
 				url : "/tactics/follow?writer=${nick}&follow="+follow.value+"&parentNum="+button.attr("id")
 			});
 		});
+	};
+	document.getElementById("update").addEventListener("click", function() {
+		update();
+	});
+	function update() {
+		
+	};
+	document.getElementById("delete").addEventListener("click", function() {
+		deletedata();
+	});
+	function deletedata() {
+		
 	};
 </script>
