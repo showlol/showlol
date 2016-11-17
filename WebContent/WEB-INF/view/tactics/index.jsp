@@ -42,7 +42,7 @@ CHAMPION<br/><hr/>
 				<th>글번호<th>제목<th>작성자<th>작성일
 			</tr>		
 		</thead>		
-		<tbody></tbody>
+		<tbody id="tbody"></tbody>
 	</table>
 	<button id="writeTactics" style="display:none; float:right;">공략쓰기</button>
 <script>
@@ -70,6 +70,7 @@ CHAMPION<br/><hr/>
 			location.href="/tactics/regArticle/"+name;
 		});
 	}	
+	
 </script>
 
 
