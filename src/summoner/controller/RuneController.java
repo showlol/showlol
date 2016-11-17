@@ -30,4 +30,13 @@ public class RuneController {
 		
 		return mav;
 	}
+	@RequestMapping(value="/summoner/rune")
+	public ModelAndView rune3(String img){
+		ModelAndView mav = new ModelAndView("summoner/rune");
+		String ssid = rs.getRuneImg(img);
+		mav.addObject("list",ssid);
+		
+		return mav;
+	}
+	
 }

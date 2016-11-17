@@ -14,6 +14,7 @@
 	<context:component-scan base-package="login" />
 	<context:component-scan base-package="common" />
 	<context:component-scan base-package="member" />
+	<context:component-scan base-package="community"/>
 	<mvc:default-servlet-handler /> 
 	<!-- responseBody -->
 	<mvc:annotation-driven>
@@ -63,6 +64,7 @@
 				<value>/WEB-INF/mapper/tactics-mapper.xml</value>
 				<value>/WEB-INF/mapper/member-mapper.xml</value>
 				<value>/WEB-INF/mapper/championData-mapper.xml</value>
+				<value>/WEB-INF/mapper/community-mapper.xml</value>
 			</list>
 		</property>
 	</bean>
