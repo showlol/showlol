@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import staticData.model.RuneData;
 
 @Component
 public class RuneService {
@@ -37,6 +40,12 @@ public class RuneService {
 		return pages;
 	}
 	
-	
+	public String getRuneImg(String img){
+		SqlSession sql = fac.openSession();
+		RuneData rd = sql.selectOne("showRuneImg", img);
+		sql.close();
+		
+		return rd.getImage();
+	}
 	
 }

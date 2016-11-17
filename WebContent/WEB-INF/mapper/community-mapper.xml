@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="community">
+
+	<insert id="write" parameterType="community.model.CommunityData">
+		insert into community values(community_seq.nextval, #{writer},#{title},
+				#{memo }, 0, sysdate)		
+	</insert>
+	
+	<select id="readAll" resultType="community.model.CommunityData">
+		select * from community order by writedate desc
+	</select>	
+	
+	<update id="upGood" parameterType="java.lang.Integer">
+		update community set good=good+1 where num=#{num}						
+	</update>
+
+	<select id="totalCount" resultType="java.lang.Integer">
+		select count(*) from community
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from community where num= #{num}
+	</delete>
+	
+</mapper>
