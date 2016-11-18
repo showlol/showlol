@@ -25,7 +25,7 @@ public class MatchesController {
 	
 	@RequestMapping("/matches")
 	public ModelAndView matches(@RequestParam(required=false) String userName) {
-		ModelAndView mav = new ModelAndView("summoner/matches");
+		ModelAndView mav = new ModelAndView("summoner/matches");		
 		if(userName != null) {
 			List<RecentGamesDto> list = msvc.getGameInfo(userName);
 			mav.addObject("list", list);

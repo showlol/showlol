@@ -18,26 +18,28 @@
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" value="댓글 남기기" style="font-size:9;" id="${r.NUM }"/><br/>
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input class="replybt" type="button" value="댓글 남기기" style="font-size:9;" id="${r.NUM }"/><br/>
 		${r.CONTENT }
 		<hr/>
+		
+	</div>
 	<c:forEach var="f" items="${followList }">
-	<div>
-		<c:if test="${f.PARENTNUM==r.NUM }">
-		└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE })<br/>
-		${f.CONTENT }
-		<hr/>
-		</c:if>
-	</div>
-</c:forEach>
-	</div>
+		<div>
+			<c:if test="${f.PARENTNUM==r.NUM }">
+				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE })<br />
+				${f.CONTENT }
+				<hr />
+			</c:if>
+		</div>
+	</c:forEach>
 </c:forEach>
 <script>
 	$(document).ready(function() {
 		$("input").click(function() {
-			console.log($(this));
+			console.log($(this));			
 			rep($(this));
-		});
+		});		
+		
 	});
 	var replyBox = document.createElement("div");
 		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
