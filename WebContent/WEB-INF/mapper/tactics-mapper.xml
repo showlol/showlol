@@ -35,5 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyfollow" parameterType="java.util.List" resultType="java.util.HashMap">
 		select * from tactics_reply2 order by num asc
 	</select>
-	
+	<update id="upReply" parameterType="java.util.HashMap">
+		update tactics_reply1 set content=#{content} where num=#{num}
+	</update>
 </mapper>
