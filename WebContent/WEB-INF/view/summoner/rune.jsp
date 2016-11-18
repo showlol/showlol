@@ -43,7 +43,7 @@
    		no.${p }/
 	   		<c:set var="p" value="${p+1 }" />
 	   		<c:forEach var="img" items="${page }" >
-	   			<img src="http://sk2.op.gg/images/runes_100/${img }" >
+	   			<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${img }">
 	   		</c:forEach>
    		</div>
    </c:forEach>   

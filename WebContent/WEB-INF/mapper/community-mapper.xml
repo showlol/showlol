@@ -25,4 +25,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from community where num= #{num}
 	</delete>
 	
+	<select id="readRange" parameterType="java.util.HashMap" resultType="community.model.CommunityData">
+		<![CDATA[
+			select temp.* from (select rownum r, cm.*  from COMMUNITY cm order by writedate desc) temp
+			where r<=#{start} and r>=#{end}   
+		]]>
+	</select>
+	<select id="total" resultType="java.lang.Integer">
+		select count(*) from community
+	</select>
+	
 </mapper>
