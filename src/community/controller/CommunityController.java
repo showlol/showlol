@@ -23,9 +23,22 @@ public class CommunityController {
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			ModelAndView mav = new ModelAndView();
-			List list = cs.readall(); 
+			List list = cs.readall();
 			mav.setViewName("community/main");
 			mav.addObject("list",list);
+			return mav;
+		}
+		
+		//페이지인데..
+		@RequestMapping("/community/review2")
+		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
+			ModelAndView mav = new ModelAndView();
+			int total = cs.readtotal();
+			List size = cs.readRange(p,total);
+			mav.setViewName("community/main");
+			mav.addObject("size",size);
+			mav.addObject("total",total);
+			mav.addObject("current", p );
 			return mav;
 		}
 		

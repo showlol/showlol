@@ -19,7 +19,7 @@ public class RuneService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	// ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ÀÌ¸§À»ÀÌ¿ëÇÑ ¾ÆÀÌµð°¡Á®¿À±â
 		public int getSummonerId(String name) {
 			RestTemplate rt = new RestTemplate();	
 			LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
@@ -30,7 +30,7 @@ public class RuneService {
 		}
 	
 	
-	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+	// ¾ÆÀÌµð¸¦ÀÌ¿ëÇÑ ³»·éÁ¤º¸°¡Á®¿À±â
 	public List getSummonerRune(String id){
 		RestTemplate rt = new RestTemplate();
 		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/"+id+

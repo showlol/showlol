@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import tactics.model.pojo.Tactics;
 
@@ -27,13 +28,15 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//리스트 읽어오기
+	
+	//글리스트 읽어오기
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
 		sql.close();
 		return list;
 	}
+	
 	
 	//글삭제
 	public List readdelete(int num){
@@ -51,6 +54,26 @@ public class CommunityService {
 		return list;
 	}
 	
+	
+	//페이지..
+	public List readRange(int p, int total) {
+		SqlSession sql = fac.openSession();
+		HashMap map = new HashMap();
+			map.put("start", total-(p-1)*5   );
+			map.put("end", total-p*5);
+		System.out.println(map.toString());
+		List m = sql.selectList("community.readRange", map);
+		sql.close();
+		System.out.println(m.toString());
+		return m;
+	}
+	
+	public int readtotal(){
+		SqlSession sql = fac.openSession();
+		int total = sql.selectOne("community.total");
+		sql.close();
+		return total;
+	}
 }
 
 
