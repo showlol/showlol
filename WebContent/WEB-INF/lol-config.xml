@@ -65,6 +65,7 @@
 				<value>/WEB-INF/mapper/member-mapper.xml</value>
 				<value>/WEB-INF/mapper/championData-mapper.xml</value>
 				<value>/WEB-INF/mapper/community-mapper.xml</value>
+				<value>/WEB-INF/mapper/runeMatch-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

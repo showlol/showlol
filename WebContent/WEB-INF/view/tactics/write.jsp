@@ -14,15 +14,14 @@
 	<script>CKEDITOR.replace('content1');
 	</script>
 </form>
-<button id="wr">글쓰기</button>
+<button id="wr">글쓰기</button><br/>
 
 <script>	
 	$(document).ready(function(){
 		$("#wr").click(function(){			
 			write();
 		});
-	});
-	
+	});	
 	
 	function write(){		
 		$.ajax({
@@ -36,7 +35,6 @@
 					},		
 		}).done(function(r){
 			location.href="/tactics/"
-		});
-		
+		});		
 	}
 </script>

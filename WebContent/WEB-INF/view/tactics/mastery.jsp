@@ -6,7 +6,7 @@
 	<link href="/css/tactics.css" rel="stylesheet" >
 </head>
 
-<div class = "container">
+
 	<ul class="mastery_title" >
 		<li ><div>흉포 : <b id="ferocity" name="m0">0</b></div>
 		<li ><div>교활 : <b id="cunning" name="m1">0</b></div>
@@ -14,10 +14,11 @@
 	</ul>	
 	<span><br></span>
 	<ul class="mastery_ul" id="attr"></ul>	
-		
-</div>
+	<input type="button" value="저장" style="clear: left;" >	
+
 
 <script>
+	
 	var m_ul = $(".mastery_ul")[0];
 	console.log(ul);	
 	for(mas=0; mas<3; mas++){
@@ -65,6 +66,7 @@
 				alert("포인트가 부족합니다.");
 				return false;
 			}
+			// 속성 최대치 제한
 			var tier = $(this).parents("#tier").attr("value");
 			var maxAttr = tier%2==0? 5: 1;
 			var attrPoint = e.target.innerHTML;			
@@ -78,8 +80,9 @@
 			for(i = 0; i<length; i++){
 				tierPoint += e.target.parentNode.childNodes[i].innerHTML/1;					
 			}
+			// 속성 카운트 자동 조절
 			console.log("max:"+attrPoint+"/"+maxAttr);
-			if(maxAttr==1 ){
+			if(maxAttr==1 ){	
 				console.log("max=1");
 				for(i = 0; i<length; i++){
 					e.target.parentNode.childNodes[i].innerHTML>=1?
@@ -95,7 +98,7 @@
 								e.target.parentNode.childNodes[i].innerHTML--:0;
 					};			
 			}
-			
+			//특성 카운트
 			switch($(this).parents(".mastery").attr("id")){
 			case "m0":
 				totalPoint--;
