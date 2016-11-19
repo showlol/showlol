@@ -9,13 +9,16 @@ body{
 a, a:link {
 	text-decoration: none;
 }
+.clearfix{
+	clear: both;
+}
 article{
 	height: 100%;
 	padding: 80px;
 }
 footer{
 	height: 70px;
-	background-color: #302f35;
+	background-color: #302f35;	
 	color: white;
 	text-align: center;
 	vertical-align: middle;
