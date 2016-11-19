@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/ckeditor/ckeditor.js"></script>  
     <title>공략 글쓰기</title>
 </head>
@@ -43,6 +40,7 @@
 </form>
 <button id="wr">글쓰기</button><br/>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>	
 	$(document).ready(function(){
 		$("#wr").click(function(){			
@@ -50,8 +48,7 @@
 		});
 		
 		$(".nav-tabs a").click(function(){
-			alert($(this).attr("href"));
-// 	        $(this).tab("show");
+ 	        $(this).tab("show");
 	    });
 	    $('.nav-tabs a').on('shown.bs.tab', function(event){
 	        var x = $(event.target).text();         // active tab
