@@ -27,6 +27,7 @@ public class ContentsManager {
 		Integer[] i = {page, length};
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("tactics.page");
+		sql.close();
 		return list;
 	}
 
@@ -39,6 +40,7 @@ public class ContentsManager {
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("tactics.reply", map)==1? true : false;
+		sql.close();
 		return r;
 	}
 	public List readReply(int parentNum) {

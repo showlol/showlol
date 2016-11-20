@@ -54,7 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="showRuneAll" resultType="staticData.model.RuneData">
 		select * from rune order by id
 	</select>
-	
+	<select id="showRuneTier3" resultType="staticData.model.RuneData">
+		select * from rune where tier=3 order by id
+	</select>	
 	<select id="showRune" parameterType="java.lang.Integer" resultType="staticData.model.RuneData">
 		select * from rune where id = #{id}
 	</select>

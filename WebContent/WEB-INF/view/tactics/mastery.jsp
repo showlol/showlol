@@ -12,7 +12,7 @@
 		<li >결의 : <b id="resolve" name="m2">0</b>
 	</ul>	
 	<span class="clearfix"><br></span>
-	<ul class="mastery_ul" id="attr"></ul>
+	<ul class="mastery_ul" id="mastery_ul"></ul>
 	
 <script>
 	
@@ -47,7 +47,7 @@
 			wrap.append(div);
 			ul.append(li);
 			li.append(wrap);			
-			for(atr=0; atr<max; atr++){
+			for(atr=0; atr<max; atr++){ //속성 상자 붙이기
 				attrNum++;
 				attrBox = document.createElement("div");
 				attrBox.setAttribute("class", "attrBox");
@@ -64,6 +64,7 @@
 	var m2Point= 0;
 	$(document).ready(function(){
 		addPoint();
+		addAttr();
 	});
 	
 	function addPoint(){
@@ -153,7 +154,23 @@
 			console.log(totalPoint);
 		})
 		
+	}//end addPoint
+	function addAttr(){
+		var attrList=[];
+		$.get("/data/mastery", function(r){
+			attrList=r;
+			attrList.forEach(function(list, i) {
+				var attrBox = $("#mastery_ul").find("#"+(i+1));
+				attrBox.css("background-image",
+					'url("http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/'+list.id+'.png")' );
+		 		attrBox.css("background-size", "cover");
+		 		attrBox.attr("title", list.description);
+			})
+		});	
 	}
+	
+	
+
 	
 </script>
 
