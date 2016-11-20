@@ -16,7 +16,8 @@
 		<header>			
 			<tiles:insertAttribute name="header" />
 		</header>
-		<article>			
+		
+		<article style="min-height: 600px; overflow: auto;">
 			<tiles:insertAttribute name="article" />					
 		</article>
 		<footer>
