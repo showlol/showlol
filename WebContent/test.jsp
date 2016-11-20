@@ -67,9 +67,13 @@ $(document).ready(function(){
         $(".act span").text(x);
         $(".prev span").text(y);
     });
+    
+    document.oncontextmenu = function(){
+    	alert("aaa");
+    };
 });
 </script>
-
+	
 </body>
 </html>
 

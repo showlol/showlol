@@ -46,7 +46,7 @@
 			write();
 		});
 		
-		$(".nav-tabs a").click(function(){
+		$(".nav-tabs a").click(function(){		
 		    $(this).tab('show');
 		});
 		

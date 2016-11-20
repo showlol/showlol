@@ -16,6 +16,7 @@
 	<context:component-scan base-package="member" />
 	<context:component-scan base-package="community"/>
 	<context:component-scan base-package="file" />
+	<context:component-scan base-package="gameImage" />
 	<mvc:default-servlet-handler /> 
 	<!-- responseBody -->
 	<mvc:annotation-driven>
@@ -67,6 +68,7 @@
 				<value>/WEB-INF/mapper/championData-mapper.xml</value>
 				<value>/WEB-INF/mapper/community-mapper.xml</value>
 				<value>/WEB-INF/mapper/runeMatch-mapper.xml</value>
+				<value>/WEB-INF/mapper/gameIcon-mapper.xml</value>
 			</list>
 		</property>
 	</bean>
