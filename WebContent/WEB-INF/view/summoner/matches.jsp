@@ -6,11 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<h2>최근게임</h2>
-<form action="/summoner/matches" method="post">
-	<input type="text" name="userName" value="${sname }"/>
-	<input type="submit" />
-</form>
 
 <c:if test="${list != null }">
 	<c:forEach var="g" items="${list }">
@@ -246,7 +241,9 @@
 				</td>
 				<td>
 					<table>
+						<c:if test="${fn:startsWith(g.subType, 'RANKED_')}">				
 						<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId })"/></td></tr>
+						</c:if>
 					</table>
 				</td>
 			</tr>
