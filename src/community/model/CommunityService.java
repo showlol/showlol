@@ -74,6 +74,28 @@ public class CommunityService {
 		sql.close();
 		return total;
 	}
+	
+	//±€¿–±‚
+	public CommunityData read(int num) {
+		SqlSession sql = fac.openSession();
+		CommunityData cd = sql.selectOne("community.read", num);
+		sql.close();
+		return cd;
+	}
+	
+	public boolean reply(HashMap map) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.insert("community.reply", map)==1? true : false;
+		sql.close();
+		return r;
+	}
+	public List readReply(int parentNum) {
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("community.readReply", parentNum);
+		sql.close();
+		return list;
+	}
+
 }
 
 
