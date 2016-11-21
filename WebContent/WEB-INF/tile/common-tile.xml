@@ -27,6 +27,9 @@
 	<definition name="tactics/champ/*" extends="frontgate">
 		<put-attribute name="article" value="/WEB-INF/view/tactics/{1}"/>
 	</definition>
+	<definition name="summoner/*" extends="frontgate">
+		<put-attribute name="article" value="/WEB-INF/view/summoner/{1}.jsp"/>
+	</definition>
 	<definition name="cm:*/*" extends="cm:layout">
 		<put-attribute name="article" value="/WEB-INF/view/{1}/{2}.jsp"/>
 	</definition>

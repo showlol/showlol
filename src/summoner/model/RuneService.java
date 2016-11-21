@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import staticData.model.RuneData;
+
 @Component
 public class RuneService {
 
@@ -38,6 +40,28 @@ public class RuneService {
 		LinkedHashMap data = (LinkedHashMap)map.get(id);
 		List pages = (ArrayList)data.get("pages");
 		
+		return pages;
+	}
+	
+	public List getRuneInfo(List pages) {
+		SqlSession sql = fac.openSession();
+		for(int i=0; i<pages.size(); i++) {
+			LinkedHashMap page = (LinkedHashMap)pages.get(i);
+			
+			List slots = (List)page.get("slots");
+			for(int j=0; j<slots.size(); j++) {
+				LinkedHashMap slot = (LinkedHashMap)slots.get(j);
+				int runeId = (int)slot.get("runeId");
+				RuneData rd = sql.selectOne("staticData.showRune", runeId);
+				String img = rd.getImage();
+				String des = rd.getDescription();
+				String name = rd.getName();
+				slot.put("img", img);
+				slot.put("des", des);
+				slot.put("name", name);
+			}
+		}
+		sql.close();
 		return pages;
 	}
 	

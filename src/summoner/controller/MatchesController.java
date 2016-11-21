@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import summoner.model.BasicService;
 import summoner.model.MatchesService;
 import summoner.model.RecentGamesDto;
 
@@ -23,8 +24,20 @@ public class MatchesController {
 	@Autowired
 	MatchesService msvc;
 	
+	@Autowired
+	BasicService bsvc;
+	
+	@RequestMapping("/index")
+	public ModelAndView index(String userName) {
+		ModelAndView mav = new ModelAndView("summoner/index");
+		//mav.addObject("userName", userName);
+		HashMap map = bsvc.getSummonerInfo(userName);
+		mav.addObject("userInfo", map);
+		
+		return mav;
+	}
 	@RequestMapping("/matches")
-	public ModelAndView matches(@RequestParam(required=false) String userName) {
+	public ModelAndView matches(String userName) {
 		ModelAndView mav = new ModelAndView("summoner/matches");		
 		if(userName != null) {
 			List<RecentGamesDto> list = msvc.getGameInfo(userName);
