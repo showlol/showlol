@@ -9,12 +9,15 @@
 <hr/>
  
 <c:forEach var="map" items="${masteryList }" >
-	${map }
+	<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/${map.id }.png" >
+	${map.name }<br/>
+	${map.description }<br/>
 </c:forEach>
 <hr/>
 
+
+
 <script>
-	var e = ${runeList["+0+"]}
-	console.log(e);
+
 	
 </script>

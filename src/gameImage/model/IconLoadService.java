@@ -21,6 +21,7 @@ public class IconLoadService {
 	
 	public List<ChampData> champList;
 	public List<RuneData>  runeList;
+	public List<RuneData> runeListTier3;
 	public List<MasteryData> masteryList;
 	
 	@PostConstruct
@@ -30,6 +31,7 @@ public class IconLoadService {
 		champList = sql.selectList("staticData.showChampAll");
 		runeList = sql.selectList("staticData.showRuneAll");
 		masteryList = sql.selectList("staticData.showMasteryAll");
+		runeListTier3 = sql.selectList("staticData.showRuneTier3");
 		sql.close();
 		System.out.println("완료");
 	}

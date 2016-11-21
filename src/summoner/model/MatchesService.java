@@ -16,7 +16,7 @@ public class MatchesService {
 	@Autowired
 	BasicService bsvc;
 	
-	// SummonerNameÀ» ÀÌ¿ëÇÏ¿© °ÔÀÓÁ¤º¸ °¡Á®¿À±â
+	// SummonerNameï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<RecentGamesDto> getGameInfo(String sname) {
 		LinkedHashMap sinfo = bsvc.getSummonerInfo(sname);
 		int summonerId = (int)sinfo.get("id");
@@ -24,7 +24,6 @@ public class MatchesService {
 		RestTemplate rt = new RestTemplate();
 		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.3/game/by-summoner/"+summonerId+"/recent?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
 		ArrayList games = (ArrayList)map.get("games");
-		
 		List<RecentGamesDto> list = new ArrayList<>();
 		int cnt = 0;
 		for(int i=0; i<games.size(); i++) {
@@ -154,14 +153,12 @@ public class MatchesService {
 			if(cnt == 5)
 				break;
 			cnt++;
-		}
-		
-		
+		}		
 		
 		return list;
 	}
 	
-	// °ÔÀÓ»ó¼¼Á¤º¸ °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public HashMap getGameDetailInfo(long gid) {
 		HashMap resMap = new HashMap<>();
 		RestTemplate rt = new RestTemplate();
