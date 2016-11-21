@@ -41,9 +41,7 @@
 		switch(target.attr("type")){
 		case "red":
 			for(i = 0; i<9; i++){
-				console.log("이프전");
 				if($("#runeNum"+i).attr("data")=="empty"){
-					console.log("이프안");
 					$("#runeNum"+i).attr("data", "full");
 					$("#runeNum"+i).css("background-image", 'url('+target.children("img").attr("src")+')');
 					$("#runeNum"+i).css("background-size", "cover");

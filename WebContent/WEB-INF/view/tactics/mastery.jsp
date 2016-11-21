@@ -86,7 +86,6 @@
 			}
 			//이전 티어 체크			
  			var currentMasteryId = $(this).parents(".mastery").attr("id");
-			console.log("현재 마스터리:"+$("#"+currentMasteryId).attr("id"));
 			if(tier!=0){				
 				if($("#"+currentMasteryId).find(".tier_odd[value="+(tier-1)+"], .tier_even[value="+(tier-1)+"]")
 					.attr("data") != "enough"){
@@ -118,12 +117,10 @@
 			}else{
 				if(tierPoint==4){
 					$(this).parent().attr("data", "enough");
-					console.log("데이터완료:"+e.target.parentNode.getAttribute("data"));
 				}		
 				
 				e.target.childNodes[0].innerHTML++;
 				if(tierPoint >= 5){
-					console.log("합계 5이상");
 					for(i = 0; i<length; i++){
 						e.target.parentNode.childNodes[i]==e.target? 0:
 							e.target.parentNode.childNodes[i].childNodes[0].innerHTML>0?

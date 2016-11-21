@@ -38,18 +38,19 @@
 	</script>
 </form>
 <button id="wr">글쓰기</button><br/>
-
+<button id="md">마스터리</button>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>	
 	$(document).ready(function(){
 		$("#wr").click(function(){		
 			write();
-		});
-		
+		});		
 		$(".nav-tabs a").click(function(){		
 		    $(this).tab('show');
 		});
-		
+		$("#md").click(function(){
+			masteryData();
+		});
 	});	
 	
 	function tabControll(){
@@ -70,4 +71,15 @@
 			location.href="/tactics/"
 		});		
 	}
+	function masteryData(){
+		var masteryData="";
+		for(i=0; i<30; i++){
+			masteryData+=$("#"+i).children("#point").html()+"#";
+		}
+		console.log(masteryData);
+	}
+	function runeData(){
+		
+	}
+
 </script>
