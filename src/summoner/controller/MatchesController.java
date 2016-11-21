@@ -33,7 +33,6 @@ public class MatchesController {
 		//mav.addObject("userName", userName);
 		HashMap map = bsvc.getSummonerInfo(userName);
 		mav.addObject("userInfo", map);
-		
 		return mav;
 	}
 	@RequestMapping("/matches")

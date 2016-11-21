@@ -21,7 +21,12 @@ public class RuneJSONController {
 	}
 	@RequestMapping("/rune")
 	@ResponseBody
-	public Map runeJSON(){		
+	public Map runeJSON(String id){		
 		return rj.getData();
+	}
+	@RequestMapping("/runeKind")
+	@ResponseBody
+	public Map runeKind(String id){		
+		return rj.getKind();
 	}
 }

@@ -28,7 +28,8 @@
 <script>
 	
 	var runeList = [];
-	var runeJSON = {}	
+	var runeJSON = {};
+	var runeKind = {};
 	$("rune.jsp").ready(function(){
 		$("#runeSelector, #runeSetter").click(function(e){
 			console.log($(this).attr("id"));
@@ -103,12 +104,13 @@
 	if(${runeList==null}){
 		readRuneData();
 		readRuneJSON();
+		readRuneKind();
 	}	
 	$("#runeKind").change(function(){
-		runeKind($(this).val());	
+		searchType($(this).val());	
 	});	
 	
-	function runeKind(sel){		
+	function searchType(sel){		
 		switch(sel){
 		case "표식":
 			var list;
@@ -136,7 +138,15 @@
 					 +"background-size: cover; '></div>";				
 				$('#runeSelector').append(runeBox);
 				$('#runeSelector').append("<div>"+elt.name+"</div>");
- 				console.log($('#runeSelector').children().length);
+				var stats = runeJSON[elt.id].stats; 
+				console.log(runeJSON[elt.id].stats);
+				console.log(key in stats[0]);
+// 				for(key in stats[0]){
+// 					runeKind[key] += stats[i][key]; 
+// 				}
+// 				console.log(runeKind);				
+// 				var st = JSON.stringify(runeJSON[elt.id].stats);
+// 				console.log(st);
 			}
 		});
 	}
@@ -147,10 +157,18 @@
 			runeList=e;
 		});
 	}
-	function jsonRuneData(){
-		$.get("/JSON/rune", function(e){
-			runeJSON=e;
+	
+	function readRuneJSON(){
+		$.get("/JSON/rune", function(e){			
+			runeJSON=e;			
+		});		
+	}
+	function readRuneKind(){
+		$.get("/JSON/runeKind", function(e){			
+			runeKind=e;
+			console.log(runeKind);
 		});
+		
 	}
 	function test(){
 		alert("aa");
