@@ -1,4 +1,4 @@
-package tactics.controller;
+package community.controller;
 
 import java.util.HashMap;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tactics.model.UpDelReplyService;
 
 @Controller
-@RequestMapping("/tactics")
-public class UpDelReplyController {
+@RequestMapping("/community")
+public class UpDelReplyController2 {
 	@Autowired
 	UpDelReplyService urs;
 	

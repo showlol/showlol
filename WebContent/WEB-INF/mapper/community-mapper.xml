@@ -3,16 +3,20 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="community">
-
+	<!--  커뮤니티 글쓰기 -->
 	<insert id="write" parameterType="community.model.CommunityData">
 		insert into community values(community_seq.nextval, #{writer},#{title},
 				#{memo }, 0, sysdate)		
 	</insert>
+	<!-- 커뮤니티 글읽어오기 -->
+	<select id="read"  resultType="community.model.CommunityData">
+		select * from community where num=#{num}
+	</select>
 	
 	<select id="readAll" resultType="community.model.CommunityData">
 		select * from community order by writedate desc
 	</select>	
-	
+	<!-- 커뮤니티글 추천증가 -->
 	<update id="upGood" parameterType="java.lang.Integer">
 		update community set good=good+1 where num=#{num}						
 	</update>
@@ -20,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="totalCount" resultType="java.lang.Integer">
 		select count(*) from community
 	</select>
-	
+	<!-- 커뮤니티글삭제 -->
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete from community where num= #{num}
 	</delete>
@@ -34,5 +38,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="total" resultType="java.lang.Integer">
 		select count(*) from community
 	</select>
+	
+	
+	<insert id="reply" parameterType="java.util.HashMap">
+		insert into community_reply1 values(community_reply1_seq.nextval, #{parentNum}, #{nick}, #{area}, sysdate)
+	</insert>
+	<insert id="refollow" parameterType="java.util.HashMap">
+		insert into community_reply2 values(community_reply2_seq.nextval, #{parentNum}, #{writer}, #{follow}, sysdate)
+	</insert>
+	
+	<select id="readReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from community_reply1 where parentNum=#{parentNum} order by num desc
+	</select>
+	<select id="replyfollow" parameterType="java.util.List" resultType="java.util.HashMap">
+		select * from community_reply2 order by num asc
+	</select>
+	
+	<!-- 댓글 -->
+	<update id="upReply" parameterType="java.util.HashMap">
+		update community_reply1 set content=#{content} where num=#{num}
+	</update>
+	<delete id="delReply" parameterType="java.lang.Integer">
+		delete from community_reply1 where num=#{num}
+	</delete>
+	<!-- 대댓글 -->
+	<update id="upReply2" parameterType="java.util.HashMap">
+		update community_reply2 set content=#{content} where num=#{num}
+	</update>
+	<delete id="delReply2" parameterType="java.lang.Integer">
+		delete from community_reply2 where num=#{num}
+	</delete>
+	
 	
 </mapper>

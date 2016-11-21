@@ -26,8 +26,10 @@
 	<!-- 댓글 -->
 	<div>
 		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
-		<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
-		<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" /><br />
+		<c:if test="${r.WRITER==nick }">
+			<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
+			<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" />
+		</c:if><br />
 		<div id="cotent_${r.NUM }">${r.CONTENT }</div>
 		<hr />
 	</div>
@@ -35,8 +37,12 @@
 		<!-- 대댓글 -->
 		<div>
 			<c:if test="${f.PARENTNUM==r.NUM }">
-				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE })<br />
-				${f.CONTENT }
+				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
+				 <c:if test="${f.WRITER==nick }">
+				 	<input type="button" class="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" />
+				 	<input type="button" value="삭제" class="delReply2" id="${f.NUM }" style="font-size: 9;" />
+				 </c:if><br />
+				<div id="cotent_${f.NUM }">${f.CONTENT }</div>
 				<hr />
 			</c:if>
 		</div>
@@ -51,13 +57,25 @@
 				rep($(this));
 			});		
 		});
+		//댓글 수정
 		$("input.upReply").click(function() {
 			console.log($(this).attr("id"));
 			updateReply($(this), $(this).attr("id"));
 		});
+		//댓글 삭제
 		$("input.delReply").click(function() {
 			console.log($(this).attr("id"));
 			deleteReply($(this).attr("id"));
+		});
+		//대댓글 수정
+		$("input.upReply2").click(function() {
+			console.log($(this).attr("id"));
+			updateReply2($(this), $(this).attr("id"));
+		});
+		//대댓글 삭제
+		$("input.delReply2").click(function() {
+			console.log($(this).attr("id"));
+			deleteReply2($(this).attr("id"));
 		});
 	});
 	var replyBox = document.createElement("div");
@@ -107,6 +125,29 @@
 		$.ajax({
 			method : "get",
 			url : "/tactics/delReply?num="+del
+		});
+		location.href="";
+	};
+	
+	//대댓글 수정
+	function updateReply2(up, id) {
+		up.parent().append(replyBox);
+		var tar = document.getElementById("cotent_"+id).innerHTML;
+		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
+		document.getElementById("upbt").addEventListener("click", function() {
+			$.ajax({
+				method : "get",
+				url : "/tactics/upReply2?content="+content.value+"&num="+up.attr("id")
+			});
+			location.href="";
+		});
+	};
+	
+	//대댓글 삭제
+	function deleteReply2(del) {
+		$.ajax({
+			method : "get",
+			url : "/tactics/delReply2?num="+del
 		});
 		location.href="";
 	};
