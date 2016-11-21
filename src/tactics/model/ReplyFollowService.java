@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 public class ReplyFollowService {
 	@Autowired
 	SqlSessionFactory fac;
-	
+
 	public boolean refollow(HashMap map) {
 		SqlSession sql = fac.openSession();
-		boolean r = sql.insert("tactics.refollow", map)==1? true : false;
+		boolean r = sql.insert("tactics.refollow", map) == 1 ? true : false;
 		return r;
 	}
+
 	public List followList() {
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("tactics.replyfollow");

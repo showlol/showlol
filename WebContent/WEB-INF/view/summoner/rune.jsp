@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <h2>룬</h2>
 <form action="/summoner/rune" method="post">
    <input type="text" name="name" />
    <input type="submit"/>
 </form>
+
 
 <c:set var="i" value="1"/>
 <c:if test="${list != null}">
@@ -28,10 +30,23 @@
          <div id="div${j }" name="cls" style="display:none">
       </c:otherwise>
       </c:choose>
-         ${m.slots} 
+      <c:forEach var="rune" items="${m.slots }">
+      	${rune.runeId }
+      </c:forEach>                  
       </div>
       <c:set var="j" value="${j+1}"/>
    </c:forEach>
+   
+   <c:set var="p" value="1" />
+   <c:forEach var="page" items="${runeImg }">
+   		<div id="page${p }">
+   		no.${p }/
+	   		<c:set var="p" value="${p+1 }" />
+	   		<c:forEach var="img" items="${page }" >
+	   			<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${img }">
+	   		</c:forEach>
+   		</div>
+   </c:forEach>   
 </c:if>
 
 <script>
@@ -41,6 +56,8 @@
          tmp[i].style.display = "none";
       }
       document.getElementById("div"+index).style.display = "block";
-   }
+   }  
+      
 </script>
+
 

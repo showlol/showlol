@@ -1,0 +1,38 @@
+package gameImage.model;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import staticData.model.ChampData;
+import staticData.model.MasteryData;
+import staticData.model.RuneData;
+
+@Component
+public class IconLoadService {
+	@Autowired
+	SqlSessionFactory fac;
+	
+	public List<ChampData> champList;
+	public List<RuneData>  runeList;
+	public List<MasteryData> masteryList;
+	
+	@PostConstruct
+	public void init(){
+		System.out.print("게임 아이콘 로딩중....");
+		SqlSession sql = fac.openSession();
+		champList = sql.selectList("staticData.showChampAll");
+		runeList = sql.selectList("staticData.showRuneAll");
+		masteryList = sql.selectList("staticData.showMasteryAll");
+		sql.close();
+		System.out.println("완료");
+	}
+	
+	
+}

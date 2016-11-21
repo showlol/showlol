@@ -58,6 +58,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="showRune" parameterType="java.lang.Integer" resultType="staticData.model.RuneData">
 		select * from rune where id = #{id}
 	</select>
+	  
+	
+	<select id="showRuneImg"  parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select id, image from rune where id = #{id} 
+	</select>
 	
 	<delete id="deleteRuneAll">
 		delete from rune

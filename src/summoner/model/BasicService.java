@@ -18,7 +18,7 @@ public class BasicService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	// ÀÌ¸§À» ÀÌ¿ëÇÏ¿© ¾ÆÀÌµð °¡Á®¿À±â
+	// ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int getSummonerId(String name) {
 		RestTemplate rt = new RestTemplate();	
 		String url = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
@@ -31,19 +31,18 @@ public class BasicService {
 		return id;
 	}
 	
-	// ÀÌ¸§À» ÀÌ¿ëÇÏ¿© ¼ÒÈ¯»ç Á¤º¸ °¡Á®¿À±â
+	// ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public LinkedHashMap getSummonerInfo(String name) {
 		RestTemplate rt = new RestTemplate();	
 		String url = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
 		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
 		String name1 = name.replaceAll(" ", "");
-		String name2 = name1.toLowerCase();
-		LinkedHashMap data = (LinkedHashMap)map.get(name2);
-		
+		String name2 = name1.toLowerCase();		
+		LinkedHashMap data = (LinkedHashMap)map.get(name2);	
 		return data;
 	}
 	
-	// ID¸¦ ÀÌ¿ëÇÏ¿© ÀÌ¸§ °¡Á®¿À±â
+	// IDï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String getSummonerName(int id) {
 		RestTemplate rt = new RestTemplate();	
 		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/"+id+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
@@ -60,7 +59,7 @@ public class BasicService {
 		return map;
 	}
 	
-	// ChampId¸¦ ÀÌ¿ëÇÏ¿© ChampName °¡Á®¿À±â
+	// ChampIdï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ChampName ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String getChampName(int cid) {
 		SqlSession sql = fac.openSession();
 		ChampData cd = sql.selectOne("staticData.showChamp", cid);
@@ -77,7 +76,7 @@ public class BasicService {
 		return cname;
 	}
 	*/
-	// SpellId¸¦ ÀÌ¿ëÇÏ¿© SpellKey °¡Á®¿À±â
+	// SpellIdï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ SpellKey ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String getSpellName(int sid) {
 		SqlSession sql = fac.openSession();
 		SpellData sd = sql.selectOne("staticData.showSpell", sid);

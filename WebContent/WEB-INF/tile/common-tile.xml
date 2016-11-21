@@ -21,6 +21,9 @@
 	<definition name="tactics/*" extends="frontgate">
 		<put-attribute name="article" value="/WEB-INF/view/tactics/{1}.jsp"/>
 	</definition>
+	<definition name="community/*" extends="frontgate">
+		<put-attribute name="article" value="/WEB-INF/view/community/{1}.jsp"/>
+	</definition>
 	<definition name="tactics/champ/*" extends="frontgate">
 		<put-attribute name="article" value="/WEB-INF/view/tactics/{1}"/>
 	</definition>
