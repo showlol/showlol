@@ -17,4 +17,10 @@ public class UpDelReplyService {
 		boolean r = sql.update("tactics.upReply", map)==1? true : false;
 		return r;
 	}
+	
+	public boolean delReply(int num) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.delete("tactics.delReply", num)==1? true : false;
+		return r;
+	}
 }

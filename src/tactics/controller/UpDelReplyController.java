@@ -24,4 +24,10 @@ public class UpDelReplyController {
 		boolean ur = urs.upReply(map)==true? true : false;
 		return ur;
 	}
+	@RequestMapping("/delReply")
+	@ResponseBody
+	public boolean delReply(int num) {
+		boolean dr = urs.delReply(num)==true? true : false;
+		return dr;
+	}
 }

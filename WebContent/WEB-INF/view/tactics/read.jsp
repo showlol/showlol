@@ -27,7 +27,7 @@
 	<div>
 		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
 		<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
-		<input type="button" value="삭제" id="delReply" style="font-size: 9;" /><br />
+		<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" /><br />
 		<div id="cotent_${r.NUM }">${r.CONTENT }</div>
 		<hr />
 	</div>
@@ -53,7 +53,11 @@
 		});
 		$("input.upReply").click(function() {
 			console.log($(this).attr("id"));
-			update($(this), $(this).attr("id"));
+			updateReply($(this), $(this).attr("id"));
+		});
+		$("input.delReply").click(function() {
+			console.log($(this).attr("id"));
+			deleteReply($(this).attr("id"));
 		});
 	});
 	var replyBox = document.createElement("div");
@@ -83,7 +87,7 @@
 	});
 	
 	//댓글 수정
-	function update(up, id) {
+	function updateReply(up, id) {
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
 		//window.alert(tar);
@@ -97,7 +101,13 @@
 			location.href="";
 		});
 	};
-	function deletedata() {
-		
+	
+	//댓글 삭제
+	function deleteReply(del) {
+		$.ajax({
+			method : "get",
+			url : "/tactics/delReply?num="+del
+		});
+		location.href="";
 	};
 </script>
