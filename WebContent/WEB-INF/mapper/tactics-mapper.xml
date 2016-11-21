@@ -35,10 +35,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyfollow" parameterType="java.util.List" resultType="java.util.HashMap">
 		select * from tactics_reply2 order by num asc
 	</select>
+	<!-- 댓글 -->
 	<update id="upReply" parameterType="java.util.HashMap">
 		update tactics_reply1 set content=#{content} where num=#{num}
 	</update>
 	<delete id="delReply" parameterType="java.lang.Integer">
 		delete from tactics_reply1 where num=#{num}
+	</delete>
+	<!-- 대댓글 -->
+	<update id="upReply2" parameterType="java.util.HashMap">
+		update tactics_reply2 set content=#{content} where num=#{num}
+	</update>
+	<delete id="delReply2" parameterType="java.lang.Integer">
+		delete from tactics_reply2 where num=#{num}
 	</delete>
 </mapper>

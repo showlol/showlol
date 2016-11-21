@@ -1,6 +1,8 @@
 package member.model;
 
 import java.util.HashMap;
+import java.util.UUID;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ public class MemberService {
 	public boolean register(MemberData data) {
 		SqlSession session = fac.openSession();
 		boolean r = session.insert("member.regist", data)==1? true : false;
-		System.out.println("레지스터:"+r);
+		String uuid = UUID.randomUUID().toString();
 		session.close();		
 		return r;
 	}
