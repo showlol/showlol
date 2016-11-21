@@ -89,7 +89,10 @@ public class MatchesService {
 			if(fellowPlayers != null) {
 				for(int j=0; j<fellowPlayers.size(); j++) {
 					LinkedHashMap player = (LinkedHashMap)fellowPlayers.get(j);
-					playerIds += (int)player.get("summonerId") + ",";
+					if(j == fellowPlayers.size() - 1)
+						playerIds += (int)player.get("summonerId");
+					else
+						playerIds += (int)player.get("summonerId") + ",";
 				}
 				LinkedHashMap users = bsvc.getSummonerNames(playerIds); 
 				for(int j=0; j<fellowPlayers.size(); j++) {

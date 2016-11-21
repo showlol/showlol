@@ -38,4 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="upReply" parameterType="java.util.HashMap">
 		update tactics_reply1 set content=#{content} where num=#{num}
 	</update>
+	<delete id="delReply" parameterType="java.lang.Integer">
+		delete from tactics_reply1 where num=#{num}
+	</delete>
 </mapper>
