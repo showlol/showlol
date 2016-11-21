@@ -29,7 +29,7 @@ public class MatchesController {
 	
 	@RequestMapping("/index")
 	public ModelAndView index(String userName) {
-		ModelAndView mav = new ModelAndView("summoner/index");
+		ModelAndView mav = new ModelAndView("sIndex");
 		//mav.addObject("userName", userName);
 		HashMap map = bsvc.getSummonerInfo(userName);
 		mav.addObject("userInfo", map);
@@ -57,5 +57,10 @@ public class MatchesController {
 		mav.addObject("tid", tid);
 		
 		return mav;
+	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "summoner/test";
 	}
 }
