@@ -24,7 +24,7 @@
 			<c:if test="${i%10==9 }" ><br/></c:if>
 		</c:forEach>				
 	</div>	
-	
+	<div id="runeAbility"></div>
 <script>
 	
 	var runeList = [];
@@ -45,6 +45,18 @@
  	function addRune(target){
  		target=target.clone();
 		var isSettable=false;
+		var stats = runeJSON[target.attr("value")].stats;
+		for(key in stats){
+			runeKind[key]+=stats[key];
+		}
+		var runeAbility="";
+		var keys = Object.keys(runeKind);
+		keys.forEach(function(key){
+			if(runeKind[key]!=0){
+				runeAbility += key+":"+runeKind[key]+" / ";
+			}			
+		});
+		$("#runeAbility").html(runeAbility);
 		switch(target.attr("type")){
 		case "red":
 			for(i = 0; i<9; i++){
@@ -132,25 +144,20 @@
 		$("#runeSelector").empty();
 		runeList.forEach(function(elt) {
 			if(elt.type==type){
-				var runeBox = "<div id='rune' type='"+elt.type+"' data='"+elt.id
+				var runeBox = "<div id='rune' type='"+elt.type+"' value='"+elt.id
 					+"' title='"+elt.description+"' style='height: 40px; width: 40px;"
 					 +"background-image: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"+elt.image+"\");"
 					 +"background-size: cover; '></div>";				
 				$('#runeSelector').append(runeBox);
 				$('#runeSelector').append("<div>"+elt.name+"</div>");
-				var stats = runeJSON[elt.id].stats; 
-				console.log(runeJSON[elt.id].stats);
-				console.log(key in stats[0]);
-// 				for(key in stats[0]){
-// 					runeKind[key] += stats[i][key]; 
+// 				var stats = runeJSON[elt.id].stats; 
+// 				console.log(stats);
+// 				for(key in stats){
+// 					runeKind[key]+=stats[key];	
 // 				}
-// 				console.log(runeKind);				
-// 				var st = JSON.stringify(runeJSON[elt.id].stats);
-// 				console.log(st);
 			}
-		});
-	}
-	
+		});		
+	}	
 	
 	function readRuneData(){
 		$.get("/data/runeTier3", function(e){
