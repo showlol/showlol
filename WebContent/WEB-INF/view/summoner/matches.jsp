@@ -151,7 +151,7 @@
 											<tr>
 												<td style="line-height:5px">
 													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
-													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<a href="/summoner/index?userName=${p.sName }" style="text-decoration:none;color:black;">
 													<font size="1">
 													<c:set var="len" value="${fn:length(p.sName) }"/>
 													<c:choose>
@@ -172,7 +172,7 @@
 										<tr>
 											<td style="line-height:5px">
 												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
-												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<a href="/summoner/index?userName=${p.summonerName }" style="text-decoration:none;color:black;">
 												<font size="1">
 													<c:set var="len" value="${fn:length(g.summonerName) }"/>
 													<c:choose>
@@ -197,7 +197,7 @@
 											<tr>
 												<td style="line-height:5px">
 													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
-													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<a href="/summoner/index?userName=${p.sName }" style="text-decoration:none;color:black;">
 													<font size="1">
 													<c:set var="len" value="${fn:length(p.sName) }"/>
 													<c:choose>
@@ -218,7 +218,7 @@
 										<tr>
 											<td style="line-height:5px">
 												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
-												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<a href="/summoner/index?userName=${p.summonerName }" style="text-decoration:none;color:black;">
 												<font size="1">
 													<c:set var="len" value="${fn:length(g.summonerName) }"/>
 													<c:choose>

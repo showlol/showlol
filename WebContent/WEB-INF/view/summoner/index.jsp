@@ -33,7 +33,7 @@
 			</div>
 			<div id="match" class="tab-pane fade"></div>
 			<div id="rune" class="tab-pane fade"></div>
-			<div id="matery" class="tab-pane fade"></div>
+			<div id="mastery" class="tab-pane fade"></div>
 		</div>
 	</div>
 
@@ -47,6 +47,7 @@
 		var userName = $("#userName").val();
 		initMatches(userName);
 		initRunes(userName);
+		initMasterys(userName);
 	}
 	function initMatches(name) {
 		$.ajax(
@@ -72,6 +73,19 @@
 			$("#rune").html(obj);
 		}).fail(function() {
 			alert("rune ERROR");
+		});
+	}	
+	function initMasterys(name) {
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/summoner/masterys?userName=" + name,
+			"async" : false
+			}
+		).done(function(obj) {
+			$("#mastery").html(obj);
+		}).fail(function() {
+			alert("mastery ERROR");
 		});
 	}	
 	

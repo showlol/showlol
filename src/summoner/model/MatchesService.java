@@ -17,8 +17,8 @@ public class MatchesService {
 	BasicService bsvc;
 	
 	// SummonerName�� �̿��Ͽ� �������� ��������
-	public List<RecentGamesDto> getGameInfo(String sname) {
-		LinkedHashMap sinfo = bsvc.getSummonerInfo(sname);
+	public List<RecentGamesDto> getGameInfo(LinkedHashMap sinfo) {
+		//LinkedHashMap sinfo = bsvc.getSummonerInfo(sname);
 		int summonerId = (int)sinfo.get("id");
 		String summonerName = (String)sinfo.get("name");
 		RestTemplate rt = new RestTemplate();

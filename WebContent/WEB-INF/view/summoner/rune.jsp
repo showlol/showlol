@@ -80,103 +80,299 @@
 	color: white;
 }
 
-#relative1, #relative2, #relative3, #relative4, #relative5, #relative6, #relative7,
-#relative8, #relative9, #relative10, #relative11, #relative12, #relative13, #relative14, 
-#relative15, #relative16, #relative17, #relative18, #relative19, #relative20, #relative21,
-#relative22, #relative23, #relative24, #relative25, #relative26, #relative27, #relative28,
-#relative29, #relative30 {
+#relative {
 	position: relative;
+}
+
+#absolue1, #absolue2, #absolue3, #absolue4, #absolue5, #absolue6,
+	#absolue7, #absolue8, #absolue9, #absolue10, #absolue11, #absolue12,
+	#absolue13, #absolue14, #absolue15, #absolue16, #absolue17, #absolue18,
+	#absolue19, #absolue20, #absolue21, #absolue22, #absolue23, #absolue24,
+	#absolue25, #absolue26, #absolue27, #absolue28, #absolue29, #absolue30
+	{
+	position: absolute;
 	z-index: 5;
 }
-#relative1 {top:-62px;left:23px;}
-#relative2 {top:-117px;left:86px;}
-#relative3 {top:-169px;left:160px;}
-#relative4 {top:-281px;left:9px;}
-#relative5 {top:-340px;left:73px;}
-#relative6 {top:-379px;left:128px;}
-#relative7 {top:-495px;left:32px;}
-#relative8 {top:-545px;left:113px;}
-#relative9 {top:-642px;left:74px;}
-#relative10 {top:-740px;left:36px;}
-#relative11 {top:-798px;left:109px;}
-#relative12 {top:-896px;left:67px;}
-#relative13 {top:-974px;left:123px;}
-#relative14 {top:-1073px;left:154px;}
-#relative15 {top:-1154px;left:212px;}
-#relative16 {top:-1226px;left:268px;}
-#relative17 {top:-1298px;left:332px;}
-#relative18 {top:-1303px;left:360px;}
-#relative19 {top:-1404px;left:398px;}
-#relative20 {top:-1408px;left:433px;}
-#relative21 {top:-1512px;left:465px;}
-#relative22 {top:-1479px;left:480px;}
-#relative23 {top:-1579px;left:510px;}
-#relative24 {top:-1674px;left:548px;}
-#relative25 {top:-1694px;left:597px;}
-#relative26 {top:-1707px;left:556px;}
-#relative27 {top:-1709px;left:579px;}
-#relative28 {top:-1875px;left:30px;}
-#relative29 {top:-1788px;left:187px;}
-#relative30 {top:-1930px;left:419px;}
-</style>
-</head>
-<body>
 
-	<c:set var="i" value="1" />
-	<c:if test="${list != null}">
-		<c:forEach var="m" items="${list }">
-			<c:choose>
-				<c:when test="${m.current == true }">
-					<c:set var="btcls" value="button buttonclick"/>
-				</c:when>
-				<c:otherwise>
-					<c:set var="btcls" value="button button1"/>
-				</c:otherwise>
-			</c:choose>
-			<button type="button" class="${btcls }" id="bt${i }" name="runebtn"
-				onclick="script:show(${i})">${i }.${m.name}</button>
-			<c:set var="i" value="${i+1}" />
-		</c:forEach>
-	</c:if>
-	
-	<div>
-		<img src="https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png"/>
-	</div>
-	<c:set var="j" value="1" />
-	<c:if test="${list != null}">
-		<c:forEach var="m" items="${list }">
-			<c:choose>
-				<c:when test="${m.current == true }">
-					<div id="div${j }" name="cls">
-				</c:when>
-				<c:otherwise>
-					<div id="div${j }" name="cls" style="display: none">
-				</c:otherwise>
-			</c:choose>
-			<c:set var="c" value="1"/>
-			<c:forEach var="s" items="${m.slots }">
-				<div id="relative${c }">
-				<c:choose>
-			<c:when test="${c > 27 }">
-			<img
-			src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${s.img }"
-			title="${s.name}(${s.des})" width=100px; height=100px;/>
-			</c:when>
-			<c:otherwise>
-			<img
-			src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${s.img }"
-			title="${s.name}(${s.des})" width=50px; height=54px;/>
-			</c:otherwise>
-		</c:choose>
-				</div>	
-				<c:set var="c" value="${c+1}"/>
-			</c:forEach>
-			</div>
-			<c:set var="j" value="${j+1}" />
-		</c:forEach>
-	</c:if>
+#absolue1 {
+	top: 374px;
+	left: 25px;
+}
+
+#absolue2 {
+	top: 374px;
+	left: 88px;
+}
+
+#absolue3 {
+	top: 375px;
+	left: 160px;
+}
+
+#absolue4 {
+	top: 317px;
+	left: 12px;
+}
+
+#absolue5 {
+	top: 313px;
+	left: 74px;
+}
+
+#absolue6 {
+	top: 327px;
+	left: 129px;
+}
+
+#absolue7 {
+	top: 266px;
+	left: 34px;
+}
+
+#absolue8 {
+	top: 269px;
+	left: 116px;
+}
+
+#absolue9 {
+	top: 227px;
+	left: 75px;
+}
+
+#absolue10 {
+	top: 182px;
+	left: 38px;
+}
+
+#absolue11 {
+	top: 178px;
+	left: 109px;
+}
+
+#absolue12 {
+	top: 133px;
+	left: 68px;
+}
+
+#absolue13 {
+	top: 110px;
+	left: 123px;
+}
+
+#absolue14 {
+	top: 65px;
+	left: 156px;
+}
+
+#absolue15 {
+	top: 38px;
+	left: 213px;
+}
+
+#absolue16 {
+	top: 20px;
+	left: 270px;
+}
+
+#absolue17 {
+	top: 1px;
+	left: 334px;
+}
+
+#absolue18 {
+	top: 50px;
+	left: 360px;
+}
+
+#absolue19 {
+	top: 5px;
+	left: 400px;
+}
+
+#absolue20 {
+	top: 53px;
+	left: 434px;
+}
+
+#absolue21 {
+	top: 5px;
+	left: 466px;
+}
+
+#absolue22 {
+	top: 91px;
+	left: 482px;
+}
+
+#absolue23 {
+	top: 45px;
+	left: 511px;
+}
+
+#absolue24 {
+	top: 5px;
+	left: 549px;
+}
+
+#absolue25 {
+	top: 38px;
+	left: 597px;
+}
+
+#absolue26 {
+	top: 80px;
+	left: 557px;
+}
+
+#absolue27 {
+	top: 131px;
+	left: 579px;
+}
+
+#absolue28 {
+	top: 24px;
+	left: 34px;
+}
+
+#absolue29 {
+	top: 207px;
+	left: 188px;
+}
+
+#absolue30 {
+	top: 162px;
+	left: 424px;
+}
+</style>
+<body>
+	<table width="1000px" border="1">
+		<tr>
+			<td>
+				<table width="100%">
+					<tr height="50px;">
+						<td style="padding-left: 10px">룬 페이지</td>
+					</tr>
+					<tr>
+						<td align="right"><c:set var="i" value="1" /> 
+						<c:if test="${list != null}">
+							<c:forEach var="m" items="${list }">
+								<c:choose>
+									<c:when test="${m.current == true }">
+										<c:set var="btcls" value="button buttonclick" />
+										<c:set var="sel" value="${i-1 }" />
+									</c:when>
+									<c:otherwise>
+										<c:set var="btcls" value="button button1" />
+									</c:otherwise>
+								</c:choose>
+								<button type="button" class="${btcls }" id="bt${i }"
+									name="runebtn" onclick="script:show(${i})" value="${m.name}">${i }.${m.name}</button>
+								<c:set var="i" value="${i+1}" />
+							</c:forEach>
+						</c:if>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" border="1">
+					<tr height="50px;">
+						<td id="selRuneName" width="300" style="padding-left: 10px"><b>${list[sel].name }</b></td>
+						<td>설명</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<c:set var="j" value="1" /> 
+				<c:if test="${list != null}">
+					<c:forEach var="m" items="${list }">
+						<c:choose>
+							<c:when test="${m.current == true }">
+								<div id="div${j }" name="cls">
+							</c:when>
+							<c:otherwise>
+								<div id="div${j }" name="cls" style="display: none">
+							</c:otherwise>
+						</c:choose>
+						<table width="100%">
+							<tr>
+								<td><c:set var="c" value="1" />
+									<div id="relative">
+										<img
+											src="https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png" />
+
+										<c:forEach var="s" items="${m.slots }">
+											<div id="absolue${c }">
+												<c:choose>
+													<c:when test="${c > 27 }">
+														<img
+															src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${s.img }"
+															title="${s.name}(${s.des})" width=100px; height=100px; />
+													</c:when>
+													<c:otherwise>
+														<img
+															src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/${s.img }"
+															title="${s.name}(${s.des})" width=50px; height=54px; />
+													</c:otherwise>
+												</c:choose>
+											</div>
+											<c:set var="c" value="${c+1}" />
+										</c:forEach>
+									</div></td>
+								<td width="343" style="vertical-align: text-top;">
+									<div style="overflow: auto; height: 435px;">
+										<table width="100%">
+											<tr style="background-color: red; color: white;">
+												<td height="35">표식</td>
+											</tr>
+											<c:forEach var="r" items="${m.reds }">
+												<tr height="50">
+													<td>${r}</td>
+												</tr>
+											</c:forEach>
+											<tr style="background-color: yellow; color: white;">
+												<td height="35">인장</td>
+											</tr>
+											<c:forEach var="r" items="${m.yellows }">
+												<tr height="50">
+													<td>${r}</td>
+												</tr>
+											</c:forEach>
+											<tr style="background-color: blue; color: white;">
+												<td height="35">문양</td>
+											</tr>
+											<c:forEach var="r" items="${m.blues }">
+												<tr height="50">
+													<td>${r}</td>
+												</tr>
+											</c:forEach>
+											<tr style="background-color: purple; color: white;">
+												<td height="35">정수</td>
+											</tr>
+											<c:forEach var="r" items="${m.blacks }">
+												<tr height="50">
+													<td>${r}</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+						</div>
+						<c:set var="j" value="${j+1}" />
+					</c:forEach>
+				</c:if></td>
+		</tr>
+	</table>
+
+
+
 </body>
-</html>
 
 <script>
    function show(index) {
@@ -189,6 +385,7 @@
       }
       document.getElementById("div"+index).style.display = "block";
       document.getElementById("bt"+index).className = "button buttonclick";
+      document.getElementById("selRuneName").innerHTML = document.getElementById("bt"+index).value;
    }  
       
 </script>
