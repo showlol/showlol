@@ -25,7 +25,10 @@
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE })
+		<c:if test="${nick!=null }">
+		<input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
+		</c:if>
 		<c:if test="${r.WRITER==nick }">
 			<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
 			<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" />
