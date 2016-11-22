@@ -57,21 +57,21 @@
 </div>
 
 <script>
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
-    $('.nav-tabs a').on('shown.bs.tab', function(event){
-        var x = $(event.target).text();         // active tab
-        var y = $(event.relatedTarget).text();  // previous tab
-        $(".act span").text(x);
-        $(".prev span").text(y);
-    });
-    
-    document.oncontextmenu = function(){
-    	alert("aaa");
-    };
-});
+	runeKind = {
+		"공격력" : 0.85,
+		"방어력" : 1
+	};
+	temp = {
+			"공격력" : 0.85,
+			"방어력" : 1
+	}	
+	Object.keys(temp).forEach(function(key){
+		runeKind[key] += temp[key];
+	});		
+		
+
+	console.log(runeKind);
+	
 </script>
 	
 </body>

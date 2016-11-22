@@ -15,7 +15,7 @@ public class runeInfoService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	public List runeTier3(){
+	public List<ImprovedRuneData> runeTier3(){
 		SqlSession sql = fac.openSession();
 		List<ImprovedRuneData> list = sql.selectList("gameData.runeTier3");
 		sql.close();
