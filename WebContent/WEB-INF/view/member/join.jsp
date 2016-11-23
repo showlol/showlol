@@ -18,12 +18,10 @@ GAMEID : <input type="text" id="gameid" ><br/>
 			authEmail();
 		});
 	function memberJoin(){
-		alert(memberid.value+"/"+memberpass.value)
 		$.ajax({
 			method:"get",
 			url : "/member/regist?email="+memberid.value+"&pass="+memberpass.value+"&nick="+nick.value+"&gameid="+gameid.value
-		}).done(function(r) {
-			window.alert(r);
+		}).done(function() {
 			location.href="/";
 		});
 	};
@@ -51,7 +49,7 @@ GAMEID : <input type="text" id="gameid" ><br/>
 			url : "/member/complete?email="+document.getElementById("memberid").value+"&uuid="+authuuid.value
 		}).done(function() {
 			memberJoin();
-			window.alert("회원가입 되셨습니다.");
+			window.alert("회원가입이 완료되었습니다.");
 			location.href="/";
 		});
 	};

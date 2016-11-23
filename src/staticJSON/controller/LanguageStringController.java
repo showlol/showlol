@@ -13,10 +13,10 @@ import staticJSON.model.LanguageService;
 public class LanguageStringController {
 	@Autowired
 	LanguageService ls;
-	
-	@RequestMapping("/laguage-string")
+
+	@RequestMapping("/language-string")
 	@ResponseBody
-	public Map laguage(){
+	public Map language(){
 		return ls.data();
 	}
 }

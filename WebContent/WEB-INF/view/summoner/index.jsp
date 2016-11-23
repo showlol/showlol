@@ -20,6 +20,8 @@
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+			<li><a data-toggle="tab" href="#champion">챔피언</a></li>
+			<li><a data-toggle="tab" href="#league">리그</a></li>
 			<li><a data-toggle="tab" href="#match">최근게임</a></li>
 			<li><a data-toggle="tab" href="#rune">룬</a></li>
 			<li><a data-toggle="tab" href="#mastery">특성</a></li>
@@ -27,10 +29,11 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
-				<h3>HOME</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<h3>showlol</h3>
+				<p>UserInfo</p>
 			</div>
+			<div id="champion" class="tab-pane fade"></div>
+			<div id="league" class="tab-pane fade"></div>
 			<div id="match" class="tab-pane fade"></div>
 			<div id="rune" class="tab-pane fade"></div>
 			<div id="mastery" class="tab-pane fade"></div>
@@ -48,6 +51,8 @@
 		initMatches(userName);
 		initRunes(userName);
 		initMasterys(userName);
+		//initLeague(userName);
+		initChamp(userName);
 	}
 	function initMatches(name) {
 		$.ajax(
@@ -86,6 +91,33 @@
 			$("#mastery").html(obj);
 		}).fail(function() {
 			alert("mastery ERROR");
+		});
+	}	
+	function loadLeague(name) {
+		alert("!!!");
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/summoner/league?userName=" + name,
+			"async" : false
+			}
+		).done(function(obj) {
+			$("#league").html(obj);
+		}).fail(function() {
+			alert("league ERROR");
+		});
+	}	
+	function initChamp(name) {
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/summoner/champion?userName=" + name,
+			"async" : false
+			}
+		).done(function(obj) {
+			$("#champion").html(obj);
+		}).fail(function() {
+			alert("champion ERROR");
 		});
 	}	
 	

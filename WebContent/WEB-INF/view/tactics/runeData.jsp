@@ -4,8 +4,11 @@
 
 
 <c:forEach var="i" items="${list }">
-	<c:forEach var="abil" items="${i.ability }">
-		${abil }
+	
+	<c:forEach var="abil" items="${i.list }">
+		<c:forEach var="ab" items="${abil }">
+			${ab }/
+		</c:forEach>		
 	</c:forEach>
 	<br/>
 </c:forEach>
