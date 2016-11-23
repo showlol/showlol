@@ -5,9 +5,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 글읽기
+<c:if test="${nick!=null }">
 	<input type="submit" value="좋아요" onclick="likein(${num })" /> |
-	<input type="button" value="수정하기" id="update" /> |
-	<input type="submit" value="글삭제" onclick="deleten(${num })" /> |
+		<c:if test="${nick==cdata.writer}">
+			<input type="button" value="수정하기" id="update" /> |
+			<input type="submit" value="글삭제" onclick="deleten(${num })" /> |
+		</c:if>
+</c:if>
 	<br />
 	<b>제목</b><div>${cdata.title }</div>
 	<br />
@@ -17,9 +21,12 @@
 		<pre style="font-family: 맑은 고딕; font-size: 11pt;">${cdata.memo }</pre>
 	</div>
 	<br />
+
+	
 	<form action="/community/return">
 		<input type="submit" value="목록"/>
 	</form>
+	
 	<c:if test="${nick!=null }">
 	<form action="/community/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />

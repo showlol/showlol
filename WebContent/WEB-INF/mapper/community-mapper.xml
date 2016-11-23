@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--  커뮤니티 글쓰기 -->
 	<insert id="write" parameterType="community.model.CommunityData">
 		insert into community values(community_seq.nextval, #{writer},#{title},
-				#{memo }, 0, sysdate)		
+				#{memo }, 0, sysdate ,0)		
 	</insert>
 	<!-- 커뮤니티 글읽어오기 -->
 	<select id="read"  resultType="community.model.CommunityData">
@@ -20,7 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="upGood" parameterType="java.lang.Integer">
 		update community set good=good+1 where num=#{num}						
 	</update>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="upClicks" parameterType="java.lang.Integer">
+		update community set clicks=clicks+1 where num=#{num}						
+	</update>
+	
+	<!-- 검색 기능 -->
+	
+	
+	
 	<select id="totalCount" resultType="java.lang.Integer">
 		select count(*) from community
 	</select>
@@ -31,8 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="readRange" parameterType="java.util.HashMap" resultType="community.model.CommunityData">
 		<![CDATA[
-			select temp.* from (select rownum r, cm.*  from COMMUNITY cm order by writedate desc) temp
-			where r<=#{start} and r>=#{end}   
+		
+		select temp.* from(select rownum r, cm.* from COMMUNITY cm order by writedate desc) temp 
+   		where temp.r >=#{start } and temp.r <=#{end }
+
 		]]>
 	</select>
 	<select id="total" resultType="java.lang.Integer">

@@ -16,8 +16,6 @@ public class CommunityService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	
-	
 	//글쓰기
 	public boolean write(CommunityData cd){
 		SqlSession sql = fac.openSession();
@@ -27,6 +25,13 @@ public class CommunityService {
 			rst = true;
 		sql.close();
 		return rst;
+	}
+	//글읽기
+	public CommunityData read(int num) {
+		SqlSession sql = fac.openSession();
+		CommunityData cd = sql.selectOne("community.read", num);
+		sql.close();
+		return cd;
 	}
 	
 	//글리스트 읽어오기
@@ -54,35 +59,35 @@ public class CommunityService {
 		return list;
 	}
 	
+	//조회수 증가
+	public List readclick(int num){
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("community.upClicks",num);
+		sql.close();
+		return list;
+	}
 	
 	//페이지..
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();
-			map.put("start", total-(p-1)*5   );
-			map.put("end", total-p*5);
+			map.put("start", (p-1)*5   );
+			map.put("end", p*5);
+
 		System.out.println(map.toString());
 		List m = sql.selectList("community.readRange", map);
 		sql.close();
 		System.out.println(m.toString());
 		return m;
 	}
-	
 	public int readtotal(){
 		SqlSession sql = fac.openSession();
 		int total = sql.selectOne("community.total");
 		sql.close();
-		return total;
+		return  total%5==0? total/5 : total/5+1;
 	}
 	
-	//글읽기
-	public CommunityData read(int num) {
-		SqlSession sql = fac.openSession();
-		CommunityData cd = sql.selectOne("community.read", num);
-		sql.close();
-		return cd;
-	}
-	
+	// 댓글,대댓글
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("community.reply", map)==1? true : false;
@@ -95,8 +100,11 @@ public class CommunityService {
 		sql.close();
 		return list;
 	}
-
 }
+
+
+
+	
 
 
 
