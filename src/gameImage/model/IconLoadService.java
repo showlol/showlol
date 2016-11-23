@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import gameData.model.pojo.ImprovedRuneData;
 import staticData.model.ChampData;
+import staticData.model.ItemData;
 import staticData.model.MasteryData;
 import staticData.model.RuneData;
 
@@ -24,6 +25,7 @@ public class IconLoadService {
 	public List<RuneData>  runeList;
 	public List<RuneData> runeListTier3;
 	public List<MasteryData> masteryList;
+	public List<ItemData> itemList;
 	
 	@PostConstruct
 	public void init(){
@@ -33,6 +35,7 @@ public class IconLoadService {
 		runeList = sql.selectList("staticData.showRuneAll");
 		masteryList = sql.selectList("staticData.showMasteryAll");
 		runeListTier3 = sql.selectList("staticData.showRuneTier3");
+		itemList = sql.selectList("staticData.showItemAll");
 		sql.close();
 		System.out.println("완료");
 	}

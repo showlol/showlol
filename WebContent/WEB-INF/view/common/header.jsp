@@ -21,7 +21,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/join"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li id="logInfo"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="logInfo" ><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -59,8 +59,8 @@
 
 <script>
 	
-	var logInfo = "<div style='height: inherit;'>"+
-					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";	
+	var logInfo = "<div style='height: inherit; '>"+
+					"<a style='color: white;'>${nick }</a><br/><a href='javascript:logout()' style='color: white;'>logout</a><div>";	
 	if(${nick!=null}){
 		document.getElementById("logInfo").innerHTML = logInfo;	
 	} else {
