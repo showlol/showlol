@@ -18,11 +18,11 @@
 		</div>
 		
 	</div>
-	<div id="runeSetter" style="height: 300px; background-color: #eae179;">
+	<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 550px; overflow : auto; background-color: #eae179;">
 		<c:forEach var = "i" begin="0" end="29">		
 			<div id="runeNum${i }" class="runeBox" data="empty" ></div>
 			<c:if test="${i%10==9 }" ><br/></c:if>
-		</c:forEach>				
+		</c:forEach>					
 	</div>	
 	<div id="runeAbility"></div>
 <script>
@@ -47,10 +47,7 @@
  		target=target.clone();
 		var isSettable=false;
 		var abilist = runeAbil[target.attr("value")][0];
-		console.log(abilist);
-		console.log(abilist[0]);
-		runeKind[abilist[0]]+=abilist[1];
-		
+		runeKind[abilist[0]]+=abilist[1];		
 		var runeAbility="";
 		var keys = Object.keys(runeKind);
 //		console.log(keys);
@@ -66,7 +63,7 @@
 			for(i = 0; i<9; i++){
 				if($("#runeNum"+i).attr("data")=="empty"){
 					$("#runeNum"+i).attr("data", "full");
-					$("#runeNum"+i).append(target);				
+					$("#runeNum"+i).append(target);
 					isSettable=true;
 					break;
 				}				

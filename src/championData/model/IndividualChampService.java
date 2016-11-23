@@ -10,14 +10,12 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class IndividualChampService {
 	
-	public Map individual(){
+	public Object individual(String name){
 		RestTemplate rest = new RestTemplate();
 		LinkedHashMap map = rest.getForObject(
-			"http://ddragon.leagueoflegends.com/cdn/6.22.1/data/en_US/champion/Aatrox.json",
+			"http://ddragon.leagueoflegends.com/cdn/6.22.1/data/ko_KR/champion/"+name+".json",
 			LinkedHashMap.class
-		);
-		Map data = (Map)map.get("data");
-		
-		return data;
+		);		
+		return ((Map)map.get("data")).get(name);
 	}
 }
