@@ -57,21 +57,11 @@
 </div>
 
 <script>
-	runeKind = {
-		"공격력" : 0.85,
-		"방어력" : 1
-	};
-	temp = {
-			"공격력" : 0.85,
-			"방어력" : 1
-	}	
-	Object.keys(temp).forEach(function(key){
-		runeKind[key] += temp[key];
-	});		
-		
-
-	console.log(runeKind);
-	
+	var ex = {
+		1 : 0,	
+		5 : 3	
+	}
+	console.log(ex[5]);
 </script>
 	
 </body>

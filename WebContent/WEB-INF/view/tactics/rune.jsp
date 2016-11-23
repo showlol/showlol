@@ -169,9 +169,7 @@
 	}
 	function readRuneAbil(){
 		$.get("/gameData/runeAbil", function(e){
-			runeAbil=e;
-			console.log("runeabil");
-			console.log(runeAbil);
+			runeAbil=e;			
 		});
 	}
 	function readRuneJSON(){
@@ -182,7 +180,6 @@
 	function readRuneKind(){
 		$.get("/gameData/runeKind", function(e){			
 			runeKind=e;
-			console.log(runeKind);
 		});
 		
 	}
