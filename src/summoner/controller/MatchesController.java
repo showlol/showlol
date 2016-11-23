@@ -27,19 +27,11 @@ public class MatchesController {
 	@Autowired
 	BasicService bsvc;
 	
-	@RequestMapping("/index")
-	public ModelAndView index(String userName) {
-		ModelAndView mav = new ModelAndView("sIndex");
-		//mav.addObject("userName", userName);
-		HashMap map = bsvc.getSummonerInfo(userName);
-		mav.addObject("userInfo", map);
-		return mav;
-	}
 	@RequestMapping("/matches")
 	public ModelAndView matches(String userName) {
 		ModelAndView mav = new ModelAndView("summoner/matches");		
 		if(userName != null) {
-			List<RecentGamesDto> list = msvc.getGameInfo(userName);
+			List<RecentGamesDto> list = msvc.getGameInfo(bsvc.sinfo);
 			mav.addObject("list", list);
 			mav.addObject("sname", userName);
 		}

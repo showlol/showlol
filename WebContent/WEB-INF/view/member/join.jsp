@@ -9,10 +9,9 @@ GAMEID : <input type="text" id="gameid" ><br/>
 <input type="button" value="입력 완료" id="create" />
 <hr/>
 <h3>E-mail 인증</h3>
-<input type="text" name="authuuid" size="30" /> <input type="button" value="인증하기" id="auth"/>
+<input type="text" name="authuuid" size="30" id="authuuid" /> <input type="button" value="인증하기" id="auth"/>
 <script>
 		document.getElementById("create").addEventListener("click", function() {
-			memberJoin();
 			sendEmail();
 		});
 		document.getElementById("auth").addEventListener("click", function() {
@@ -30,11 +29,9 @@ GAMEID : <input type="text" id="gameid" ><br/>
 	};
 	//인증 이메일 보내기
 	function sendEmail() {
-		alert("aa");
-		var url = "/member/auth?email="+document.getElementById("memberid").value+"&uuid";
-		
+		var url = "/member/auth?email="+document.getElementById("memberid").value;
 		var xhr = new XMLHttpRequest();
-		xhr.open("get", url, true);
+		xhr.open("get", url, false);
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState==4 && xhr.status==200) {
 				var resp = xhr.responseText;
@@ -49,6 +46,13 @@ GAMEID : <input type="text" id="gameid" ><br/>
 	};
 	//인증 확인
 	function authEmail() {
-		alert("aa");
+		$.ajax({
+			method : "get",
+			url : "/member/complete?email="+document.getElementById("memberid").value+"&uuid="+authuuid.value
+		}).done(function() {
+			memberJoin();
+			window.alert("회원가입 되셨습니다.");
+			location.href="/";
+		});
 	};
 </script>
