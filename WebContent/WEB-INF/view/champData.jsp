@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-${data.Aatrox.info } <hr/>
-${data.Aatrox.stats } <hr/>
+${data} <hr/>
+ <hr/>
 <h6>Q스킬</h6>
 <img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/AatroxQ.png"><br/>
 <c:forEach var="i" items="${data.Aatrox.spells[0] }">

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,10 +28,9 @@ public class TacticsController {
 	@Autowired
 	ReplyFollowService rfs;
 	
-	@RequestMapping("/regArticle/{name}")
-	public String writePage(@PathVariable String name){
-		System.out.println("글쓰기 : "+name);
-		return "tactics/champ/write.jsp?champ="+name;
+	@RequestMapping("/regArticle/{name}/{key}")
+	public String writePage(@PathVariable String name, @PathVariable String key){
+		return "tactics/champ/write.jsp?champ="+name+"&key="+key;
 	}
 	@RequestMapping("/write")
 	@ResponseBody

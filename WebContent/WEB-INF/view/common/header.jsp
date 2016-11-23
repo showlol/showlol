@@ -58,7 +58,7 @@
 
 <script>
 	var logInfo = "<div style='height: inherit;'>"+
-					"<a>${nick }</a><br/><a href='javascript:logout()'>logout</a><div>";	
+					"<a style='color: white;'>${nick }</a><br/><a href='javascript:logout()' style='color: white;' >logout</a><div>";	
 	if(${nick!=null}){
 		document.getElementById("logInfo").innerHTML = logInfo;	
 	} else {
@@ -83,6 +83,7 @@
 		login();
 	});
 	function login(){
+		
 		$.ajax({
 			method:"get",
 			url : "/login/loginData?email="+id.value+"&pass="+pass.value

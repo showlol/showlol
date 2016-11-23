@@ -16,13 +16,10 @@ public class ChampionService {
 	SqlSessionFactory fac;
 	
 	public List championList() {
-		// TODO Auto-generated method stub
-		RestTemplate rt = new RestTemplate();
 		SqlSession sql = fac.openSession();
 		List<HashMap> list = sql.selectList("championData.imageList");
 		sql.close();
 		System.out.println(list.toString());
 		return list;
 	}
-
 }
