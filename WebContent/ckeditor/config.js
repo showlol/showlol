@@ -7,6 +7,8 @@ CKEDITOR.editorConfig = function( config ) {
 	//config.language = '';
 	config.image_previewText=' ';
 	config.filebrowserImageUploadUrl = '/file/upload';
+//	config.extraPlugins = 'uploadimage';
+//	config.uploadUrl = '/file/upload';
 	//config.skin = 'moono';
 	// Define changes to default configuration here.
 	// For complete reference see:

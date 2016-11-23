@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,12 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/file")
 public class CkeditorUploadController {
 	private static final String DEFAULT_SUB_FOLDER_FORMAT_AUTO = "yyyyMMddHHmmss";	// �씠誘몄� �씠由�
-	private static final int UPLOAD_FILE_SIZE = 2*1024*1024;	// �씠誘몄� �궗�씠利� 踰붿쐞
-	@PostConstruct
-	public void init(){
-		System.out.println("#######");
-		System.out.println("ckeditor");
-	}
+	private static final int UPLOAD_FILE_SIZE = 2*1024*1024;	// �씠誘몄� �궗�씠利� 踰붿쐞	
 	
 	@RequestMapping("/upload")
 	public String uplodaImg(HttpServletRequest request, HttpServletResponse response,

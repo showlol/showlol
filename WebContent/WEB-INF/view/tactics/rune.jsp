@@ -18,11 +18,11 @@
 		</div>
 		
 	</div>
-	<div id="runeSetter" style="height: 300px; background-color: #eae179;">
+	<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 550px; overflow : auto; background-color: #eae179;">
 		<c:forEach var = "i" begin="0" end="29">		
 			<div id="runeNum${i }" class="runeBox" data="empty" ></div>
 			<c:if test="${i%10==9 }" ><br/></c:if>
-		</c:forEach>				
+		</c:forEach>					
 	</div>	
 	<div id="runeAbility"></div>
 <script>
@@ -30,6 +30,7 @@
 	var runeList = [];
 	var runeJSON = {};
 	var runeKind = {};
+	var runeAbil = {};
 	$("rune.jsp").ready(function(){
 		$("#runeSelector, #runeSetter").click(function(e){
 			console.log($(this).attr("id"));
@@ -45,12 +46,12 @@
  	function addRune(target){
  		target=target.clone();
 		var isSettable=false;
-		var stats = runeJSON[target.attr("value")].stats;
-		for(key in stats){
-			runeKind[key]+=stats[key];
-		}
+		var abilist = runeAbil[target.attr("value")][0];
+		runeKind[abilist[0]]+=abilist[1];		
 		var runeAbility="";
 		var keys = Object.keys(runeKind);
+//		console.log(keys);
+		console.log(runeKind[keys[0]]);
 		keys.forEach(function(key){
 			if(runeKind[key]!=0){
 				runeAbility += key+":"+runeKind[key]+" / ";
@@ -62,7 +63,7 @@
 			for(i = 0; i<9; i++){
 				if($("#runeNum"+i).attr("data")=="empty"){
 					$("#runeNum"+i).attr("data", "full");
-					$("#runeNum"+i).append(target);				
+					$("#runeNum"+i).append(target);
 					isSettable=true;
 					break;
 				}				
@@ -117,6 +118,7 @@
 		readRuneData();
 		readRuneJSON();
 		readRuneKind();
+		readRuneAbil();
 	}	
 	$("#runeKind").change(function(){
 		searchType($(this).val());	
@@ -160,20 +162,24 @@
 	}	
 	
 	function readRuneData(){
-		$.get("/data/runeTier3", function(e){
+		$.get("/gameData/runeTier3", function(e){
 			runeList=e;
+			
 		});
 	}
-	
+	function readRuneAbil(){
+		$.get("/gameData/runeAbil", function(e){
+			runeAbil=e;			
+		});
+	}
 	function readRuneJSON(){
 		$.get("/JSON/rune", function(e){			
 			runeJSON=e;			
 		});		
 	}
 	function readRuneKind(){
-		$.get("/JSON/runeKind", function(e){			
+		$.get("/gameData/runeKind", function(e){			
 			runeKind=e;
-			console.log(runeKind);
 		});
 		
 	}
