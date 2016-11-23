@@ -1,6 +1,7 @@
 package gameImage.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,11 @@ public class DataController {
 	@ResponseBody
 	public List masteryData(){
 		return ils.masteryList;
-	}	
+	}
+	@RequestMapping("/runeList")
+	public String runeList(Map map){
+		map.put("list", ils.runeListTier3);
+		return "staticData/runeList";
+	}
 	
 }

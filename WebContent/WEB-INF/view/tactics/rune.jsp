@@ -9,7 +9,7 @@
 			<option>문양</option>
 			<option>정수</option>	
 		</select>
-		<div id="runeSelector" style="height:250px; overflow-y: auto;"></div>
+		<div id="runeSelector" style="height:250px; width:200px; overflow-y: auto;"></div>
 		
 	</div>
 	<div id="runeSetter" style="height: 300px; background-color: #eae179;">
@@ -98,7 +98,7 @@
 		alert("remove"+target);	
 	}
 	
-	if(${runeList==null}){
+	if(${runeList==null }){
 		readRuneData();
 	}	
 	$("#runeKind").change(function(){
@@ -128,11 +128,13 @@
 		runeList.forEach(function(elt) {
 			if(elt.type==type)
 				$("#runeSelector").append(						
-					"<span id='rune' type='"+elt.type+"' data='"+elt.id+"' title='"+elt.description
-					+"'><img src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"
-					+elt.image+"' style='height: 30; width: 30;' >"
-					+elt.name+"</span><br/>"
+					"<div id='rune' type='"+elt.type+"' data='"+elt.id+"' title='"+elt.description
+					+"' style='height:30px; width: 30px; background-img: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"
+					+elt.image+"\")' >"
+					+elt.name+"</div><br/>"
 				);
+// 			<img src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"					
+// 				+elt.image+"' style='height: 30; width: 30;' >"
 		});
 	}
 	
