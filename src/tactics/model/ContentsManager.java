@@ -38,9 +38,10 @@ public class ContentsManager {
 		return list;
 	}
 
-	public Tactics read(int num) {
+	public ImprovedTactics read(int num) {
+		System.out.println("글번호:"+num);
 		SqlSession sql = fac.openSession();
-		Tactics tac = sql.selectOne("tactics.read", num);
+		ImprovedTactics tac = sql.selectOne("tactics.read", num);		
 		sql.close();
 		return tac;
 	}

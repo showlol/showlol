@@ -25,8 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="page" parameterType="java.lang.Integer" resultType="tactics.model.pojo.Tactics">
 		select * from tactics_content
 	</select>
-	<select id="read"  resultType="tactics.model.pojo.Tactics">
-		select * from tactics_content where num=#{num}
+	<select id="read"  resultType="tactics.model.pojo.ImprovedTactics">
+		select * from Improvedtactics_content where num=#{num}
 	</select>
 	<select id="bestList" resultType="tactics.model.pojo.Tactics">
 		<![CDATA[select temp.r, temp.* from 

@@ -1,19 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-글읽기
+<H3>${tactics.champ } 공략글 </H3>
+<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
+<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+	border-radius: 4%; padding: 10px; ">
+	<b style='display: inline;' >${tactics.title }</b><br/>	
+	<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
+	<span style='float: right; '>${tactics.writeDate }</span><br/>
+</div>
+<ul class="nav nav-tabs">
+		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
+		<li><a href="#rune">룬</a>
+		<li><a href="#skill">스킬</a>
+		<li><a href="#items">아이템</a>
+	</ul>
+	<div class="tab-content">	
+		<div id="mastery" class="tab-pane fade in active ">
+			<div>${tactics.masteryData }</div>
+			<p>${tactics.masteryContent }</p>
+		</div>
+		<div id="rune" class="tab-pane fade in">
+			<div>${tactics.runeData }</div>
+			<p>${tactics.runeContent }</p>
+		</div>
+		<div id="skill" class="tab-pane fade in">
+			<div>${tactics.skillBuild }</div>
+			<p>${tactics.skillContent }</p>
+		</div>
+		<div id="items" class="tab-pane fade in">
+			<div>${tactics.itemBuild }</div>
+			<p>${tactics.itemContent }</p>
+		</div>
+	</div>
+<br/>	
+<hr style="clear: left;">
+<br />
+
 <input type="button" value="수정하기" id="update" />
 <input type="button" value="삭제" id="delete" />
-<div>${tactics.title }</div>
-<br />
-<div>${tactics.writer }</div>
-<br />
-<div>${tactics.content1 }</div>
-<br />
-<hr />
 <c:if test="${nick!=null }">
 	<form action="/tactics/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
@@ -51,8 +78,14 @@
 		</div>
 	</c:forEach>
 </c:forEach>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
+		$(".nav-tabs a").click(function() {
+			$(this).tab('show');
+		});
+		
 		$("input").click(function() {
 			console.log($(this));			
 			$("input.reFollow").click(function() {

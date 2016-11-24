@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import gameImage.model.IconLoadService;
+import staticData.model.ChampDbService;
 import tactics.model.ChampionService;
 import tactics.model.ContentsManager;
 import tactics.model.ReplyFollowService;
@@ -25,6 +27,8 @@ public class TacticsController {
 	ChampionService cs;
 	@Autowired
 	ReplyFollowService rfs;
+	@Autowired
+	ChampDbService champDbService;
 	
 	@RequestMapping("/regArticle/{name}/{key}")
 	public String writePage(@PathVariable String name, @PathVariable String key){
@@ -66,10 +70,13 @@ public class TacticsController {
 	
 	@RequestMapping("/read/{num}") // 공략 글 읽기
 	public ModelAndView read(@PathVariable int num){
-		Tactics tac = cm.read(num);
+		ImprovedTactics tac = cm.read(num);		
 		List<HashMap> list = cm.readReply(num);		
 		List followList = rfs.followList();
+		System.out.println("tacName:"+tac.getChamp());
+		System.out.println(champDbService.showByName(tac.getChamp()).getImage1());
 		ModelAndView mav = new ModelAndView("cm:tactics/read");
+		mav.addObject("champData", champDbService.showByName(tac.getChamp()) );
 		mav.addObject("tactics", tac);
 		mav.addObject("readReply", list);
 		mav.addObject("followList", followList);
@@ -86,6 +93,6 @@ public class TacticsController {
 		map.put("area", area);
 		map.put("parentNum", parentNum);
 		cm.reply(map);
-		return "redirect:/read/{num}";
+		return "redirect:/tactics/read/"+parentNum;
 	}
 }

@@ -17,6 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from champion where id = #{id}
 	</select>
 	
+	<select id="showChampByName" resultType="staticData.model.ChampData">
+		select * from champion where name = #{name}
+	</select>
+	
 	<delete id="deleteChampAll">
 		delete from champion
 	</delete>

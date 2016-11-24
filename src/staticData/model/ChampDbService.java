@@ -46,6 +46,17 @@ public class ChampDbService {
 			return null;
 	}
 	
+	public ChampData showByName(String name) {
+		SqlSession sql = fac.openSession();
+		ChampData data = sql.selectOne("staticData.showChampByName", name);
+		sql.close();
+		
+		if(data != null)
+			return data;
+		else 
+			return null;
+	}
+	
 	public int deleteAll() {
 		SqlSession sql = fac.openSession();
 		int res = sql.delete("staticData.deleteChampAll");
