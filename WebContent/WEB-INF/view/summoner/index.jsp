@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -19,7 +22,7 @@
 		${userInfo.name }
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+			<li class="active"><a data-toggle="tab" href="#home">랭크</a></li>
 			<li><a data-toggle="tab" href="#champion">챔피언</a></li>
 			<li><a data-toggle="tab" href="#league">리그</a></li>
 			<li><a data-toggle="tab" href="#match">최근게임</a></li>
@@ -29,8 +32,21 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
-				<h3>showlol</h3>
-				<p>UserInfo</p>
+				<table>
+					<tr>
+						<td>
+							<img src="/image/tier_icons/${fn:toLowerCase(tierInfo.tier) }_${fn:toLowerCase(tierInfo.entries[0].division) }.png">
+						</td>
+						<td>
+							<table>
+								<tr><td><font color="#0033FF">${tierInfo.tier } ${tierInfo.entries[0].division }<font></td></tr>
+								<tr><td><b>${tierInfo.entries[0].leaguePoints } LP</b> / ${tierInfo.entries[0].wins }승 ${tierInfo.entries[0].losses }패</td></tr>
+								<tr><td>승률 <fmt:formatNumber pattern="0">${tierInfo.entries[0].wins / (tierInfo.entries[0].wins + tierInfo.entries[0].losses) * 100 }</fmt:formatNumber>%</td></tr>
+								<tr><td>${tierInfo.name }</td></tr>
+							</table>
+						</td>
+					<tr>
+				</table>
 			</div>
 			<div id="champion" class="tab-pane fade"></div>
 			<div id="league" class="tab-pane fade"></div>
@@ -51,7 +67,7 @@
 		initMatches(userName);
 		initRunes(userName);
 		initMasterys(userName);
-		//initLeague(userName);
+		initLeague(userName);
 		initChamp(userName);
 	}
 	function initMatches(name) {
@@ -93,8 +109,7 @@
 			alert("mastery ERROR");
 		});
 	}	
-	function loadLeague(name) {
-		alert("!!!");
+	function initLeague(name) {
 		$.ajax(
 			{
 			"method" : "get",

@@ -1,5 +1,8 @@
 package summoner.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +25,13 @@ public class LeagueController {
 	@RequestMapping("/summoner/league")
 	public ModelAndView league(){
 		ModelAndView mav = new ModelAndView();
-		List list = lsvc.getLeague((int)bsvc.sinfo.get("id"));
-		mav.addObject("list", list);
+		//String division = lsvc.getUserDivision((int)bsvc.sinfo.get("id"));
+		HashMap map2 = lsvc.getUserLeagueInfo((int)bsvc.sinfo.get("id"));
+		ArrayList entries = (ArrayList)map2.get("entries");
+		LinkedHashMap map3 = (LinkedHashMap)entries.get(0);
+		HashMap map = lsvc.getLeague((int)bsvc.sinfo.get("id"), (String)map3.get("division"));
+		mav.addObject("map", map);
+		mav.addObject("map2", map2);
 		
 		return mav;
 	}

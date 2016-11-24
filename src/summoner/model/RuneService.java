@@ -47,58 +47,61 @@ public class RuneService {
 		SqlSession sql = fac.openSession();
 		for(int i=0; i<pages.size(); i++) {
 			LinkedHashMap page = (LinkedHashMap)pages.get(i);
-			
 			List slots = (List)page.get("slots");
-			HashMap reds = new HashMap<>();
-			HashMap yellows = new HashMap<>();
-			HashMap blues = new HashMap<>();
-			HashMap blacks = new HashMap<>();
-			for(int j=0; j<slots.size(); j++) {
-				LinkedHashMap slot = (LinkedHashMap)slots.get(j);
-				int runeId = (int)slot.get("runeId");
-				RuneData rd = sql.selectOne("staticData.showRune", runeId);
-				String img = rd.getImage();
-				String des = rd.getDescription();
-				String name = rd.getName();
-				String type = rd.getType();
-				slot.put("img", img);
-				slot.put("des", des);
-				slot.put("name", name);
+			
+			if(slots != null) {
+				HashMap reds = new HashMap<>();
+				HashMap yellows = new HashMap<>();
+				HashMap blues = new HashMap<>();
+				HashMap blacks = new HashMap<>();
 				
-				if(type.equals("red")) {
-					try{
-						int n = (int)reds.get(name);
-						reds.put(name, n+1);
-					}catch(Exception e) {
-						reds.put(name, 1);
-					}
-				}else if(type.equals("yellow")) {
-					try{
-						int n = (int)yellows.get(name);
-						yellows.put(name, n+1);
-					}catch(Exception e) {
-						yellows.put(name, 1);
-					}
-				}else if(type.equals("blue")) {
-					try{
-						int n = (int)blues.get(name);
-						blues.put(name, n+1);
-					}catch(Exception e) {
-						blues.put(name, 1);
-					}
-				}else if(type.equals("black")) {
-					try{
-						int n = (int)blacks.get(name);
-						blacks.put(name, n+1);
-					}catch(Exception e) {
-						blacks.put(name, 1);
+				for(int j=0; j<slots.size(); j++) {
+					LinkedHashMap slot = (LinkedHashMap)slots.get(j);
+					int runeId = (int)slot.get("runeId");
+					RuneData rd = sql.selectOne("staticData.showRune", runeId);
+					String img = rd.getImage();
+					String des = rd.getDescription();
+					String name = rd.getName();
+					String type = rd.getType();
+					slot.put("img", img);
+					slot.put("des", des);
+					slot.put("name", name);
+					
+					if(type.equals("red")) {
+						try{
+							int n = (int)reds.get(name);
+							reds.put(name, n+1);
+						}catch(Exception e) {
+							reds.put(name, 1);
+						}
+					}else if(type.equals("yellow")) {
+						try{
+							int n = (int)yellows.get(name);
+							yellows.put(name, n+1);
+						}catch(Exception e) {
+							yellows.put(name, 1);
+						}
+					}else if(type.equals("blue")) {
+						try{
+							int n = (int)blues.get(name);
+							blues.put(name, n+1);
+						}catch(Exception e) {
+							blues.put(name, 1);
+						}
+					}else if(type.equals("black")) {
+						try{
+							int n = (int)blacks.get(name);
+							blacks.put(name, n+1);
+						}catch(Exception e) {
+							blacks.put(name, 1);
+						}
 					}
 				}
+				page.put("reds", reds);
+				page.put("yellows", yellows);
+				page.put("blues", blues);
+				page.put("blacks", blacks);
 			}
-			page.put("reds", reds);
-			page.put("yellows", yellows);
-			page.put("blues", blues);
-			page.put("blacks", blacks);
 		}
 		sql.close();
 		return pages;

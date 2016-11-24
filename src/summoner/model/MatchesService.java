@@ -165,7 +165,7 @@ public class MatchesService {
 	public HashMap getGameDetailInfo(long gid) {
 		HashMap resMap = new HashMap<>();
 		RestTemplate rt = new RestTemplate();
-		String url = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/"+gid+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
+		String url = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/"+gid+"?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077";
 		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
 		
 		ArrayList participantIdentities = (ArrayList)map.get("participantIdentities");

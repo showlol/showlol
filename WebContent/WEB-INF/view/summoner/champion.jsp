@@ -15,9 +15,9 @@ th {
 }
 
 td {
-    padding: 3px;
     font-size: small;
     font-family: sans-serif;
+    padding: 1px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -30,20 +30,20 @@ th {
 </style>
 <table>
 	<tr>
-		<th width="50"></td>
-		<th width="120">챔피언</td>
-		<th width="120">게임</td>
-		<th width="150">평점</td>
-		<th width="65">골드</td>
-		<th width="65">CS</td>
-		<th width="65">파괴한 포탑</td>
-		<th width="70">최대 킬</td>
-		<th width="75">최대 데스</td>
-		<th width="80">평균 가한 피해량</td>
-		<th width="80">평균 받은 피해량</td>
-		<th width="65">더블킬</td>
-		<th width="60">트리플킬</td>
-		<th width="60">쿼드라킬</td>
+		<th width="50"></th>
+		<th width="120">챔피언</th>
+		<th width="120">게임</th>
+		<th width="150">평점</th>
+		<th width="65">골드</th>
+		<th width="65">CS</th>
+		<th width="65">파괴한 포탑</th>
+		<th width="70">최대 킬</th>
+		<th width="75">최대 데스</th>
+		<th width="80">평균 가한 피해량</th>
+		<th width="80">평균 받은 피해량</th>
+		<th width="65">더블킬</th>
+		<th width="60">트리플킬</th>
+		<th width="60">쿼드라킬</th>
 	</tr>
 	<c:set var="n" value="1"/>
 	<c:forEach var="c" items="${list }">
