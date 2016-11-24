@@ -9,7 +9,16 @@ public class CommunityData {
 	String memo;
 	int good;
 	Date writedate;
+	int clicks;
 	
+	
+	
+	public int getClicks() {
+		return clicks;
+	}
+	public void setClicks(int clicks) {
+		this.clicks = clicks;
+	}
 	public String getTitle() {
 		return title;
 	}

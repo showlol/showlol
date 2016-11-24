@@ -14,9 +14,10 @@ a, a:link {
 }
 article{
 	height: 100%;
-	padding: 80px;			
+	padding: 80px;
 }
 footer{
+	clear: both;
 	height: 70px;
 	background-color: #302f35;	
 	color: white;

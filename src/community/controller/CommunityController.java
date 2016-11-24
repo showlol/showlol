@@ -24,7 +24,7 @@ public class CommunityController {
 	@Autowired
 	ReplyFollowService rfs;
 
-	//메인, 글목록리스트
+		//메인, 글목록리스트
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			List list = cs.readall();
@@ -42,20 +42,24 @@ public class CommunityController {
 			List size = cs.readRange(p,total);
 			mav.setViewName("community/main");
 			mav.addObject("size",size);
+			System.out.println(size.size());
 			mav.addObject("total",total);
 			mav.addObject("current", p );
 			return mav;
 		}
+
 		// 커뮤니티글 읽기
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num){
 			CommunityData cd = cs.read(num);
 			List<HashMap> list = cs.readReply(num);		
 			List followList = rfs.followList();
+			List cli = cs.readclick(num);
 			ModelAndView mav = new ModelAndView("cm:community/read");
 			mav.addObject("cdata", cd);
 			mav.addObject("readReply", list);
 			mav.addObject("followList", followList);
+			mav.addObject("click",cli);
 			return mav;
 		}
 		//커뮤니티글 댓글달기
@@ -69,9 +73,7 @@ public class CommunityController {
 			return "redirect:/community/read/{num}";
 		}
 			
-		
-		
-	// 글삭제
+		// 글삭제
 		@RequestMapping("/community/reviewd")
 		public ModelAndView reviewlikein(int num){
 			ModelAndView mav = new ModelAndView();
@@ -81,7 +83,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-	//좋아요 
+		//좋아요 
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -108,7 +110,6 @@ public class CommunityController {
 		}
 		
 		//글읽기페이지에서 커뮤니티 메인으로
-		
 		@RequestMapping("/community/return")
 		public String retrun(){
 			return "redirect:/community/review2?r=true";

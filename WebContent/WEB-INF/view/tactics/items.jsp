@@ -34,32 +34,57 @@
 	$.get("/gameData/item/detail", function(r){		
  		appendItem(r);
 	});
-	$.get("/gameData/item", function(r){
-// 		appendItem(r);
-	});
+// 	$.get("/gameData/item", function(r){
+//  		appendItem(r);
+// 	});
+// 	var itemKind = {
+// 		jungle : "Jungle,",
+// 		support : "GoldPer, Aura, Vision, Stealth, Trinket",
+// 		attack : "OnHit, LifeSteal, Damage, ArmorPenetration, AttackSpeed, CriticalStrike",
+// 		defence : "Armor, HealthRegen, Tenacity, Health, SpellBlock",
+// 		magic : "Mana, CooldownReduction, SpellVamp, ManaRegen, SpellDamage, MagicPenetration",
+// 		move : "NonbootsMovement, Boots"
+// 	}	
 	var itemKind = {
-		jungle : "Jungle,",
-		support : "GoldPer, Aura, Vision, Stealth, Trinket",
-		attack : "OnHit, LifeSteal, Damage, ArmorPenetration, AttackSpeed, CriticalStrike",
-		defence : "Armor, HealthRegen, Tenacity, Health, SpellBlock",
-		magic : "Mana, CooldownReduction, SpellVamp, ManaRegen, SpellDamage, MagicPenetration",
-		move : "NonbootsMovement, Boots"
-	}	
+			jungle : ["Jungle"],
+			support : ["GoldPer", "Aura", "Vision", "Stealth", "Trinket"],
+			attack : ["OnHit", "LifeSteal", "Damage", "ArmorPenetration", "AttackSpeed", "CriticalStrike"],
+			defence : ["Armor", "HealthRegen", "Tenacity", "Health", "SpellBlock"],
+			magic : ["Mana", "CooldownReduction", "SpellVamp", "ManaRegen", "SpellDamage", "MagicPenetration"],
+			move : ["NonbootsMovement", "Boots"]
+		}	
+// 	function appendItem(r){
+// 		Object.keys(r).forEach(function(id) {			
+// 			r[id].tags.forEach(function(elt) {
+// 				Object.keys(itemKind).forEach(function(elt2) {
+// 					if(itemKind[elt2].includes(elt)){
+// 						$("#div-"+elt2).append(
+// 							"<img title='+"+r[id].name+"' src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/"
+// 							+r[id].image.full+"'>"
+// 						);
+// 						if(elt2=="jungle")
+// 							console.log("jungle:"+elt);
+// 						if(elt2=="move")
+// 							console.log("move:"+elt);
+// 					}
+// 				});				
+// 			});
+// 		});
+// 	}
+
 	function appendItem(r){
-		Object.keys(r).forEach(function(id) {			
-			r[id].tags.forEach(function(elt) {
-				Object.keys(itemKind).forEach(function(elt2) {
-					if(itemKind[elt2].includes(elt)){
-						$("#div-"+elt2).append(
+		Object.keys(r).forEach(function(id) {	
+			Object.keys(itemKind).forEach(function(listName) {
+				var size = itemKind[listName].length;
+				for(i=0; i<size; i++){
+					if(JSON.stringify(r[id].tags).includes(itemKind[listName][i])){
+						$("#div-"+listName).append(
 							"<img title='+"+r[id].name+"' src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/"
 							+r[id].image.full+"'>"
 						);
-						if(elt2=="jungle")
-							console.log("jungle:"+elt);
-						if(elt2=="move")
-							console.log("move:"+elt);
+						break;
 					}
-				});				
+				}							
 			});
 		});
 	}

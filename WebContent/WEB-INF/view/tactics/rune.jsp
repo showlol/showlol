@@ -9,6 +9,9 @@
 			<option>문양</option>
 			<option>정수</option>	
 		</select>
+<<<<<<< HEAD
+		<div id="runeSelector" style="height:250px; width:200px; overflow-y: auto;"></div>
+=======
 		<div id="runeSelector" style="height:250px; overflow-y: auto;">
 			룬 게터<br/>
 			<div id='rune' type='red' data='5534' style='height: 40px; width: 40px;
@@ -16,6 +19,7 @@
 			 background-size: cover; '>
 			</div><br/>
 		</div>
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 		
 	</div>
 	<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 550px; overflow : auto; background-color: #eae179;">
@@ -114,7 +118,7 @@
 		alert("remove"+target);	
 	}
 	
-	if(${runeList==null}){
+	if(${runeList==null }){
 		readRuneData();
 		readRuneJSON();
 		readRuneKind();
@@ -145,6 +149,7 @@
 	function appendRuneData(type){
 		$("#runeSelector").empty();
 		runeList.forEach(function(elt) {
+
 			if(elt.type==type){
 				var runeBox = "<div id='rune' type='"+elt.type+"' value='"+elt.id
 					+"' title='"+elt.description+"' style='height: 40px; width: 40px;"

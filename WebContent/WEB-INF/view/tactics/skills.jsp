@@ -6,25 +6,6 @@
 </div>
 <div id="skillTree" style="height: 150px; "></div>
 <script>
-	$.get("/champData/${param.key }", function(r){
-		$("#champInfo").empty();
-		var spells = r.spells;
-		for(i=0; i<4; i++){
-			var spell = 
-				"<img src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/"
-				+spells[i].id+".png'><br/>"
-			var description = spells[i].description;
-			$("#champInfo").append(spell);
-			$("#champInfo").append(description+"<br/>");
-		}		
-				
-	});
-	
-	$("skills.jsp").ready(function(){
-		$("#skill").click(function(e){
-		});
-	});
-
 	var spells=[];
 	$.get("/champData/${param.key }", function(r){
 		$("#champInfo").empty();
