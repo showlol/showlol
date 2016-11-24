@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import gameData.model.pojo.ImprovedRuneData;
 import staticData.model.ChampData;
 import staticData.model.MasteryData;
 import staticData.model.RuneData;

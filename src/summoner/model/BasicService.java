@@ -18,6 +18,8 @@ public class BasicService {
 	@Autowired
 	SqlSessionFactory fac;
 	
+	public LinkedHashMap sinfo;
+	
 	// �̸��� �̿��Ͽ� ���̵� ��������
 	public int getSummonerId(String name) {
 		RestTemplate rt = new RestTemplate();	
@@ -39,6 +41,7 @@ public class BasicService {
 		String name1 = name.replaceAll(" ", "");
 		String name2 = name1.toLowerCase();		
 		LinkedHashMap data = (LinkedHashMap)map.get(name2);	
+		sinfo = data;
 		return data;
 	}
 	

@@ -27,10 +27,10 @@ public class TacticsController {
 	@Autowired
 	ReplyFollowService rfs;
 	
-	@RequestMapping("/regArticle/{name}")
-	public String writePage(@PathVariable String name){
+	@RequestMapping("/regArticle/{name}/{key}")
+	public String writePage(@PathVariable String name, @PathVariable String key){
 		System.out.println("글쓰기 : "+name);
-		return "tactics/champ/write.jsp?champ="+name;
+		return "tactics/champ/write.jsp?champ="+name+"&key="+key;
 	}
 	@RequestMapping("/write")
 	@ResponseBody

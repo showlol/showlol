@@ -8,7 +8,7 @@ CHAMPION<br/><hr/>
 	<div id="champContainer">
 		<c:set var="col" value="0" />
 		<c:forEach var="list" items="${champList}">
-			<a href="javascript:champTactics('${list.NAME }')">
+			<a href="javascript:champTactics('${list.NAME }', '${list.KEY }')">
 				<div id="champPortrait">			
 					<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
 						 height="50" width="50"/><br/>
@@ -42,7 +42,7 @@ CHAMPION<br/><hr/>
 				<th>글번호<th>제목<th>작성자<th>작성일
 			</tr>		
 		</thead>		
-		<tbody id="tbody"></tbody>
+		<tbody></tbody>
 	</table>
 	<button id="writeTactics" style="display:none; float:right;">공략쓰기</button>
 <script>
@@ -52,14 +52,14 @@ CHAMPION<br/><hr/>
 		location.href = "/tactics/read/" + $(e.target).siblings("#num").html();
 	});
 	
-	function champTactics(name){
-		$("#tacticsList").children("tbody").html("");
+	function champTactics(name, key){
+ 		$("#tacticsList").children("tbody").html("");
 		$.get("/tactics/"+name, function(r){
 			console.log(r);
-			appendList(r, name);
+			appendList(r, name, key);
 		});
 	}
-	function appendList(r, name){
+	function appendList(r, name, key){
 		$("#tacticsList").show();
 		for(var i=0; i<r.length; i++){
 			$("#tacticsList").children("tbody").append(
@@ -67,10 +67,9 @@ CHAMPION<br/><hr/>
 				+r[i].title+"<td>"+r[i].writer+"<td>"+r[i].writeDate+"</tr>")			
 		}
 		$("#writeTactics").show().click(function(){
-			location.href="/tactics/regArticle/"+name;
+			location.href="/tactics/regArticle/"+name+"/"+key;
 		});
 	}	
-	
 </script>
 
 

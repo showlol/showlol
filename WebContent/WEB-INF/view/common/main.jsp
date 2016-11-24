@@ -2,5 +2,8 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-Main 채워주세요
+<form action="/summoner/index" method="post">
+	<input type="text" name="userName" value="${sname }"/>
+	<input type="submit" value="검색"/>
+</form>
 

@@ -3,4 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<% pageContext.forward("/tactics/regArticle/%EB%82%98%EB%AF%B8#rune"); %>
+<c:forEach var="i" items="${list }">
+	<c:forEach var="abil" items="${i.ability }">
+		${abil }
+	</c:forEach>
+	<br/>
+</c:forEach>

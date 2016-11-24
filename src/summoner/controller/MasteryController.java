@@ -20,16 +20,10 @@ public class MasteryController {
 	@Autowired
 	MasteryService msvc;
 	
-	@RequestMapping(value="/summoner/mastery", method=RequestMethod.GET)
-	public String mastery(String id) {
-		return "summoner/mastery";
-	}
-	
-	@RequestMapping(value="/summoner/mastery", method=RequestMethod.POST)
-	public ModelAndView mastery2(String name) {
+	@RequestMapping("/summoner/masterys") 
+	public ModelAndView masterys(String userName) {
 		ModelAndView mav = new ModelAndView("summoner/mastery");
-		int sid = bsvc.getSummonerId(name);
-		List list = msvc.getSummonerMastery(sid+"");
+		List list = msvc.getSummonerMastery(bsvc.sinfo.get("id")+"");
 		mav.addObject("list", list);
 		
 		return mav;

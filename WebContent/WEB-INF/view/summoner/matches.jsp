@@ -6,11 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<h2>최근게임</h2>
-<form action="/summoner/matches" method="post">
-	<input type="text" name="userName" value="${sname }"/>
-	<input type="submit" />
-</form>
 
 <c:if test="${list != null }">
 	<c:forEach var="g" items="${list }">
@@ -156,7 +151,7 @@
 											<tr>
 												<td style="line-height:5px">
 													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
-													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<a href="/summoner/index?userName=${p.sName }" style="text-decoration:none;color:black;">
 													<font size="1">
 													<c:set var="len" value="${fn:length(p.sName) }"/>
 													<c:choose>
@@ -177,7 +172,7 @@
 										<tr>
 											<td style="line-height:5px">
 												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
-												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<a href="/summoner/index?userName=${p.summonerName }" style="text-decoration:none;color:black;">
 												<font size="1">
 													<c:set var="len" value="${fn:length(g.summonerName) }"/>
 													<c:choose>
@@ -202,7 +197,7 @@
 											<tr>
 												<td style="line-height:5px">
 													<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${p.cName }.png">
-													<a href="/summoner/matches?userName=${p.sName }" style="text-decoration:none;color:black;">
+													<a href="/summoner/index?userName=${p.sName }" style="text-decoration:none;color:black;">
 													<font size="1">
 													<c:set var="len" value="${fn:length(p.sName) }"/>
 													<c:choose>
@@ -223,7 +218,7 @@
 										<tr>
 											<td style="line-height:5px">
 												<img width="15" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${g.champName }.png">
-												<a href="/summoner/matches?userName=${p.summonerName }" style="text-decoration:none;color:black;">
+												<a href="/summoner/index?userName=${p.summonerName }" style="text-decoration:none;color:black;">
 												<font size="1">
 													<c:set var="len" value="${fn:length(g.summonerName) }"/>
 													<c:choose>
@@ -246,7 +241,9 @@
 				</td>
 				<td>
 					<table>
+						<c:if test="${fn:startsWith(g.subType, 'RANKED_')}">				
 						<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId })"/></td></tr>
+						</c:if>
 					</table>
 				</td>
 			</tr>

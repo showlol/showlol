@@ -3,7 +3,7 @@ package staticData.model;
 public class RuneData {
 	int id;
 	String name;
-	String description;
+	protected String description;
 	String tier;
 	String type;
 	String image;
