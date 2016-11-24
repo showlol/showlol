@@ -37,6 +37,11 @@ public class DataController {
 	@ResponseBody
 	public List masteryData(){
 		return ils.masteryList;
-	}	
+	}
+	@RequestMapping("/runeList")
+	public String runeList(Map map){
+		map.put("list", ils.runeListTier3);
+		return "staticData/runeList";
+	}
 	
 }

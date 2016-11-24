@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="/css/main.css" >
 </head>
 <body>
+
 		<header>			
 			<tiles:insertAttribute name="header" />
 		</header>
 		<article style="min-height: 600px; height: auto;">			
 			<tiles:insertAttribute name="article" />					
-		</article>		
+		</article>
 		<footer>
 			<tiles:insertAttribute name="footer" />
-		</footer>			
+		</footer>
 </body>
 </html>

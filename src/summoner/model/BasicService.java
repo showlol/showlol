@@ -68,7 +68,21 @@ public class BasicService {
 		ChampData cd = sql.selectOne("staticData.showChamp", cid);
 		sql.close();
 		
-		return cd.getKey();
+		if(cd != null)
+			return cd.getKey();
+		else
+			return null;
+	}
+	
+	public String getChampNameKR(int cid) {
+		SqlSession sql = fac.openSession();
+		ChampData cd = sql.selectOne("staticData.showChamp", cid);
+		sql.close();
+		
+		if(cd != null)
+			return cd.getName();
+		else
+			return null;
 	}
 	/*
 	public String getChampName(int cid) {

@@ -6,7 +6,6 @@
 </div>
 <div id="skillTree" style="height: 150px; "></div>
 <script>
-
 	var spells=[];
 	$.get("/champData/${param.key }", function(r){
 		$("#champInfo").empty();
@@ -39,6 +38,7 @@
 			2 : 0,
 			3 : 0,
 	};
+	var skillBuild=""; // save
 	function appendSkill(skill){
 		var n = skill.attr("info");		
 	
@@ -62,7 +62,11 @@
 		
 		skillTree["level"]++;
 		skillTree[n]++;
+		skillBuild += n+"#";
 		$("#skillTree").append(skill);
-		
+		if(skillTree["level"]<12)
+			var arrow = "<h1 style='display:inline;'>→</h1>";
+		$("#skillTree").append(arrow);
+		console.log(skillBuild);
 	}
 </script>

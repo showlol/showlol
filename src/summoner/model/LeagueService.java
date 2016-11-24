@@ -35,7 +35,7 @@ public class LeagueService {
 		
 		for(Object o : tm.keySet()) {
 			LinkedHashMap lhm = (LinkedHashMap)tm.get(o);
-			System.out.println(lhm.get("leaguePoints"));
+			//System.out.println(lhm.get("leaguePoints"));
 		}
 		return data;
 	}

@@ -73,6 +73,7 @@
 				<value>/WEB-INF/mapper/runeMatch-mapper.xml</value>
 				<value>/WEB-INF/mapper/gameIcon-mapper.xml</value>
 				<value>/WEB-INF/mapper/gameData-mapper.xml</value>
+
 			</list>
 		</property>
 	</bean>

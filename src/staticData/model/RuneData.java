@@ -1,7 +1,5 @@
 package staticData.model;
 
-import gameData.model.pojo.ImprovedRuneData;
-
 public class RuneData {
 	int id;
 	String name;
