@@ -91,4 +91,6 @@
 			</props>
 		</property>
 	</bean>
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
 </beans>
