@@ -1,34 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<div style="float:left;">
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<form>
+	<div style="float: left;">
 		<select id="runeKind">
 			<option>룬선택</option>
 			<option>표식</option>
 			<option>인장</option>
 			<option>문양</option>
-			<option>정수</option>	
+			<option>정수</option>
 		</select>
-<<<<<<< HEAD
-		<div id="runeSelector" style="height:250px; width:200px; overflow-y: auto;"></div>
-=======
-		<div id="runeSelector" style="height:250px; overflow-y: auto;">
-			룬 게터<br/>
-			<div id='rune' type='red' data='5534' style='height: 40px; width: 40px;
-			 background-image: url("http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/y_4_3.png");
-			 background-size: cover; '>
-			</div><br/>
+
+		<div id="runeSelector" style="height: 250px; overflow-y: auto;">
+			룬 게터<br />
+			<div id='rune' type='red' data='5534'
+				style='height: 40px; width: 40px; background-image: url("http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/y_4_3.png"); background-size: cover;'>
+			</div>
+			<br />
 		</div>
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
-		
 	</div>
-	<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 550px; overflow : auto; background-color: #eae179;">
-		<c:forEach var = "i" begin="0" end="29">		
-			<div id="runeNum${i }" class="runeBox" data="empty" ></div>
-			<c:if test="${i%10==9 }" ><br/></c:if>
-		</c:forEach>					
-	</div>	
+	<div id="runeSetter"
+		style="white-space: nowrap; height: 300px; max-width: 550px; overflow: auto; background-color: #eae179;">
+		<c:forEach var="i" begin="0" end="29">
+			<div id="runeNum${i }" class="runeBox" data="empty"></div>
+			<c:if test="${i%10==9 }">
+				<br />
+			</c:if>
+		</c:forEach>
+	</div>
 	<div id="runeAbility"></div>
+	<div style="clear: left;">
+		<h4>${param.champ }의룬 공략</h4>
+		<textarea name="mastery-rune" id="mastery-rune"></textarea>
+		<script>CKEDITOR.replace('mastery-rune');</script>
+	</div>
+</form>
 <script>
 	
 	var runeList = [];
@@ -185,14 +191,10 @@
 	function readRuneKind(){
 		$.get("/gameData/runeKind", function(e){			
 			runeKind=e;
-		});
-		
+		});		
 	}
-	function test(){
-		alert("aa");
-	//	console.log(runeList);
-	}
+	
 	
 </script>
-	
+
 
