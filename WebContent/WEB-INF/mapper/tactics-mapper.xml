@@ -5,11 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="tactics">
 	<insert id="write2" parameterType="tactics.model.pojo.ImprovedTactics" >
-		insert into tactics_content values(
-			Improvedtactics_seq.nextval, #{champ}, #{writer}, #{masteryData},
+		insert into Improvedtactics_content values(
+			Improvedtactics_seq.nextval, #{champ}, #{writer}, #{title}, #{masteryData},
 			#{masteryContent}, #{runeData},	#{runeContent},	#{skillBuild},
-			#{skillContent}, #{itemBuild}, #{itemContent}, 0, 0, 0, #{imageLink},
-			 sysdate, #{title}
+			#{skillContent}, #{itemBuild}, #{itemContent}, 0, 0, 0, #{imageLink}, sysdate
 		)	
 	</insert>
 	<insert id="write" parameterType="tactics.model.pojo.Tactics">
@@ -34,8 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select rownum r, tc.* from tactics_content tc order by writedate desc)temp
 			 where rownum<=3]]>
 	</select>
-	<select id="champTactics" resultType="tactics.model.pojo.Tactics">
-      select * from tactics_content where champ=#{name }
+	<select id="champTactics" resultType="tactics.model.pojo.ImprovedTactics">
+      select * from improvedtactics_content where champ=#{name }
    </select>
 	<select id="readReply" parameterType="java.lang.Integer" resultType="java.util.HashMap">
 		select * from tactics_reply1 where parentNum=#{parentNum} order by num desc

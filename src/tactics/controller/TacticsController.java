@@ -60,7 +60,6 @@ public class TacticsController {
 	@RequestMapping("/{name}") // 챔프별 공략
 	@ResponseBody
 	public List champTactics(@PathVariable String name){
-		System.out.println(name+": 寃��깋以�...");
 		System.out.println(cm.champTactics(name).toString());
 		return cm.champTactics(name);		
 	}

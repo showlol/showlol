@@ -7,6 +7,9 @@
 </head>
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 <div>
+	<input type='text' name='title' required='required' placeholder="제목을 입력해 주세요" />
+	<input type='hidden' name='champ' value='${param.champ }' />
+	<input type='hidden' name='writer' value='${nick }' />	
 	<ul class="nav nav-tabs">
 		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
 		<li><a href="#rune">룬</a>
@@ -71,14 +74,15 @@
 			runeData += $("#runeNum" + i).children("div:first").attr("value")
 					+ "#";
 		}
-		$("masteryData").val("masteryData");
-		$("skillBuild").val("skillBuild");
-		$("runeData").val("runeData");
-		$("itemBuild").val("itemBuild");
-		console.log("특성:" + masteryData);		
-		console.log("스킬:" + skillBuild);
-		console.log("룬:" + runeData);
-		console.log("아이템:" + itemBuild);
+		$("[name=masteryData]").val(masteryData);
+		$("[name=skillBuild]").val(skillBuild);
+		$("[name=runeData]").val(runeData);
+		$("[name=itemBuild]").val(itemBuild);
+		console.log($("[name=masteryData]").val(masteryData));		
+		console.log($("[name=skillBuild]").val(skillBuild));
+		console.log($("[name=runeData]").val(runeData));
+		console.log($("[name=itemBuild]").val(itemBuild));
+		return true;
 	}
 	function runeData() {
 

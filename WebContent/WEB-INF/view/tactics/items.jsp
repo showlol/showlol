@@ -28,7 +28,7 @@
 		<div id="itemTree" style='clear: left;'>
 			ItemTree<br />
 		</div>
-		<input type='hidden' name='itemBuild' />
+		<input type='hidden' name='itemBuild' value="aaa" />
 	<textarea name="itemContent" id="itemContentd"></textarea>
 	<script>
 			CKEDITOR.replace('itemContent');

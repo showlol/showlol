@@ -35,7 +35,6 @@ CHAMPION<br/><hr/>
 	</tbody>
 </table>
 <%-- 챔프별 게시판 --%>
-
 	<table class="table table-hover " id="tacticsList" style="display: none;">
 		<thead>
 			<tr>
@@ -67,6 +66,11 @@ CHAMPION<br/><hr/>
 				+r[i].title+"<td>"+r[i].writer+"<td>"+r[i].writeDate+"</tr>")			
 		}
 		$("#writeTactics").show().click(function(){
+			if(${nick==null }){
+				alert("로그인이 필요합니다.");
+				return false;
+			}
+				 
 			location.href="/tactics/regArticle/"+name+"/"+key;
 		});
 	}	
