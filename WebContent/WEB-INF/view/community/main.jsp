@@ -1,66 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <h2>커뮤니티 게시판</h2>
 <!-- 글 리스트 기능 -->
 <table class="table table-hover info">
 	<thead>
 		<tr>
-			<th>글번호<th>제목<th>작성자<th>추천수<th>작성일<th>조회수
+			<th>글번호
+			<th>제목
+			<th>작성자
+			<th>추천수
+			<th>작성일
+			<th>조회수
 		</tr>
 	</thead>
-		<tbody>
-			<c:forEach var="t" items="${size }" >
+	<tbody>
+		<c:forEach var="t" items="${size }">
 			<tr class="info">
-			<td id="num">${t.num }<td>${t.title }<td>${t.writer }<td><fmt:formatNumber value ="${t.good }" />
-				<td><fmt:formatDate value="${t.writedate }" pattern="yy/MM/dd hh:mm"/><td>${t.clicks}
+				<td id="num">${t.num }
+				<td>${t.title }
+				<td>${t.writer }
+				<td><fmt:formatNumber value="${t.good }" />
+				<td><fmt:formatDate value="${t.writedate }"
+						pattern="yy/MM/dd hh:mm" />
+				<td>${t.clicks}
 			</tr>
-			</c:forEach>
-		</tbody>
+		</c:forEach>
+	</tbody>
 </table>
 <!-- 페이지 기능 -->
-<c:forEach var="i" begin="1" end="${total}">
-	<c:choose>
-		<c:when test="${current == i }">
-		</c:when>
-	<c:otherwise>
-	<ul class="pagination pagination-sm">
-			<li><a href = "/community/review2?p=${i }">${i}</a></li>
-  	</ul>
-	</c:otherwise>
-	</c:choose>
-</c:forEach>
-
+<ul class="pagination">
+	<c:forEach var="i" begin="1" end="${total}">
+		<c:choose>
+			<c:when test="${param.p == i }">
+				<li class="disabled"><a  href="/community/review2?p=${i }">${i}</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="/community/review2?p=${i }">${i}</a></li>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+</ul>
 <!-- 게시글 작성기능 -->
 <form action="/community/writepage">
-	<button type="submit" class="btn btn-default" style="border-color: white;">게시글 작성</button>
+	<button type="submit" class="btn btn-default"
+		style="border-color: white;">게시글 작성</button>
 </form>
 
 <!-- 검색기능 -->
 <div align="right">
 	<form>
-	 <div class="form-group form-inline">
-		<select name="ctg" class="form-control">
-			<option value="stitle">제목</option>
-			<option value="swriter">작성자</option>
-			<option value="titlewrite">제목+작성자</option>
-		</select>
-		<input type="text" name="search" class="form-control" placeholder="검색어"/>
-		<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
-	</div>
+		<div class="form-group form-inline">
+			<select name="ctg" class="form-control">
+				<option value="stitle">제목</option>
+				<option value="swriter">작성자</option>
+				<option value="titlewrite">제목+작성자</option>
+			</select> <input type="text" name="search" class="form-control"
+				placeholder="검색어" />
+			<button type="submit" class="btn btn-default"
+				style="border-color: white;">검색</button>
+		</div>
 	</form>
 </div>
 
 <script>
-	$("tbody").click(function(e){
-		console.log($(e.target).siblings("#num").html());
-		location.href = "/community/read/" + $(e.target).siblings("#num").html();
-	});
-	
-
-	
-	
-	
+	$("tbody").click(
+			function(e) {
+				console.log($(e.target).siblings("#num").html());
+				location.href = "/community/read/"
+						+ $(e.target).siblings("#num").html();
+			});
 </script>
 

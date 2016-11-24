@@ -42,6 +42,7 @@ public class CommunityController {
 			List size = cs.readRange(p,total);
 			mav.setViewName("community/main");
 			mav.addObject("size",size);
+			System.out.println(size.size());
 			mav.addObject("total",total);
 			mav.addObject("current", p );
 			return mav;

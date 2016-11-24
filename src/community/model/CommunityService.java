@@ -71,11 +71,12 @@ public class CommunityService {
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();
-			map.put("start", (p-1)*5   );
+			map.put("start", (p-1)*5  +1 );
 			map.put("end", p*5);
 
 		System.out.println(map.toString());
 		List m = sql.selectList("community.readRange", map);
+		System.out.println(m.size()+"½á»ß¾²");
 		sql.close();
 		System.out.println(m.toString());
 		return m;

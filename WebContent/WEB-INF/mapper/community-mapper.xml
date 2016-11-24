@@ -40,10 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="readRange" parameterType="java.util.HashMap" resultType="community.model.CommunityData">
 		<![CDATA[
-		
-		select temp.* from(select rownum r, cm.* from COMMUNITY cm order by writedate desc) temp 
-   		where temp.r >=#{start } and temp.r <=#{end }
-
+		select * from (
+		select rownum r, temp.* from
+		     (select * from COMMUNITY cm order by num desc)  temp 
+   		) where r >= #{start} and r <=#{end }
 		]]>
 	</select>
 	<select id="total" resultType="java.lang.Integer">
