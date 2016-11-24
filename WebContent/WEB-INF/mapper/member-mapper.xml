@@ -21,4 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="info" resultType="member.model.pojo.MemberData">
 		select * from member where nick=#{nick}
 	</select>
+	<update id="delList" parameterType="java.lang.String">
+		update tactics_content set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
+	<update id="delReMem" parameterType="java.lang.String">
+		update tactics_reply1 set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
+	<update id="delReMem2" parameterType="java.lang.String">
+		update tactics_reply2 set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
+	<update id="delComu" parameterType="java.lang.String">
+		update community set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
+	<update id="delComuRe1" parameterType="java.lang.String">
+		update community_reply1 set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
+	<update id="delComuRe2" parameterType="java.lang.String">
+		update community_reply2 set writer='탈퇴된 회원' where writer=#{nick}
+	</update>
 </mapper>

@@ -31,6 +31,10 @@
 		document.getElementById("dropMem").style.display="block";
 	});
 	document.getElementById("delMem").addEventListener("click", function() {
-		
+		$.ajax({
+			method : "get",
+			url : "/delMem/del?email="+delMemid.value+"&nick=${data.nick}"
+		});		
+		location.href="/";
 	});
 </script>

@@ -12,14 +12,20 @@
   <link rel="stylesheet" href="/css/main.css" >
 </head>
 <body>
+	<div style="height: 70px">
 		<header>			
 			<tiles:insertAttribute name="header" />
 		</header>
-		<article style="min-height: 600px; height: auto;">			
+	</div>
+	<div style="min-height: 50%; overflow-y: auto;">
+		<article>			
 			<tiles:insertAttribute name="article" />					
-		</article>		
+		</article>
+	</div>	
+	<div>	
 		<footer>
 			<tiles:insertAttribute name="footer" />
-		</footer>			
+		</footer>
+	</div>			
 </body>
 </html>

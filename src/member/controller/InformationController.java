@@ -28,8 +28,18 @@ public class InformationController {
 	}
 	@RequestMapping("/delMem/del")
 	@ResponseBody
-	public boolean delMem(String email) {
+	public boolean delMem(String email, String nick, HttpSession session) {
 		boolean dm = is.delMem(email)==true? true : false;
-		return dm;
+		session.removeAttribute("nick");
+		boolean dc = is.delMemCon(nick)==true? true : false;
+		boolean dr1 = is.delMemRe1(nick)==true? true : false;
+		boolean dr2 = is.delMemRe2(nick)==true? true : false;
+		boolean dcm = is.delComu(nick)==true? true : false;
+		boolean cr1 = is.delComuRe1(nick)==true? true : false;
+		boolean cr2 = is.delComuRe2(nick)==true? true : false;
+		if(dm==true && dc==true && dr1==true && dr2==true && dcm==true && cr1==true && cr2==true) {
+			return true;
+		}
+		return false;
 	}
 }

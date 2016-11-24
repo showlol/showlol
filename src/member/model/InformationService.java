@@ -22,7 +22,37 @@ public class InformationService {
 	}
 	public boolean delMem(String email) {
 		SqlSession sql = fac.openSession();
-		boolean r = sql.delete("member.delMem", email)==1? true : false;
+		boolean r = sql.delete("member.delMember", email)==1? true : false;
+		return r;
+	}
+	public boolean delMemCon(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delList", nick)==1? true : false;
+		return r;
+	}
+	public boolean delMemRe1(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delReMem", nick)==1? true : false;
+		return r;
+	}
+	public boolean delMemRe2(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delReMem2", nick)==1? true : false;
+		return r;
+	}
+	public boolean delComu(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delComu", nick)==1? true : false;
+		return r;
+	}
+	public boolean delComuRe1(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delComuRe1", nick)==1? true : false;
+		return r;
+	}
+	public boolean delComuRe2(String nick) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.delComuRe2", nick)==1? true : false;
 		return r;
 	}
 }
