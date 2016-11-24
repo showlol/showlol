@@ -5,6 +5,7 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <title>공략 글쓰기</title>
 </head>
+<form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 <div>
 	<ul class="nav nav-tabs">
 		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
@@ -28,11 +29,9 @@
 	</div>	
 	<hr style="clear: left;">
 </div>
+<input type="submit" value="등록" />
+</form>
 
-
-<button id="wr">글쓰기</button>
-<br />
-<button id="md">마스터리</button>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -62,7 +61,7 @@
 			location.href = "/tactics/"
 		});
 	}
-	function masteryData() {
+	function transferTactics() {
 		var masteryData = ""; //마스터리는 1부터 30까지
 		for (i = 1; i <= 30; i++) {
 			masteryData += $("#" + i).children("#point").html() + "#";
@@ -72,7 +71,11 @@
 			runeData += $("#runeNum" + i).children("div:first").attr("value")
 					+ "#";
 		}
-		console.log("특성:" + masteryData);
+		$("masteryData").val("masteryData");
+		$("skillBuild").val("skillBuild");
+		$("runeData").val("runeData");
+		$("itemBuild").val("itemBuild");
+		console.log("특성:" + masteryData);		
 		console.log("스킬:" + skillBuild);
 		console.log("룬:" + runeData);
 		console.log("아이템:" + itemBuild);

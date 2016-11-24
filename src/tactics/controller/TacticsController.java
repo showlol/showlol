@@ -1,13 +1,10 @@
 package tactics.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tactics.model.ChampionService;
 import tactics.model.ContentsManager;
 import tactics.model.ReplyFollowService;
+import tactics.model.pojo.ImprovedTactics;
 import tactics.model.pojo.Tactics;
 
 @Controller
@@ -35,6 +33,12 @@ public class TacticsController {
 	@RequestMapping("/write")
 	@ResponseBody
 	public boolean write(Tactics tac){		
+		boolean r = cm.write(tac)? true: false;		
+		return r;		
+	}
+	@RequestMapping("/write2")
+	@ResponseBody
+	public boolean write(ImprovedTactics tac){		
 		boolean r = cm.write(tac)? true: false;		
 		return r;		
 	}

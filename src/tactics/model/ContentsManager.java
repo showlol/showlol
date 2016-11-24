@@ -2,13 +2,13 @@ package tactics.model;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import tactics.model.pojo.ImprovedTactics;
 import tactics.model.pojo.Tactics;
 
 @Component
@@ -19,6 +19,13 @@ public class ContentsManager {
 	public boolean write(Tactics tac) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("tactics.write", tac)==1?true:false;
+		sql.close();
+		return r;
+	}
+	public boolean write(ImprovedTactics tac) {
+		System.out.println(tac.toString());
+		SqlSession sql = fac.openSession();
+		boolean r = sql.insert("tactics.write2", tac)==1?true:false;
 		sql.close();
 		return r;
 	}

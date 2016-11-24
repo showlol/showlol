@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div style="min-height: 400px; overflow-y: auto;">
-	<form>
+		
 		<div style='display: inline-block; height: inherit; float: left;'>
 			<button id='jungle' type='button' class='btn btn-primary'
 				style='display: block;'>정글</button>
@@ -28,11 +28,11 @@
 		<div id="itemTree" style='clear: left;'>
 			ItemTree<br />
 		</div>
-		<textarea name="mastery-item" id="mastery-item"></textarea>
-		<script>
-			CKEDITOR.replace('mastery-item');
+		<input type='hidden' name='itemBuild' />
+	<textarea name="itemContent" id="itemContentd"></textarea>
+	<script>
+			CKEDITOR.replace('itemContent');
 		</script>
-	</form>
 </div>
 
 <script>

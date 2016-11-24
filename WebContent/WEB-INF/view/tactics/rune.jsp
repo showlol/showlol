@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form>
+
+	
 	<div style="float: left;">
 		<select id="runeKind">
 			<option>룬선택</option>
@@ -31,10 +32,10 @@
 	<div id="runeAbility"></div>
 	<div style="clear: left;">
 		<h4>${param.champ }의룬 공략</h4>
-		<textarea name="mastery-rune" id="mastery-rune"></textarea>
-		<script>CKEDITOR.replace('mastery-rune');</script>
+		<input type='hidden' name='runeData' />
+		<textarea name="runeContent" id="runeContent"></textarea>
+		<script>CKEDITOR.replace('runeContent');</script>
 	</div>
-</form>
 <script>
 	
 	var runeList = [];

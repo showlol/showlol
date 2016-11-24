@@ -4,17 +4,15 @@
 <div id="champInfo" style="height: 300px; overflow-y:auto; ">
 	${param.champ } 스킬 로딩중...
 </div>
-<form>
 <div>
 	<div id="skillTree" style="height: 150px; "></div>
 	<div style="clear: left;" ></div>
-	
-	<textarea name="mastery-skills" id="mastery-skills"></textarea>
+	<input type="hidden" name="skillBuild" />
+	<textarea name="skillContent" id="skillContent"></textarea>
 	<script>
-		CKEDITOR.replace('mastery-skills');
+		CKEDITOR.replace('skillContent');
 	</script>
 </div>
-</form>
 
 <script>
 	var spells=[];

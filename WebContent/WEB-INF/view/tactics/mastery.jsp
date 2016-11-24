@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 	<link href="/css/tactics.css" rel="stylesheet">
-	<form >
+		<input type="hidden" name="masteryData" />		
 		<ul class="mastery_title">
 			<li>흉포 : <b id="ferocity" name="m0">0</b>
 			<li>교활 : <b id="cunning" name="m1">0</b>
@@ -13,11 +13,10 @@
 		<ul class="mastery_ul" id="mastery_ul"></ul>
 		<div style="clear: left;"></div>
 		<h4>${param.champ }의특성</h4>
-		<textarea name="mastery-content" id="mastery-content"></textarea>
+		<textarea name="masteryContent" id="masteryContent"></textarea>
 		<script>
-			CKEDITOR.replace('mastery-content');
+			CKEDITOR.replace('masteryContent');
 		</script>
-	</form>
 </div>
 <script>
 	var m_ul = $(".mastery_ul")[0];
