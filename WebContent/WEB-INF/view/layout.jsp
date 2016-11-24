@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-
 	<header>
 		<tiles:insertAttribute name="header" />
 	</header>
