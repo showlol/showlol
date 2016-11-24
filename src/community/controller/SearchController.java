@@ -16,7 +16,8 @@ public class SearchController {
 	@Autowired
 	SearchSevice ss;
 	
-	@RequestMapping("/community/search")
+	/*
+	@RequestMapping()
 	@ResponseBody
 	public List searchResolve(String q) {
 		List li = ss.findStartWith(q);
@@ -35,5 +36,15 @@ public class SearchController {
 			mav.setViewName("community/searchResult");
 		return mav;
 	}
+	*/
 	
+	@RequestMapping("/community/search")
+	public ModelAndView searchwriten(String title){
+		ModelAndView mav = new ModelAndView();
+		List list = ss.findwrite(title); 
+		mav.setViewName("community/main");
+		mav.addObject("list",list);
+		return mav;
+	}
+
 }

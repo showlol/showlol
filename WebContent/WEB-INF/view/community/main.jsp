@@ -56,10 +56,9 @@
 				<option value="stitle">제목</option>
 				<option value="swriter">작성자</option>
 				<option value="titlewrite">제목+작성자</option>
-			</select> <input type="text" name="search" class="form-control"
-				placeholder="검색어" />
-			<button type="submit" class="btn btn-default"
-				style="border-color: white;">검색</button>
+			</select> 
+			<input type="text"  class="form-control" placeholder="검색어" onclick="search(${title})" />
+			<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
 		</div>
 	</form>
 </div>
@@ -71,5 +70,18 @@
 				location.href = "/community/read/"
 						+ $(e.target).siblings("#num").html();
 			});
+	
+	function search(write) {
+		var xhr = new XMLHttpRequest();
+		xhr.open("post", "/community/search?title="+title, true);
+		xhr.send();
+		readall();
+	};
+	
+	function readall() {
+		location.reload(true);
+	};
+	
+	
 </script>
 

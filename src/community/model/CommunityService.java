@@ -76,7 +76,6 @@ public class CommunityService {
 
 		System.out.println(map.toString());
 		List m = sql.selectList("community.readRange", map);
-		System.out.println(m.size()+"½á»ß¾²");
 		sql.close();
 		System.out.println(m.toString());
 		return m;

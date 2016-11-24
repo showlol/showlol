@@ -27,17 +27,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 검색 기능 -->
-	
-	
-	
-	<select id="totalCount" resultType="java.lang.Integer">
-		select count(*) from community
+	<select id="readTitle"  resultType="community.model.CommunityData">
+		select * from community where title=#{title}
 	</select>
+	
+	
+
 	<!-- 커뮤니티글삭제 -->
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete from community where num= #{num}
 	</delete>
-	
+	<!-- 페이지 기능 -->
 	<select id="readRange" parameterType="java.util.HashMap" resultType="community.model.CommunityData">
 		<![CDATA[
 		select * from (

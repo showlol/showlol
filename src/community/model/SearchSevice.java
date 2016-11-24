@@ -13,6 +13,21 @@ public class SearchSevice {
 	@Autowired
 	SqlSessionFactory fac;
 	
+	
+	public List findwrite(String title){
+		SqlSession sql = fac.openSession();
+		List li = sql.selectList("community.readTitle",title);
+		
+		sql.close();
+		return li;
+	}
+	
+	
+	
+	
+	
+	
+	/*
 	public List findStartWith(String word){
 		SqlSession sql = fac.openSession();
 			List li =sql.selectList("community.searchSome", word+"%");
@@ -33,6 +48,6 @@ public class SearchSevice {
 		sql.close();
 		return li;
 	}
-	
+	*/
 	
 }
