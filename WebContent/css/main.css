@@ -15,6 +15,7 @@ a, a:link {
 article{
 	height: 100%;
 	padding: 80px;
+	margin: 0 auto;
 }
 footer{
 	clear: both;

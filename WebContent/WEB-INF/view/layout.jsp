@@ -13,16 +13,16 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body style="margin: 0; padding: 0; height: 100%">
 	<header>
 		<tiles:insertAttribute name="header" />
 	</header>
-	<article  style="min-height: 500px; padding: 60px;">
-		<div class="container">
+	<article style="overflow: scroll;">
+		
 			<tiles:insertAttribute name="article" />
-		</div>
+		
 	</article>
-	<footer>
+	<footer style="position: fixed; bottom: 0; width: 100%;height: 30px;">
 		<tiles:insertAttribute name="footer" />
 	</footer>
 </body>

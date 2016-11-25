@@ -33,10 +33,14 @@
 	</div>
 <br/>	
 <hr style="clear: left;">
-<br />
+<div id="btnGroup" style='float: right;' >
+	<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
+	<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
+</div>
 
-<input type="button" value="수정하기" id="update" />
-<input type="button" value="삭제" id="delete" />
+<br />
+<hr style="clear: right;">
+
 <c:if test="${nick!=null }">
 	<form action="/tactics/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
@@ -44,6 +48,8 @@
 		<textarea rows="4" name="area"></textarea>
 		<br /> <input type="submit" value="입력 완료" />
 	</form>
+	<input type="button" value="수정하기" id="update" />
+	<input type="button" value="삭제" id="delete" />
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
@@ -74,12 +80,36 @@
 		</div>
 	</c:forEach>
 </c:forEach>
+<!-- Modal -->
+<div id="confirmModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>       
+      </div>
+      <div class="modal-body">        		
+		<button class="btn" id="login" />
+		<button class="btn" value="로그인" id="login" />
+      </div>      
+    </div>
+
+  </div>
+</div>
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');
+		});
+		//공략글 삭제 수정
+		$("#btnGroup").children().click(function(e){
+			alert(e.target.getAttribute("id"));
+			if(e.target.getAttribute("id")=="tacticsDel")
+				alert("삭제");
 		});
 		
 		$("input").click(function() {
