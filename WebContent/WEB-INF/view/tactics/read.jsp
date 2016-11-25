@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+<link href="/css/tactics.css" rel="stylesheet">
 <H3>${tactics.champ } 공략글 </H3>
 <img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 <div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
@@ -19,20 +19,16 @@
 	</ul>
 	<div class="tab-content">	
 		<div id="mastery" class="tab-pane fade in active ">
-			<div>${tactics.masteryData }</div>
-			<p>${tactics.masteryContent }</p>
+			<c:import url="tactics/read/readMastery.jsp"></c:import>
 		</div>
 		<div id="rune" class="tab-pane fade in">
-			<div>${tactics.runeData }</div>
-			<p>${tactics.runeContent }</p>
+			<c:import url="tactics/read/readRune.jsp"></c:import>			
 		</div>
 		<div id="skill" class="tab-pane fade in">
-			<div>${tactics.skillBuild }</div>
-			<p>${tactics.skillContent }</p>
+			<c:import url="tactics/read/readSkills.jsp"></c:import>			
 		</div>
 		<div id="items" class="tab-pane fade in">
-			<div>${tactics.itemBuild }</div>
-			<p>${tactics.itemContent }</p>
+			<c:import url="tactics/read/readItems.jsp"></c:import>			
 		</div>
 	</div>
 <br/>	

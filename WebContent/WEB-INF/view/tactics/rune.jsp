@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<div id="runeSetter"
-		style="white-space: nowrap; height: 300px; max-width: 550px; overflow: auto; background-color: #eae179;">
+		style="white-space: nowrap; height: 300px; max-width: 650px; overflow: auto; background-color: #eae179;">
 		<c:forEach var="i" begin="0" end="29">
 			<div id="runeNum${i }" class="runeBox" data="empty"></div>
 			<c:if test="${i%10==9 }">
@@ -61,7 +61,6 @@
 		runeKind[abilist[0]]+=abilist[1];		
 		var runeAbility="";
 		var keys = Object.keys(runeKind);
-//		console.log(keys);
 		console.log(runeKind[keys[0]]);
 		keys.forEach(function(key){
 			if(runeKind[key]!=0){

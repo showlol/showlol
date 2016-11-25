@@ -66,7 +66,7 @@
 	}
 	function transferTactics() {
 		var masteryData = ""; //마스터리는 1부터 30까지
-		for (i = 1; i <= 30; i++) {
+		for (i = 1; i <= 45; i++) {
 			masteryData += $("#" + i).children("#point").html() + "#";
 		}
 		var runeData = "";
