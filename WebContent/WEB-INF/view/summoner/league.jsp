@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:choose>
+	<c:when test="${map2 != null }">
 <div>
 	<table>
 		<tr>
@@ -19,6 +21,7 @@
 		</tr>
 	</table>
 </div>
+
 <table width="100%" align="center">
 	<tr>
 		<td>
@@ -34,14 +37,14 @@
 				<c:forEach var="lg" items="${map.tList }">
 				<c:choose>
 					<c:when test="${map2.entries[0].playerOrTeamName == lg.playerOrTeamName }">
-						<tr bgcolor="aqua">
+						<tr style="background-color: aqua;">
 					</c:when>
 					<c:otherwise>
 						<tr>
 					</c:otherwise>
 				</c:choose>
 					<td align="center">${cnt }</td>
-					<td><font size="3">${lg.playerOrTeamName }</font></td>
+					<td><a style="text-decoration:none;color:black;" href="/summoner/index?userName=${lg.playerOrTeamName }"><font size="3">${lg.playerOrTeamName }</font></a></td>
 					<td align="center">
 						<c:choose>
 							<c:when test="${lg.veteran }">
@@ -167,14 +170,14 @@
 				<c:forEach var="lg" items="${map.rList }">
 				<c:choose>
 					<c:when test="${map2.entries[0].playerOrTeamName == lg.playerOrTeamName }">
-						<tr bgcolor="aqua">
+						<tr style="background-color: aqua;">
 					</c:when>
 					<c:otherwise>
 						<tr>
 					</c:otherwise>
 				</c:choose>
 					<td align="center">${cnt }</td>
-					<td><font size="3">${lg.playerOrTeamName }</font></td>
+					<td><a style="text-decoration:none;color:black;" href="/summoner/index?userName=${lg.playerOrTeamName }"><font size="3">${lg.playerOrTeamName }</font></a></td>
 					<td align="center">
 						<c:choose>
 							<c:when test="${lg.veteran }">
@@ -239,3 +242,8 @@
 		</td>
 	</tr>
 </table>
+</c:when>
+<c:otherwise>
+	소속된 리그가 없습니다.
+</c:otherwise>
+</c:choose>

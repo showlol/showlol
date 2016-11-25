@@ -108,7 +108,14 @@ th {
 									<c:set var="color" value="gray"/>
 								</c:otherwise>
 							</c:choose>
-							<font color="${color }"><fmt:formatNumber pattern="0.00">${kda }</fmt:formatNumber>:1</font>
+							<c:choose>
+								<c:when test="${c.stats.totalDeathsPerSession == 0 }">
+									<font color="red">Perfect</font>
+								</c:when>
+								<c:otherwise>
+									<font color="${color }"><fmt:formatNumber pattern="0.00">${kda }</fmt:formatNumber>:1</font>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 				</table>

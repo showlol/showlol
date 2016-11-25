@@ -35,8 +35,13 @@ public class RuneService {
 	// 아이디를이용한 내룬정보가져오기
 	public List getSummonerRune(String id){
 		RestTemplate rt = new RestTemplate();
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/"+id+
-				"/runes?api_key=RGAPI-06864093-378a-40c8-a28f-4d2c38158835",LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/"+id+
+					"/runes?api_key=RGAPI-06864093-378a-40c8-a28f-4d2c38158835",LinkedHashMap.class);
+		}catch (Exception e) {
+			return null;
+		}
 		LinkedHashMap data = (LinkedHashMap)map.get(id);
 		List pages = (ArrayList)data.get("pages");
 		

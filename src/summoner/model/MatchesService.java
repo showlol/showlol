@@ -22,7 +22,15 @@ public class MatchesService {
 		int summonerId = (int)sinfo.get("id");
 		String summonerName = (String)sinfo.get("name");
 		RestTemplate rt = new RestTemplate();
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.3/game/by-summoner/"+summonerId+"/recent?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
+		
+		LinkedHashMap map = new LinkedHashMap<>();
+		try{
+			map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v1.3/game/by-summoner/"+summonerId+"/recent?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09", LinkedHashMap.class);
+			
+		}catch(Exception e) {
+			return null;
+		}
+		
 		ArrayList games = (ArrayList)map.get("games");
 		List<RecentGamesDto> list = new ArrayList<>();
 		int cnt = 0;
@@ -166,7 +174,12 @@ public class MatchesService {
 		HashMap resMap = new HashMap<>();
 		RestTemplate rt = new RestTemplate();
 		String url = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/"+gid+"?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077";
-		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject(url, LinkedHashMap.class);
+		}catch(Exception e) {
+			return null;
+		}
 		
 		ArrayList participantIdentities = (ArrayList)map.get("participantIdentities");
 		int matchDuration = (int)map.get("matchDuration");
