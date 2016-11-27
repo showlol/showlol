@@ -2,21 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="champInfo" style="height: 300px; overflow-y:auto; ">
-	${param.champ } 스킬 로딩중...
+	${champData.name } 스킬 로딩중...
 </div>
 <div>
 	<div id="skillTree" style="height: 150px; "></div>
 	<div style="clear: left;" ></div>
-	<input type="hidden" name="skillBuild" />
-	<textarea name="skillContent" id="skillContent"></textarea>
+	<textarea name="skillContent" id="skillContent">${tactics.skillContent }</textarea>
 	<script>
-		CKEDITOR.replace('skillContent');
-	</script>
+ 		CKEDITOR.replace('skillContent');
+	</script> 
 </div>
 
 <script>
 	var spells=[];
-	$.get("/champData/${param.key }", function(r){
+	$.get("/champData/${champData.key}", function(r){
 		$("#champInfo").empty();
 		spells = r.spells;
 		for(i=0; i<4; i++){
@@ -76,6 +75,5 @@
 		if(skillTree["level"]<12)
 			var arrow = "<h1 style='display:inline;'>→</h1>";
 		$("#skillTree").append(arrow);
-		console.log(skillBuild);
 	}
 </script>

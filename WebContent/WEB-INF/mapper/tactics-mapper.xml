@@ -28,6 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="read"  resultType="tactics.model.pojo.ImprovedTactics">
 		select * from Improvedtactics_content where num=#{num}
 	</select>
+	<select id="itemContents"  resultType="java.util.HashMap">
+		select itembuild, itemcontent from Improvedtactics_content where num=#{num}
+	</select>
 	<select id="bestList" resultType="tactics.model.pojo.Tactics">
 		<![CDATA[select temp.r, temp.* from 
 			(select rownum r, tc.* from tactics_content tc order by writedate desc)temp
@@ -42,6 +45,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyfollow" parameterType="java.util.List" resultType="java.util.HashMap">
 		select * from tactics_reply2 order by num asc
 	</select>
+	<!-- 공략 수정 -->
+	<update id="tacticsModify" parameterType="tactics.model.pojo.ImprovedTactics">
+		update improvedtactics_content set champ=#{champ}, writer=#{writer}, title=#{title},
+			masteryData=#{masteryData},	masteryContent=#{masteryContent}, runeData=#{runeData},
+			runeContent=#{runeContent},	skillBuild=#{skillBuild}, skillContent=#{skillContent},
+			itemBuild=#{itemBuild}, itemContent=#{itemContent}, writeDate=sysdate where num=#{num}
+	</update>
+	<delete id="tacticsDel" >
+		delete from improvedTactics_content where num=#{num}
+	</delete>
 	<!-- 댓글 -->
 	<update id="upReply" parameterType="java.util.HashMap">
 		update tactics_reply1 set content=#{content} where num=#{num}

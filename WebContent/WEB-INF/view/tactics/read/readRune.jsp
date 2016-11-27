@@ -12,7 +12,7 @@
 </div>
 <div id="runeAbility"></div>
 <div></div>
-<p>${tactics.runeContent }</p>
+<div id="runeContent" class="tacticsContent" >${tactics.runeContent }</div>
 
 <script>
 
@@ -22,6 +22,9 @@ $("readRune.jsp").ready(function(){
 	$.get("/JSON/rune", function(list){		
 		for(i=0; i<data.length-1; i++){
 			var id = data[i];
+			if(id=="undefined"){
+				continue;
+			}
 			var img = list[id].image.full;
 			$("#runeNum"+i).css(
 					"background-image",

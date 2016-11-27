@@ -12,7 +12,7 @@ CHAMPION<br/><hr/>
 				<div id="champPortrait">			
 					<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
 						 height="50" width="50"/><br/>
-					${list.NAME }
+					<span style='overflow-y: hidden;'>${list.NAME }</span>
 				</div>
 			</a>			
 		</c:forEach>

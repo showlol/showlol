@@ -32,8 +32,7 @@
 	<div id="runeAbility"></div>
 	<div style="clear: left;">
 		<h4>${param.champ }의룬 공략</h4>
-		<input type='hidden' name='runeData' />
-		<textarea name="runeContent" id="runeContent"></textarea>
+		<textarea name="runeContent" id="runeContent">${tactics.runeContent }</textarea>
 		<script>CKEDITOR.replace('runeContent');</script>
 	</div>
 <script>

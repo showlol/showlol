@@ -17,10 +17,10 @@
 	<header>
 		<tiles:insertAttribute name="header" />
 	</header>
-	<article style="overflow: scroll;">
-		
+	<article style="overflow: scroll; ">
+		<div style='margin: 0 15%;'>
 			<tiles:insertAttribute name="article" />
-		
+		</div>
 	</article>
 	<footer style="position: fixed; bottom: 0; width: 100%;height: 30px;">
 		<tiles:insertAttribute name="footer" />

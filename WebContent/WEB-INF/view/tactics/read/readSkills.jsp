@@ -4,7 +4,7 @@
 
 <div id="skillTree" style="height: 150px; width: auto;"></div>
 <div style='clear: left;'></div>
-<p>${tactics.skillContent }</p>
+<div id="skillContent" class="tacticsContent" >${tactics.skillContent }</div>
 			
 <script>
 $.get("/champData/${champData.key }", function(r){
@@ -16,16 +16,12 @@ $.get("/champData/${champData.key }", function(r){
 		var img = spells[skillTree[i]].image.full;
 		var spell = 
 			"<img id='setSkill' info='"
-			+0+"' src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/"
+			+skillTree[i]+"' src='http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/"
 			+img+"'>"		
 		$("#skillTree").append(spell);		
 		var arrow = "<h1 style='display:inline;'>→</h1>";
 		$("#skillTree").append(arrow);	
-	}		
-// 		var description = spells[i].description;
-// 		$("#champInfo").append(spells[i].name);
-// 		$("#champInfo").append(spell);
-// 		$("#champInfo").append(description+"<br/>");
+	}	
 					
 });
 

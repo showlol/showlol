@@ -5,7 +5,8 @@ import java.util.Date;
 public class ImprovedTactics {
 	int num;	
 	String champ;
-	String writer;	
+	String writer;
+	String title;
 	String masteryData;
 	String masteryContent;
 	String runeData;
@@ -19,7 +20,7 @@ public class ImprovedTactics {
 	int hit;
 	String imageLink="";
 	Date writeDate;
-	String title;
+	
 	public int getNum() {
 		return num;
 	}
@@ -37,6 +38,12 @@ public class ImprovedTactics {
 	}
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getMasteryData() {
 		return masteryData;
@@ -116,12 +123,7 @@ public class ImprovedTactics {
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
 	@Override
 	public String toString() {
 		return "ImprovedTactics [num=" + num + ", champ=" + champ + ", writer=" + writer + ", masteryData="

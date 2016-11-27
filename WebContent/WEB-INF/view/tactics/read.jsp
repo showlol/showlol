@@ -1,42 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link href="/css/tactics.css" rel="stylesheet">
-<H3>${tactics.champ } 공략글 </H3>
-<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
-<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-	border-radius: 4%; padding: 10px; ">
-	<b style='display: inline;' >${tactics.title }</b><br/>	
-	<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
-	<span style='float: right; '>${tactics.writeDate }</span><br/>
-</div>
-<ul class="nav nav-tabs">
-		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
-		<li><a href="#rune">룬</a>
-		<li><a href="#skill">스킬</a>
-		<li><a href="#items">아이템</a>
-	</ul>
-	<div class="tab-content">	
-		<div id="mastery" class="tab-pane fade in active ">
-			<c:import url="tactics/read/readMastery.jsp"></c:import>
-		</div>
-		<div id="rune" class="tab-pane fade in">
-			<c:import url="tactics/read/readRune.jsp"></c:import>			
-		</div>
-		<div id="skill" class="tab-pane fade in">
-			<c:import url="tactics/read/readSkills.jsp"></c:import>			
-		</div>
-		<div id="items" class="tab-pane fade in">
-			<c:import url="tactics/read/readItems.jsp"></c:import>			
-		</div>
+<head>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="/ckeditor/ckeditor.js"></script>
+	<link href="/css/tactics.css" rel="stylesheet">
+</head>
+<form  method='post' onsubmit="return transferTactics();" >	
+	<H3>${tactics.champ } 공략글 </H3>
+	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
+	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; ">
+		<b style='display: inline;' >${tactics.title }</b><br/>	
+		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
+		<span style='float: right; '>${tactics.writeDate }</span><br/>
 	</div>
-<br/>	
-<hr style="clear: left;">
-<div id="btnGroup" style='float: right;' >
-	<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
-	<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
-</div>
+	<ul class="nav nav-tabs">
+			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
+			<li><a href="#rune">룬</a>
+			<li><a href="#skill">스킬</a>
+			<li><a href="#items">아이템</a>
+		</ul>
+		<div class="tab-content">	
+			<div id="mastery" class="tab-pane fade in active ">
+				<c:import url="tactics/read/readMastery.jsp"></c:import>
+			</div>
+			<div id="rune" class="tab-pane fade in">
+				<c:import url="tactics/read/readRune.jsp"></c:import>			
+			</div>
+			<div id="skill" class="tab-pane fade in">
+				<c:import url="tactics/read/readSkills.jsp"></c:import>			
+			</div>
+			<div id="items" class="tab-pane fade in">
+				<c:import url="tactics/read/readItems.jsp"></c:import>			
+			</div>
+		</div>
+	<br/>
+	<hr style="clear: left;">
+	<c:if test="${tactics.writer==nick }">
+		<div id="btnGroup" style='float: right;' >
+			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
+			<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
+		</div>
+	</c:if>
+	
+</form>
 
 <br />
 <hr style="clear: right;">
@@ -97,7 +105,7 @@
 
   </div>
 </div>
-
+<%out.print("택틱스"+request.getAttribute("tactics")); %>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -107,10 +115,28 @@
 		});
 		//공략글 삭제 수정
 		$("#btnGroup").children().click(function(e){
-			alert(e.target.getAttribute("id"));
-			if(e.target.getAttribute("id")=="tacticsDel")
-				alert("삭제");
-		});
+			if(e.target.getAttribute("id")=="tacticsDel"){
+				$.ajax({
+					url : "/tactics/tacticsDel/${tactics.num}",
+					async : false
+				}).done(function(r){
+					if(r==true){
+						alert("공략 삭제가 완료되었습니다.");
+						location.href="/tactics/";						
+					}else{
+						alert("글이 삭제되지 않았습니다.");
+					}
+				}).fail(function(r){
+					alert(r.data);
+				});
+					
+			}	
+		
+			
+			if(e.target.getAttribute("id")=="tacticsMod"){
+				location.replace("/tactics/modify/");				
+			}				
+		});	
 		
 		$("input").click(function() {
 			console.log($(this));			
@@ -140,6 +166,38 @@
 			deleteReply2($(this).attr("id"));
 		});
 	});
+	
+	function tacticsModify(){
+		$.ajax("/js/mastery/masteryMod.js");
+		$.get("/tactics/rune", function(r){
+			var div = "<div id='rune' class='tab-pane fade in'>"+r+"</div>";
+			$("#rune").replaceWith(div);
+		});
+		
+// 		$(".tacticsContent").each(function(i){
+// 			var id = this.getAttribute('id');
+//  			var content = "<textarea name='"+id
+//  				+"' id='"+id+"' name='"+id
+//  				+"'cols='30' rows='10'>"+this.innerHTML+"</textarea>";
+// 			$(this).replaceWith(content);
+// 			CKEDITOR.replace(id);
+// 		});
+		$("#btnGroup").replaceWith("<button id='tacticsModBtn' type='submit' class='btn btn-primary'>"+
+				"등록하기</button>");		
+		
+	}
+	
+	function transferTactics(){
+		$.ajax("/js/mastery/transferTactics.js").done(function(){
+			console.log("transferTactics loaded.");
+			alert($("[name='itemBuild']").val());
+		}).fail(function(){
+			alert("스크립트 로딩 실패!!");
+		});	
+		return false;
+	}
+	
+	
 	var replyBox = document.createElement("div");
 		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
 	

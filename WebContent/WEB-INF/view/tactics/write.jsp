@@ -3,12 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <script src="/ckeditor/ckeditor.js"></script>
+<link href="/css/tactics.css" rel="stylesheet">
 <title>공략 글쓰기</title>
 </head>
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 <div>
-	<input type='text' name='title' required='required' placeholder="제목을 입력해 주세요" />
-	<input type='hidden' name='champ' value='${param.champ }' />
+	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
+	<textarea name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required">
+		${tactics.title }	
+	</textarea>
+	<input type='hidden' name='champ' value='${champData.key }' />
 	<input type='hidden' name='writer' value='${nick }' />	
 	<ul class="nav nav-tabs">
 		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
@@ -33,37 +38,23 @@
 	<hr style="clear: left;">
 </div>
 <input type="submit" value="등록" />
+	<input type="hidden" name="skillBuild" />
+	<input type="hidden" name="masteryData" value=""/>	
+	<input type='hidden' name='itemBuild' value="" />
+	<input type='hidden' name='runeData' />
+	
 </form>
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	$(document).ready(function() {
-		$("#wr").click(function() {
-			write();
-		});
+	$(document).ready(function() {		
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');
-		});
-		$("#md").click(function() {
-			masteryData();
-		});
+			
+		});			
 	});
-
-	function write() {
-		$.ajax({
-			type : "POST",
-			url : "/tactics/write",
-			data : {
-				writer : "${nick }",
-				champ : "${param.champ }",
-				title : $("#title").val(),
-				content1 : CKEDITOR.instances.content1.getData()
-			},
-		}).done(function(r) {
-			location.href = "/tactics/"
-		});
-	}
+	
 	function transferTactics() {
 		var masteryData = ""; //마스터리는 1부터 30까지
 		for (i = 1; i <= 45; i++) {
@@ -74,17 +65,19 @@
 			runeData += $("#runeNum" + i).children("div:first").attr("value")
 					+ "#";
 		}
+		var skillBuild = "";
+		$("#skillTree").children("img").each(function(elt){
+			skillBuild += this.getAttribute("info")+"#";
+		});
+		var itemBuild = "";
+		$("#itemTree").children("img").each(function(elt){
+			itemBuild += this.getAttribute("info")+"#";
+		});
 		$("[name=masteryData]").val(masteryData);
-		$("[name=skillBuild]").val(skillBuild);
 		$("[name=runeData]").val(runeData);
-		$("[name=itemBuild]").val(itemBuild);
-		console.log($("[name=masteryData]").val(masteryData));		
-		console.log($("[name=skillBuild]").val(skillBuild));
-		console.log($("[name=runeData]").val(runeData));
-		console.log($("[name=itemBuild]").val(itemBuild));
+		$("[name=skillBuild]").val(skillBuild);
+		$("[name=itemBuild]").val(itemBuild);		
 		return true;
 	}
-	function runeData() {
-
-	}
+	
 </script>

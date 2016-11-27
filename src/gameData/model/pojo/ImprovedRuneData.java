@@ -31,13 +31,10 @@ public class ImprovedRuneData extends RuneData{
 			abilist[1].add(name);
 			abilist[1].add(num);
 		}
-		System.out.println(ar[0]+"/"+ar[0].equals("10초당 골드 +1"));
 		if(ar[0].equals("10초당 골드 +1")){
-			System.out.println("골드검색");
 			name="10초당 골드";
 			num = (float)1;
 		}else if(ar[0].equals("10초당 +0.25 골드")){
-			System.out.println("골드 획득 인장 ");
 			name="10초당 골드";
 			num = (float)0.25;
 		}else{

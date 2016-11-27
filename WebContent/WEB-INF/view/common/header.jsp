@@ -61,12 +61,18 @@
 	
 	var logInfo = "<div style='height: inherit; padding-right: 15px; padding-top:7px;'>"+
 					"<a href='/information?nick=${nick}' style='color: white;'>My Info</a><br/><a href='javascript:logout()' style='color: white;'>Logout</a><div>";	
-
-	if(${nick!=null}){
-		document.getElementById("logInfo").innerHTML = logInfo;	
-	} else {
-		document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
+	$("header.jsp").ready(function(){
+		loginCheck();
+	});
+	
+	function loginCheck(){
+		if(${nick!=null}){
+			document.getElementById("logInfo").innerHTML = logInfo;	
+		} else {
+			document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
+		}
 	}
+	
 
 	function logout(){
 		$.ajax({
@@ -94,7 +100,8 @@
 			if(r=="false") {
 				document.getElementById("danger").innerHTML = "로그인에 실패하셨습니다.";
 			} else {
-				location.href="/";
+				loginCheck();
+				$("#loginModal").modal("hide");
 			}
 		});
 	};

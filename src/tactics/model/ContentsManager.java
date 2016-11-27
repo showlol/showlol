@@ -2,6 +2,7 @@ package tactics.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,12 +40,18 @@ public class ContentsManager {
 	}
 
 	public ImprovedTactics read(int num) {
-		System.out.println("글번호:"+num);
 		SqlSession sql = fac.openSession();
 		ImprovedTactics tac = sql.selectOne("tactics.read", num);		
 		sql.close();
 		return tac;
 	}
+	public Map readItem(int num){
+		SqlSession sql = fac.openSession();
+		Map map  = sql.selectOne("tactics.itemContents", num);		
+		sql.close();
+		return map;
+	}
+	
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("tactics.reply", map)==1? true : false;
@@ -70,5 +77,18 @@ public class ContentsManager {
 		List list = sql.selectList("tactics.bestList");
 		sql.close();
 		return list;
+	}
+	public boolean modify(ImprovedTactics tac) {
+		System.out.println(tac.toString());
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("tactics.tacticsModify", tac)==1?true:false;
+		sql.close();
+		return r;
+	}
+	public boolean tacticsDel(int num) {
+		SqlSession sql = fac.openSession();
+		boolean r = sql.delete("tactics.tacticsDel", num)==1?true:false;
+		sql.close();
+		return r;
 	}
 }
