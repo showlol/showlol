@@ -69,7 +69,6 @@ public class LeagueService {
 			led.hotStreak = (boolean)entry.get("isHotStreak");
 			led.inactive = (boolean)entry.get("isInactive");
 			led.veteran = (boolean)entry.get("isVeteran");
-			led.leaguePoints = (int)entry.get("leaguePoints");
 			led.wins = (int)entry.get("wins");
 			led.losses = (int)entry.get("losses");
 			led.leaguePoints = (int)entry.get("leaguePoints");
