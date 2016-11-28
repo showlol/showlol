@@ -97,8 +97,19 @@ console.log("masteryMod load...");
 							}
 							console.log(totalPoint);
 		}); // attrBox bind click
-		$(".attrBox").contextmenu(function(){
+		$(".attrBox").contextmenu(function(e){
 			alert("우클릭");
+			console.log(e.target);
+			
+			target = $(e.target).children("#point");
+			console.log(target);
+			if(target.html()<1){
+				alert("더 취소할 수 없습니다.");
+				return false;s
+			}
+			
+			totalPoint++;
+			return false;
 		});
 		var btnWidth = 100;
 		$("#initMasteryWrap").append("<input type='button' id='initMasteryBtn'"
