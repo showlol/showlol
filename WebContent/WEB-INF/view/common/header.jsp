@@ -1,67 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a class="navbar-brand" href="/" >LolStatus</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>        
-        <li><a href="#">STATICS</a></li>
-        <li><a href="/tactics/">TACTICS</a></li>
-        <li><a href="/community/review2">Community</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/join"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li id="logInfo" ><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+	a{
+		font-family: 'Oswald', sans-serif;
+	}
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/" style="font-family: 'Oswald', sans-serif;">ShowLOL</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/" style="font-family: 'Oswald', sans-serif;">Home</a></li>
+				<li><a href="#" style="font-family: 'Oswald', sans-serif;">Statics</a></li>
+				<li><a href="/tactics/" style="font-family: 'Oswald', sans-serif;">Tactics</a></li>
+				<li><a href="/community/review2" style="font-family: 'Oswald', sans-serif;">Community</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/join" style="font-family: 'Oswald', sans-serif;"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li id="logInfo"><a href="#" data-toggle="modal"
+					data-target="#loginModal" style="font-family: 'Oswald', sans-serif;"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</div>
 </nav>
 
 <!-- Modal -->
 <div id="loginModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+	<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">로그인</h4>
+			</div>
+			<div class="modal-body">
+				<div id="danger"></div>
+				ID : <input type="email" id="id" placeholder="email을 입력하세요." /> <br />
+				PASS : <input type="password" id="pass" /> <br /> <input
+					type="button" value="로그인" id="login" /> <input type="button"
+					value="회원가입" id="bt" />
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">로그인</h4>
-      </div>
-      <div class="modal-body">
-        <div id="danger"></div>
-			ID :
-			<input type="email" id="id" placeholder="email을 입력하세요." />
-			<br />
-			PASS :
-			<input type="password" id="pass" />
-			<br />
-			<input type="button" value="로그인" id="login" />
-			<input type="button" value="회원가입" id="bt" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
+	</div>
 </div>
 
 
 <script>
 	
 	var logInfo = "<div style='height: inherit; padding-right: 15px; padding-top:7px;'>"+
-					"<a href='/information?nick=${nick}' style='color: white;'>My Info</a><br/><a href='javascript:logout()' style='color: white;'>Logout</a><div>";	
+					"<a href='/information?nick=${nick}' style='color: white; font-family: 'Oswald', sans-serif;'>My Info</a><br/><a href='javascript:logout()' style='color: white; font-family: 'Oswald', sans-serif;'>Logout</a><div>";	
 	$("header.jsp").ready(function(){
 		loginCheck();
 	});
@@ -102,7 +103,7 @@
 				document.getElementById("danger").innerHTML = "로그인에 실패하셨습니다.";
 			} else {
 				loginCheck();
-				$("#loginModal").modal("hide");
+				location.reload();
 			}
 		});
 	};

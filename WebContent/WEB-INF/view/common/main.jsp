@@ -32,22 +32,23 @@ th {
 	<img width="400" src="/image/lol.png" style="padding: 50px;"/>
 </div>
 <div style="text-align: center;">
-	<form action="/summoner/index" method="post" style="display:form-group form-inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24;" list="hist" required="required" id="tt" placeholder="검색어"/>
+	<form action="/summoner/index" method="post" style="display:inline;" id="search">
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" list="hist" required="required" id="tt"/>
 		<datalist id="hist">
 			<c:set var="arr" value="${fn:split(hist, ',') }"/>
 			<c:forEach var="h" items="${arr }">
 				<option class="item" value="${h }" />
 			</c:forEach>
 		</datalist>
-		<input type="submit" value="검색" style="font-size: 24;" class="btn btn-default" style="border-color: white;"/>
+		<input type="submit" value="검색" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;"/>
+
 	</form>
 </div>
 
 <div align="center">
-<h2>Challenger 랭킹</h2>
+<h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger 랭킹</h2>
 <table border="1" style="padding: 100px;">
-	<tr height="50" align="center">
+	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
 		<th width="150">소환사</th>
 		<th width="100">티어</th>
@@ -57,7 +58,7 @@ th {
 	
 	<c:set var="cnt" value="1"/>
 	<c:forEach var="i" items="${list }">
-		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px;" >
+		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px; font-family: 'Roboto Condensed', sans-serif;" >
 			<td align="center">${cnt }</td>
 			<td><b>${i.playerOrTeamName }</b></td>
 			<td align="center">Challenger</td>
