@@ -50,14 +50,14 @@
 
 <!-- 검색기능 -->
 <div align="right">
-	<form>
+	<form >
 		<div class="form-group form-inline">
-			<select name="ctg" class="form-control">
+			<select  class="form-control">
 				<option value="stitle">제목</option>
 				<option value="swriter">작성자</option>
 				<option value="titlewrite">제목+작성자</option>
 			</select> 
-			<input type="text"  class="form-control" placeholder="검색어" onclick="search(${title})" />
+			<input type="text"  class="form-control" placeholder="검색어" list="srchrst" name="srch" />
 			<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
 		</div>
 	</form>
@@ -71,17 +71,33 @@
 						+ $(e.target).siblings("#num").html();
 			});
 	
-	function search(write) {
+
+	
+	document.getElementById("srch").addEventListener("keyup", function(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("post", "/community/search?title="+title, true);
+		/*
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		*/
+		var url = "/community/search?title="+document.getElementById("srch").value;
+		xhr.open("get", url, true);
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState==4 && xhr.status==200) {
+			//	var html = xhr.responseText;
+			//	document.getElementById("srchrst").innerHTML = html;
+				var list = JSON.parse(xhr.responseText);
+				var html = "";
+				console.log(xhr.responseText);
+				console.log(list.length);
+				for(var i=0; i<list.length; i++) {
+					console.log(list[i].title);
+					html+="<option>"+list[i].title+"</option>";
+				}
+				document.getElementById("srchrst").innerHTML = html;
+				console.log(html);
+			}
+		}
 		xhr.send();
-		readall();
-	};
-	
-	function readall() {
-		location.reload(true);
-	};
-	
-	
+		
+	});
 </script>
 

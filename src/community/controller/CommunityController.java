@@ -42,7 +42,6 @@ public class CommunityController {
 			List size = cs.readRange(p,total);
 			mav.setViewName("community/main");
 			mav.addObject("size",size);
-			System.out.println(size.size());
 			mav.addObject("total",total);
 			mav.addObject("current", p );
 			return mav;
@@ -103,9 +102,7 @@ public class CommunityController {
 		
 		@RequestMapping("/community/write")
 		public String write(CommunityData cd){
-			System.out.println(cd);
 			cs.write(cd);
-			System.out.println(cd.toString());
 			return "redirect:/community/review2?r=true";
 		}
 		
