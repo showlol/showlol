@@ -76,7 +76,7 @@
 		<!-- 대댓글 -->
 		<div>
 			<c:if test="${f.PARENTNUM==r.NUM }">
-				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
+				<img src="/image/review2.png"/><b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
 				 <c:if test="${f.WRITER==nick }">
 				 	<input type="button" class="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" />
 				 	<input type="button" value="삭제" class="delReply2" id="${f.NUM }" style="font-size: 9;" />

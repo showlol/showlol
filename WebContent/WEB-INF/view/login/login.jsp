@@ -25,11 +25,10 @@ PASS :
 		$.ajax({
 			method:"get",
 			url : "/login/loginData?email="+id.value+"&pass="+pass.value
-		}).done(function(r) {
+		}).done(function() {
 			if(r=="false") {
 				document.getElementById("danger").innerHTML = "로그인에 실패하셨습니다.";
 			} else {
-				window.alert(r);
 				location.href="/";
 			}
 		});
