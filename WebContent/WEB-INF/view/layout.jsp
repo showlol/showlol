@@ -17,9 +17,10 @@
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body style="margin: 0; padding: 0; height: 100%">
-	<header>
+	<header>	
 		<tiles:insertAttribute name="header" />
 	</header>
+
 	<article style="overflow: scroll; ">		
 		<div id="top"></div>
 		<tiles:insertAttribute name="article" />		

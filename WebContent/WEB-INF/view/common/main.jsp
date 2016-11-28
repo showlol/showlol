@@ -46,7 +46,7 @@ th {
 </div>
 
 <div align="center">
-<h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger 랭킹</h2>
+<h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger Rank</h2>
 <table border="1" style="padding: 100px;">
 	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
