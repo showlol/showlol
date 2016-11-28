@@ -71,9 +71,7 @@
 		
 // 		return false;
 // 	});
-	$("[id*='runeNum']").contextmenu(function(){
-			alert("우클릭");
-	});
+	
 	
 	$.ajax({
 			url: "/js/mastery/transferTactics.js",
