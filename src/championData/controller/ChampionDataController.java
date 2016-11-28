@@ -18,6 +18,7 @@ public class ChampionDataController {
 	@RequestMapping("/champData/{name}")
 	@ResponseBody
 	public Object champDataJSON(@PathVariable String name ,Map map){
+		System.out.println("champData:"+name);
 		return ics.individual(name);
 	}
 	@RequestMapping("/champDataPage/{name}")

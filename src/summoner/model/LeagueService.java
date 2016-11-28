@@ -16,7 +16,13 @@ public class LeagueService {
 	
 	public LinkedHashMap getUserLeagueInfo(int id) {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"/entry?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"/entry?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		}catch(Exception e) {
+			return null;
+		}
+		
 		List data = (ArrayList)map.get(id+"");
 		
 		return (LinkedHashMap)data.get(0);
@@ -24,7 +30,12 @@ public class LeagueService {
 	
 	public String getUserDivision(int id) {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"/entry?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"/entry?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		}catch(Exception e) {
+			return null;
+		}
 		List data = (ArrayList)map.get(id+"");
 		LinkedHashMap map2 = (LinkedHashMap)data.get(0);
 		ArrayList entries = (ArrayList)map2.get("entries");
@@ -34,7 +45,12 @@ public class LeagueService {
 	}
 	public HashMap getLeague(int id, String division) {
 		RestTemplate rt = new RestTemplate();	
-		LinkedHashMap map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject("https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/"+id+"?api_key=RGAPI-bfc24a92-45bd-44ca-b5f1-dbd022e5e077", LinkedHashMap.class);
+		}catch(Exception e) {
+			return null;
+		}
 		List data = (ArrayList)map.get(id+"");
 		LinkedHashMap map2 = (LinkedHashMap)data.get(0);
 		List entries =  (ArrayList)map2.get("entries");
@@ -53,7 +69,6 @@ public class LeagueService {
 			led.hotStreak = (boolean)entry.get("isHotStreak");
 			led.inactive = (boolean)entry.get("isInactive");
 			led.veteran = (boolean)entry.get("isVeteran");
-			led.leaguePoints = (int)entry.get("leaguePoints");
 			led.wins = (int)entry.get("wins");
 			led.losses = (int)entry.get("losses");
 			led.leaguePoints = (int)entry.get("leaguePoints");

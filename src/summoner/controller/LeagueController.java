@@ -27,11 +27,13 @@ public class LeagueController {
 		ModelAndView mav = new ModelAndView();
 		//String division = lsvc.getUserDivision((int)bsvc.sinfo.get("id"));
 		HashMap map2 = lsvc.getUserLeagueInfo((int)bsvc.sinfo.get("id"));
-		ArrayList entries = (ArrayList)map2.get("entries");
-		LinkedHashMap map3 = (LinkedHashMap)entries.get(0);
-		HashMap map = lsvc.getLeague((int)bsvc.sinfo.get("id"), (String)map3.get("division"));
-		mav.addObject("map", map);
-		mav.addObject("map2", map2);
+		if(map2 != null) {
+			ArrayList entries = (ArrayList)map2.get("entries");
+			LinkedHashMap map3 = (LinkedHashMap)entries.get(0);
+			HashMap map = lsvc.getLeague((int)bsvc.sinfo.get("id"), (String)map3.get("division"));
+			mav.addObject("map", map);
+			mav.addObject("map2", map2);
+		}
 		
 		return mav;
 	}

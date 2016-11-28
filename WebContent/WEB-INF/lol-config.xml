@@ -43,6 +43,7 @@
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/tile/common-tile.xml</value>
+				<value>/WEB-INF/tile/tactics-tile.xml</value>
 			</list>
 		</property>
 	</bean>

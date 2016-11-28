@@ -32,21 +32,37 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
-				<table>
-					<tr>
-						<td>
-							<img src="/image/tier_icons/${fn:toLowerCase(tierInfo.tier) }_${fn:toLowerCase(tierInfo.entries[0].division) }.png">
-						</td>
-						<td>
-							<table>
-								<tr><td><font color="#0033FF">${tierInfo.tier } ${tierInfo.entries[0].division }<font></td></tr>
-								<tr><td><b>${tierInfo.entries[0].leaguePoints } LP</b> / ${tierInfo.entries[0].wins }승 ${tierInfo.entries[0].losses }패</td></tr>
-								<tr><td>승률 <fmt:formatNumber pattern="0">${tierInfo.entries[0].wins / (tierInfo.entries[0].wins + tierInfo.entries[0].losses) * 100 }</fmt:formatNumber>%</td></tr>
-								<tr><td>${tierInfo.name }</td></tr>
-							</table>
-						</td>
-					<tr>
-				</table>
+				<c:choose>
+				<c:when test="${tierInfo == null }">
+					<table>
+						<tr>
+							<td>
+								<img src="/image/tier_icons/provisional.png">
+							</td>
+							<td>
+								Unranked
+							</td>
+						<tr>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<table>
+						<tr>
+							<td>
+								<img src="/image/tier_icons/${fn:toLowerCase(tierInfo.tier) }_${fn:toLowerCase(tierInfo.entries[0].division) }.png">
+							</td>
+							<td>
+								<table>
+									<tr><td><font color="#0033FF">${tierInfo.tier } ${tierInfo.entries[0].division }<font></td></tr>
+									<tr><td><b>${tierInfo.entries[0].leaguePoints } LP</b> / ${tierInfo.entries[0].wins }승 ${tierInfo.entries[0].losses }패</td></tr>
+									<tr><td>승률 <fmt:formatNumber pattern="0">${tierInfo.entries[0].wins / (tierInfo.entries[0].wins + tierInfo.entries[0].losses) * 100 }</fmt:formatNumber>%</td></tr>
+									<tr><td>${tierInfo.name }</td></tr>
+								</table>
+							</td>
+						<tr>
+					</table>
+				</c:otherwise>
+				</c:choose>
 			</div>
 			<div id="champion" class="tab-pane fade"></div>
 			<div id="league" class="tab-pane fade"></div>

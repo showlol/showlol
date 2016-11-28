@@ -1,41 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<head>
+	<link rel='stylesheet' href='/css/runeMap.css' >
+</head>
 
-	
-	<div style="float: left;">
-		<select id="runeKind">
+<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 650px; overflow: auto;	
+	 background-image: url('https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png');
+	 background-size: 600px 300px ;
+	 background-repeat: no-repeat; ">
+	<c:forEach var="i" begin="0" end="29">
+		<div id="runeNum${i }" class="runeBox" data="empty"></div>
+		<c:if test="${i%10==9 }">
+			<br />
+		</c:if>
+	</c:forEach>
+</div>
+<select id="runeKind">
 			<option>룬선택</option>
 			<option>표식</option>
 			<option>인장</option>
 			<option>문양</option>
 			<option>정수</option>
-		</select>
+	</select> 	
+<div id="runeSelector" style="height: 250px; overflow-y: auto;" >
+	
+</div>
+<div id="runeAbility"></div>
+<div id='initRuneWrap' class='clearBtnWrap'></div>
+<h4>${champData.key }의룬공략</h4>
+<textarea name="runeContent" id="runeContent">${tactics.runeContent }</textarea>
+<script>CKEDITOR.replace('runeContent');
+</script>
 
-		<div id="runeSelector" style="height: 250px; overflow-y: auto;">
-			룬 게터<br />
-			<div id='rune' type='red' data='5534'
-				style='height: 40px; width: 40px; background-image: url("http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/y_4_3.png"); background-size: cover;'>
-			</div>
-			<br />
-		</div>
-	</div>
-	<div id="runeSetter"
-		style="white-space: nowrap; height: 300px; max-width: 550px; overflow: auto; background-color: #eae179;">
-		<c:forEach var="i" begin="0" end="29">
-			<div id="runeNum${i }" class="runeBox" data="empty"></div>
-			<c:if test="${i%10==9 }">
-				<br />
-			</c:if>
-		</c:forEach>
-	</div>
-	<div id="runeAbility"></div>
-	<div style="clear: left;">
-		<h4>${param.champ }의룬 공략</h4>
-		<input type='hidden' name='runeData' />
-		<textarea name="runeContent" id="runeContent"></textarea>
-		<script>CKEDITOR.replace('runeContent');</script>
-	</div>
 <script>
 	
 	var runeList = [];
@@ -45,12 +42,38 @@
 	$("rune.jsp").ready(function(){
 		$("#runeSelector, #runeSetter").click(function(e){
 			console.log($(this).attr("id"));
+			console.log("data:"+e.target.getAttribute("data"));
 			var target = $(e.target);
 			console.log(target);
 			if(target.attr("id")=="rune")
 				addRune(target);
 			if(target.attr("class")=="runeBox")
 				removeRune(target);
+		});
+		$("#runeSelector, #runeSetter").contextmenu(function(e){
+			if(e.target.getAttribute("id")=="rune"){
+				removeRune(e.target);	
+			}else{
+				console.log("wrong");
+			}
+			
+		});
+		function removeRune(target){
+			var parent = target.parentNode;			
+			parent.removeChild(target);		
+			parent.setAttribute("data", "empty");			
+		}
+		
+// 		$("[id*='runeNum']").contextmenu(function(){
+// 			removeRune(target);
+// 		});
+		
+		var btnWidth = 100;
+		$("#initRuneWrap").append("<input type='button' id='initRuneBtn'"
+				+" class='btn btn-danger' value='초기화' style='width:"
+				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
+		$("#initRuneBtn").click(function(){
+			alert("초기화");
 		});
 	});	
 	
@@ -61,7 +84,6 @@
 		runeKind[abilist[0]]+=abilist[1];		
 		var runeAbility="";
 		var keys = Object.keys(runeKind);
-//		console.log(keys);
 		console.log(runeKind[keys[0]]);
 		keys.forEach(function(key){
 			if(runeKind[key]!=0){
@@ -121,8 +143,9 @@
 		}		
  	}
 	
-	function removeRune(target){
-		alert("remove"+target);	
+
+	function clearRune(target){
+		
 	}
 	
 	if(${runeList==null }){

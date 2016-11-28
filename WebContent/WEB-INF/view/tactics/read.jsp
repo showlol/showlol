@@ -1,46 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<head>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="/ckeditor/ckeditor.js"></script>
+	<link href="/css/tactics.css" rel="stylesheet">
+</head>
+<div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
 
-<H3>${tactics.champ } 공략글 </H3>
-<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
-<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-	border-radius: 4%; padding: 10px; ">
-	<b style='display: inline;' >${tactics.title }</b><br/>	
-	<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
-	<span style='float: right; '>${tactics.writeDate }</span><br/>
-</div>
-<ul class="nav nav-tabs">
-		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
-		<li><a href="#rune">룬</a>
-		<li><a href="#skill">스킬</a>
-		<li><a href="#items">아이템</a>
-	</ul>
-	<div class="tab-content">	
-		<div id="mastery" class="tab-pane fade in active ">
-			<div>${tactics.masteryData }</div>
-			<p>${tactics.masteryContent }</p>
-		</div>
-		<div id="rune" class="tab-pane fade in">
-			<div>${tactics.runeData }</div>
-			<p>${tactics.runeContent }</p>
-		</div>
-		<div id="skill" class="tab-pane fade in">
-			<div>${tactics.skillBuild }</div>
-			<p>${tactics.skillContent }</p>
-		</div>
-		<div id="items" class="tab-pane fade in">
-			<div>${tactics.itemBuild }</div>
-			<p>${tactics.itemContent }</p>
-		</div>
+	<H3>${tactics.champ } 공략글 </H3>
+	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
+	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; ">
+		<b style='display: inline;' >${tactics.title }</b><br/>	
+		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
+		<span style='float: right; '>${tactics.writeDate }</span><br/>
 	</div>
-<br/>	
-<hr style="clear: left;">
-<br />
+	<ul class="nav nav-tabs">
+			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
+			<li><a href="#rune">룬</a>
+			<li><a href="#skill">스킬</a>
+			<li><a href="#items">아이템</a>
+		</ul>
+		<div class="tab-content">	
+			<div id="mastery" class="tab-pane fade in active ">
+				<c:import url="tactics/read/readMastery.jsp"></c:import>
+			</div>
+			<div id="rune" class="tab-pane fade in">
+				<c:import url="tactics/read/readRune.jsp"></c:import>			
+			</div>
+			<div id="skill" class="tab-pane fade in">
+				<c:import url="tactics/read/readSkills.jsp"></c:import>			
+			</div>
+			<div id="items" class="tab-pane fade in">
+				<c:import url="tactics/read/readItems.jsp"></c:import>			
+			</div>
+		</div>
+	<br/>
+	<hr style="clear: left;">
+	<c:if test="${tactics.writer==nick }">
+		<div id="btnGroup" style='float: right;' >
+			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
+			<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
+		</div>
+	</c:if>	
 
-<input type="button" value="수정하기" id="update" />
-<input type="button" value="삭제" id="delete" />
+<br />
+<hr style="clear: right;">
+
 <c:if test="${nick!=null }">
 	<form action="/tactics/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
@@ -48,6 +55,8 @@
 		<textarea rows="4" name="area"></textarea>
 		<br /> <input type="submit" value="입력 완료" />
 	</form>
+	<input type="button" value="수정하기" id="update" />
+	<input type="button" value="삭제" id="delete" />
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
@@ -78,6 +87,24 @@
 		</div>
 	</c:forEach>
 </c:forEach>
+</div>
+<!-- Modal -->
+<div id="confirmModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>       
+      </div>
+      <div class="modal-body">        		
+		<button class="btn" id="login" />
+		<button class="btn" value="로그인" id="login" />
+      </div>      
+    </div>
+
+  </div>
+</div>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -85,6 +112,27 @@
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');
 		});
+		//공략글 삭제 수정
+		$("#btnGroup").children().click(function(e){
+			if(e.target.getAttribute("id")=="tacticsDel"){
+				$.ajax({
+					url : "/tactics/tacticsDel/${tactics.num}",
+					async : false
+				}).done(function(r){
+					if(r==true){
+						alert("공략 삭제가 완료되었습니다.");
+						location.href="/tactics/";						
+					}else{
+						alert("글이 삭제되지 않았습니다.");
+					}
+				}).fail(function(r){
+					alert(r.data);
+				});					
+			}			
+			if(e.target.getAttribute("id")=="tacticsMod"){
+				location.replace("/tactics/modify/");				
+			}				
+		});	
 		
 		$("input").click(function() {
 			console.log($(this));			
@@ -114,6 +162,18 @@
 			deleteReply2($(this).attr("id"));
 		});
 	});
+	
+	function tacticsModify(){
+		$.ajax("/js/mastery/masteryMod.js");
+		$.get("/tactics/rune", function(r){
+			var div = "<div id='rune' class='tab-pane fade in'>"+r+"</div>";
+			$("#rune").replaceWith(div);
+		});		
+
+		$("#btnGroup").replaceWith("<button id='tacticsModBtn' type='submit' class='btn btn-primary'>"+
+				"등록하기</button>");		
+	}	
+	
 	var replyBox = document.createElement("div");
 		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
 	

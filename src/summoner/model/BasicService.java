@@ -110,4 +110,14 @@ public class BasicService {
 		return skey;
 	}
 	*/
+	public boolean isCookie(String hist, String c) {
+		String[] arr = hist.split(",");
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i].equals(c)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
