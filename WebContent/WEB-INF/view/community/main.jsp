@@ -18,13 +18,24 @@
 	<tbody>
 		<c:forEach var="t" items="${size }">
 			<tr class="info">
-				<td id="num">${t.num }
-				<td>${t.title }
-				<td>${t.writer }
+				<td id="num">${t.num }</td>
+				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</td>
+				<td>
+					<div class="dropdown">
+						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
+							type="button" data-toggle="dropdown" style="color: black">
+							${t.writer } 
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								href="/community/memo">쪽지 보내기</a></li>
+						</ul>
+					</div>
+				</td>
 				<td><fmt:formatNumber value="${t.good }" />
 				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
-				<td>${t.clicks}
+				<td>${t.clicks}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -63,13 +74,15 @@
 	</form>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	$("tbody").click(
+	/* $("tbody").click(
 			function(e) {
 				console.log($(e.target).siblings("#num").html());
 				location.href = "/community/read/"
 						+ $(e.target).siblings("#num").html();
-			});
+			}); */
 	
 	function search(write) {
 		var xhr = new XMLHttpRequest();
@@ -82,6 +95,9 @@
 		location.reload(true);
 	};
 	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
 	
 </script>
 
