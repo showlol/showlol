@@ -32,7 +32,7 @@
 						</ul>
 					</div>
 				</td>
-				<td><fmt:formatNumber value="${t.good }" />
+				<td><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
 				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
 				<td>${t.clicks}</td>
@@ -55,20 +55,20 @@
 </ul>
 <!-- 게시글 작성기능 -->
 <form action="/community/writepage">
-	<button type="submit" class="btn btn-default"
+	<button type="submit"  id="writing" class="btn btn-default"
 		style="border-color: white;">게시글 작성</button>
 </form>
 
 <!-- 검색기능 -->
 <div align="right">
-	<form>
+	<form >
 		<div class="form-group form-inline">
-			<select name="ctg" class="form-control">
+			<select  class="form-control">
 				<option value="stitle">제목</option>
 				<option value="swriter">작성자</option>
 				<option value="titlewrite">제목+작성자</option>
 			</select> 
-			<input type="text"  class="form-control" placeholder="검색어" onclick="search(${title})" />
+			<input type="text"  class="form-control" placeholder="검색어" list="srchrst" name="srch" />
 			<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
 		</div>
 	</form>
@@ -84,13 +84,45 @@
 						+ $(e.target).siblings("#num").html();
 			}); */
 	
-	function search(write) {
-		var xhr = new XMLHttpRequest();
-		xhr.open("post", "/community/search?title="+title, true);
-		xhr.send();
-		readall();
-	};
+	$("#writing").show().click(function(){
+		if(${nick==null }){
+			alert("로그인이 필요합니다.");
+			return false;
+		}
+			 
+		location.href="/tactics/regArticle/"+name+"/"+key;
+	});
+
+	/*
 	
+	document.getElementById("srch").addEventListener("keyup", function(){
+		var xhr = new XMLHttpRequest();
+		
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		
+		var url = "/community/search?title="+document.getElementById("srch").value;
+		xhr.open("get", url, true);
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState==4 && xhr.status==200) {
+			//	var html = xhr.responseText;
+			//	document.getElementById("srchrst").innerHTML = html;
+				var list = JSON.parse(xhr.responseText);
+				var html = "";
+				console.log(xhr.responseText);
+				console.log(list.length);
+				for(var i=0; i<list.length; i++) {
+					console.log(list[i].title);
+					html+="<option>"+list[i].title+"</option>";
+				}
+				document.getElementById("srchrst").innerHTML = html;
+				console.log(html);
+			}
+		}
+		xhr.send();
+		
+	});
+	
+<<<<<<< HEAD
 	function readall() {
 		location.reload(true);
 	};
@@ -99,5 +131,7 @@
 	    $(".dropdown-toggle").dropdown();
 	});
 	
+=======
+	*/
 </script>
 

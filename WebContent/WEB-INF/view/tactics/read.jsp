@@ -38,6 +38,7 @@
 		</div>
 	<br/>
 	<hr style="clear: left;">
+			${tactics.writer } / ${nick }
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" style='float: right;' >
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
@@ -53,21 +54,19 @@
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
 		<input type="hidden" name="parentNum" value="${tactics.num }">
 		<textarea rows="4" name="area"></textarea>
-		<br /> <input type="submit" value="입력 완료" />
+		<br /> <input type="submit" value="입력 완료" class="btn btn-default"/>
 	</form>
-	<input type="button" value="수정하기" id="update" />
-	<input type="button" value="삭제" id="delete" />
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
 		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE })
 		<c:if test="${nick!=null }">
-		<input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
+		<input type="button" name="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" class="btn btn-default"/>
 		</c:if>
 		<c:if test="${r.WRITER==nick }">
-			<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
-			<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" />
+			<input type="button" name="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" class="btn btn-default" /> 
+			<input type="button" value="삭제" name="delReply" id="${r.NUM }" style="font-size: 9;" class="btn btn-default"/>
 		</c:if><br />
 		<div id="cotent_${r.NUM }">${r.CONTENT }</div>
 		<hr />
@@ -76,10 +75,10 @@
 		<!-- 대댓글 -->
 		<div>
 			<c:if test="${f.PARENTNUM==r.NUM }">
-				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
+				<img src="/image/review2.png"/><b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
 				 <c:if test="${f.WRITER==nick }">
-				 	<input type="button" class="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" />
-				 	<input type="button" value="삭제" class="delReply2" id="${f.NUM }" style="font-size: 9;" />
+				 	<input type="button" name="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" class="btn btn-default" />
+				 	<input type="button" value="삭제" name="delReply2" id="${f.NUM }" style="font-size: 9;" class="btn btn-default"/>
 				 </c:if><br />
 				<div id="cotent_${f.NUM }">${f.CONTENT }</div>
 				<hr />

@@ -15,29 +15,29 @@ public class SearchController {
 	
 	@Autowired
 	SearchSevice ss;
-	
 	/*
-	@RequestMapping()
+	
+	@RequestMapping("/community/search")
 	@ResponseBody
-	public List searchResolve(String q) {
-		List li = ss.findStartWith(q);
-		// ResopnseBody 객체를 전송을 시킬수가 있다.
-		// 단, 라이브러리가 필요. jackson bind
+	public List searchResolve(String title) {
+		List li = ss.findStartWith(title);
 		return li;
 	}
+	*/
 	
-	@RequestMapping("/file/searchXML.do")
-	public ModelAndView searchResolveType2(String q) {
-		List li = ss.findStartWith(q);
-		// ResopnseBody 객체를 전송을 시킬수가 있다.
-		// 단, 라이브러리가 필요. jackson bind
+	
+	@RequestMapping("/community/search")
+	public ModelAndView searchResolveType2(String title) {
+		List li = ss.findStartWith(title);
 		ModelAndView mav = new ModelAndView();
 			mav.addObject("li", li);
 			mav.setViewName("community/searchResult");
 		return mav;
 	}
-	*/
 	
+	
+	
+	/*
 	@RequestMapping("/community/search")
 	public ModelAndView searchwriten(String title){
 		ModelAndView mav = new ModelAndView();
@@ -46,5 +46,5 @@ public class SearchController {
 		mav.addObject("list",list);
 		return mav;
 	}
-
+	*/
 }

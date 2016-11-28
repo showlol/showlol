@@ -12,6 +12,9 @@ a, a:link {
 .clearfix{
 	clear: both;
 }
+header{
+	style="font-family: 'Oswald', sans-serif;
+}
 article{
 	height: 100%;
 	padding: 80px;

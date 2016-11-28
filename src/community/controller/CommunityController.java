@@ -26,7 +26,7 @@ public class CommunityController {
 	@Autowired
 	ReplyFollowService rfs;
 
-		//¸ŞÀÎ, ±Û¸ñ·Ï¸®½ºÆ®
+		//ì»¤ë®¤ë‹ˆí‹°ê²Œì‹œíŒ ê¸€ ì½ê¸°
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			List list = cs.readall();
@@ -36,7 +36,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//ÆäÀÌÁö
+		//ì»¤ë®¤ë‹ˆí‹°ê²Œì‹œíŒ ì½ì–´ì˜¤ê¸°
 		@RequestMapping("/community/review2")
 		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
 			ModelAndView mav = new ModelAndView();
@@ -44,13 +44,12 @@ public class CommunityController {
 			List size = cs.readRange(p,total);
 			mav.setViewName("community/main");
 			mav.addObject("size",size);
-			System.out.println(size.size());
 			mav.addObject("total",total);
 			mav.addObject("current", p );
 			return mav;
 		}
 
-		// Ä¿¹Â´ÏÆ¼±Û ÀĞ±â
+		// ì»¤ë®¤ë‹ˆí‹° ê¸€ì½ê¸°
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num){
 			CommunityData cd = cs.read(num);
@@ -64,7 +63,7 @@ public class CommunityController {
 			mav.addObject("click",cli);
 			return mav;
 		}
-		//Ä¿¹Â´ÏÆ¼±Û ´ñ±Û´Ş±â
+		//ëŒ“ê¸€
 		@RequestMapping("/community/reply")
 		public String reply(String nick, String area, String parentNum) {
 			HashMap<String, String> map = new HashMap<>();
@@ -72,10 +71,10 @@ public class CommunityController {
 			map.put("area", area);
 			map.put("parentNum", parentNum);
 			cs.reply(map);
-			return "redirect:/community/read/{num}";
+			return "redirect:/community/read/"+parentNum;
 		}
 			
-		// ±Û»èÁ¦
+		// ê¸€ì‚­ì œ
 		@RequestMapping("/community/reviewd")
 		public ModelAndView reviewlikein(int num){
 			ModelAndView mav = new ModelAndView();
@@ -85,7 +84,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//ÁÁ¾Æ¿ä 
+		//ì¢‹ì•„ìš”ì¦ê°€
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -94,8 +93,7 @@ public class CommunityController {
 			mav.addObject("list",list);
 			return mav;
 		}
-		
-		//±Û¾²±â ÆäÀÌÁö
+		//ê¸€ì“°ê¸°
 		@RequestMapping("/community/writepage")
 		public ModelAndView community(){
 				ModelAndView mav = new ModelAndView();
@@ -105,13 +103,11 @@ public class CommunityController {
 		
 		@RequestMapping("/community/write")
 		public String write(CommunityData cd){
-			System.out.println(cd);
 			cs.write(cd);
-			System.out.println(cd.toString());
 			return "redirect:/community/review2?r=true";
 		}
 		
-		//±ÛÀĞ±âÆäÀÌÁö¿¡¼­ Ä¿¹Â´ÏÆ¼ ¸ŞÀÎÀ¸·Î
+		//ëª©ë¡ìœ¼ë¡œ
 		@RequestMapping("/community/return")
 		public String retrun(){
 			return "redirect:/community/review2?r=true";
