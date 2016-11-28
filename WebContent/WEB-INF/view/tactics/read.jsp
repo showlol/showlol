@@ -6,7 +6,8 @@
 	<script src="/ckeditor/ckeditor.js"></script>
 	<link href="/css/tactics.css" rel="stylesheet">
 </head>
-<form  method='post' onsubmit="return transferTactics();" >	
+<div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
+
 	<H3>${tactics.champ } 공략글 </H3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
@@ -42,9 +43,7 @@
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
 			<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
 		</div>
-	</c:if>
-	
-</form>
+	</c:if>	
 
 <br />
 <hr style="clear: right;">
@@ -88,6 +87,7 @@
 		</div>
 	</c:forEach>
 </c:forEach>
+</div>
 <!-- Modal -->
 <div id="confirmModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-sm">
@@ -105,7 +105,6 @@
 
   </div>
 </div>
-<%out.print("택틱스"+request.getAttribute("tactics")); %>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -128,11 +127,8 @@
 					}
 				}).fail(function(r){
 					alert(r.data);
-				});
-					
-			}	
-		
-			
+				});					
+			}			
 			if(e.target.getAttribute("id")=="tacticsMod"){
 				location.replace("/tactics/modify/");				
 			}				
@@ -172,31 +168,11 @@
 		$.get("/tactics/rune", function(r){
 			var div = "<div id='rune' class='tab-pane fade in'>"+r+"</div>";
 			$("#rune").replaceWith(div);
-		});
-		
-// 		$(".tacticsContent").each(function(i){
-// 			var id = this.getAttribute('id');
-//  			var content = "<textarea name='"+id
-//  				+"' id='"+id+"' name='"+id
-//  				+"'cols='30' rows='10'>"+this.innerHTML+"</textarea>";
-// 			$(this).replaceWith(content);
-// 			CKEDITOR.replace(id);
-// 		});
+		});		
+
 		$("#btnGroup").replaceWith("<button id='tacticsModBtn' type='submit' class='btn btn-primary'>"+
 				"등록하기</button>");		
-		
-	}
-	
-	function transferTactics(){
-		$.ajax("/js/mastery/transferTactics.js").done(function(){
-			console.log("transferTactics loaded.");
-			alert($("[name='itemBuild']").val());
-		}).fail(function(){
-			alert("스크립트 로딩 실패!!");
-		});	
-		return false;
-	}
-	
+	}	
 	
 	var replyBox = document.createElement("div");
 		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";

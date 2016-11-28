@@ -10,7 +10,7 @@
 		</ul>
 		<span class="clearfix"><br></span>
 		<ul class="mastery_ul" id="mastery_ul"></ul>
-		<div style="clear: left;"></div>
+		<div id='initMasteryWrap' class='clearBtnWrap' ></div>
 		<textarea name="masteryContent" id="masteryContent">${tactics.masteryContent }</textarea>		
 		<script>
 			CKEDITOR.replace('masteryContent');

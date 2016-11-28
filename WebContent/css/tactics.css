@@ -73,10 +73,16 @@ ul.mastery_ul li{
 }
 
 .runeBox{
-	height: 55px;
-	width: 55px;
-	margin: 7 0 0 5;		
+	height: 45px;
+	width: 45px;
+	margin: 7 0 0 5;
+	padding: 0;		
 	display: inline-block;
+}
+.clearBtnWrap{
+	clear: left;
+	text-align: center;
+	padding: 8px;
 }
 
 

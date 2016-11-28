@@ -1,0 +1,239 @@
+@CHARSET "EUC-KR";
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 1px 2px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button1 {
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+}
+
+.buttonclick {
+	background-color: #4CAF50;
+	color: white;
+	border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+.button2 {
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+}
+
+.button2:hover {
+	background-color: #008CBA;
+	color: white;
+}
+
+.button3 {
+	background-color: white;
+	color: black;
+	border: 2px solid #f44336;
+}
+
+.button3:hover {
+	background-color: #f44336;
+	color: white;
+}
+
+.button4 {
+	background-color: white;
+	color: black;
+	border: 2px solid #e7e7e7;
+}
+
+.button4:hover {
+	background-color: #e7e7e7;
+}
+
+.button5 {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+}
+
+.button5:hover {
+	background-color: #555555;
+	color: white;
+}
+
+#relative {
+	position: relative;
+}
+
+#absolue1, #absolue2, #absolue3, #absolue4, #absolue5, #absolue6,
+	#absolue7, #absolue8, #absolue9, #absolue10, #absolue11, #absolue12,
+	#absolue13, #absolue14, #absolue15, #absolue16, #absolue17, #absolue18,
+	#absolue19, #absolue20, #absolue21, #absolue22, #absolue23, #absolue24,
+	#absolue25, #absolue26, #absolue27, #absolue28, #absolue29, #absolue30
+	{
+	position: absolute;
+	z-index: 5;
+}
+
+#absolue1 {
+	top: 374px;
+	left: 25px;
+}
+
+#absolue2 {
+	top: 374px;
+	left: 88px;
+}
+
+#absolue3 {
+	top: 375px;
+	left: 160px;
+}
+
+#absolue4 {
+	top: 317px;
+	left: 12px;
+}
+
+#absolue5 {
+	top: 313px;
+	left: 74px;
+}
+
+#absolue6 {
+	top: 327px;
+	left: 129px;
+}
+
+#absolue7 {
+	top: 266px;
+	left: 34px;
+}
+
+#absolue8 {
+	top: 269px;
+	left: 116px;
+}
+
+#absolue9 {
+	top: 227px;
+	left: 75px;
+}
+
+#absolue10 {
+	top: 182px;
+	left: 38px;
+}
+
+#absolue11 {
+	top: 178px;
+	left: 109px;
+}
+
+#absolue12 {
+	top: 133px;
+	left: 68px;
+}
+
+#absolue13 {
+	top: 110px;
+	left: 123px;
+}
+
+#absolue14 {
+	top: 65px;
+	left: 156px;
+}
+
+#absolue15 {
+	top: 38px;
+	left: 213px;
+}
+
+#absolue16 {
+	top: 20px;
+	left: 270px;
+}
+
+#absolue17 {
+	top: 1px;
+	left: 334px;
+}
+
+#absolue18 {
+	top: 50px;
+	left: 360px;
+}
+
+#absolue19 {
+	top: 5px;
+	left: 400px;
+}
+
+#absolue20 {
+	top: 53px;
+	left: 434px;
+}
+
+#absolue21 {
+	top: 5px;
+	left: 466px;
+}
+
+#absolue22 {
+	top: 91px;
+	left: 482px;
+}
+
+#absolue23 {
+	top: 45px;
+	left: 511px;
+}
+
+#absolue24 {
+	top: 5px;
+	left: 549px;
+}
+
+#absolue25 {
+	top: 38px;
+	left: 597px;
+}
+
+#absolue26 {
+	top: 80px;
+	left: 557px;
+}
+
+#absolue27 {
+	top: 131px;
+	left: 579px;
+}
+
+#absolue28 {
+	top: 24px;
+	left: 34px;
+}
+
+#absolue29 {
+	top: 207px;
+	left: 188px;
+}
+
+#absolue30 {
+	top: 162px;
+	left: 424px;
+}
