@@ -10,8 +10,10 @@
 <b>NICK :</b> ${data.nick }<br/>
 <b>GAMEID :</b> ${data.gameid }<br/>
 <hr/>
+<input type="button" value="쪽지보기" id="showMemo"/>
 <input type="button" id="changeinfo" value="정보 수정"/>
 <input type="button" id="delID" value="회원 탈퇴"/>
+<div id="Memo"></div>
 </div>
 
 <div id="dropMem"style="display:none;">
@@ -21,6 +23,7 @@
 	<li>탈퇴 후 회원정보는 모두 삭제됩니다.</li>
 	<li>탈퇴 신청시 즉시 탈퇴 처리됩니다.</li>
 </ul>
+
 <input type="email" placeholder="자신의 ID를 입력해주세요." id="delMemid"/>
 <input type="button" value="탈퇴하기" id="delMem"/>
 </div>
@@ -36,5 +39,18 @@
 			url : "/delMem/del?email="+delMemid.value+"&nick=${data.nick}"
 		});		
 		location.href="/";
+	});
+	document.getElementById("showMemo").addEventListener("click", function() {
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/community/showMemo?nick=${data.nick}",
+			"async" : false
+			}
+		).done(function(obj) {
+			$("#Memo").html(obj);
+		}).fail(function() {
+			alert("ERROR");
+		});
 	});
 </script>

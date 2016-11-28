@@ -100,6 +100,27 @@ public class CommunityService {
 		sql.close();
 		return list;
 	}
+	
+	public int writeMemo(String to, String from, String title, String memo) {
+		SqlSession sql = fac.openSession();
+		HashMap map = new HashMap<>();
+		map.put("writeTo", to);
+		map.put("writeFrom", from);
+		map.put("title", title);
+		map.put("memo", memo);
+		int res = sql.insert("community.insertMemo", map);
+		sql.close();
+		
+		return res;
+	}
+	
+	public List showMemo(String nick) {
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("community.selectMemo2", nick);
+		sql.close();
+		
+		return list;
+	}
 }
 
 

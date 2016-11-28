@@ -80,5 +80,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from community_reply2 where num=#{num}
 	</delete>
 	
+	<insert id="insertMemo" parameterType="java.util.HashMap">
+		insert into memo values(SEQ_MEMO.nextval, #{writeTo}, #{writeFrom}, #{title}, #{memo})
+	</insert>
 	
+	<select id="selectMemo" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from memo where id = #{id}
+	</select>
+	
+	<select id="selectMemo2" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from memo where writeto = #{writeto}
+	</select>
 </mapper>

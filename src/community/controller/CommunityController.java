@@ -3,6 +3,8 @@ package community.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -115,6 +117,30 @@ public class CommunityController {
 			return "redirect:/community/review2?r=true";
 		}
 		
+		// 쪽지 보내기 view
+		@RequestMapping("/community/memo/{to}") 
+		public ModelAndView memo(@PathVariable String to){
+			ModelAndView mav = new ModelAndView("community/memo");
+			mav.addObject("to", to);
+			
+			return mav;
+		}
+		// 쪽지 보내기
+		@RequestMapping("/community/writeMemo") 
+		public String writeMemo(String to, String title, String memo, HttpSession session){
+			ModelAndView mav = new ModelAndView("community/memo");
+			int res = cs.writeMemo(to, (String)session.getAttribute("nick"), title, memo);
+			if(res == 1)
+				return "redirect:/community/review2";
+			else
+				return "community/memo";
+		}
 		
-		
+		@RequestMapping("/community/showMemo")
+		public ModelAndView showMemo(String nick) {
+			ModelAndView mav = new ModelAndView("community/memoList");
+			List list = cs.showMemo(nick);
+			mav.addObject("list", list);
+			return mav;
+		}
 }

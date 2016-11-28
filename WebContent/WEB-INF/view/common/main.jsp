@@ -45,7 +45,7 @@ th {
 
 <div align="center">
 <h2>Challenger 랭킹</h2>
-<table border="1" style="padding: 100px;">
+<table border="1" style="padding: 100px;" id="table">
 	<tr height="50" align="center">
 		<th width="50"></th>
 		<th width="150">소환사</th>
@@ -88,8 +88,32 @@ th {
 	</c:forEach>
 </table>
 </div>
+<div id="showBtn" align="center" style="padding:10px;">
+	<input type="hidden" id="startIdx" value="${cnt}"/>
+	<input type="button" value="더보기" onclick="showover()" style="width: 580px;"/>
+</div>
 
 <script>
+	function showover() {
+		var idx = $("#startIdx").val();
+		var stidx = parseInt(idx)-1;
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/index/challenger?startIdx="+stidx,
+			"async" : false
+			}
+		).done(function(obj) {
+			var table = $("#table").html();
+			$("#table").html(table + obj);
+			if(idx > 180)
+				document.getElementById("showBtn").style.display = "none";
+			else
+				$("#startIdx").val(parseInt(idx)+20);
+		}).fail(function() {
+			alert("ERROR");
+		});
+	}
 	/* $("#tt").on("input", function(){
 		$(".item").each(function(){
 			if($(this).val() == $("#tt").val()) {
