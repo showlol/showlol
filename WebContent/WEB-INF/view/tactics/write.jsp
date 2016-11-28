@@ -9,11 +9,11 @@
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 <div>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
-	<textarea name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required">
-		${tactics.title }	
-	</textarea>
-	<input type='hidden' name='champ' value='${champData.key }' />
+	<input name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required" value='${tactics.title }' >
+			
+	
+	<input type='hidden' name='champ' value='${champData.name }' />
 	<input type='hidden' name='writer' value='${nick }' />	
 	<ul class="nav nav-tabs">
 		<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>

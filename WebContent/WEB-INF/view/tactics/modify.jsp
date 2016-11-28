@@ -10,13 +10,12 @@
 	<input type='text' name='haha' >
 	<input type='submit' >
 </form>
-<form action="/tactics/writeUpdate2" id='tacticsModForm' method="post"  >
+<form action="/tactics/writeUpdate2" id='tacticsModForm' method="get" onsubmit='return transferTactics();' >
 <div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${sessionScope.champData.image1}" >
-	<textarea name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-		border-radius: 4%; padding: 10px; ">
-		${tactics.title }	
-	</textarea>
+	<input name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; " value='${tactics.title }' >
+	
 	<input type='hidden' name='champ' value='${sessionScope.tactics.champ }' />
 	<input type='hidden' name='writer' value='${nick }' />	
 	<ul class="nav nav-tabs">
@@ -40,6 +39,7 @@
 		</div>
 	</div>	
 	<hr style="clear: left;">
+	<input type='hidden' name='num' value='${tactics.num }' >
 	<input type="submit" value="등록" />
 </div>
 </form>
@@ -65,33 +65,21 @@
 			
 		});			
 	});
-// 	$("#writeUpdate").submit(function(){
-// 		alert("sdfdf");
-// 		console.log("sdfsdaf");
-		
-// 		return false;
-// 	});
-	
-	
-	$.ajax({
-			url: "/js/mastery/transferTactics.js",
-			async: false
-		}).done(function(r){
-			console.log($("#tacticsModForm").find("[name]"));
-			alert("계산 완료");
-			return true; 
-		});
+
 	function transferTactics() {
 		console.log(this);
 		$.ajax({
 			url: "/js/mastery/transferTactics.js",
 			async: false
 		}).done(function(r){
+			console.log("계산 결과");
 			console.log($("#tacticsModForm").find("[name]"));
 			alert("계산 완료");
 			return true; 
-		});
-		return false;
+		}).fail(function(r){
+			alert(r);
+			return false;
+		});		
 	}
 	
 </script>

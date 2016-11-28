@@ -39,22 +39,57 @@
 	var runeJSON = {};
 	var runeKind = {};
 	var runeAbil = {};
+	if(runeAbility==null){
+		var runeAbility="";
+	}
 	$("rune.jsp").ready(function(){
-		$("#runeSelector, #runeSetter").click(function(e){
+		$("#runeSelector").click(function(e){
 			console.log($(this).attr("id"));
 			console.log("data:"+e.target.getAttribute("data"));
 			var target = $(e.target);
 			console.log(target);
-			if(target.attr("id")=="rune")
-				addRune(target);
+			if(target.attr("id")=="rune"){
+				if(addRune(target)){
+					console.log("룬추가중");
+					var abilist = runeAbil[target.attr("value")][0];
+					runeKind[abilist[0]]+=abilist[1];		
+					
+					var keys = Object.keys(runeKind);
+					console.log(runeKind[keys[0]]);
+					keys.forEach(function(key){
+						if(runeKind[key]!=0){
+							runeAbility += key+":"+runeKind[key]+" / ";
+						}			
+					});
+					$("#runeAbility").html(runeAbility);
+				}
+			}
+				
 			if(target.attr("class")=="runeBox")
 				removeRune(target);
 		});
-		$("#runeSelector, #runeSetter").contextmenu(function(e){
+		// 룬 우클릭 제거...
+		$("#runeSetter").contextmenu(function(e){
 			if(e.target.getAttribute("id")=="rune"){
-				removeRune(e.target);	
+				var target=$(e.target);
+				var abilist = runeAbil[target.attr("value")][0];
+				runeKind[abilist[0]]-=abilist[1];		
+				var runeAbility="";
+				var keys = Object.keys(runeKind);
+				console.log(runeKind[keys[0]]);
+				keys.forEach(function(key){
+					if(runeKind[key]!=0){
+						runeAbility += key+":"+runeKind[key]+" / ";
+					}			
+				});
+				$("#runeAbility").html(runeAbility);				
+				
+				removeRune(e.target);				
+				
+				return false;
 			}else{
 				console.log("wrong");
+				return false;
 			}
 			
 		});
@@ -80,17 +115,7 @@
  	function addRune(target){
  		target=target.clone();
 		var isSettable=false;
-		var abilist = runeAbil[target.attr("value")][0];
-		runeKind[abilist[0]]+=abilist[1];		
-		var runeAbility="";
-		var keys = Object.keys(runeKind);
-		console.log(runeKind[keys[0]]);
-		keys.forEach(function(key){
-			if(runeKind[key]!=0){
-				runeAbility += key+":"+runeKind[key]+" / ";
-			}			
-		});
-		$("#runeAbility").html(runeAbility);
+		
 		switch(target.attr("type")){
 		case "red":
 			for(i = 0; i<9; i++){
@@ -98,10 +123,13 @@
 					$("#runeNum"+i).attr("data", "full");
 					$("#runeNum"+i).append(target);
 					isSettable=true;
-					break;
+					return true;
 				}				
 			}
-			isSettable==false?alert("해당 룬을 더 이상 설정 할 수 없습니다."):0;
+			if(!isSettable){
+				alert("해당 룬을 더 이상 설정 할 수 없습니다.");
+				return false;
+			}
 			break;
 		case "yellow":
 			for(i = 10; i<19; i++){
@@ -109,11 +137,14 @@
 					$("#runeNum"+i).attr("data", "full");
 					$("#runeNum"+i).append(target);					
 					isSettable=true;
-					break;
+					return true;
 				}
 				
 			}
-			isSettable==false?alert("해당 룬을 더 이상 설정 할 수 없습니다."):0;
+			if(!isSettable){
+				alert("해당 룬을 더 이상 설정 할 수 없습니다.");
+				return false;
+			}
 			break;
 		case "blue":
 			for(i = 20; i<29; i++){
@@ -121,10 +152,13 @@
 					$("#runeNum"+i).attr("data", "full");
 					$("#runeNum"+i).append(target);					
 					isSettable=true;
-					break;
+					return true;
 				}
 			}
-			isSettable==false?alert("해당 룬을 더 이상 설정 할 수 없습니다."):0;
+			if(!isSettable){
+				alert("해당 룬을 더 이상 설정 할 수 없습니다.");
+				return false;
+			}
 			break;
 		case "black":
 			for(i = 9; i<30; i+=10){
@@ -132,14 +166,18 @@
 					$("#runeNum"+i).attr("data", "full");
 					$("#runeNum"+i).append(target);					
 					isSettable=true;
-					break;
+					return true;
 				}
 				
 			}
-			isSettable==false?alert("해당 룬을 더 이상 설정 할 수 없습니다."):0;
+			if(!isSettable){
+				alert("해당 룬을 더 이상 설정 할 수 없습니다.");
+				return false;
+			}
 			break;
-		default:
+		default:			
 			break;
+		return true;
 		}		
  	}
 	
