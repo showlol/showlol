@@ -44,7 +44,7 @@
 </ul>
 <!-- 게시글 작성기능 -->
 <form action="/community/writepage">
-	<button type="submit" class="btn btn-default"
+	<button type="submit"  id="writing" class="btn btn-default"
 		style="border-color: white;">게시글 작성</button>
 </form>
 
@@ -71,6 +71,14 @@
 						+ $(e.target).siblings("#num").html();
 			});
 	
+	$("#writing").show().click(function(){
+		if(${nick==null }){
+			alert("로그인이 필요합니다.");
+			return false;
+		}
+			 
+		location.href="/tactics/regArticle/"+name+"/"+key;
+	});
 
 	/*
 	
