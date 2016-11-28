@@ -51,7 +51,7 @@
 			if(target.attr("id")=="rune"){
 				if(addRune(target)){
 					console.log("룬추가중");
-					var abilist = runeAbil[target.attr("value")][0];
+					var abilist = runeAbil[target.attr("value")][0];					
 					runeKind[abilist[0]]+=abilist[1];		
 					
 					var keys = Object.keys(runeKind);
@@ -71,21 +71,31 @@
 		// 룬 우클릭 제거...
 		$("#runeSetter").contextmenu(function(e){
 			if(e.target.getAttribute("id")=="rune"){
+				
 				var target=$(e.target);
+				console.log(runeAbil[target.attr("value")][0]);
 				var abilist = runeAbil[target.attr("value")][0];
 				runeKind[abilist[0]]-=abilist[1];		
+// 				var runeAbility="";
+// 				var keys = Object.keys(runeKind);
+				
+// 				keys.forEach(function(key){
+// 					if(runeKind[key]!=0){
+// 						runeAbility += key+":"+runeKind[key]+" / ";
+// 					}			
+// 				});
+// 				$("#runeAbility").html(runeAbility);				
+				
+				removeRune(e.target);				
 				var runeAbility="";
 				var keys = Object.keys(runeKind);
 				console.log(runeKind[keys[0]]);
 				keys.forEach(function(key){
 					if(runeKind[key]!=0){
-						runeAbility += key+":"+runeKind[key]+" / ";
+						runeAbility += key+":"+parseFloat(runeKind[key])+" / ";
 					}			
 				});
-				$("#runeAbility").html(runeAbility);				
-				
-				removeRune(e.target);				
-				
+				$("#runeAbility").html(runeAbility);
 				return false;
 			}else{
 				console.log("wrong");
@@ -105,10 +115,10 @@
 		
 		var btnWidth = 100;
 		$("#initRuneWrap").append("<input type='button' id='initRuneBtn'"
-				+" class='btn btn-danger' value='초기화' style='width:"
+				+" class='btn-sm btn-danger' value='초기화' style='width:"
 				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
 		$("#initRuneBtn").click(function(){
-			alert("초기화");
+			alert("아직 미완");
 		});
 	});	
 	

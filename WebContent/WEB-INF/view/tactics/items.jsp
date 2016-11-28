@@ -27,7 +27,8 @@
 		</div>
 		<div id="itemTree" style='clear: left;'>
 			ItemTree<br />
-		</div>		
+		</div>
+		<div id='initItemWrap' class='clearBtnWrap'></div>		
 	<textarea name="itemContent" id="itemContentd">${tactics.itemContent }</textarea>
 	<script>
 			CKEDITOR.replace('itemContent');
@@ -71,5 +72,13 @@
 	});
 	$("#itemBox").click(function(e) {
 		$("#itemTree").append(e.target.cloneNode());
+	});
+	
+	var btnWidth = 100;
+	$("#initItemWrap").append("<input type='button' id='initItemBtn'"
+			+" class='btn-sm btn-danger ' value='초기화' style='width:"
+			+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
+	$("#initItemBtn").click(function(){
+		$("#itemTree").empty();
 	});
 </script>

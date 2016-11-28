@@ -60,10 +60,16 @@
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');
 			
-		});
-		
+		});		
 		masteryCalculation();
-	});
+	});	
+// 	$("#mastery_ul").find(".attrBox").each(function(){
+// 		var span = $(this).children("span#point")[0];
+// 		console.log(span);
+// 	});
+	
+	
+	console.log("totalPoint:"+totalPoint);
 	
 	function masteryCalculation(){
 		var masteryData = ""; //마스터리는 1부터 30까지

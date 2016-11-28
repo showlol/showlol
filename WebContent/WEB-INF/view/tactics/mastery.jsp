@@ -17,7 +17,11 @@
 </div>
 <script src='/js/mastery/masteryDIV.js'></script>
 <script src='/js/mastery/masteryMod.js'></script>
-
+<script>
+	$("ferocity").html(m0);
+	$("cunning").html(m1);
+	$("resolve").html(m2);
+</script>
 
 
 

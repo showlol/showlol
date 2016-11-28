@@ -6,7 +6,8 @@
 </div>
 <div>
 	<div id="skillTree" style="height: 150px; "></div>
-	<div style="clear: left;" ></div>
+	
+	<div id='initSkillWrap' class='clearBtnWrap'></div>
 	<textarea name="skillContent" id="skillContent">${tactics.skillContent }</textarea>
 	<script>
  		CKEDITOR.replace('skillContent');
@@ -37,6 +38,15 @@
 				appendSkill($(e.target).clone())==false? 
 						alert("현재 레벨에서 더 이상 올릴 수 없습니다.") : 0;
 		});
+		
+		var btnWidth = 100;
+		$("#initSkillWrap").append("<input type='button' id='initSkillBtn'"
+				+" class='btn-sm btn-danger' value='초기화' style='width:"
+				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
+		$("#initSkillBtn").click(function(){
+			$("#skillTree").empty();			
+		});
+		
 	});
 	
 	var skillTree={

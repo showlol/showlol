@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 CHAMPION<br/><hr/>
 
 <c:if test="${champList!=null }">
@@ -29,7 +29,8 @@ CHAMPION<br/><hr/>
 	<tbody >
 		<c:forEach var="row" items="${list }">
 			<tr class="info">
-				<td id="num">${row.num }<td>${row.title }<td>${row.writer }<td>${row.writeDate }
+				<td id="num">${row.num }<td>${row.title }<td>${row.writer }
+				<td><fmt:formatDate value="${row.writeDate }" pattern="yy/MM/dd hh:mm" />
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -43,7 +44,7 @@ CHAMPION<br/><hr/>
 		</thead>		
 		<tbody></tbody>
 	</table>
-	<button id="writeTactics" style="display:none; float:right;">공략쓰기</button>
+	<button id="writeTactics" class='btn btn-success' style="display:none; float:right;">공략쓰기</button>
 <script>
 
 	$("tbody").click(function(e){
@@ -63,7 +64,7 @@ CHAMPION<br/><hr/>
 		for(var i=0; i<r.length; i++){
 			$("#tacticsList").children("tbody").append(
 				"<tr class='danger'><td id='num'>"+r[i].num+"<td>"
-				+r[i].title+"<td>"+r[i].writer+"<td>"+r[i].writeDate+"</tr>")			
+				+r[i].title+"<td>"+r[i].writer+"<td>"+new Date(r[i].writeDate).toDateString("dd/mm/yy")+"</tr>")			
 		}
 		$("#writeTactics").show().click(function(){
 			if(${nick==null }){
@@ -73,6 +74,7 @@ CHAMPION<br/><hr/>
 				 
 			location.href="/tactics/regArticle/"+name+"/"+key;
 		});
+		location.href="#tacticsList";
 	}	
 </script>
 
