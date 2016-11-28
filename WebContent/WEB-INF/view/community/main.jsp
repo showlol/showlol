@@ -28,7 +28,7 @@
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="/community/memo">쪽지 보내기</a></li>
+								href="/community/memo/${t.writer } ">쪽지 보내기</a></li>
 						</ul>
 					</div>
 				</td>
