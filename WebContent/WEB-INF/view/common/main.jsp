@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -32,21 +33,22 @@ th {
 </div>
 <div style="text-align: center;">
 	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24;" list="hist" required="required" id="tt"/>
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" list="hist" required="required" id="tt"/>
 		<datalist id="hist">
 			<c:set var="arr" value="${fn:split(hist, ',') }"/>
 			<c:forEach var="h" items="${arr }">
 				<option class="item" value="${h }" />
 			</c:forEach>
 		</datalist>
-		<input type="submit" value="검색" style="font-size: 24;"/>
+		<input type="submit" value="검색" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;"/>
+
 	</form>
 </div>
 
 <div align="center">
-<h2>Challenger 랭킹</h2>
+<h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger 랭킹</h2>
 <table border="1" style="padding: 100px;">
-	<tr height="50" align="center">
+	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
 		<th width="150">소환사</th>
 		<th width="100">티어</th>
@@ -56,7 +58,7 @@ th {
 	
 	<c:set var="cnt" value="1"/>
 	<c:forEach var="i" items="${list }">
-		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px;" >
+		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px; font-family: 'Roboto Condensed', sans-serif;" >
 			<td align="center">${cnt }</td>
 			<td><b>${i.playerOrTeamName }</b></td>
 			<td align="center">Challenger</td>

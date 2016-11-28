@@ -7,6 +7,9 @@
 <title>Bootstrap Case</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/css/bootstrap.css">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -17,8 +20,9 @@
 	<header>	
 		<tiles:insertAttribute name="header" />
 	</header>
-	<article style="overflow: scroll; ">
-		<div id="top"></div>		
+
+	<article style="overflow: scroll; ">		
+		<div id="top"></div>
 		<tiles:insertAttribute name="article" />		
 	</article>
 	<footer style="position: fixed; bottom: 0; width: 100%;height: 30px;">

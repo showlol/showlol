@@ -6,10 +6,7 @@
 <link href="/css/tactics.css" rel="stylesheet">
 <title>공략 글쓰기</title>
 </head>
-<form action='/tactics/writeUpdate2 '>
-	<input type='text' name='haha' >
-	<input type='submit' >
-</form>
+
 <form action="/tactics/writeUpdate2" id='tacticsModForm' method="get" onsubmit='return transferTactics();' >
 <div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${sessionScope.champData.image1}" >
@@ -63,8 +60,18 @@
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');
 			
-		});			
+		});
+		
+		masteryCalculation();
 	});
+	
+	function masteryCalculation(){
+		var masteryData = ""; //마스터리는 1부터 30까지
+		for (i = 1; i <= 45; i++) {
+			masteryData += $("#" + i).children("#point").html() + "#";
+		}
+		
+	}
 
 	function transferTactics() {
 		console.log(this);
