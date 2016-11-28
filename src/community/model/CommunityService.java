@@ -73,11 +73,8 @@ public class CommunityService {
 		HashMap map = new HashMap();
 			map.put("start", (p-1)*5  +1 );
 			map.put("end", p*5);
-
-		System.out.println(map.toString());
 		List m = sql.selectList("community.readRange", map);
 		sql.close();
-		System.out.println(m.toString());
 		return m;
 	}
 	public int readtotal(){
