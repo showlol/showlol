@@ -60,11 +60,12 @@ public class TacticsController {
 	public String modify(){
 		return "t:tactics/modify/";
 	}
-	@RequestMapping("/writeUpadte2")	
+	
+	@RequestMapping("/writeUpdate2")	
 	public String writeUpdate(ImprovedTactics tac){		
 		System.out.println("공략 수정:");
-//		boolean r = cm.modify(tac)? true: false;
-		return "test";
+		boolean r = cm.modify(tac)? true: false;
+		return "redirect:read/"+tac.getNum();
 	}
 	@RequestMapping("/tacticsDel/{num}")
 	@ResponseBody
