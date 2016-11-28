@@ -33,7 +33,7 @@ th {
 </div>
 <div style="text-align: center;">
 	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" list="hist" required="required" id="tt"/>
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" list="hist" required="required" id="tt" placeholder="소환사명"/>
 		<datalist id="hist">
 			<c:set var="arr" value="${fn:split(hist, ',') }"/>
 			<c:forEach var="h" items="${arr }">

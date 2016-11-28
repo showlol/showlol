@@ -24,7 +24,7 @@ public class CommunityController {
 	@Autowired
 	ReplyFollowService rfs;
 
-		//����, �۸�ϸ���Ʈ
+		//커뮤니티게시판 글 읽기
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			List list = cs.readall();
@@ -34,7 +34,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//������
+		//커뮤니티게시판 읽어오기
 		@RequestMapping("/community/review2")
 		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
 			ModelAndView mav = new ModelAndView();
@@ -47,7 +47,7 @@ public class CommunityController {
 			return mav;
 		}
 
-		// Ŀ�´�Ƽ�� �б�
+		// 커뮤니티 글읽기
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num){
 			CommunityData cd = cs.read(num);
@@ -61,7 +61,7 @@ public class CommunityController {
 			mav.addObject("click",cli);
 			return mav;
 		}
-		//Ŀ�´�Ƽ�� ��۴ޱ�
+		//댓글
 		@RequestMapping("/community/reply")
 		public String reply(String nick, String area, String parentNum) {
 			HashMap<String, String> map = new HashMap<>();
@@ -72,7 +72,7 @@ public class CommunityController {
 			return "redirect:/community/read/"+parentNum;
 		}
 			
-		// �ۻ���
+		// 글삭제
 		@RequestMapping("/community/reviewd")
 		public ModelAndView reviewlikein(int num){
 			ModelAndView mav = new ModelAndView();
@@ -82,7 +82,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//���ƿ� 
+		//좋아요증가
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -91,8 +91,7 @@ public class CommunityController {
 			mav.addObject("list",list);
 			return mav;
 		}
-		
-		//�۾��� ������
+		//글쓰기
 		@RequestMapping("/community/writepage")
 		public ModelAndView community(){
 				ModelAndView mav = new ModelAndView();
@@ -106,7 +105,7 @@ public class CommunityController {
 			return "redirect:/community/review2?r=true";
 		}
 		
-		//���б����������� Ŀ�´�Ƽ ��������
+		//목록으로
 		@RequestMapping("/community/return")
 		public String retrun(){
 			return "redirect:/community/review2?r=true";

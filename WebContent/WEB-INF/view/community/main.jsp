@@ -21,7 +21,7 @@
 				<td id="num">${t.num }
 				<td>${t.title }
 				<td>${t.writer }
-				<td><fmt:formatNumber value="${t.good }" />
+				<td><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
 				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
 				<td>${t.clicks}

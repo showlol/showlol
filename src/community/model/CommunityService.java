@@ -16,7 +16,7 @@ public class CommunityService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	//±Û¾²±â
+	//ê¸€ì“°ê¸°
 	public boolean write(CommunityData cd){
 		SqlSession sql = fac.openSession();
 		int i = sql.insert("community.write", cd);
@@ -26,7 +26,7 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//±ÛÀĞ±â
+	//ê¸€ì½ê¸°
 	public CommunityData read(int num) {
 		SqlSession sql = fac.openSession();
 		CommunityData cd = sql.selectOne("community.read", num);
@@ -34,7 +34,7 @@ public class CommunityService {
 		return cd;
 	}
 	
-	//±Û¸®½ºÆ® ÀĞ¾î¿À±â
+	//ì»¤ë®¤ë‹ˆí‹°ê²Œì‹œíŒ ê¸€ì¼ê¸°
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
@@ -43,7 +43,7 @@ public class CommunityService {
 	}
 	
 	
-	//±Û»èÁ¦
+	//ê²Œì‹œê¸€ ì‚­ì œ
 	public List readdelete(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.delete",num);
@@ -51,7 +51,7 @@ public class CommunityService {
 		return list;
 	}
 
-	//ÁÁ¾Æ¿äÁõ°¡
+	//ê²Œì‹œê¸€ì¢‹ì•„ìš”
 	public List readgood(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.upGood", num);
@@ -59,7 +59,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//Á¶È¸¼ö Áõ°¡
+	//ì¡°íšŒìˆ˜ì¦ê°€
 	public List readclick(int num){
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.upClicks",num);
@@ -67,7 +67,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//ÆäÀÌÁö..
+	//í˜ì´ì§€ê´€ë¦¬
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();
@@ -84,7 +84,7 @@ public class CommunityService {
 		return  total%5==0? total/5 : total/5+1;
 	}
 	
-	// ´ñ±Û,´ë´ñ±Û
+	// ëŒ“ê¸€
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("community.reply", map)==1? true : false;
