@@ -6,7 +6,7 @@
 
 글읽기
 <c:if test="${nick!=null }">
-	<input type="submit" value="좋아요"  onclick="likein(${num })"  class="btn btn-default"/> |
+	<input type="submit" value="좋아요"  onclick="likein(${num })"  class="btn btn-default"  /> |
 		<c:if test="${nick==cdata.writer}">
 			<input type="button" value="수정하기" id="update" class="btn btn-default"/> |
 			<input type="submit" value="글삭제" onclick="deleten(${num })" class="btn btn-default"/> |
@@ -38,10 +38,10 @@
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" class="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" />
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" name="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" class="btn btn-default"/>
 		<c:if test="${r.WRITER==nick }">
-			<input type="button" class="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" /> 
-			<input type="button" value="삭제" class="delReply" id="${r.NUM }" style="font-size: 9;" />
+			<input type="button" name="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" class="btn btn-default"/> 
+			<input type="button" value="삭제" name="delReply" id="${r.NUM }" style="font-size: 9;" class="btn btn-default"/>
 		</c:if><br />
 		<div id="cotent_${r.NUM }">${r.CONTENT }</div>
 		<hr />
@@ -52,8 +52,8 @@
 			<c:if test="${f.PARENTNUM==r.NUM }">
 				└<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
 				 <c:if test="${f.WRITER==nick }">
-				 	<input type="button" class="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" />
-				 	<input type="button" value="삭제" class="delReply2" id="${f.NUM }" style="font-size: 9;" />
+				 	<input type="button" name="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" class="btn btn-default"/>
+				 	<input type="button" value="삭제" name="delReply2" id="${f.NUM }" style="font-size: 9;" class="btn btn-default"/>
 				 </c:if><br />
 				<div id="cotent_${f.NUM }">${f.CONTENT }</div>
 				<hr />

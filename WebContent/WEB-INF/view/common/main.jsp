@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 
-
-
-<div style="text-align: center; padding-top: 40px;" class="form-group form-inline">
-	<form action="/summoner/index" method="post" style="display:inline;">	
-		<input type="text" name="userName" value="${sname }" style="font-size: 24;"placeholder="소환사명" class="form-control" />
-		<input type="submit" value="검색" style="font-size: 20;"class="btn btn-default"  />
-=======
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -40,16 +32,15 @@ th {
 	<img width="400" src="/image/lol.png" style="padding: 50px;"/>
 </div>
 <div style="text-align: center;">
-	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24;" list="hist" required="required" id="tt"/>
+	<form action="/summoner/index" method="post" style="display:form-group form-inline;" id="search">
+		<input type="text" name="userName" value="${sname }" style="font-size: 24;" list="hist" required="required" id="tt" placeholder="검색어"/>
 		<datalist id="hist">
 			<c:set var="arr" value="${fn:split(hist, ',') }"/>
 			<c:forEach var="h" items="${arr }">
 				<option class="item" value="${h }" />
 			</c:forEach>
 		</datalist>
-		<input type="submit" value="검색" style="font-size: 24;"/>
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
+		<input type="submit" value="검색" style="font-size: 24;" class="btn btn-default" style="border-color: white;"/>
 	</form>
 </div>
 

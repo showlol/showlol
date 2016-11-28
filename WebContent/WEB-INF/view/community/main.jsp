@@ -72,12 +72,13 @@
 			});
 	
 
+	/*
 	
 	document.getElementById("srch").addEventListener("keyup", function(){
 		var xhr = new XMLHttpRequest();
-		/*
+		
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		*/
+		
 		var url = "/community/search?title="+document.getElementById("srch").value;
 		xhr.open("get", url, true);
 		xhr.onreadystatechange = function() {
@@ -99,5 +100,7 @@
 		xhr.send();
 		
 	});
+	
+	*/
 </script>
 
