@@ -15,7 +15,7 @@ import summoner.model.LeagueEntryDto;
 @Component
 public class GateService {
 	
-	public List getChallenger() {
+	public List getChallenger(int idx) {
 		RestTemplate rt = new RestTemplate();	
 		LinkedHashMap map = new LinkedHashMap<>();
 		try {
@@ -48,6 +48,8 @@ public class GateService {
 				return (l1.getLeaguePoints() > l2.getLeaguePoints()) ? -1: (l1.getLeaguePoints() < l2.getLeaguePoints()) ? 1:0 ;
 			}
 		});
+		
+		list = list.subList(idx, idx+20);
 		
 		return list;
 	} 

@@ -90,12 +90,12 @@ th {
 </div>
 
 <script>
-	$("#tt").on("input", function(){
+	/* $("#tt").on("input", function(){
 		$(".item").each(function(){
 			if($(this).val() == $("#tt").val()) {
 				$("#search").submit();
 			}
 		});
-	});
+	}); */
 	
 </script>
