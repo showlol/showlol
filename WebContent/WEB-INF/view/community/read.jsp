@@ -1,48 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-글읽기
-<c:if test="${nick!=null }">
-	<input type="submit" value="좋아요"  onclick="likein(${num })"  class="btn btn-default"  /> |
-		<c:if test="${nick==cdata.writer}">
-			<input type="button" value="수정하기" id="update" class="btn btn-default"/> |
-			<input type="submit" value="글삭제" onclick="deleten(${num })" class="btn btn-default"/> |
-		</c:if>
-</c:if>
-	<br />
-	<b>제목</b><div>${cdata.title }</div>
-	<br />
-	<b>작성자</b><div>${cdata.writer }</div>
-	<br />
-	<div>
-		<pre style="font-family: 맑은 고딕; font-size: 11pt;">${cdata.memo }</pre>
-	</div>
-	<br />
-
-	
-	<form action="/community/return" >
-		<input type="submit" value="목록" class="btn btn-default"/>
-	</form>
-	
+<div style="border:1px solid lightgray; padding: 5% ; background-color:#FFFFFF">
+<br />
+<div align="right">
 	<c:if test="${nick!=null }">
+		<input type="submit" value="좋아요" onclick="likein(${num })"
+			class="btn-sm btn-primary" /> 
+		<c:if test="${nick==cdata.writer}">
+			<span id="btnGroup">
+				| <button type="button" id="update" class="btn-sm btn-primary">수정하기</button>
+				|
+				<button type="button" id="delete" class="btn-sm btn-primary">글삭제</button>
+			</span>
+		</c:if>
+	</c:if>
+</div>
+	<b>제목</b>
+	<div>${cdata.title }</div>
+	<br />
+	<b>작성자</b>
+	<div>${cdata.writer }</div>
+	<br />
+	<b>내용</b>
+	<br />
+	<div style="font-family: 맑은 고딕; font-size: 11pt;">${cdata.memo }</div>
+	<br />
+
+
+<form action="/community/return">
+	<input type="submit" value="목록" class="btn-sm btn-primary" />
+</form>
+
+<c:if test="${nick!=null }">
 	<form action="/community/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
 		<input type="hidden" name="parentNum" value="${cdata.num }">
 		<textarea rows="4" name="area"></textarea>
-		<br /> <input type="submit" value="댓글 작성" class="btn btn-default"/>
+		<br /> <input type="submit" value="댓글 작성" class="btn-sm btn-primary" />
 	</form>
 </c:if>
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button" name="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }" class="btn btn-default"/>
+		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button"
+			kind="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }"
+			class="btn-sm btn-primary" />
 		<c:if test="${r.WRITER==nick }">
-			<input type="button" name="upReply" value="수정" id="${r.NUM }" style="font-size: 9;" class="btn btn-default"/> 
-			<input type="button" value="삭제" name="delReply" id="${r.NUM }" style="font-size: 9;" class="btn btn-default"/>
-		</c:if><br />
+			<input type="button" class="btn-sm btn-primary" kind="upReply"
+				value="수정" id="${r.NUM }" style="font-size: 9;" />
+			<input type="button" class="btn-sm btn-primary" value="삭제"
+				kind="delReply" id="${r.NUM }" style="font-size: 9;" />
+		</c:if>
+		<br />
 		<div id="cotent_${r.NUM }">${r.CONTENT }</div>
 		<hr />
 	</div>
@@ -50,17 +62,22 @@
 		<!-- 대댓글 -->
 		<div>
 			<c:if test="${f.PARENTNUM==r.NUM }">
-				<img src="/image/review2.png"/><b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
+				<img src="/image/review2.png" />
+				<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
 				 <c:if test="${f.WRITER==nick }">
-				 	<input type="button" name="upReply2" value="수정" id="${f.NUM }" style="font-size: 9;" class="btn btn-default"/>
-				 	<input type="button" value="삭제" name="delReply2" id="${f.NUM }" style="font-size: 9;" class="btn btn-default"/>
-				 </c:if><br />
+					<input type="button" class="btn-sm btn-primary" kind='upReply2'
+						value="수정" id="${f.NUM }" style="font-size: 9;" />
+					<input type="button" value="삭제" class="btn-sm btn-primary"
+						kind="delReply2" id="${f.NUM }" style="font-size: 9;" />
+				</c:if>
+				<br />
 				<div id="cotent_${f.NUM }">${f.CONTENT }</div>
 				<hr />
 			</c:if>
 		</div>
 	</c:forEach>
 </c:forEach>
+</div>
 <script>
 	function likein(num) {
 		var xhr = new XMLHttpRequest();
@@ -68,13 +85,6 @@
 		xhr.send();
 		readall();
 	};
-
-	function deleten(num){
-		var xhr = new XMLHttpRequest();
-		xhr.open("post", "/community/reviewd?num="+num, true);
-		xhr.send();
-		readall();
-	};	
 	
 	function readall() {
 		location.reload(true);
@@ -87,34 +97,34 @@
 	$(document).ready(function() {
 		$("input").click(function() {
 			console.log($(this));			
-			$("input.reFollow").click(function() {
-				console.log($(this));
-				rep($(this));
-			});		
+			if($(this).val()=="댓글 남기기"){
+				rep($(this));	
+			}			
 		});
+
 		//댓글 수정
-		$("input.upReply").click(function() {
+		$("input[kind=upReply]").click(function() {
 			console.log($(this).attr("id"));
 			updateReply($(this), $(this).attr("id"));
 		});
 		//댓글 삭제
-		$("input.delReply").click(function() {
+		$("input[kind=delReply]").click(function() {
 			console.log($(this).attr("id"));
 			deleteReply($(this).attr("id"));
 		});
 		//대댓글 수정
-		$("input.upReply2").click(function() {
+		$("input[kind=upReply2]").click(function() {
 			console.log($(this).attr("id"));
 			updateReply2($(this), $(this).attr("id"));
 		});
 		//대댓글 삭제
-		$("input.delReply2").click(function() {
+		$("input[kind=delReply2]").click(function() {
 			console.log($(this).attr("id"));
 			deleteReply2($(this).attr("id"));
 		});
 	});
 	var replyBox = document.createElement("div");
-		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' class='btn-sm btn-primary' style='font-size:11;' id='repbt'/>";
 	
 	//대댓글
 	function rep(button) {
@@ -133,7 +143,7 @@
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
 		//window.alert(tar);
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			alert(content.value);
 			$.ajax({
@@ -157,7 +167,7 @@
 	function updateReply2(up, id) {
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			$.ajax({
 				method : "get",
@@ -175,5 +185,28 @@
 		});
 		location.href="";
 	};
+	
+	$("#btnGroup").children().click(function(e){
+		if(e.target.getAttribute("id")=="delete"){
+			$.ajax({
+				url : "/community/delete/${cdata.num}",
+				async : false
+			}).done(function(r){
+				if(r==true){
+					alert("게시글 삭제가 완료되었습니다.");
+					location.href="/community/review2";						
+				}else{
+					alert("게시글이 삭제되지 않았습니다.");
+				}
+			}).fail(function(r){
+				alert(r.data);
+			});					
+		}			
+		if(e.target.getAttribute("id")=="update"){
+			location.replace("/community/update/${cdata.num}");				
+		}				
+	});	
+
+	
 	
 </script>
