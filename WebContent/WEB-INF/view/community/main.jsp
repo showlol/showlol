@@ -2,29 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<h2>커뮤니티 게시판</h2>
+<h2 style="font-family: 'Nanum Gothic', sans-serif;">커뮤니티 게시판</h2>
 <!-- 글 리스트 기능 -->
 <table class="table table-hover info">
 	<thead>
 		<tr>
-			<th>글번호
-			<th>제목
-			<th>작성자
-			<th>추천수
-			<th>작성일
-			<th>조회수
+			<th style="font-family: 'Nanum Gothic', sans-serif;">글번호
+			<th style="font-family: 'Nanum Gothic', sans-serif;">제목
+			<th style="font-family: 'Nanum Gothic', sans-serif;">작성자
+			<th style="font-family: 'Nanum Gothic', sans-serif;">추천수
+			<th style="font-family: 'Nanum Gothic', sans-serif;">작성일
+			<th style="font-family: 'Nanum Gothic', sans-serif;">조회수
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var="t" items="${size }">
 			<tr class="info">
-				<td id="num">${t.num }
-				<td>${t.title }
-				<td>${t.writer }
-				<td><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
-				<td><fmt:formatDate value="${t.writedate }"
+				<td id="num" style="font-family: 'Nanum Gothic', sans-serif;">${t.num }
+				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.title }
+				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.writer }
+				<td style="font-family: 'Nanum Gothic', sans-serif;"><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
+				<td style="font-family: 'Nanum Gothic', sans-serif;"><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
-				<td>${t.clicks}
+				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.clicks}
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -53,12 +53,12 @@
 	<form >
 		<div class="form-group form-inline">
 			<select  class="form-control">
-				<option value="stitle">제목</option>
-				<option value="swriter">작성자</option>
-				<option value="titlewrite">제목+작성자</option>
+				<option value="stitle" style="font-family: 'Nanum Gothic', sans-serif;">제목</option>
+				<option value="swriter" style="font-family: 'Nanum Gothic', sans-serif;">작성자</option>
+				<option value="titlewrite" style="font-family: 'Nanum Gothic', sans-serif;">제목+작성자</option>
 			</select> 
 			<input type="text"  class="form-control" placeholder="검색어" list="srchrst" name="srch" />
-			<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
+			<button type="submit" class="btn btn-default" style="border-color: white; font-family: 'Nanum Gothic', sans-serif;">검색</button>
 		</div>
 	</form>
 </div>

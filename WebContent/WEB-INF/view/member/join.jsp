@@ -2,10 +2,10 @@
     pageEncoding="utf-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <h2 style="font-family: 'Oswald', sans-serif;">Join</h2>
-<font style="font-family: 'Oswald', sans-serif;">ID : <input type="email" id="memberid" placeholder="email을 입력하세요."></font><br/>
-<font style="font-family: 'Oswald', sans-serif;">PASS : <input type="password" id="memberpass" ></font><br/>
-<font style="font-family: 'Oswald', sans-serif;">NICK : <input type="text" id="nick" ></font><br/>
-<font style="font-family: 'Oswald', sans-serif;">GAMEID : <input type="text" id="gameid" ></font><br/>
+<font style="font-family: 'Oswald', sans-serif;">ID : </font><input type="email" id="memberid" placeholder="email을 입력하세요."><br/>
+<font style="font-family: 'Oswald', sans-serif;">PASS : </font><input type="password" id="memberpass" ><br/>
+<font style="font-family: 'Oswald', sans-serif;">NICK : </font><input type="text" id="nick" ><br/>
+<font style="font-family: 'Oswald', sans-serif;">GAMEID : </font><input type="text" id="gameid" ><br/>
 <input type="button" value="입력 완료" id="create" />
 <hr/>
 <h3 style="font-family: 'Oswald', sans-serif;">E-mail Confirm</h3>
