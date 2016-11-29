@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +28,7 @@ public class CommunityController {
 	@Autowired
 	ReplyFollowService rfs;
 
-		//커뮤니티게시판 글 읽기
+		//
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			List list = cs.readall();
@@ -35,8 +37,9 @@ public class CommunityController {
 			mav.addObject("list",list);
 			return mav;
 		}
-		
+
 		//페이지 관리
+
 		@RequestMapping("/community/review2")
 		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
 			ModelAndView mav = new ModelAndView();
@@ -49,7 +52,7 @@ public class CommunityController {
 			return mav;
 		}
 
-		// 커뮤니티 글읽기
+		// 
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num,HttpSession session){
 			CommunityData cd = cs.read(num);
@@ -68,7 +71,7 @@ public class CommunityController {
 			}
 			return mav;
 		}
-		//댓글
+		//
 		@RequestMapping("/community/reply")
 		public String reply(String nick, String area, String parentNum) {
 			HashMap<String, String> map = new HashMap<>();
@@ -78,8 +81,18 @@ public class CommunityController {
 			cs.reply(map);
 			return "redirect:/community/read/"+parentNum;
 		}
+
 	
 		//좋아요증가
+		@RequestMapping("/community/reviewd")
+		public ModelAndView reviewlikein(int num){
+			ModelAndView mav = new ModelAndView();
+			boolean list = cs.readdelete(num); 
+			mav.setViewName("community/read");
+			mav.addObject("list",list);
+			return mav;
+		}
+	
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -107,6 +120,7 @@ public class CommunityController {
 		public String retrun(){
 			return "redirect:/community/review2?r=true";
 		}
+
 		
 		// 글 수정 컨트롤러	
 		@RequestMapping("/community/update/{num}")
@@ -128,7 +142,4 @@ public class CommunityController {
 			boolean r = cs.readdelete(num)? true: false;
 			return r;
 		}
-		
-		
-		
 }

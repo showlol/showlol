@@ -2,29 +2,40 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<h2>커뮤니티 게시판</h2>
+<h2 style="font-family: 'Nanum Gothic', sans-serif;">커뮤니티 게시판</h2>
 <!-- 글 리스트 기능 -->
 <table class="table table-hover info">
 	<thead>
 		<tr>
-			<th>글번호
-			<th>제목
-			<th>작성자
-			<th>추천수
-			<th>작성일
-			<th>조회수
+			<th style="font-family: 'Nanum Gothic', sans-serif;">글번호
+			<th style="font-family: 'Nanum Gothic', sans-serif;">제목
+			<th style="font-family: 'Nanum Gothic', sans-serif;">작성자
+			<th style="font-family: 'Nanum Gothic', sans-serif;">추천수
+			<th style="font-family: 'Nanum Gothic', sans-serif;">작성일
+			<th style="font-family: 'Nanum Gothic', sans-serif;">조회수
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var="t" items="${size }">
 			<tr class="info">
-				<td id="num">${t.num }
-				<td>${t.title }
-				<td>${t.writer }
+				<td id="num">${t.num }</td>
+				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</a></td>
+				<td>
+					<div class="dropdown">
+						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
+							type="button" data-toggle="dropdown" style="color: white">
+							${t.writer } 
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+							onclick="showView('${t.writer}')"	>쪽지 보내기</a></li>
+						</ul>
+					</div>
+				</td>
 				<td><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
 				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
-				<td>${t.clicks}
+				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.clicks}
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -53,23 +64,25 @@
 	<form >
 		<div class="form-group form-inline">
 			<select  class="form-control">
-				<option value="stitle">제목</option>
-				<option value="swriter">작성자</option>
-				<option value="titlewrite">제목+작성자</option>
+				<option value="stitle" style="font-family: 'Nanum Gothic', sans-serif;">제목</option>
+				<option value="swriter" style="font-family: 'Nanum Gothic', sans-serif;">작성자</option>
+				<option value="titlewrite" style="font-family: 'Nanum Gothic', sans-serif;">제목+작성자</option>
 			</select> 
 			<input type="text"  class="form-control" placeholder="검색어" list="srchrst" name="srch" />
-			<button type="submit" class="btn btn-default" style="border-color: white;">검색</button>
+			<button type="submit" class="btn btn-default" style="border-color: white; font-family: 'Nanum Gothic', sans-serif;">검색</button>
 		</div>
 	</form>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	$("tbody").click(
+	/* $("tbody").click(
 			function(e) {
 				console.log($(e.target).siblings("#num").html());
 				location.href = "/community/read/"
 						+ $(e.target).siblings("#num").html();
-			});
+			}); */
 	
 	$("#writing").show().click(function(){
 		if(${nick==null }){
@@ -79,7 +92,16 @@
 			 
 		location.href="/tactics/regArticle/"+name+"/"+key;
 	});
-
+	
+	function showView(writer) {
+		var url = "/memo/view/" + writer;
+		window.open(url, "", "width=550,height=500");
+		
+	}
+	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
 	/*
 	
 	document.getElementById("srch").addEventListener("keyup", function(){
@@ -109,6 +131,16 @@
 		
 	});
 	
+<<<<<<< HEAD
+	function readall() {
+		location.reload(true);
+	};
+	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
+	
+=======
 	*/
 </script>
 

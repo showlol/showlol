@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<h2>회원가입</h2>
-ID : <input type="email" id="memberid" placeholder="email을 입력하세요."><br/>
-PASS : <input type="password" id="memberpass" ><br/>
-NICK : <input type="text" id="nick" ><br/>
-GAMEID : <input type="text" id="gameid" ><br/>
+<h2 style="font-family: 'Oswald', sans-serif;">Join</h2>
+<font style="font-family: 'Oswald', sans-serif;">ID : </font><input type="email" id="memberid" placeholder="email을 입력하세요."><br/>
+<font style="font-family: 'Oswald', sans-serif;">PASS : </font><input type="password" id="memberpass" ><br/>
+<font style="font-family: 'Oswald', sans-serif;">NICK : </font><input type="text" id="nick" ><br/>
+<font style="font-family: 'Oswald', sans-serif;">GAMEID : </font><input type="text" id="gameid" ><br/>
 <input type="button" value="입력 완료" id="create" />
 <hr/>
-<h3>E-mail 인증</h3>
+<h3 style="font-family: 'Oswald', sans-serif;">E-mail Confirm</h3>
 <input type="text" name="authuuid" size="30" id="authuuid" /> <input type="button" value="인증하기" id="auth"/>
 <script>
 		document.getElementById("create").addEventListener("click", function() {
 			sendEmail();
 		});
+		$("#gameid").change(function() {
+			sendEmail();
+		});
 		document.getElementById("auth").addEventListener("click", function() {
+			authEmail();
+		});
+		$("#authuuid").change(function() {
 			authEmail();
 		});
 	function memberJoin(){

@@ -46,14 +46,15 @@ th {
 </div>
 
 <div align="center">
+
 <h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger Rank</h2>
 <table border="1" style="padding: 100px;">
 	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
-		<th width="150">소환사</th>
-		<th width="100">티어</th>
+		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">소환사</th>
+		<th width="100" style="font-family: 'Nanum Gothic', sans-serif;">티어</th>
 		<th width="100">LP</th>
-		<th width="150">승률</th>
+		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">승률</th>
 	</tr>
 	
 	<c:set var="cnt" value="1"/>
@@ -90,8 +91,32 @@ th {
 	</c:forEach>
 </table>
 </div>
+<div id="showBtn" align="center" style="padding:10px;">
+	<input type="hidden" id="startIdx" value="${cnt}"/>
+	<input type="button" value="더보기" onclick="showover()" style="width: 580px;"/>
+</div>
 
 <script>
+	function showover() {
+		var idx = $("#startIdx").val();
+		var stidx = parseInt(idx)-1;
+		$.ajax(
+			{
+			"method" : "get",
+			"url" : "/index/challenger?startIdx="+stidx,
+			"async" : false
+			}
+		).done(function(obj) {
+			var table = $("#table").html();
+			$("#table").html(table + obj);
+			if(idx > 180)
+				document.getElementById("showBtn").style.display = "none";
+			else
+				$("#startIdx").val(parseInt(idx)+20);
+		}).fail(function() {
+			alert("ERROR");
+		});
+	}
 	/* $("#tt").on("input", function(){
 		$(".item").each(function(){
 			if($(this).val() == $("#tt").val()) {

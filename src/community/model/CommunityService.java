@@ -27,7 +27,7 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//글읽기
+	// 글읽기
 	public CommunityData read(int num) {
 		SqlSession sql = fac.openSession();
 		CommunityData cd = sql.selectOne("community.read", num);
@@ -35,7 +35,7 @@ public class CommunityService {
 		return cd;
 	}
 	
-	//커뮤니티게시판 글일기
+	//글읽어오기
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
@@ -44,6 +44,7 @@ public class CommunityService {
 	}
 	
 	
+
 	//게시글 삭제
 	public boolean readdelete(int num){
 		SqlSession sql = fac.openSession();
@@ -61,7 +62,7 @@ public class CommunityService {
 		return r;
 	}
 
-	//게시글좋아요
+	//좋아요
 	public List readgood(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.upGood", num);
@@ -69,7 +70,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//조회수증가
+	//조회수
 	public List readclick(int num){
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.upClicks",num);
@@ -77,7 +78,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//페이지관리
+	//페이지
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();

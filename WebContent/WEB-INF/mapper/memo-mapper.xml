@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memo">
+	<insert id="insert" parameterType="java.util.HashMap">
+		insert into memo values(SEQ_MEMO.nextval, #{writeTo}, #{writeFrom}, #{title}, #{memo}, sysdate)
+	</insert>
+	
+	<select id="selectById" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+		select * from memo where idx = #{idx}
+	</select>
+	
+	<select id="selectByToAll" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from memo where writeto = #{nick}
+	</select>
+	
+	<select id="selectByTo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		<![CDATA[
+		select * from (
+		select rownum r, temp.* from(
+		select * from memo where writeto = #{nick} order by regdate desc) temp )
+		where r >= #{start} and r <= #{end}
+		]]>
+	</select>
+	
+	<select id="selectByFromAll" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from memo where writefrom = #{nick}
+	</select>
+	
+	<select id="selectByFrom" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		<![CDATA[
+		select * from (
+		select rownum r, temp.* from(
+		select * from memo where writefrom = #{nick} order by regdate desc) temp )
+		where r >= #{start} and r <= #{end}
+		]]>
+	</select> 
+</mapper>

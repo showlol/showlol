@@ -19,13 +19,14 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/" style="font-family: 'Oswald', sans-serif;">Home</a></li>
-				<li><a href="#" style="font-family: 'Oswald', sans-serif;">Statics</a></li>
 				<li><a href="/tactics/" style="font-family: 'Oswald', sans-serif;">Tactics</a></li>
 				<li><a href="/community/review2" style="font-family: 'Oswald', sans-serif;">Community</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${nick==null }">
 				<li><a href="/join" style="font-family: 'Oswald', sans-serif;"><span class="glyphicon glyphicon-user"></span>
 						Sign Up</a></li>
+				</c:if>
 				<li id="logInfo"><a href="#" data-toggle="modal"
 					data-target="#loginModal" style="font-family: 'Oswald', sans-serif;"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -41,14 +42,13 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">로그인</h4>
+				<h4 class="modal-title" style="font-family: 'Oswald', sans-serif;">Login page</h4>
 			</div>
 			<div class="modal-body">
 				<div id="danger"></div>
-				ID : <input type="email" id="id" placeholder="email을 입력하세요." /> <br />
-				PASS : <input type="password" id="pass" /> <br /> <input
-					type="button" value="로그인" id="login" /> <input type="button"
-					value="회원가입" id="bt" />
+				<font style="font-family: 'Oswald', sans-serif;">ID : <input type="email" id="id" placeholder="email을 입력하세요." /></font> <br />
+				<font style="font-family: 'Oswald', sans-serif;">PASS : <input type="password" id="pass" /></font> <br />
+				<input type="button" value="login" id="login" />
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -83,14 +83,14 @@
 		}).done(function(out) {
 			if(out=="success") {
 				document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
+				location.href="/";
 			}
 		});
 	}	
-
-	document.getElementById("bt").addEventListener("click", function() {
-		location.href="/join"
-	});
 	document.getElementById("login").addEventListener("click", function() {
+		login();
+	});
+	$("#pass").change(function() {
 		login();
 	});
 	function login(){
