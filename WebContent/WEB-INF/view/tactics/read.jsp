@@ -38,7 +38,6 @@
 		</div>
 	<br/>
 	<hr style="clear: left;">
-			${tactics.writer } / ${nick }
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" style='float: right;' >
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
