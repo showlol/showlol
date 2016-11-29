@@ -141,25 +141,33 @@
 			});		
 		});
 		//댓글 수정
-		$("input.upReply").click(function() {
-			console.log($(this).attr("id"));
-			updateReply($(this), $(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.upReply").click(function() {
+				console.log($(this).attr("id"));
+				updateReply($(this), $(this).attr("id"));
+			});
+		};
 		//댓글 삭제
-		$("input.delReply").click(function() {
-			console.log($(this).attr("id"));
-			deleteReply($(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.delReply").click(function() {
+				console.log($(this).attr("id"));
+				deleteReply($(this).attr("id"));
+			});
+		};
 		//대댓글 수정
-		$("input.upReply2").click(function() {
-			console.log($(this).attr("id"));
-			updateReply2($(this), $(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.upReply2").click(function() {
+				console.log($(this).attr("id"));
+				updateReply2($(this), $(this).attr("id"));
+			});
+		};
 		//대댓글 삭제
-		$("input.delReply2").click(function() {
-			console.log($(this).attr("id"));
-			deleteReply2($(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.delReply2").click(function() {
+				console.log($(this).attr("id"));
+				deleteReply2($(this).attr("id"));
+			});
+		};
 	});
 	
 	function tacticsModify(){

@@ -51,10 +51,10 @@ th {
 <table border="1" style="padding: 100px;">
 	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
-		<th width="150">소환사</th>
-		<th width="100">티어</th>
+		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">소환사</th>
+		<th width="100" style="font-family: 'Nanum Gothic', sans-serif;">티어</th>
 		<th width="100">LP</th>
-		<th width="150">승률</th>
+		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">승률</th>
 	</tr>
 	
 	<c:set var="cnt" value="1"/>

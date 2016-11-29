@@ -7,8 +7,8 @@
 <h2>회원 정보</h2>
 <hr/>
 <b>ID :</b> ${data.email }<br/>
-<b>PASS :</b> <input type="password" id="pass" /><br/>
-<b>PASS CHECK :</b> <input type="password" id="passck" placeholder="한번 더 적어주세요."/><br/>
+<b>PASS :</b> <input type="password" id="passck1" /><br/>
+<b>PASS CHECK :</b> <input type="password" id="passck2" placeholder="한번 더 적어주세요."/><br/>
 <b>NICK :</b> ${data.nick }<br/>
 <b>GAMEID :</b> ${data.gameid }<br/>
 <hr/>
@@ -39,5 +39,20 @@
 			url : "/delMem/del?email="+delMemid.value+"&nick=${data.nick}"
 		});		
 		location.href="/";
+	});
+	document.getElementById("changeinfo").addEventListener("click", function() {
+		var pass1 = document.getElementById("passck1").value;
+		var pass2 = document.getElementById("passck2").value;
+		if(pass1!=pass2) {
+			alert("비밀번호 변경 실패");
+		} else {
+			$.ajax({
+				method : "get",
+				url : "/passchange?pass="+pass1+"&email=${data.email }"
+			}).done(function() {
+				alert("비밀번호 변경 성공");
+				location.reload();
+			});
+		}
 	});
 </script>

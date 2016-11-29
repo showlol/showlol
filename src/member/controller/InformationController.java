@@ -57,4 +57,10 @@ public class InformationController {
 		}
 		return false;
 	}
+	@RequestMapping("/passchange")
+	@ResponseBody
+	public boolean passChange(String pass, String email) {
+		boolean ps = is.passChange(pass, email)==true? true : false;
+		return ps;
+	}
 }
