@@ -39,4 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="delComuRe2" parameterType="java.lang.String">
 		update community_reply2 set writer='탈퇴된 회원' where writer=#{nick}
 	</update>
+	<update id="passchange" parameterType="java.util.HashMap">
+		update member set password=#{pass} where email=#{email}
+	</update>
 </mapper>

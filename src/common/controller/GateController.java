@@ -38,4 +38,14 @@ public class GateController {
 		
 		return mav;
 	}
+	@RequestMapping("/index/challenger")
+	public ModelAndView challenger(int startIdx) {
+		ModelAndView mav = new ModelAndView("/summoner/challenger");
+		
+		List list = gsvc.getChallenger(startIdx);
+		mav.addObject("list", list);
+		mav.addObject("startIdx", startIdx);
+		
+		return mav;
+	}
 }

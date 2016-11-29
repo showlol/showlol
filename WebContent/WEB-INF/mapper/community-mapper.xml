@@ -36,11 +36,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from community where title like #{title }
 	</select>
 	
+	<!-- 게시글 수정 -->
+	<update id="updateWrite" parameterType="community.model.CommunityData">
+		update community set num=#{num},writer=#{writer}, title=#{title}, memo=#{memo}, good=#{good}, 
+		writedate=sysdate, clicks=#{clicks} where num=#{num}
+	</update>
 
 	<!-- 커뮤니티글삭제 -->
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete from community where num= #{num}
 	</delete>
+	
 	<!-- 페이지 기능 -->
 	<select id="readRange" parameterType="java.util.HashMap" resultType="community.model.CommunityData">
 		<![CDATA[
@@ -83,6 +89,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delReply2" parameterType="java.lang.Integer">
 		delete from community_reply2 where num=#{num}
 	</delete>
-	
-	
 </mapper>

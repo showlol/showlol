@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tactics.model.pojo.ImprovedTactics;
 import tactics.model.pojo.Tactics;
 
 @Component
@@ -26,7 +27,7 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//글읽기
+	// 글읽기
 	public CommunityData read(int num) {
 		SqlSession sql = fac.openSession();
 		CommunityData cd = sql.selectOne("community.read", num);
@@ -34,7 +35,7 @@ public class CommunityService {
 		return cd;
 	}
 	
-	//커뮤니티게시판 글일기
+	//글읽어오기
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
@@ -43,15 +44,25 @@ public class CommunityService {
 	}
 	
 	
+
 	//게시글 삭제
-	public List readdelete(int num){
+	public boolean readdelete(int num){
 		SqlSession sql = fac.openSession();
-		List list =  sql.selectList("community.delete",num);
+		boolean r=  sql.delete("community.delete",num)==1?true:false;
 		sql.close();
-		return list;
+		return r;
+	}
+	
+	//게시글 수정
+	public boolean updateWrite(CommunityData cd) {
+		System.out.println(cd.toString());
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("community.updateWrite", cd)==1?true:false;
+		sql.close();
+		return r;
 	}
 
-	//게시글좋아요
+	//좋아요
 	public List readgood(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.upGood", num);
@@ -59,7 +70,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//조회수증가
+	//조회수
 	public List readclick(int num){
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.upClicks",num);
@@ -67,7 +78,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//페이지관리
+	//페이지
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();

@@ -49,9 +49,4 @@ public class MatchesController {
 		
 		return mav;
 	}
-	
-	@RequestMapping("/test")
-	public String test() {
-		return "summoner/test";
-	}
 }

@@ -9,20 +9,34 @@
 </head>
 <div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
 
-	<H3>${tactics.champ } 공략글 </H3>
+	<H3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </H3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
 		border-radius: 4%; padding: 10px; ">
+<<<<<<< HEAD
 		<b style='display: inline;' >${tactics.title }</b><br/>	
 		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
 		<span style='float: right; '>작성일 : <fmt:formatDate value='${tactics.writeDate}' pattern='MM/dd' /></span><br/>
+=======
+		<b style="display: inline; font-family: 'Nanum Gothic', sans-serif;" >${tactics.title }</b><br/>	
+		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
+		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">${tactics.writeDate }</span><br/>
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 	</div>
+<<<<<<< HEAD
 	<div class="tacticsBox" >
 		<ul class="nav nav-tabs">
 			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
 			<li><a href="#rune">룬</a>
 			<li><a href="#skill">스킬</a>
 			<li><a href="#items">아이템</a>
+=======
+	<ul class="nav nav-tabs">
+			<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
+			<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
+			<li><a href="#skill" style="font-family: 'Nanum Gothic', sans-serif;">스킬</a>
+			<li><a href="#items" style="font-family: 'Nanum Gothic', sans-serif;">아이템</a>
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 		</ul>
 		<div class="tab-content">	
 			<div id="mastery" class="tab-pane fade in active ">
@@ -40,8 +54,12 @@
 		</div>
 	
 	<br/>
+<<<<<<< HEAD
 	<hr style="clear: left;" />
 	</div>		
+=======
+	<hr style="clear: left;">
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" align="right" style='margin: 3%;'>
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
@@ -100,8 +118,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>       
       </div>
       <div class="modal-body">        		
-		<button class="btn" id="login" />
-		<button class="btn" value="로그인" id="login" />
+		<button class="btn" id="login" ></button>
+		<button class="btn" value="로그인" id="login" ></button>
       </div>      
     </div>
 
@@ -144,25 +162,40 @@
 			});		
 		});
 		//댓글 수정
-		$("input.upReply").click(function() {
-			console.log($(this).attr("id"));
-			updateReply($(this), $(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.upReply").click(function() {
+				console.log($(this).attr("id"));
+				updateReply($(this), $(this).attr("id"));
+			});
+		};
 		//댓글 삭제
-		$("input.delReply").click(function() {
-			console.log($(this).attr("id"));
-			deleteReply($(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.delReply").click(function() {
+				console.log($(this).attr("id"));
+				deleteReply($(this).attr("id"));
+			});
+		};
 		//대댓글 수정
-		$("input.upReply2").click(function() {
-			console.log($(this).attr("id"));
-			updateReply2($(this), $(this).attr("id"));
-		});
+		if(${nick!=null }) {
+			$("input.upReply2").click(function() {
+				console.log($(this).attr("id"));
+				updateReply2($(this), $(this).attr("id"));
+			});
+		};
 		//대댓글 삭제
+<<<<<<< HEAD
 		$("input.delReply2").click(function() {
 			console.log($(this).attr("id"));
 			deleteReply2($(this).attr("id"));
 		});
+=======
+		if(${nick!=null }) {
+			$("input.delReply2").click(function() {
+				console.log($(this).attr("id"));
+				deleteReply2($(this).attr("id"));
+			});
+		};
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 	});
 	
 	function tacticsModify(){

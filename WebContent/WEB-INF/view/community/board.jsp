@@ -4,15 +4,15 @@
 <h3>커뮤니티 게시판 글쓰기</h3>
 
 
-<c:if test="${nick!=null}">
+<b>작성자</b><c:if test="${nick!=null}">
 <script src="/ckeditor/ckeditor.js"></script>
-	<form action="/community/write">
+	<form action="/community/write" method="post">
 	  	<input type="hidden" value="${nick }" name="writer">${nick }<br/>
-		제목 : 	 <input type="text" name="title" id="title" size="50" ><br/>
+		<b>제목 :</b><input type="text" name="title" id="title" size="50" ><br/>
 		<br/>
 		<textarea cols="100" rows="30" name="memo" id='memo'></textarea>
 		<script>CKEDITOR.replace('memo');</script>
 		<br/>
-		<input type="submit" value="글쓰기"/>
+		<input type="submit" value="게시글등록!" class="btn-sm btn-primary" />
 	</form>
 </c:if>
