@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/js/mastery/transferTactics.js=UTF-8
+encoding//src/community/controller/CommunityController.java=UTF-8
+encoding//src/community/model/CommunityService.java=UTF-8
 encoding//src/file/upload/CkeditorUploadController.java=UTF-8
 encoding//src/tactics/controller/TacticsController.java=UTF-8

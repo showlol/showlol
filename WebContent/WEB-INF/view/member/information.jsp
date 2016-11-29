@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <div id="infomem" style="display:block;">
 <h2>회원 정보</h2>
 <hr/>
@@ -10,10 +12,8 @@
 <b>NICK :</b> ${data.nick }<br/>
 <b>GAMEID :</b> ${data.gameid }<br/>
 <hr/>
-<input type="button" value="쪽지보기" id="showMemo"/>
 <input type="button" id="changeinfo" value="정보 수정"/>
 <input type="button" id="delID" value="회원 탈퇴"/>
-<div id="Memo"></div>
 </div>
 
 <div id="dropMem"style="display:none;">
@@ -39,18 +39,5 @@
 			url : "/delMem/del?email="+delMemid.value+"&nick=${data.nick}"
 		});		
 		location.href="/";
-	});
-	document.getElementById("showMemo").addEventListener("click", function() {
-		$.ajax(
-			{
-			"method" : "get",
-			"url" : "/community/showMemo?nick=${data.nick}",
-			"async" : false
-			}
-		).done(function(obj) {
-			$("#Memo").html(obj);
-		}).fail(function() {
-			alert("ERROR");
-		});
 	});
 </script>

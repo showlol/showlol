@@ -16,7 +16,7 @@ public class CommunityService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	//글쓰기
+	//湲��벐湲�
 	public boolean write(CommunityData cd){
 		SqlSession sql = fac.openSession();
 		int i = sql.insert("community.write", cd);
@@ -26,7 +26,7 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//글읽기
+	//湲��씫湲�
 	public CommunityData read(int num) {
 		SqlSession sql = fac.openSession();
 		CommunityData cd = sql.selectOne("community.read", num);
@@ -34,7 +34,7 @@ public class CommunityService {
 		return cd;
 	}
 	
-	//커뮤니티게시판 글일기
+	//而ㅻ�ㅻ땲�떚寃뚯떆�뙋 湲��씪湲�
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
@@ -43,7 +43,7 @@ public class CommunityService {
 	}
 	
 	
-	//게시글 삭제
+	//寃뚯떆湲� �궘�젣
 	public List readdelete(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.delete",num);
@@ -51,7 +51,7 @@ public class CommunityService {
 		return list;
 	}
 
-	//게시글좋아요
+	//寃뚯떆湲�醫뗭븘�슂
 	public List readgood(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.upGood", num);
@@ -59,7 +59,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//조회수증가
+	//議고쉶�닔利앷�
 	public List readclick(int num){
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.upClicks",num);
@@ -67,7 +67,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//페이지관리
+	//�럹�씠吏�愿�由�
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();
@@ -84,7 +84,7 @@ public class CommunityService {
 		return  total%5==0? total/5 : total/5+1;
 	}
 	
-	// 댓글
+	// �뙎湲�
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("community.reply", map)==1? true : false;
@@ -95,27 +95,6 @@ public class CommunityService {
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.readReply", parentNum);
 		sql.close();
-		return list;
-	}
-	
-	public int writeMemo(String to, String from, String title, String memo) {
-		SqlSession sql = fac.openSession();
-		HashMap map = new HashMap<>();
-		map.put("writeTo", to);
-		map.put("writeFrom", from);
-		map.put("title", title);
-		map.put("memo", memo);
-		int res = sql.insert("community.insertMemo", map);
-		sql.close();
-		
-		return res;
-	}
-	
-	public List showMemo(String nick) {
-		SqlSession sql = fac.openSession();
-		List list = sql.selectList("community.selectMemo2", nick);
-		sql.close();
-		
 		return list;
 	}
 }

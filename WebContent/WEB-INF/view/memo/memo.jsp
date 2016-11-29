@@ -6,7 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <h3>쪽지 보내기</h3>
 
-<form action="/community/writeMemo">
+<form action="/memo/write">
 	<table class="table table-bordered">
 		<tr>
 			<th>닉네임</th>

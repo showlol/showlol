@@ -23,12 +23,12 @@
 				<td>
 					<div class="dropdown">
 						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
-							type="button" data-toggle="dropdown" style="color: black">
+							type="button" data-toggle="dropdown" style="color: white">
 							${t.writer } 
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-								href="/community/memo/${t.writer } ">쪽지 보내기</a></li>
+							onclick="showView('${t.writer}')"	>쪽지 보내기</a></li>
 						</ul>
 					</div>
 				</td>
@@ -92,7 +92,16 @@
 			 
 		location.href="/tactics/regArticle/"+name+"/"+key;
 	});
-
+	
+	function showView(writer) {
+		var url = "/memo/view/" + writer;
+		window.open(url, "", "width=550,height=500");
+		
+	}
+	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
 	/*
 	
 	document.getElementById("srch").addEventListener("keyup", function(){

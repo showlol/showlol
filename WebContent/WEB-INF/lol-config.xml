@@ -20,6 +20,7 @@
 	<context:component-scan base-package="championData" />
 	<context:component-scan base-package="staticJSON" />
 	<context:component-scan base-package="gameData" />
+	<context:component-scan base-package="memo" />
 	<mvc:default-servlet-handler /> 
 	<!-- responseBody -->
 	<mvc:annotation-driven>
@@ -74,7 +75,7 @@
 				<value>/WEB-INF/mapper/runeMatch-mapper.xml</value>
 				<value>/WEB-INF/mapper/gameIcon-mapper.xml</value>
 				<value>/WEB-INF/mapper/gameData-mapper.xml</value>
-
+				<value>/WEB-INF/mapper/memo-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

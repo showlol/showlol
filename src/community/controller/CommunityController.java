@@ -26,7 +26,7 @@ public class CommunityController {
 	@Autowired
 	ReplyFollowService rfs;
 
-		//커뮤니티게시판 글 읽기
+		//而ㅻ�ㅻ땲�떚寃뚯떆�뙋 湲� �씫湲�
 		@RequestMapping("/community/review")
 		public ModelAndView review(){
 			List list = cs.readall();
@@ -36,7 +36,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//커뮤니티게시판 읽어오기
+		//而ㅻ�ㅻ땲�떚寃뚯떆�뙋 �씫�뼱�삤湲�
 		@RequestMapping("/community/review2")
 		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
 			ModelAndView mav = new ModelAndView();
@@ -49,7 +49,7 @@ public class CommunityController {
 			return mav;
 		}
 
-		// 커뮤니티 글읽기
+		// 而ㅻ�ㅻ땲�떚 湲��씫湲�
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num){
 			CommunityData cd = cs.read(num);
@@ -63,7 +63,7 @@ public class CommunityController {
 			mav.addObject("click",cli);
 			return mav;
 		}
-		//댓글
+		//�뙎湲�
 		@RequestMapping("/community/reply")
 		public String reply(String nick, String area, String parentNum) {
 			HashMap<String, String> map = new HashMap<>();
@@ -74,7 +74,7 @@ public class CommunityController {
 			return "redirect:/community/read/"+parentNum;
 		}
 			
-		// 글삭제
+		// 湲��궘�젣
 		@RequestMapping("/community/reviewd")
 		public ModelAndView reviewlikein(int num){
 			ModelAndView mav = new ModelAndView();
@@ -84,7 +84,7 @@ public class CommunityController {
 			return mav;
 		}
 		
-		//좋아요증가
+		//醫뗭븘�슂利앷�
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -93,7 +93,7 @@ public class CommunityController {
 			mav.addObject("list",list);
 			return mav;
 		}
-		//글쓰기
+		//湲��벐湲�
 		@RequestMapping("/community/writepage")
 		public ModelAndView community(){
 				ModelAndView mav = new ModelAndView();
@@ -107,36 +107,9 @@ public class CommunityController {
 			return "redirect:/community/review2?r=true";
 		}
 		
-		//목록으로
+		//紐⑸줉�쑝濡�
 		@RequestMapping("/community/return")
 		public String retrun(){
 			return "redirect:/community/review2?r=true";
-		}
-		
-		// ���� ������ view
-		@RequestMapping("/community/memo/{to}") 
-		public ModelAndView memo(@PathVariable String to){
-			ModelAndView mav = new ModelAndView("community/memo");
-			mav.addObject("to", to);
-			
-			return mav;
-		}
-		// ���� ������
-		@RequestMapping("/community/writeMemo") 
-		public String writeMemo(String to, String title, String memo, HttpSession session){
-			ModelAndView mav = new ModelAndView("community/memo");
-			int res = cs.writeMemo(to, (String)session.getAttribute("nick"), title, memo);
-			if(res == 1)
-				return "redirect:/community/review2";
-			else
-				return "community/memo";
-		}
-		
-		@RequestMapping("/community/showMemo")
-		public ModelAndView showMemo(String nick) {
-			ModelAndView mav = new ModelAndView("community/memoList");
-			List list = cs.showMemo(nick);
-			mav.addObject("list", list);
-			return mav;
 		}
 }
