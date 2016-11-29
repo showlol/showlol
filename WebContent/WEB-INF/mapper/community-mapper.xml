@@ -83,6 +83,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delReply2" parameterType="java.lang.Integer">
 		delete from community_reply2 where num=#{num}
 	</delete>
-	
-	
 </mapper>

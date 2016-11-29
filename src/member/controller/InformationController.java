@@ -1,29 +1,44 @@
 package member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.model.InformationService;
 import member.model.pojo.MemberData;
+import memo.model.MemoService;
 
 @Controller
 public class InformationController {
 	@Autowired
 	InformationService is;
 	
+	@Autowired
+	MemoService msvc;
+	
 	@RequestMapping("/information")
-	@ResponseBody
-	public ModelAndView information(HttpSession session, String nick) {
+	public ModelAndView information(HttpSession session, String nick, @RequestParam(defaultValue="1") int page) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("cm:member/information");
 		
 		MemberData data = is.informationsv(nick);
 		mav.addObject("data", data);
+		
+		List fList = msvc.getMemoFrom(nick, page);
+		int fMax = msvc.getMaxPage(msvc.getMemoFromAll(nick));
+		List tList = msvc.getMemoTo(nick, page);
+		int tMax = msvc.getMaxPage(msvc.getMemoToAll(nick));
+		mav.addObject("fList", fList);
+		mav.addObject("tList", tList);
+		mav.addObject("fMax", fMax);
+		mav.addObject("tMax", tMax);
 		return mav;
 	}
 	@RequestMapping("/delMem/del")

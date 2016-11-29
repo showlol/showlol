@@ -22,9 +22,27 @@
 				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.title }
 				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.writer }
 				<td style="font-family: 'Nanum Gothic', sans-serif;"><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
-				<td style="font-family: 'Nanum Gothic', sans-serif;"><fmt:formatDate value="${t.writedate }"
+				<td style="font-family: 'Nanum Gothic', sans-serif;">
+				<fmt:formatDate value="${t.writedate }"/>
+				<td id="num">${t.num }</td>
+				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</td>
+				<td>
+					<div class="dropdown">
+						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
+							type="button" data-toggle="dropdown" style="color: white">
+							${t.writer } 
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+							onclick="showView('${t.writer}')"	>쪽지 보내기</a></li>
+						</ul>
+					</div>
+				</td>
+				<td><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
+				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
 				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.clicks}
+				<td>${t.clicks}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -63,13 +81,15 @@
 	</form>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	$("tbody").click(
+	/* $("tbody").click(
 			function(e) {
 				console.log($(e.target).siblings("#num").html());
 				location.href = "/community/read/"
 						+ $(e.target).siblings("#num").html();
-			});
+			}); */
 	
 	$("#writing").show().click(function(){
 		if(${nick==null }){
@@ -79,7 +99,16 @@
 			 
 		location.href="/tactics/regArticle/"+name+"/"+key;
 	});
-
+	
+	function showView(writer) {
+		var url = "/memo/view/" + writer;
+		window.open(url, "", "width=550,height=500");
+		
+	}
+	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
 	/*
 	
 	document.getElementById("srch").addEventListener("keyup", function(){
@@ -109,6 +138,16 @@
 		
 	});
 	
+<<<<<<< HEAD
+	function readall() {
+		location.reload(true);
+	};
+	
+	$(document).ready(function(){
+	    $(".dropdown-toggle").dropdown();
+	});
+	
+=======
 	*/
 </script>
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <div id="infomem" style="display:block;">
 <h2 style="font-family: 'Nanum Gothic', sans-serif;">회원 정보</h2>
 <hr/>
@@ -21,6 +23,7 @@
 	<li style="font-family: 'Nanum Gothic', sans-serif;">탈퇴 후 회원정보는 모두 삭제됩니다.</li>
 	<li style="font-family: 'Nanum Gothic', sans-serif;">탈퇴 신청시 즉시 탈퇴 처리됩니다.</li>
 </ul>
+
 <input type="email" placeholder="자신의 ID를 입력해주세요." id="delMemid"/>
 <input type="button" value="탈퇴하기" id="delMem"/>
 </div>
