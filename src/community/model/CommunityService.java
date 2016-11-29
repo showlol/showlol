@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tactics.model.pojo.ImprovedTactics;
 import tactics.model.pojo.Tactics;
 
 @Component
@@ -16,7 +17,7 @@ public class CommunityService {
 	@Autowired
 	SqlSessionFactory fac;
 	
-	//湲��벐湲�
+	//글쓰기
 	public boolean write(CommunityData cd){
 		SqlSession sql = fac.openSession();
 		int i = sql.insert("community.write", cd);
@@ -26,7 +27,7 @@ public class CommunityService {
 		sql.close();
 		return rst;
 	}
-	//湲��씫湲�
+	// 글읽기
 	public CommunityData read(int num) {
 		SqlSession sql = fac.openSession();
 		CommunityData cd = sql.selectOne("community.read", num);
@@ -34,7 +35,7 @@ public class CommunityService {
 		return cd;
 	}
 	
-	//而ㅻ�ㅻ땲�떚寃뚯떆�뙋 湲��씪湲�
+	//글읽어오기
 	public List readall(){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.readAll");
@@ -43,15 +44,25 @@ public class CommunityService {
 	}
 	
 	
-	//寃뚯떆湲� �궘�젣
-	public List readdelete(int num){
+
+	//게시글 삭제
+	public boolean readdelete(int num){
 		SqlSession sql = fac.openSession();
-		List list =  sql.selectList("community.delete",num);
+		boolean r=  sql.delete("community.delete",num)==1?true:false;
 		sql.close();
-		return list;
+		return r;
+	}
+	
+	//게시글 수정
+	public boolean updateWrite(CommunityData cd) {
+		System.out.println(cd.toString());
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("community.updateWrite", cd)==1?true:false;
+		sql.close();
+		return r;
 	}
 
-	//寃뚯떆湲�醫뗭븘�슂
+	//좋아요
 	public List readgood(int num){
 		SqlSession sql = fac.openSession();
 		List list =  sql.selectList("community.upGood", num);
@@ -59,7 +70,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//議고쉶�닔利앷�
+	//조회수
 	public List readclick(int num){
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("community.upClicks",num);
@@ -67,7 +78,7 @@ public class CommunityService {
 		return list;
 	}
 	
-	//�럹�씠吏�愿�由�
+	//페이지
 	public List readRange(int p, int total) {
 		SqlSession sql = fac.openSession();
 		HashMap map = new HashMap();
@@ -84,7 +95,7 @@ public class CommunityService {
 		return  total%5==0? total/5 : total/5+1;
 	}
 	
-	// �뙎湲�
+	// 댓글
 	public boolean reply(HashMap map) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("community.reply", map)==1? true : false;
