@@ -9,8 +9,16 @@
 
 <c:if test="${list != null }">
 	<c:forEach var="g" items="${list }">
+		<c:choose>
+			<c:when test="${g.win }">
+				<c:set var="bgcolor" value="blue"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="bgcolor" value="red"/>
+			</c:otherwise>
+		</c:choose>
 		<table>
-			<tr>	
+			<tr bgcolor="${bgcolor }">	
 				<td width="100px">
 					<table>
 						<tr>
@@ -33,7 +41,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><a href="#" style="text-decoration:none;color:black;" title="<fmt:formatDate value="${g.createDate }" pattern="yyyy-MM-dd KK:mm:ss"/>" >
+							<td><a href="#" style="text-decoration:none;color:black;background-color: ${bgcolor}" title="<fmt:formatDate value="${g.createDate }" pattern="yyyy-MM-dd KK:mm:ss"/>" >
 								<c:choose>
 									<c:when test="${g.dTime >= 24 }">
 									<fmt:parseNumber integerOnly="true" value="${g.dTime/24 }"/>일 전

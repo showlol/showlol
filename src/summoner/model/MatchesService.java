@@ -207,6 +207,7 @@ public class MatchesService {
 			String spell2 = bsvc.getSpellName((int)data.get("spell2Id"));
 			participant.put("spell1", spell1);
 			participant.put("spell2", spell2);
+			participant.put("teamId", data.get("teamId"));
 			for(int j=0;j<7;j++) {
 				try{
 					participant.put("item"+j, (int)stats.get("item"+j));
