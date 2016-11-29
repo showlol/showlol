@@ -30,7 +30,7 @@ CHAMPION<br/><hr/>
 		<c:forEach var="row" items="${list }">
 			<tr class="info">
 				<td id="num">${row.num }<td>${row.title }<td>${row.writer }
-				<td><fmt:formatDate value="${row.writeDate }" pattern="yy/MM/dd hh:mm" />
+				<td><fmt:formatDate value="${row.writeDate }" pattern="MM/dd hh:mm" />
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -45,6 +45,9 @@ CHAMPION<br/><hr/>
 		<tbody></tbody>
 	</table>
 	<button id="writeTactics" class='btn btn-success' style="display:none; float:right;">공략쓰기</button>
+	
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/js/util/DateFormat.js" ></script>
 <script>
 
 	$("tbody").click(function(e){
@@ -62,9 +65,18 @@ CHAMPION<br/><hr/>
 	function appendList(r, name, key){
 		$("#tacticsList").show();
 		for(var i=0; i<r.length; i++){
+			var millis = new Date(r[i].writeDate);
+			var now = new Date();
+			var time;
+			if(millis.getDate()<now.getDate()){
+				time = millis.format("m/dd");
+			}else{
+				time = millis.format("h:MM");
+			}
+			
 			$("#tacticsList").children("tbody").append(
 				"<tr class='danger'><td id='num'>"+r[i].num+"<td>"
-				+r[i].title+"<td>"+r[i].writer+"<td>"+new Date(r[i].writeDate).toDateString("dd/mm/yy")+"</tr>")			
+				+r[i].title+"<td>"+r[i].writer+"<td>"+time+"</tr>")			
 		}
 		$("#writeTactics").show().click(function(){
 			if(${nick==null }){

@@ -119,7 +119,6 @@ console.log("masteryMod load...");
 		}); // attrBox bind click
 		
 		$(".attrBox").contextmenu(function(e){
-			alert("우클릭");
 			var boxNum = e.target.getAttribute("id");
 			console.log(boxNum);
 			if((boxNum-1)%15<12){

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
@@ -14,9 +15,10 @@
 		border-radius: 4%; padding: 10px; ">
 		<b style='display: inline;' >${tactics.title }</b><br/>	
 		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
-		<span style='float: right; '>${tactics.writeDate }</span><br/>
+		<span style='float: right; '>작성일 : <fmt:formatDate value='${tactics.writeDate}' pattern='MM/dd' /></span><br/>
 	</div>
-	<ul class="nav nav-tabs">
+	<div class="tacticsBox" >
+		<ul class="nav nav-tabs">
 			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
 			<li><a href="#rune">룬</a>
 			<li><a href="#skill">스킬</a>
@@ -36,16 +38,17 @@
 				<c:import url="tactics/read/readItems.jsp"></c:import>			
 			</div>
 		</div>
+	
 	<br/>
-	<hr style="clear: left;">
-			${tactics.writer } / ${nick }
+	<hr style="clear: left;" />
+	</div>		
 	<c:if test="${tactics.writer==nick }">
-		<div id="btnGroup" style='float: right;' >
+		<div id="btnGroup" align="right" style='margin: 3%;'>
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
 			<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
 		</div>
 	</c:if>	
-
+	
 <br />
 <hr style="clear: right;">
 
@@ -190,6 +193,7 @@
 	};
 	
 	//글 수정
+if(${r.WRITER==nick }){
 	document.getElementById("update").addEventListener("click", function() {
 		update();
 	});
@@ -198,7 +202,7 @@
 	document.getElementById("delete").addEventListener("click", function() {
 		deletedata();
 	});
-	
+}
 	//댓글 수정
 	function updateReply(up, id) {
 		up.parent().append(replyBox);

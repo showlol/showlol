@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="bestList" resultType="tactics.model.pojo.Tactics">
 		<![CDATA[select temp.r, temp.* from 
-			(select rownum r, tc.* from tactics_content tc order by writedate desc)temp
+			(select rownum r, tc.* from Improvedtactics_content tc order by writedate desc)temp
 			 where rownum<=3]]>
 	</select>
 	<select id="champTactics" resultType="tactics.model.pojo.ImprovedTactics">
