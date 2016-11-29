@@ -3,14 +3,10 @@
  */
 console.log("masteryMod load...");
 	var totalPoint = 30;
-	var m0Point = 0;
-	var m1Point = 0;
-	var m2Point = 0;
-	$(document).ready(function() {
-		addPoint();
-		addAttr();
-	});
 	
+	$(document).ready(function() {
+		addPoint();	
+	});
 	
 	function addPoint() {
 		
@@ -34,15 +30,39 @@ console.log("masteryMod load...");
 							var currentMasteryId = $(this).parents(".mastery")
 									.attr("id");
 							if (tier != 0) {
-								if ($("#" + currentMasteryId).find(
-										".tier_odd[value=" + (tier - 1)
-												+ "], .tier_even[value="
-												+ (tier - 1) + "]")
-										.attr("data") != "enough") {
-									alert("이전 속성을 완성하세요.");
-									return false;
+//								if ($("#" + currentMasteryId).find(
+//										".tier_odd[value=" + (tier - 1)
+//												+ "], .tier_even[value="
+//												+ (tier - 1) + "]")
+//										.attr("data") != "enough") {
+//									alert("이전 속성을 완성하세요.");
+//									return false;
+//								}
+								var boxNum = $(this).attr("id");
+								var isEnough=false;
+								var mod = Math.floor((boxNum-1)/5);
+								var rest = boxNum%5;
+								if(rest==1 || rest==2){
+									var index = 5*mod-2;
+									for(i = index; i<index+3; i++)					
+										if($("#mastery_ul").find("#"+i+">span").html()>0){
+											isEnough=true;
+										}
+											
+								}else{
+									var index = 5*mod+1;
+									var enough;
+									for(i = index; i<index+2; i++){						
+										enough += $("#mastery_ul").find("#"+i+">span").html()/1											
+									}
+									isEnough = enough>4 ? true : false; 
 								}
 							}
+							if(isEnough==false){
+								alert("이전 속성을 완성하세요.");
+								return false;
+							}
+								
 							// 해당 티어 속성 합계 계산
 							var tierPoint = 0;
 							var length = e.target.parentNode.childNodes.length;
@@ -97,12 +117,46 @@ console.log("masteryMod load...");
 							}
 							console.log(totalPoint);
 		}); // attrBox bind click
-		$(".attrBox").contextmenu(function(){
+		
+		$(".attrBox").contextmenu(function(e){
 			alert("우클릭");
+			var boxNum = e.target.getAttribute("id");
+			console.log(boxNum);
+			if((boxNum-1)%15<12){
+				var mod = Math.floor((boxNum-1)/5);
+				var rest = boxNum%5;
+				if(rest==1 || rest==2){
+					var index = 5*mod+3;
+					for(i = index; i<index+3; i++)					
+						if($("#mastery_ul").find("#"+i+">span").html()>0){
+							alert("위 티어를 비워야 합니다.");
+							return false;
+						}
+							
+				}else{
+					var index = 5*(mod+1)+1;
+					for(i = index; i<index+2; i++){						
+						if($("#mastery_ul").find("#"+i+">span").html()>0){
+							alert("위 티어를 비워야 합니다.");
+							return false;
+						}
+					}
+				}
+			}
+			
+			target = e.target.childNodes[0];
+			if(target.innerHTML<1){
+				alert("더 취소할 수 없습니다.");				
+				return false;
+			}
+			target.innerHTML--;
+			totalPoint++;
+			console.log(totalPoint);
+			return false;
 		});
 		var btnWidth = 100;
 		$("#initMasteryWrap").append("<input type='button' id='initMasteryBtn'"
-				+" class='btn btn-danger' value='초기화' style='width:"
+				+" class='btn-sm btn-danger' value='초기화' style='width:"
 				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
 		$("#initMasteryBtn").click(function(){
 			alert("초기화");

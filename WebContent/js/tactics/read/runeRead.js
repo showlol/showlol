@@ -1,7 +1,7 @@
 /**
  * 
  */
-	var runeData2 = runeData;
+	
 	console.log("runeRead load...");
 	
 	var runeList = [];
@@ -11,7 +11,6 @@
 	
 	$.get("/gameData/runeTier3", function(e){
 		runeList=e;
-
 	});
 
 	$.get("/gameData/runeAbil", function(e){
@@ -22,10 +21,11 @@
 	$.get("/gameData/runeKind", function(e){			
 		runeKind=e;
 	});			
-	
+$("runeRead.js").ready(function(){
+	console.log(runeKind);
 	$.get("/JSON/rune", function(list){		
-		for(var num=0; num<runeData2.length-1; num++){						
-			var id = runeData2[num];			
+		for(var num=0; num<runeData.length-1; num++){						
+			var id = runeData[num];			
 			if(id=="undefined"){				
 				continue;
 			}			
@@ -39,16 +39,19 @@
 			$("#runeNum"+num).append(runeBox);
 			
 			var abilist = runeAbil[id][0];
-			runeKind[abilist[0]]+=abilist[1];		
-			
-			var keys = Object.keys(runeKind);
-			console.log(runeKind[keys[0]]);
-			keys.forEach(function(key){
-				if(runeKind[key]!=0){
-					runeAbility += key+":"+runeKind[key]+" / ";
-				}			
-			});
-			$("#runeAbility").html(runeAbility);
+			runeKind[abilist[0]]+=abilist[1];			
 		}
+		console.log(runeKind);
+		var runeAbility="";
+		var keys = Object.keys(runeKind);
+		console.log(runeKind[keys[0]]);
+		keys.forEach(function(key){
+			if(runeKind[key]!=0){
+				runeAbility += key+":"+runeKind[key]+" / ";
+			}			
+		});
+		$("#runeAbility").html(runeAbility);
 	});
+});	
+	
 		

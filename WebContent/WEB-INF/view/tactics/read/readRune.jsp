@@ -40,14 +40,7 @@ var runeAbil = {};
 
 
 $("readRune.jsp").ready(function(){
-	var data = "${tactics.runeData }".split("#");
-	
-	
-	function readRuneAbil(){
-		$.get("/gameData/runeAbil", function(e){
-			runeAbil=e;			
-		});
-	}
+	var data = "${tactics.runeData }".split("#");	
 	
 	$.get("/JSON/rune", function(list){		
 		for(i=0; i<data.length-1; i++){
@@ -66,21 +59,20 @@ $("readRune.jsp").ready(function(){
 			
 			var abilist = runeAbil[data[i]][0];
 			runeKind[abilist[0]]+=abilist[1];		
-			var runeAbility="";
-			var keys = Object.keys(runeKind);
-			console.log(runeKind[keys[0]]);
-			keys.forEach(function(key){
-				if(runeKind[key]!=0){
-					runeAbility += key+":"+runeKind[key]+" / ";
-				}			
-			});
-			$("#runeAbility").html(runeAbility);
-			
 		}
-		
+		console.log(runeKind);
+		var runeAbility="";
+		var keys = Object.keys(runeKind);
+		console.log(runeKind[keys[0]]);
+		keys.forEach(function(key){
+			if(runeKind[key]!=0){
+				runeAbility += key+":"+runeKind[key]+" / ";
+			}			
+		});
+		$("#runeAbility").html(runeAbility);
 		
 	});
 		
-})
+});
 	
 </script>

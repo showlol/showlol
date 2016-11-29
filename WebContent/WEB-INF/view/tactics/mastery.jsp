@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div>	
-			
+<div>			
 		<ul class="mastery_title">
 			<li>흉포 : <b id="ferocity" >0</b>
 			<li>교활 : <b id="cunning" >0</b>
@@ -18,7 +17,11 @@
 </div>
 <script src='/js/mastery/masteryDIV.js'></script>
 <script src='/js/mastery/masteryMod.js'></script>
-
+<script>
+	$("ferocity").html(m0);
+	$("cunning").html(m1);
+	$("resolve").html(m2);
+</script>
 
 
 

@@ -61,12 +61,20 @@ $("[name]").each(function(i){
 	console.log(this);
 });
 
-var ar=[];
+var ar=[0, 0];
 
 ar[0]++;
 ar[1]++;
 console.log(ar);
-
+var now = new Date(112134231);
+console.log(now.getTimezoneOffset());
+console.log(now);
+console.log(now.getUTCDate());
+console.log(now.toDateString());
+console.log(now.toTimeString());
+console.log(now.toLocaleDateString());
+console.log(Date.format(11232333));
+console.log(now.toLocaleString(KST));
 </script>
 	
 </body>
