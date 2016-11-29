@@ -1,5 +1,6 @@
 package member.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -53,6 +54,14 @@ public class InformationService {
 	public boolean delComuRe2(String nick) {
 		SqlSession sql = fac.openSession();
 		boolean r = sql.update("member.delComuRe2", nick)==1? true : false;
+		return r;
+	}
+	public boolean passChange(String pass, String email) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("pass", pass);
+		map.put("email", email);
+		SqlSession sql = fac.openSession();
+		boolean r = sql.update("member.passchange", map)==1? true : false;
 		return r;
 	}
 }

@@ -83,6 +83,7 @@
 		}).done(function(out) {
 			if(out=="success") {
 				document.getElementById("logInfo").innerHTML = "<a href='#' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
+				location.href="/";
 			}
 		});
 	}	

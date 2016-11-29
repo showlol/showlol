@@ -10,6 +10,8 @@
 <!-- fonts -->
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<style>
+	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
