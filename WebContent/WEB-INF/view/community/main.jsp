@@ -18,14 +18,8 @@
 	<tbody>
 		<c:forEach var="t" items="${size }">
 			<tr class="info">
-				<td id="num" style="font-family: 'Nanum Gothic', sans-serif;">${t.num }
-				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.title }
-				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.writer }
-				<td style="font-family: 'Nanum Gothic', sans-serif;"><img src="/image/like.png"/><fmt:formatNumber value="${t.good }" />
-				<td style="font-family: 'Nanum Gothic', sans-serif;">
-				<fmt:formatDate value="${t.writedate }"/>
 				<td id="num">${t.num }</td>
-				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</td>
+				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</a></td>
 				<td>
 					<div class="dropdown">
 						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
@@ -42,7 +36,6 @@
 				<td><fmt:formatDate value="${t.writedate }"
 						pattern="yy/MM/dd hh:mm" />
 				<td style="font-family: 'Nanum Gothic', sans-serif;">${t.clicks}
-				<td>${t.clicks}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
