@@ -9,7 +9,7 @@
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<div style="border:1px solid lightgray; padding: 5% ; background-color:#FFFFFF">
+<div style="border:1px solid lightgray; padding: 5% ; background-color:#FFFFFF" class="well">
 <br />
 <div align="right">
 	<c:if test="${nick!=null }">
@@ -30,22 +30,24 @@
 	<b>작성자</b>
 	<div>${cdata.writer }</div>
 	<br />
+	<hr />
 	<b>내용</b>
 	<br />
 	<div style="font-family: 'Nanum Gothic', sans-serif; font-size: 11pt;">${cdata.memo }</div>
 	<br />
-
+</div>
 
 <form action="/community/return">
 	<input type="submit" value="목록" class="btn-sm btn-primary" />
 </form>
 
+<div style="border:1px solid lightgray; padding: 5% ; margine=10"  class="well">
 <c:if test="${nick!=null }">
 	<form action="/community/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
 		<input type="hidden" name="parentNum" value="${cdata.num }">
-		<textarea rows="4" name="area"></textarea>
-		<br /> <input type="submit" value="댓글 작성" class="btn-sm btn-primary" />
+		<textarea rows="5" cols="80" name="area" placeholder="댓글을 입력하세요." ></textarea>
+		<input type="submit" value="댓글 작성" class="btn-sm btn-primary" />
 	</form>
 </c:if>
 <c:forEach var="r" items="${readReply }">
@@ -96,9 +98,7 @@
 		location.reload(true);
 	};
 	
-	document.getElementById("update").addEventListener("click", function() {
-		update();
-	});
+
 	
 	$(document).ready(function() {
 		$("input").click(function() {
