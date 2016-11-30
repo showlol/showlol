@@ -23,7 +23,7 @@ td {
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #339966;
     color: white;
     font-family: 'Nanum Gothic', sans-serif;
 }
