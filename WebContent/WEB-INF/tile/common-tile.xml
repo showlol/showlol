@@ -12,6 +12,13 @@
 		<put-attribute name="footer" value="/WEB-INF/view/common/footer.jsp"/>
 	</definition>
 	
+	<definition name="frontgateMain" template="/WEB-INF/view/layout.jsp">
+		<put-attribute name="title" value="ROOT"/>
+		<put-attribute name="header" value="/WEB-INF/view/common/headerMain.jsp"/>
+		<put-attribute name="article" value="/WEB-INF/view/common/main.jsp"/>	
+		<put-attribute name="footer" value="/WEB-INF/view/common/footer.jsp"/>
+	</definition>
+	
 	<definition name="frontgate" template="/WEB-INF/view/layout.jsp">
 		<put-attribute name="title" value="ROOT"/>
 		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp"/>

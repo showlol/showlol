@@ -34,15 +34,8 @@ th {
 </div>
 <div style="text-align: center;">
 	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Nanum Gothic', sans-serif; list="hist" required="required" id="tt" placeholder="소환사명"/>
-		<datalist id="hist">
-			<c:set var="arr" value="${fn:split(hist, ',') }"/>
-			<c:forEach var="h" items="${arr }">
-				<option class="item" value="${h }" />
-			</c:forEach>
-		</datalist>
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Nanum Gothic', sans-serif; required="required" id="tt" placeholder="소환사명"/>
 		<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 20; font-family: 'Nanum Gothic', sans-serif;"/>
-
 	</form>
 </div>
 
