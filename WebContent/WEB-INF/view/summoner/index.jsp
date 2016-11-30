@@ -17,22 +17,9 @@
 
 	<div class="container">
 		<input type="hidden" id="userName" value="${userInfo.name }" /> 
-		<table width="800">
-			<tr>
-				<td>
-					<img width="100"
-						 src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/${userInfo.profileIconId }.png" />
-					${userInfo.name }
-				</td>
-				<td width="500px;">
-					<form action="/summoner/index" method="post" style="display:inline;" id="search">
-						<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" required="required" id="tt" placeholder="소환사명"/>
-						<input type="submit" value="검색" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;"/>
-					</form>
-				</td>
-			</tr>
-		</table>
-		
+		<img width="100"
+			 src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/${userInfo.profileIconId }.png" />
+		${userInfo.name }
 		
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home">랭크</a></li>

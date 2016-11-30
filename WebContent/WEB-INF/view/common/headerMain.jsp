@@ -34,12 +34,6 @@
 				<li id="logInfo"><a href="#" data-toggle="modal"
 					data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right" style="padding-top:12px;">
-				<form action="/summoner/index" method="post" style="display:inline;" id="search">
-					<input type="text" name="userName" value="${sname }" style="font-size: 20; font-family: 'Nanum Gothic', sans-serif; required="required" id="tt" placeholder="소환사명"/>
-					<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 15; font-family: 'Nanum Gothic', sans-serif;"/>
-				</form>
-			</ul>
 		</div>
 	</div>
 </nav>
