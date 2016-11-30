@@ -11,10 +11,10 @@
 	<c:forEach var="g" items="${list }">
 		<c:choose>
 			<c:when test="${g.win }">
-				<c:set var="bgcolor" value="blue"/>
+				<c:set var="bgcolor" value="#A3CFEC"/>
 			</c:when>
 			<c:otherwise>
-				<c:set var="bgcolor" value="red"/>
+				<c:set var="bgcolor" value="#E2B6B3"/>
 			</c:otherwise>
 		</c:choose>
 		<table>
@@ -92,7 +92,7 @@
 				<td width="100px">
 					<table>
 						<tr><td>${g.kill } / <font color="red">${g.death }</font> / ${g.assist }</td></tr>
-						<tr>
+						<tr bgcolor="${bgcolor }">
 							<td>
 								<c:choose>
 									<c:when test="${g.kda == -1 }">
