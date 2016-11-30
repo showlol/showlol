@@ -8,13 +8,13 @@
 </head>
 <form id='tacticsModForm' action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 <div>	
-	<H3>${tactics.champ } 공략글 </H3>
+	<H3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </H3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
 		border-radius: 4%; padding: 10px; ">
-		<b style='display: inline;' >${tactics.title }</b><br/>	
-		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
-		<span style='float: right; '>${tactics.writeDate }</span><br/>
+		<b style="display: inline; font-family: 'Nanum Gothic', sans-serif;">${tactics.title }</b><br/>	
+		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
+		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">${tactics.writeDate }</span><br/>
 	</div>	
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#mastery">특성</a>

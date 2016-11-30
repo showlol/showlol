@@ -8,7 +8,7 @@
 <c:forEach var="i" items="${list }">
 	<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px;" >
 		<td align="center">${cnt }</td>
-		<td><b>${i.playerOrTeamName }</b></td>
+		<td><a href="/summoner/index?userName=${i.playerOrTeamName }" style="text-decoration: none;font-family: 'Nanum Gothic', sans-serif;color:black;"><b>${i.playerOrTeamName }</b></a></td>
 		<td align="center">Challenger</td>
 		<td align="center">${i.leaguePoints } LP</td>
 		<td align="center">

@@ -34,7 +34,7 @@ th {
 </div>
 <div style="text-align: center;">
 	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Nanum Gothic', sans-serif; required="required" id="tt" placeholder="소환사명"/>
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Nanum Gothic', sans-serif;" required="required" id="tt" placeholder="소환사명"/>
 		<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 20; font-family: 'Nanum Gothic', sans-serif;"/>
 	</form>
 </div>
@@ -42,7 +42,7 @@ th {
 <div align="center">
 
 <h2 style="font-family: 'Roboto Condensed', sans-serif;">Challenger Rank</h2>
-<table border="1" style="padding: 100px;">
+<table id="table" border="1" style="padding: 100px;">
 	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
 		<th width="150">소환사</th>
@@ -55,7 +55,7 @@ th {
 	<c:forEach var="i" items="${list }">
 		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px;" >
 			<td align="center">${cnt }</td>
-			<td><b>${i.playerOrTeamName }</b></td>
+			<td><a href="/summoner/index?userName=${i.playerOrTeamName }" style="text-decoration: none;font-family: 'Nanum Gothic', sans-serif;color:black"><b>${i.playerOrTeamName }</b></a></td>
 			<td align="center">Challenger</td>
 			<td align="center">${i.leaguePoints } LP</td>
 			<td align="center">

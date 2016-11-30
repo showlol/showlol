@@ -8,7 +8,7 @@
 	<div id="skillTree" style="height: 150px; "></div>
 	
 	<div id='initSkillWrap' class='clearBtnWrap'></div>
-	<textarea name="skillContent" id="skillContent">${tactics.skillContent }</textarea>
+	<textarea name="skillContent" id="skillContent" style="resize: none;">${tactics.skillContent }</textarea>
 	<script>
  		CKEDITOR.replace('skillContent');
 	</script> 

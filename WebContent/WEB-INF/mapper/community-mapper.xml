@@ -27,14 +27,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 검색 기능 -->
-	<select id="readTitle"  resultType="community.model.CommunityData">
-		select * from community where title=#{title}
+	<!-- 제목으로검색 -->
+	<select id="searchTitle"  resultType="community.model.CommunityData">
+		select * from community where title like #{title}
+	</select>
+	<!-- 작성자로검색 -->
+	<select id="searchWriter" resultType="community.model.CommunityData">
+		select * from community where writer like #{writer }
 	</select>
 	
-	<select id="searchSome" resultType="community.model.CommunityData"
-		parameterType="java.lang.String">
-		select * from community where title like #{title }
-	</select>
 	
 	<!-- 게시글 수정 -->
 	<update id="updateWrite" parameterType="community.model.CommunityData">
@@ -61,6 +62,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	
+	
+	
 	<insert id="reply" parameterType="java.util.HashMap">
 		insert into community_reply1 values(community_reply1_seq.nextval, #{parentNum}, #{nick}, #{area}, sysdate)
 	</insert>
@@ -74,6 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyfollow" parameterType="java.util.List" resultType="java.util.HashMap">
 		select * from community_reply2 order by num asc
 	</select>
+	
 	
 	<!-- 댓글 -->
 	<update id="upReply" parameterType="java.util.HashMap">
