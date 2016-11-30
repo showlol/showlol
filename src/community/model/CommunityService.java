@@ -43,8 +43,21 @@ public class CommunityService {
 		return list;
 	}
 	
+	//게시물검색기능
+	public List Searchtitle(String find){
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("community.searchTitle","%"+find+"%");
+		sql.close();
+		return list;
+	}
+	public List Searchwriter(String find){
+		SqlSession sql = fac.openSession();
+		List list = sql.selectList("community.searchWriter","%"+find+"%");
+		sql.close();
+		return list;
+	}
 	
-
+	
 	//게시글 삭제
 	public boolean readdelete(int num){
 		SqlSession sql = fac.openSession();
