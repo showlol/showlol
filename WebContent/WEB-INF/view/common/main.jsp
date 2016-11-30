@@ -25,6 +25,7 @@ td {
 th {
     background-color: #4CAF50;
     color: white;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 </style>
@@ -33,14 +34,14 @@ th {
 </div>
 <div style="text-align: center;">
 	<form action="/summoner/index" method="post" style="display:inline;" id="search">
-		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;" list="hist" required="required" id="tt" placeholder="소환사명"/>
+		<input type="text" name="userName" value="${sname }" style="font-size: 24; font-family: 'Nanum Gothic', sans-serif; list="hist" required="required" id="tt" placeholder="소환사명"/>
 		<datalist id="hist">
 			<c:set var="arr" value="${fn:split(hist, ',') }"/>
 			<c:forEach var="h" items="${arr }">
 				<option class="item" value="${h }" />
 			</c:forEach>
 		</datalist>
-		<input type="submit" value="검색" style="font-size: 24; font-family: 'Roboto Condensed', sans-serif;"/>
+		<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 20; font-family: 'Nanum Gothic', sans-serif;"/>
 
 	</form>
 </div>
@@ -51,15 +52,15 @@ th {
 <table border="1" style="padding: 100px;">
 	<tr height="50" align="center" style="font-family: 'Roboto Condensed', sans-serif;">
 		<th width="50"></th>
-		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">소환사</th>
-		<th width="100" style="font-family: 'Nanum Gothic', sans-serif;">티어</th>
-		<th width="100">LP</th>
-		<th width="150" style="font-family: 'Nanum Gothic', sans-serif;">승률</th>
+		<th width="150">소환사</th>
+		<th width="100">티어</th>
+		<th width="100" style="font-family: 'Roboto Condensed', sans-serif;">LP</th>
+		<th width="150">승률</th>
 	</tr>
 	
 	<c:set var="cnt" value="1"/>
 	<c:forEach var="i" items="${list }">
-		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px; font-family: 'Roboto Condensed', sans-serif;" >
+		<tr height="40" style="border-style: solid; border-bottom-color: #000000; border-width:1px;" >
 			<td align="center">${cnt }</td>
 			<td><b>${i.playerOrTeamName }</b></td>
 			<td align="center">Challenger</td>
@@ -93,7 +94,7 @@ th {
 </div>
 <div id="showBtn" align="center" style="padding:10px;">
 	<input type="hidden" id="startIdx" value="${cnt}"/>
-	<input type="button" value="더보기" onclick="showover()" style="width: 580px;"/>
+	<input type="button" class="btn-sm btn-primary" value="더보기" onclick="showover()" style="width: 580px; font-family: 'Nanum Gothic', sans-serif;"/>
 </div>
 
 <script>

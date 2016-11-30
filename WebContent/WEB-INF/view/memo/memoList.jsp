@@ -14,6 +14,7 @@ table {
 th, td {
     text-align: center;
     padding: 8px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -22,16 +23,24 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+a:link, a:visited {
+    background-color: green;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
 </style>
 
 <div id="board">
 <div class="container">
-  <h2>쪽지함</h2>
+  <h2 style="font-family: 'Nanum Gothic', sans-serif;">쪽지함</h2>
   <ul class="nav nav-tabs">
   	<c:choose>
   		<c:when test="${mode == 1 }">
   			<li class="active"><a href="#receivce">받은 쪽지함</a></li>
-   			<li><a href="#send">보낸 쪽지함</a></li>
+   			<li><a href="#send" >보낸 쪽지함</a></li>
   		</c:when>
   		<c:otherwise>
  			<li><a href="#receivce">받은 쪽지함</a></li>
@@ -117,7 +126,7 @@ th {
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea id="memo" cols="50" rows="10" ></textarea></td>
+			<td><textarea id="memo" cols="50" rows="10" style="resize: none;" ></textarea></td>
 		</tr>
 	</table>
 	<div align="right"><input class="btn btn-success" type="button" value="목록으로" onclick="goBoard()"/></div>

@@ -5,6 +5,9 @@
 	a{
 		font-family: 'Oswald', sans-serif;
 	}
+	font{
+		font-family: 'Oswald', sans-serif;
+	}
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
@@ -14,22 +17,21 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/" style="font-family: 'Oswald', sans-serif;">ShowLOL</a>
+			<a class="navbar-brand" href="/">ShowLOL</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/" style="font-family: 'Oswald', sans-serif;">Home</a></li>
-				<li><a href="/tactics/" style="font-family: 'Oswald', sans-serif;">Tactics</a></li>
-				<li><a href="/community/review2" style="font-family: 'Oswald', sans-serif;">Community</a></li>
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/tactics/">Tactics</a></li>
+				<li><a href="/community/review2">Community</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<c:if test="${nick==null }">
-				<li><a href="/join" style="font-family: 'Oswald', sans-serif;"><span class="glyphicon glyphicon-user"></span>
+				<li><a href="/join"><span class="glyphicon glyphicon-user"></span>
 						Sign Up</a></li>
 				</c:if>
 				<li id="logInfo"><a href="#" data-toggle="modal"
-					data-target="#loginModal" style="font-family: 'Oswald', sans-serif;"><span
-						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 		</div>
 	</div>
@@ -38,6 +40,7 @@
 <!-- Modal -->
 <div id="loginModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-sm">
+	
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
@@ -46,12 +49,12 @@
 			</div>
 			<div class="modal-body">
 				<div id="danger"></div>
-				<font style="font-family: 'Oswald', sans-serif;">ID : <input type="email" id="id" placeholder="email을 입력하세요." /></font> <br />
-				<font style="font-family: 'Oswald', sans-serif;">PASS : <input type="password" id="pass" /></font> <br />
-				<input type="button" value="login" id="login" />
+				<font>ID : <input type="email" id="id" placeholder="email을 입력하세요." style="font-family: 'Nanum Gothic', sans-serif;" /></font> <br />
+				<font>PASS : <input type="password" id="pass" /></font> <br />
+				<input type="button" value="login" id="login" style="font-family: 'Oswald', sans-serif;" />
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" style="font-family: 'Oswald', sans-serif;">Close</button>
 			</div>
 		</div>
 

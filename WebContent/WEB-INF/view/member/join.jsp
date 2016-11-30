@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+	font{
+		font-family: 'Oswald', sans-serif;
+	}
+</style>
 <h2 style="font-family: 'Oswald', sans-serif;">Join</h2>
-<font style="font-family: 'Oswald', sans-serif;">ID : </font><input type="email" id="memberid" placeholder="email을 입력하세요."><br/>
-<font style="font-family: 'Oswald', sans-serif;">PASS : </font><input type="password" id="memberpass" ><br/>
-<font style="font-family: 'Oswald', sans-serif;">NICK : </font><input type="text" id="nick" ><br/>
-<font style="font-family: 'Oswald', sans-serif;">GAMEID : </font><input type="text" id="gameid" ><br/>
-<input type="button" value="입력 완료" id="create" />
+<font>ID : </font><input type="email" id="memberid" placeholder="email을 입력하세요." style="font-family: 'Nanum Gothic', sans-serif;" required><br/>
+<font>PASS : </font><input type="password" id="memberpass" required><br/>
+<font>NICK : </font><input type="text" id="nick" required><br/>
+<font>GAMEID : </font><input type="text" id="gameid" style="font-family: 'Nanum Gothic', sans-serif;" required><br/>
+<input type="button" class="btn-sm btn-primary" value="입력 완료" id="create" />
 <hr/>
 <h3 style="font-family: 'Oswald', sans-serif;">E-mail Confirm</h3>
-<input type="text" name="authuuid" size="30" id="authuuid" /> <input type="button" value="인증하기" id="auth"/>
+<input type="text" name="authuuid" size="30" id="authuuid" required /> <input type="button" class="btn-sm btn-primary" value="인증하기" id="auth"/>
 <script>
 		document.getElementById("create").addEventListener("click", function() {
 			sendEmail();

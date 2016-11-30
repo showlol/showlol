@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+	b{
+		font-family: 'Nanum Gothic', sans-serif;
+		font-size: 14pt;
+	}
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <div style="border:1px solid lightgray; padding: 5% ; background-color:#FFFFFF">
@@ -8,12 +14,12 @@
 <div align="right">
 	<c:if test="${nick!=null }">
 		<input type="submit" value="좋아요" onclick="likein(${num })"
-			class="btn-sm btn-primary" /> 
+			class="btn-sm btn-primary" style="font-family: 'Nanum Gothic', sans-serif;" /> 
 		<c:if test="${nick==cdata.writer}">
 			<span id="btnGroup">
-				| <button type="button" id="update" class="btn-sm btn-primary">수정하기</button>
+				| <button type="button" id="update" class="btn-sm btn-primary" style="font-family: 'Nanum Gothic', sans-serif;">수정하기</button>
 				|
-				<button type="button" id="delete" class="btn-sm btn-primary">글삭제</button>
+				<button type="button" id="delete" class="btn-sm btn-primary" style="font-family: 'Nanum Gothic', sans-serif;">글삭제</button>
 			</span>
 		</c:if>
 	</c:if>
@@ -26,7 +32,7 @@
 	<br />
 	<b>내용</b>
 	<br />
-	<div style="font-family: 맑은 고딕; font-size: 11pt;">${cdata.memo }</div>
+	<div style="font-family: 'Nanum Gothic', sans-serif; font-size: 11pt;">${cdata.memo }</div>
 	<br />
 
 
@@ -45,7 +51,7 @@
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
-		<b>작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button"
+		<b style="font-size: 12pt;">작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button"
 			kind="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }"
 			class="btn-sm btn-primary" />
 		<c:if test="${r.WRITER==nick }">
@@ -63,7 +69,7 @@
 		<div>
 			<c:if test="${f.PARENTNUM==r.NUM }">
 				<img src="/image/review2.png" />
-				<b>작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
+				<b style="font-size: 12pt;">작성자:${f.WRITER }</b> (작성일:${f.WRITEDATE }) 
 				 <c:if test="${f.WRITER==nick }">
 					<input type="button" class="btn-sm btn-primary" kind='upReply2'
 						value="수정" id="${f.NUM }" style="font-size: 9;" />
