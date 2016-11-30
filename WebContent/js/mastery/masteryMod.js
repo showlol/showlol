@@ -55,6 +55,7 @@ console.log("masteryMod load...");
 									for(i = index; i<index+2; i++){						
 										enough += $("#mastery_ul").find("#"+i+">span").html()/1											
 									}
+									console.log("이전 인덱스 계산:"+index+"/"+enough);
 									isEnough = enough>4 ? true : false; 
 								}
 							}
@@ -98,9 +99,22 @@ console.log("masteryMod load...");
 								} else {
 									totalPoint--;
 								}
-
 							}
+							
 							//특성 카운트
+							console.log()
+							$(this).parents(".mastery").children("attrBox").each(function(){
+								console.log(this.firstChildNode);
+							});
+//							for(i = 1; i<=15; i++){
+//								
+//							}
+//							for(i = 16; i<=30; i++){
+//								
+//							}
+//							for(i = 30; i<=16; i++){
+//								
+//							}
 							switch ($(this).parents(".mastery").attr("id")) {
 							case "m0":
 								var p = $("#ferocity").html() / 1 + 1;
@@ -119,7 +133,6 @@ console.log("masteryMod load...");
 		}); // attrBox bind click
 		
 		$(".attrBox").contextmenu(function(e){
-			alert("우클릭");
 			var boxNum = e.target.getAttribute("id");
 			console.log(boxNum);
 			if((boxNum-1)%15<12){
