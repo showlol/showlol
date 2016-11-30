@@ -7,36 +7,22 @@
 	<script src="/ckeditor/ckeditor.js"></script>
 	<link href="/css/tactics.css" rel="stylesheet">
 </head>
-<div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
+<div style=' margin: 0 auto; padding: 3%; width: 670px; overflow: auto; white-space: nowrap;'>
 
 	<H3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </H3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
 		border-radius: 4%; padding: 10px; ">
-<<<<<<< HEAD
-		<b style='display: inline;' >${tactics.title }</b><br/>	
-		<span style='float: right; '>작성자 : ${tactics.writer }</span><br/>
-		<span style='float: right; '>작성일 : <fmt:formatDate value='${tactics.writeDate}' pattern='MM/dd' /></span><br/>
-=======
 		<b style="display: inline; font-family: 'Nanum Gothic', sans-serif;" >${tactics.title }</b><br/>	
 		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
 		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">${tactics.writeDate }</span><br/>
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 	</div>
-<<<<<<< HEAD
-	<div class="tacticsBox" >
-		<ul class="nav nav-tabs">
-			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
-			<li><a href="#rune">룬</a>
-			<li><a href="#skill">스킬</a>
-			<li><a href="#items">아이템</a>
-=======
+
 	<ul class="nav nav-tabs">
 			<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
 			<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
 			<li><a href="#skill" style="font-family: 'Nanum Gothic', sans-serif;">스킬</a>
 			<li><a href="#items" style="font-family: 'Nanum Gothic', sans-serif;">아이템</a>
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 		</ul>
 		<div class="tab-content">	
 			<div id="mastery" class="tab-pane fade in active ">
@@ -54,12 +40,18 @@
 		</div>
 	
 	<br/>
-<<<<<<< HEAD
-	<hr style="clear: left;" />
-	</div>		
-=======
 	<hr style="clear: left;">
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
+
+	<div style="clear: left;" align='center' >
+		<button type='button' id='recommend-good'><img src='/image/good-orgin.png' width='30px' height='30px'><br/>
+			<span>${tactics.good }</span>
+		</button>
+		<button type='button' id='recommend-bad'><img src='/image/bad.png' width='30px' height='30px'><br/>
+			<span>${tactics.bad }</span>
+		</button>
+		<br/>		
+	</div>
+	
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" align="right" style='margin: 3%;'>
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
@@ -151,8 +143,22 @@
 			}			
 			if(e.target.getAttribute("id")=="tacticsMod"){
 				location.replace("/tactics/modify/");				
-			}				
-		});	
+			}
+		});		
+		//추천 버튼 이벤트
+		$("[id^='recommend'").click(function(){
+			var sel = "bad";
+			if($(this).attr('id').includes("good")){
+				sel = "good";
+			}
+			var span = $(this).children("span");
+			$.ajax({
+				url : "/tactics/recommend/"+sel,
+				async : false
+			}).done(function(r){
+				span.html(span.html()/1+1);				
+			});	
+		});
 		
 		$("input").click(function() {
 			console.log($(this));			
@@ -183,19 +189,13 @@
 			});
 		};
 		//대댓글 삭제
-<<<<<<< HEAD
-		$("input.delReply2").click(function() {
-			console.log($(this).attr("id"));
-			deleteReply2($(this).attr("id"));
-		});
-=======
+
 		if(${nick!=null }) {
 			$("input.delReply2").click(function() {
 				console.log($(this).attr("id"));
 				deleteReply2($(this).attr("id"));
 			});
 		};
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 	});
 	
 	function tacticsModify(){
@@ -225,17 +225,8 @@
 		});
 	};
 	
-	//글 수정
-if(${r.WRITER==nick }){
-	document.getElementById("update").addEventListener("click", function() {
-		update();
-	});
-	
-	//글 삭제
-	document.getElementById("delete").addEventListener("click", function() {
-		deletedata();
-	});
-}
+
+
 	//댓글 수정
 	function updateReply(up, id) {
 		up.parent().append(replyBox);

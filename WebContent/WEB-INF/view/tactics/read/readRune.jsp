@@ -13,92 +13,92 @@
 
 #runeNum2 {
 	top: 230px;
-	left: 130px;
+	left: 135px;
 }
 
 #runeNum3 {
-	top: 187px;
-	left: 25px;
+	top: 189px;
+	left: 5px;
 }
 
 #runeNum4 {
-	top: 187px;
-	left: 5px;
+	top: 189px;
+	left: 58px;
 }
 
 #runeNum5 {
 	top: 195px;
-	left: 53px;
+	left: 107px;
 }
 
 #runeNum6 {
-	top: 142px;
-	left: 5px;
+	top: 154px;
+	left: 26px;
 }
 
 #runeNum7 {
-	top: 142px;
-	left: 65px;
-}
-
-#runeNum8 {
-	top: 118px;
-	left: 35px;
-}
-
-#runeNum9 {
-	top: 57px;
-	left: 75px;
-}
-
-#runeNum10 {
-	top: 100px;
-	left: 45px;
-}
-
-#runeNum11 {
-	top: 100px;
+	top: 156px;
 	left: 95px;
 }
 
+#runeNum8 {
+	top: 137px;
+	left: 59px;
+}
+
+#runeNum9 {
+	top: 20px;
+	left: 55px;
+}
+
+#runeNum10 {
+	top: 105px;
+	left: 30px;
+}
+
+#runeNum11 {	
+	top: 101px;
+	left: 91px;
+}
+
 #runeNum12 {
-	top: 50px;
-	left: 68px;
+	top: 76px;
+	left: 56px;
 }
 
 #runeNum13 {
 	top: 60px;
-	left: 110px;
+	left: 104px;
 }
 
 #runeNum14 {
-	top: 25px;
-	left: 143px;
+	top: 30px;
+	left: 132px;
 }
 
 #runeNum15 {
-	top: 3px;
-	left: 188px;
+	top: 11px;
+	left: 183px;
 }
 
 #runeNum16 {
-	top: 10px;
-	left: 210px;
+	top: 5px;
+	left: 234px;
 }
 
 #runeNum17 {
-	top: 1px;
-	left: 234px;
+	top: -7px;
+	left: 291px;
 }
 
 #runeNum18 {
 	top: 20px;
-	left: 280px;
+	left: 315px;
 }
 
 #runeNum19 {
-	top: 115px;
-	left: 120px;
+	top: 50px;
+	left: 300px;
 }
 
 #runeNum20 {
@@ -113,42 +113,43 @@
 
 #runeNum22 {
 	top: -8px;
-	left: 474px;
+	left: 478px;	
 }
-
+/* 우측 끝 */
 #runeNum23 {
-	top: 45px;
-	left: 511px;
+	top: 17px;
+	left: 525px;
 }
 
 #runeNum24 {
-	top: 5px;
-	left: 549px;
+	top: 24px;
+	left: 382px;
+	
 }
 
 #runeNum25 {
-	top: 38px;
-	left: 597px;
+	top: 42px;
+	left: 418px;
 }
 
 #runeNum26 {
-	top: 80px;
-	left: 557px;
+	top: 17px;
+	left: 451px;
 }
 
 #runeNum27 {
-	top: 131px;
-	left: 579px;
+	top: 30x;
+	left: 487px;
 }
 
 #runeNum28 {
-	top: 24px;
-	left: 34px;
+	top: 73px;
+	left: 508px;
 }
 
 #runeNum29 {
-	top: 207px;
-	left: 188px;
+	top: 100px;
+	left: 300px;
 }
 
 </style>
@@ -208,8 +209,9 @@ $("readRune.jsp").ready(function(){
 			 +"background-image: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"+img+"\");"
 			 +"background-size: cover; '></div>";
 			$("#runeNum"+i).append(runeBox);
-			
-			var abilist = runeAbil[data[i]][0];
+			var runeId = runeAbil[id];
+			console.log(runeId);
+			var abilist = runeId[0];
 			runeKind[abilist[0]]+=abilist[1];		
 		}
 		console.log(runeKind);

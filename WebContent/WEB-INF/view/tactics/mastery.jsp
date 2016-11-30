@@ -8,7 +8,9 @@
 			<li>결의 : <b id="resolve" >0</b>
 		</ul>
 		<span class="clearfix"><br></span>
-		<ul class="mastery_ul" id="mastery_ul"></ul>
+		<div style='background-image: url("/image/masteryboard.png")' >
+			<ul class="mastery_ul" id="mastery_ul"></ul>
+		</div>
 		<div id='initMasteryWrap' class='clearBtnWrap' ></div>
 		<textarea name="masteryContent" id="masteryContent">${tactics.masteryContent }</textarea>		
 		<script>

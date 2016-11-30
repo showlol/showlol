@@ -49,11 +49,9 @@ public class TacticsController {
 		boolean r = cm.write(tac)? true: false;		
 		return r;		
 	}
-	@RequestMapping("/write2")
-	@ResponseBody
-	public boolean write(ImprovedTactics tac){		
-		boolean r = cm.write(tac)? true: false;		
-		return r;		
+	@RequestMapping("/write2")	
+	public String write(ImprovedTactics tac){				
+		return "redirect:/tactics/read/"+cm.write(tac);		
 	}
 // 글 수정 컨트롤러	
 	@RequestMapping("/modify")
@@ -73,7 +71,11 @@ public class TacticsController {
 		boolean r = cm.tacticsDel(num)? true: false;
 		return r;
 	}
-	
+	@RequestMapping("/recommend/{rec}")
+	@ResponseBody
+	public int recommned(@PathVariable String rec){
+		return cm.recommend(rec);
+	}
 	@RequestMapping("/modMastery")
 	public String modMastery(){
 		return "tactics/modify/modiMastery";

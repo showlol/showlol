@@ -8,6 +8,7 @@ console.log("masteryJS loading...");
 		var div = document.createElement("div");
 		div.setAttribute("class", "mastery");
 		div.setAttribute("id", "m" + mas); //마스터리 아이디 입력
+		$(div).css("background-image : url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_2.jpg')");
 		var li = document.createElement("li");
 		m_ul.append(li);
 		li.append(div);
