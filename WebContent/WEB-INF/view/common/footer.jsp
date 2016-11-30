@@ -11,12 +11,16 @@
 	<a>|</a>
 	<a href="/"><strong style="color: white;">SHOWLOL Co.</strong></a>
 	<a>|</a>
-	<a onclick="showMemo()" style="cursor:pointer;text-decoration:none;"><strong style="color: white;">MESSAGE</strong></a>
+	<a onclick="showMemo('${nick}')" style="cursor:pointer;text-decoration:none;"><strong style="color: white;">MESSAGE</strong></a>
 	<a>|</a>
 </div>
 <script>
-function showMemo() {
-	var url = "/memo/list";
-	window.open(url, "", "width=550,height=450");
+function showMemo(nick) {
+	if(nick == "")
+		alert("로그인을 해주세요.");
+	else {
+		var url = "/memo/list";
+		window.open(url, "", "width=550,height=450");
+	}
 }
 </script>

@@ -17,7 +17,7 @@
 				<c:set var="bgcolor" value="#E2B6B3"/>
 			</c:otherwise>
 		</c:choose>
-		<table>
+		<table border="1">
 			<tr bgcolor="${bgcolor }">	
 				<td width="100px">
 					<table>
@@ -41,7 +41,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><a href="#" style="text-decoration:none;color:black;background-color: ${bgcolor}" title="<fmt:formatDate value="${g.createDate }" pattern="yyyy-MM-dd KK:mm:ss"/>" >
+							<td><a href="#" style="text-decoration:none;color:black;" title="<fmt:formatDate value="${g.createDate }" pattern="yyyy-MM-dd KK:mm:ss"/>" >
 								<c:choose>
 									<c:when test="${g.dTime >= 24 }">
 									<fmt:parseNumber integerOnly="true" value="${g.dTime/24 }"/>일 전
@@ -92,7 +92,7 @@
 				<td width="100px">
 					<table>
 						<tr><td>${g.kill } / <font color="red">${g.death }</font> / ${g.assist }</td></tr>
-						<tr bgcolor="${bgcolor }">
+						<tr>
 							<td>
 								<c:choose>
 									<c:when test="${g.kda == -1 }">
@@ -249,28 +249,34 @@
 				</td>
 				<td>
 					<table>
-						<c:if test="${fn:startsWith(g.subType, 'RANKED_')}">				
-						<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId })"/></td></tr>
-						</c:if>
+						<c:choose>
+							<c:when test="${fn:startsWith(g.subType, 'RANKED_')}">
+								<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId }, ${g.win })"/></td></tr>
+							</c:when>
+							<c:otherwise>
+								<tr><td width="44"></td></tr>
+							</c:otherwise>
+						</c:choose>
 					</table>
 				</td>
 			</tr>
 		</table>
-		<table id="table_${g.gameId }" style="display:none;">
+		<table id="table_${g.gameId }" style="display:none;" >
 			<tr>
 				<td>${g.gameId }</td>
 			<tr>
 		</table>
+		<table><tr height="10px"><td></td></tr></table>
 	</c:forEach>
 </c:if>
 
 <script>
-	function openDetail(gid, tid) {
+	function openDetail(gid, tid, isWin) {
 		if(document.getElementById("table_"+gid).style.display == "none") {
 			$.ajax(
 				{
 				"method" : "get",
-				"url" : "/summoner/matchDetail?gid="+gid+"&tid="+tid,
+				"url" : "/summoner/matchDetail?gid="+gid+"&tid="+tid+"&isWin="+isWin,
 				"async" : false
 				}
 			).done(function(obj) {

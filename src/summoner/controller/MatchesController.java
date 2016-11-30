@@ -40,12 +40,13 @@ public class MatchesController {
 	}
 	
 	@RequestMapping("/matchDetail")
-	public ModelAndView matchDetail(long gid, int tid) {
+	public ModelAndView matchDetail(long gid, int tid, boolean isWin) {
 		ModelAndView mav = new ModelAndView("summoner/matchDetail");
 		HashMap map = msvc.getGameDetailInfo(gid);
 		//LinkedHashMap list = msvc.getGameDetailInfo2(gid);
 		mav.addObject("map", map);
 		mav.addObject("tid", tid);
+		mav.addObject("isWin", isWin);
 		
 		return mav;
 	}
