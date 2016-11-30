@@ -1,5 +1,6 @@
 package community.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,8 +39,7 @@ public class CommunityController {
 			return mav;
 		}
 
-		//페이지 관리
-
+		//페이지 관리,페이지 글읽기
 		@RequestMapping("/community/review2")
 		public ModelAndView review2(@RequestParam(defaultValue="1") int p){
 			ModelAndView mav = new ModelAndView();
@@ -52,7 +52,7 @@ public class CommunityController {
 			return mav;
 		}
 
-		// 
+		//게시글 일기
 		@RequestMapping("/community/read/{num}") 
 		public ModelAndView cread(@PathVariable int num,HttpSession session){
 			CommunityData cd = cs.read(num);
@@ -71,7 +71,7 @@ public class CommunityController {
 			}
 			return mav;
 		}
-		//
+		//댓글
 		@RequestMapping("/community/reply")
 		public String reply(String nick, String area, String parentNum) {
 			HashMap<String, String> map = new HashMap<>();
@@ -82,17 +82,8 @@ public class CommunityController {
 			return "redirect:/community/read/"+parentNum;
 		}
 
-	
+		
 		//좋아요증가
-		@RequestMapping("/community/reviewd")
-		public ModelAndView reviewlikein(int num){
-			ModelAndView mav = new ModelAndView();
-			boolean list = cs.readdelete(num); 
-			mav.setViewName("community/read");
-			mav.addObject("list",list);
-			return mav;
-		}
-	
 		@RequestMapping("/community/reviewg")
 		public ModelAndView reviewDelete(int num){
 			ModelAndView mav = new ModelAndView();
@@ -108,7 +99,6 @@ public class CommunityController {
 				mav.setViewName("community/board");
 				return mav;
 		}
-		
 		@RequestMapping("/community/write")
 		public String write(CommunityData cd){
 			cs.write(cd);
@@ -122,7 +112,7 @@ public class CommunityController {
 		}
 
 		
-		// 글 수정 컨트롤러	
+		// 글 수정 
 		@RequestMapping("/community/update/{num}")
 		public String modifynum(@PathVariable int num, Map map){
 			map.put("num", num);
@@ -142,4 +132,30 @@ public class CommunityController {
 			boolean r = cs.readdelete(num)? true: false;
 			return r;
 		}
+		
+		//게시물 검색기능
+		@RequestMapping("/community/searchst")
+		public ModelAndView find( String ctg, String topic){
+			List list = new ArrayList<>();
+	
+			switch (ctg){
+			case "title":
+				list = cs.Searchtitle(topic);
+				break;
+			case "writer":
+				list = cs.Searchwriter(topic);
+				break;
+			case "titlememo":
+				break;
+
+			default:
+				break;
+			}
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("community/main");
+			mav.addObject("size", list);
+			return mav;
+		}
+		
+		
 }

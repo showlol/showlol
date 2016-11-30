@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div style="min-height: 400px; overflow-y: auto;">
+<div style="min-height: 400px; overflow: auto;">
 		
 		<div style='display: inline-block; height: inherit; float: left;'>
 			<button id='jungle' type='button' class='btn btn-primary'

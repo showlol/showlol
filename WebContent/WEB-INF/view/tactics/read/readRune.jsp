@@ -1,13 +1,166 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+#runeNum0 {
+	top: 230px;
+	left: 19px;
+}
+#runeNum1 {
+	top: 230px;
+	left: 75px;
+}
+
+#runeNum2 {
+	top: 230px;
+	left: 135px;
+}
+
+#runeNum3 {
+	top: 189px;
+	left: 5px;
+}
+
+#runeNum4 {
+	top: 189px;
+	left: 58px;
+}
+
+#runeNum5 {
+	top: 195px;
+	left: 107px;
+}
+
+#runeNum6 {
+	top: 154px;
+	left: 26px;
+}
+
+#runeNum7 {
+	top: 156px;
+	left: 95px;
+}
+
+#runeNum8 {
+	top: 137px;
+	left: 59px;
+}
+
+#runeNum9 {
+	top: 20px;
+	left: 55px;
+}
+
+#runeNum10 {
+	top: 105px;
+	left: 30px;
+}
+
+#runeNum11 {	
+	top: 101px;
+	left: 91px;
+}
+
+#runeNum12 {
+	top: 76px;
+	left: 56px;
+}
+
+#runeNum13 {
+	top: 60px;
+	left: 104px;
+}
+
+#runeNum14 {
+	top: 30px;
+	left: 132px;
+}
+
+#runeNum15 {
+	top: 11px;
+	left: 183px;
+}
+
+#runeNum16 {
+	top: 5px;
+	left: 234px;
+}
+
+#runeNum17 {
+	top: -7px;
+	left: 291px;
+}
+
+#runeNum18 {
+	top: 20px;
+	left: 315px;
+}
+
+#runeNum19 {
+	top: 50px;
+	left: 300px;
+}
+
+#runeNum20 {
+	top: -8px;
+	left: 350px;
+}
+
+#runeNum21 {
+	top: -8px;
+	left: 407px;
+}
+
+#runeNum22 {
+	top: -8px;
+	left: 478px;	
+}
+/* 우측 끝 */
+#runeNum23 {
+	top: 17px;
+	left: 525px;
+}
+
+#runeNum24 {
+	top: 24px;
+	left: 382px;
+	
+}
+
+#runeNum25 {
+	top: 42px;
+	left: 418px;
+}
+
+#runeNum26 {
+	top: 17px;
+	left: 451px;
+}
+
+#runeNum27 {
+	top: 30x;
+	left: 487px;
+}
+
+#runeNum28 {
+	top: 73px;
+	left: 508px;
+}
+
+#runeNum29 {
+	top: 100px;
+	left: 300px;
+}
+
+</style>
 <div id="runeSetter"
-		style="white-space: nowrap; height: 300px; max-width: 550px; overflow: auto;
+		style="white-space: nowrap; height: 330px; max-width: 600px; overflow: auto;
+		position: relative;
 		background-image: url('https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png');
-		background-size: 600px 300px ;
+		background-size: 580px 280px ;
 		background-repeat: no-repeat;">
 		<c:forEach var="i" begin="0" end="29">
-			<div id="runeNum${i }" class="runeBox" data="empty"></div>
+			<div id="runeNum${i }" class="runeBox" data="empty" style='position:absolute; '></div>
 			<c:if test="${i%10==9 }">
 				<br />
 			</c:if>
@@ -52,12 +205,13 @@ $("readRune.jsp").ready(function(){
 			var type = list[id].rune.type;
 			
 			var runeBox = "<div id='rune' type='"+type+"' value='"+id
-			+"' title='"+list[id].description+"' style='height: 40px; width: 40px;"
+			+"' title='"+list[id].description+"' style='height: 44px; width: 44px;"
 			 +"background-image: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"+img+"\");"
 			 +"background-size: cover; '></div>";
 			$("#runeNum"+i).append(runeBox);
-			
-			var abilist = runeAbil[data[i]][0];
+			var runeId = runeAbil[id];
+			console.log(runeId);
+			var abilist = runeId[0];
 			runeKind[abilist[0]]+=abilist[1];		
 		}
 		console.log(runeKind);

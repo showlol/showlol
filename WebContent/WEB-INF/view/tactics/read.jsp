@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
@@ -16,6 +17,7 @@
 		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
 		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">${tactics.writeDate }</span><br/>
 	</div>
+
 	<ul class="nav nav-tabs">
 			<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
 			<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
@@ -36,7 +38,10 @@
 				<c:import url="tactics/read/readItems.jsp"></c:import>			
 			</div>
 		</div>
+	
 	<br/>
+	<hr style="clear: left;">
+
 	<div style="clear: left;" align='center' >
 		<button type='button' id='recommend-good'><img src='/image/good-orgin.png' width='30px' height='30px'><br/>
 			<span>${tactics.good }</span>
@@ -44,17 +49,16 @@
 		<button type='button' id='recommend-bad'><img src='/image/bad.png' width='30px' height='30px'><br/>
 			<span>${tactics.bad }</span>
 		</button>
-		<br/>
-		추천
+		<br/>		
 	</div>
 	
 	<c:if test="${tactics.writer==nick }">
-		<div id="btnGroup" style='float: right;' >
+		<div id="btnGroup" align="right" style='margin: 3%;'>
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
 			<button id = "tacticsMod" type="button" class='btn btn-success' >수정하기</button>
 		</div>
 	</c:if>	
-
+	
 <br />
 <hr style="clear: right;">
 
@@ -62,7 +66,7 @@
 	<form action="/tactics/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
 		<input type="hidden" name="parentNum" value="${tactics.num }">
-		<textarea rows="4" name="area"></textarea>
+		<textarea rows="4" name="area" style="resize: none;"></textarea>
 		<br /> <input type="submit" value="입력 완료" class="btn btn-default"/>
 	</form>
 </c:if>
@@ -139,7 +143,7 @@
 			}			
 			if(e.target.getAttribute("id")=="tacticsMod"){
 				location.replace("/tactics/modify/");				
-			}				
+			}
 		});		
 		//추천 버튼 이벤트
 		$("[id^='recommend'").click(function(){
@@ -185,6 +189,7 @@
 			});
 		};
 		//대댓글 삭제
+
 		if(${nick!=null }) {
 			$("input.delReply2").click(function() {
 				console.log($(this).attr("id"));
@@ -205,7 +210,7 @@
 	}	
 	
 	var replyBox = document.createElement("div");
-		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='follow' style='resize: none;'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
 	
 	//대댓글
 	function rep(button) {
@@ -220,22 +225,14 @@
 		});
 	};
 	
-	//글 수정
-	document.getElementById("update").addEventListener("click", function() {
-		update();
-	});
-	
-	//글 삭제
-	document.getElementById("delete").addEventListener("click", function() {
-		deletedata();
-	});
-	
+
+
 	//댓글 수정
 	function updateReply(up, id) {
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
 		//window.alert(tar);
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content' style='resize: none;'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			alert(content.value);
 			$.ajax({
@@ -259,7 +256,7 @@
 	function updateReply2(up, id) {
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content' style='resize: none;'>"+tar+"</textarea> <input type='button' value='수정하기' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			$.ajax({
 				method : "get",

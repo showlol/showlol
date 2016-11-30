@@ -6,12 +6,16 @@
 <link href="/css/tactics.css" rel="stylesheet">
 <title>공략 글쓰기</title>
 </head>
-
+<style>
+	a{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+</style>
 <form action="/tactics/writeUpdate2" id='tacticsModForm' method="get" onsubmit='return transferTactics();' >
-<div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
+
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${sessionScope.champData.image1}" >
 	<input name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-		border-radius: 4%; padding: 10px; " value='${tactics.title }' >
+		border-radius: 4%; padding: 10px; " value='${tactics.title }' required >
 	
 	<input type='hidden' name='champ' value='${sessionScope.tactics.champ }' />
 	<input type='hidden' name='writer' value='${nick }' />	
@@ -37,8 +41,13 @@
 	</div>	
 	<hr style="clear: left;">
 	<input type='hidden' name='num' value='${tactics.num }' >
+<<<<<<< HEAD
 	<input type="submit" value="등록" />
+
+=======
+	<input type="submit" value="등록" class="btn-sm btn-primary" />
 </div>
+>>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 </form>
 
 <script

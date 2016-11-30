@@ -56,25 +56,44 @@
     <p class="prev"><b>Previous Tab</b>: <span></span></p>
 </div>
 	<textarea rows="10" cols="100" disabled="disabled" style="resize: none" >ggagaga</textarea>
+	
+<!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<hr><br/><br/>
+<div id="da1"></div>
+<hr/>
+<div id="datepicker"></div>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-$("[name]").each(function(i){
-	console.log(this);
-});
 
-var ar=[0, 0];
+var t1 = new Date();
+var t2;
+function tt(){
+	t2 = new Date("2010/12/10");
+	console.log(t2);
+}
 
-ar[0]++;
-ar[1]++;
-console.log(ar);
-var now = new Date(112134231);
-console.log(now.getTimezoneOffset());
-console.log(now);
-console.log(now.getUTCDate());
-console.log(now.toDateString());
-console.log(now.toTimeString());
-console.log(now.toLocaleDateString());
-console.log(Date.format(11232333));
-console.log(now.toLocaleString(KST));
+console.log(t1);
+setTimeout(tt, 3000 );
+console.log(t2);
+var time = t1.getDate();
+// t2 = t2.getDate();
+var b = t1==t2? true : false;
+console.log(time);
+
+
+// $("[name]").each(function(i){
+// 	console.log(this);
+// });
+// var now = new Date(112134231);
+// console.log(now.getTimezoneOffset());
+// console.log(now);
+// console.log(now.getUTCDate());
+// console.log(now.toDateString());
+// console.log(now.toTimeString());
+// console.log(now.toLocaleDateString());
+// console.log(now.toLocaleString());
+// console.log(now.getDate());
 </script>
 	
 </body>

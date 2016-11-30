@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
+<style>
+	a{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+</style>
 <script src="/ckeditor/ckeditor.js"></script>
 <link href="/css/tactics.css" rel="stylesheet">
 <title>공략 글쓰기</title>
@@ -37,7 +42,7 @@
 	</div>	
 	<hr style="clear: left;">
 </div>
-<input type="submit" value="등록" />
+<input type="submit" value="등록" class="btn-sm btn-primary" />
 	<input type="hidden" name="skillBuild" />
 	<input type="hidden" name="masteryData" value=""/>	
 	<input type='hidden' name='itemBuild' value="" />

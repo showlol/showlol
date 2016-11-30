@@ -26,10 +26,10 @@ th {
 a:link, a:visited {
     background-color: green;
     color: white;
-    padding: 14px 25px;
-    text-align: center;
     text-decoration: none;
-    display: inline-block;
+}
+a:hover {
+	background-color: #476600;
 }
 </style>
 

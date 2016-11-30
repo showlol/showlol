@@ -22,7 +22,6 @@
 	<header>	
 		<tiles:insertAttribute name="header" />
 	</header>
-
 	<article style="overflow: scroll; ">		
 		<div id="top"></div>
 		<tiles:insertAttribute name="article" />		

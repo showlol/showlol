@@ -23,12 +23,16 @@ public class ContentsManager {
 		sql.close();
 		return r;
 	}
-	public boolean write(ImprovedTactics tac) {
+	public int write(ImprovedTactics tac) {
 		System.out.println(tac.toString());
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("tactics.write2", tac)==1?true:false;
+		int num=0;
+		if(r==true)
+			num = sql.selectOne("tactics.currentWrite");
 		sql.close();
-		return r;
+		System.out.println("지금 글:"+num);
+		return num;
 	}
 
 	public List listPage(int page, int length) {

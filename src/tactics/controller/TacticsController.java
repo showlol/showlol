@@ -49,11 +49,9 @@ public class TacticsController {
 		boolean r = cm.write(tac)? true: false;		
 		return r;		
 	}
-	@RequestMapping("/write2")
-	@ResponseBody
-	public boolean write(ImprovedTactics tac){		
-		boolean r = cm.write(tac)? true: false;		
-		return r;		
+	@RequestMapping("/write2")	
+	public String write(ImprovedTactics tac){				
+		return "redirect:/tactics/read/"+cm.write(tac);		
 	}
 // 글 수정 컨트롤러	
 	@RequestMapping("/modify")

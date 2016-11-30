@@ -4,7 +4,12 @@
 <head>
 	<link rel='stylesheet' href='/css/runeMap.css' >
 </head>
-
+<style>
+	option {
+		font-family: 'Nanum Gothic', sans-serif;
+		font-weight: bold;
+	}
+</style>
 <div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 650px; overflow: auto;	
 	 background-image: url('https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png');
 	 background-size: 600px 300px ;
@@ -28,8 +33,8 @@
 </div>
 <div id="runeAbility"></div>
 <div id='initRuneWrap' class='clearBtnWrap'></div>
-<h4>${champData.key }의룬공략</h4>
-<textarea name="runeContent" id="runeContent">${tactics.runeContent }</textarea>
+<h4 style="font-family: 'Nanum Gothic', sans-serif;">${champData.key }의룬공략</h4>
+<textarea name="runeContent" id="runeContent" style="resize: none;">${tactics.runeContent }</textarea>
 <script>CKEDITOR.replace('runeContent');
 </script>
 

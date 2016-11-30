@@ -9,7 +9,7 @@
 		font-family: 'Oswald', sans-serif;
 	}
 </style>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #339966;">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -21,7 +21,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/tactics/">Tactics</a></li>
 				<li><a href="/community/review2">Community</a></li>
 			</ul>
@@ -34,10 +34,10 @@
 				<li id="logInfo"><a href="#" data-toggle="modal"
 					data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right" style="padding-top:12px; padding-right:10px;">
+			<ul class="nav navbar-nav navbar-right" style="padding-top:12px; padding-right: 14px;">
 				<form action="/summoner/index" method="post" style="display:inline;" id="search">
 					<input type="text" name="userName" value="${sname }" style="font-size: 20; font-family: 'Nanum Gothic', sans-serif;" required="required" id="tt" placeholder="소환사명"/>
-					<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 15; font-family: 'Nanum Gothic', sans-serif;"/>
+					<input type="submit" class="btn-sm btn-primary" value="검색" style="font-size: 14; font-family: 'Nanum Gothic', sans-serif;"/>
 				</form>
 			</ul>
 		</div>

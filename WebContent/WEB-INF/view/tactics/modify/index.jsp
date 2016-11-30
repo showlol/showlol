@@ -34,7 +34,7 @@ ${tactics.champ } 공략글
 	</div>	
 	<hr style="clear: left;">
 </div>
-<input type="submit" value="등록" />
+<input type="submit" value="등록" class="btn-sm btn-primary" />
 </form>
 
 <script

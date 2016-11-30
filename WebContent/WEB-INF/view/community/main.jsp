@@ -46,6 +46,8 @@
 	</tbody>
 </table>
 <!-- 페이지 기능 -->
+
+
 <ul class="pagination">
 	<c:forEach var="i" begin="1" end="${total}">
 		<c:choose>
@@ -66,14 +68,14 @@
 
 <!-- 검색기능 -->
 <div align="right">
-	<form >
+	<form  action="/community/searchst">
 		<div class="form-group form-inline">
-			<select  class="form-control">
-				<option value="stitle" style="font-family: 'Nanum Gothic', sans-serif; font-weight:bolder;">제목</option>
-				<option value="swriter" style="font-family: 'Nanum Gothic', sans-serif; font-weight:bolder;">작성자</option>
-				<option value="titlewrite" style="font-family: 'Nanum Gothic', sans-serif; font-weight:bolder;">제목+작성자</option>
+			<select  class="form-control" name="ctg">
+				<option value="title" style="font-family: 'Nanum Gothic', sans-serif;">제목</option>
+				<option value="writer" style="font-family: 'Nanum Gothic', sans-serif;">작성자</option>
+				<option value="titlememo" style="font-family: 'Nanum Gothic', sans-serif;">제목+내용</option>
 			</select> 
-			<input type="text"  class="form-control" placeholder="검색어" list="srchrst" name="srch" style="font-family: 'Nanum Gothic', sans-serif;" />
+			<input type="text"  class="form-control" placeholder="검색어" name="topic"/>
 			<button type="submit" class="btn btn-default" style="border-color: white; font-family: 'Nanum Gothic', sans-serif;">검색</button>
 		</div>
 	</form>
@@ -89,6 +91,7 @@
 						+ $(e.target).siblings("#num").html();
 			}); */
 	
+	//게시글작성시 로그인여부		
 	$("#writing").show().click(function(){
 		if(${nick==null }){
 			alert("로그인이 필요합니다.");
@@ -107,45 +110,9 @@
 	$(document).ready(function(){
 	    $(".dropdown-toggle").dropdown();
 	});
-	/*
 	
-	document.getElementById("srch").addEventListener("keyup", function(){
-		var xhr = new XMLHttpRequest();
-		
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		
-		var url = "/community/search?title="+document.getElementById("srch").value;
-		xhr.open("get", url, true);
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState==4 && xhr.status==200) {
-			//	var html = xhr.responseText;
-			//	document.getElementById("srchrst").innerHTML = html;
-				var list = JSON.parse(xhr.responseText);
-				var html = "";
-				console.log(xhr.responseText);
-				console.log(list.length);
-				for(var i=0; i<list.length; i++) {
-					console.log(list[i].title);
-					html+="<option>"+list[i].title+"</option>";
-				}
-				document.getElementById("srchrst").innerHTML = html;
-				console.log(html);
-			}
-		}
-		xhr.send();
-		
-	});
-	
-<<<<<<< HEAD
-	function readall() {
-		location.reload(true);
-	};
-	
-	$(document).ready(function(){
-	    $(".dropdown-toggle").dropdown();
-	});
-	
-=======
-	*/
+
+
+
 </script>
 
