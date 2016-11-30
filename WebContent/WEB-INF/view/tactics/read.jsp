@@ -6,7 +6,7 @@
 	<script src="/ckeditor/ckeditor.js"></script>
 	<link href="/css/tactics.css" rel="stylesheet">
 </head>
-<div style=' margin: 0 auto; width: 670px; overflow: auto; white-space: nowrap;'>
+<div style=' margin: 0 auto; padding: 3%; width: 670px; overflow: auto; white-space: nowrap;'>
 
 	<H3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </H3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
@@ -37,7 +37,17 @@
 			</div>
 		</div>
 	<br/>
-	<hr style="clear: left;">
+	<div style="clear: left;" align='center' >
+		<button type='button' id='recommend-good'><img src='/image/good-orgin.png' width='30px' height='30px'><br/>
+			<span>${tactics.good }</span>
+		</button>
+		<button type='button' id='recommend-bad'><img src='/image/bad.png' width='30px' height='30px'><br/>
+			<span>${tactics.bad }</span>
+		</button>
+		<br/>
+		추천
+	</div>
+	
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" style='float: right;' >
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
@@ -130,7 +140,21 @@
 			if(e.target.getAttribute("id")=="tacticsMod"){
 				location.replace("/tactics/modify/");				
 			}				
-		});	
+		});		
+		//추천 버튼 이벤트
+		$("[id^='recommend'").click(function(){
+			var sel = "bad";
+			if($(this).attr('id').includes("good")){
+				sel = "good";
+			}
+			var span = $(this).children("span");
+			$.ajax({
+				url : "/tactics/recommend/"+sel,
+				async : false
+			}).done(function(r){
+				span.html(span.html()/1+1);				
+			});	
+		});
 		
 		$("input").click(function() {
 			console.log($(this));			

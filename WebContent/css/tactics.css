@@ -27,7 +27,7 @@ ul.mastery_title li{
 
 .mastery{
 	height: 444px;
-	width: 200px;
+	width: 201px;
 	border: 1px solid gray;
 	float: left;
 	padding: 0px;
@@ -51,20 +51,20 @@ ul.mastery_ul li{
 }
 .tier_odd{
 	height: 74px;
-	width: 126;
-	padding: 0px;	
-	margin-top:1px;
+	width: auto;
+	padding: 12px 0 0 2px;	
+	margin-top:0px;
 	margin-bottom:0px;
-	margin-left:auto;
+	margin-left:40px;
 	margin-right:auto;
 	text-align: center;
 }
 
 .attrBox{
 	display: inline-block;
-	height: 55px;
-	width: 55px;
-	margin: 7 0 0 5;
+	height: 53px;
+	width: 50px;
+	margin: 5 0 0 8;
 	padding-top: 45px;	
 	border: 1px solid gray;
 	float: left;	

@@ -2,13 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <ul id="mastery_title" class="mastery_title">
 		<li>흉포 : <b id="ferocity" name="m0">0</b>
 		<li>교활 : <b id="cunning" name="m1">0</b>
 		<li>결의 : <b id="resolve" name="m2">0</b>
 </ul>
-		<span class="clearfix"><br></span>
-<ul class="mastery_ul" id="mastery_ul"></ul>
+	<span class="clearfix"><br></span>
+<div style='margin: 0 11px;
+			background-image: url("/image/masteryboard.png");
+			background-size: 614px 454px;' >
+	<ul class="mastery_ul" id="mastery_ul" style='display: inline-block; '></ul>
+</div>
 <div style="clear: left;"></div>
 <div id="masteryContent" class="tacticsContent" >${tactics.masteryContent }</div>
 <script src='/js/mastery/masteryDIV.js'></script>

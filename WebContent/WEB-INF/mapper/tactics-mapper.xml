@@ -51,10 +51,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			masteryData=#{masteryData},	masteryContent=#{masteryContent}, runeData=#{runeData},
 			runeContent=#{runeContent},	skillBuild=#{skillBuild}, skillContent=#{skillContent},
 			itemBuild=#{itemBuild}, itemContent=#{itemContent}, writeDate=sysdate where num=#{num}
-	</update>
+	</update>	
 	<delete id="tacticsDel" >
 		delete from improvedTactics_content where num=#{num}
 	</delete>
+	<!-- 추천 -->
+	<update id="recommend-good">
+		update improvedtactics_content set good=good+1 
+	</update>
+	<update id="recommend-bad">
+		update improvedtactics_content set bad=bad+1
+	</update>
 	<!-- 댓글 -->
 	<update id="upReply" parameterType="java.util.HashMap">
 		update tactics_reply1 set content=#{content} where num=#{num}

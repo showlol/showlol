@@ -73,7 +73,11 @@ public class TacticsController {
 		boolean r = cm.tacticsDel(num)? true: false;
 		return r;
 	}
-	
+	@RequestMapping("/recommend/{rec}")
+	@ResponseBody
+	public int recommned(@PathVariable String rec){
+		return cm.recommend(rec);
+	}
 	@RequestMapping("/modMastery")
 	public String modMastery(){
 		return "tactics/modify/modiMastery";

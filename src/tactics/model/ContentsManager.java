@@ -91,4 +91,11 @@ public class ContentsManager {
 		sql.close();
 		return r;
 	}
+	public int recommend(String rec) {
+		SqlSession sql = fac.openSession();		
+		int num = sql.update("tactics.recommend-"+rec);
+		System.out.println("추천:"+num);
+		sql.close();
+		return num;
+	}
 }
