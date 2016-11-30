@@ -2,33 +2,38 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+	th{
+	 font-family: 'Nanum Gothic', sans-serif;
+	}
+</style>
 <h2 style="font-family: 'Nanum Gothic', sans-serif;">커뮤니티 게시판</h2>
 <!-- 글 리스트 기능 -->
 <table class="table table-hover info">
 	<thead>
 		<tr>
-			<th style="font-family: 'Nanum Gothic', sans-serif;">글번호
-			<th style="font-family: 'Nanum Gothic', sans-serif;">제목
-			<th style="font-family: 'Nanum Gothic', sans-serif;">작성자
-			<th style="font-family: 'Nanum Gothic', sans-serif;">추천수
-			<th style="font-family: 'Nanum Gothic', sans-serif;">작성일
-			<th style="font-family: 'Nanum Gothic', sans-serif;">조회수
+			<th>글번호
+			<th>제목
+			<th>작성자
+			<th>추천수
+			<th>작성일
+			<th>조회수
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var="t" items="${size }">
 			<tr class="info">
 				<td id="num">${t.num }</td>
-				<td><a href="/community/read/${t.num }" style="text-decoration:none">${t.title }</a></td>
+				<td><a href="/community/read/${t.num }" style="text-decoration:none; font-family: 'Nanum Gothic', sans-serif;">${t.title }</a></td>
 				<td>
 					<div class="dropdown">
 						<button class="btn btn-info btn-xs dropdown-toggle" id="menu1"
-							type="button" data-toggle="dropdown" style="color: white">
+							type="button" data-toggle="dropdown" style="color: white; font-family: 'Nanum Gothic', sans-serif;">
 							${t.writer } 
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 							<li role="presentation"><a role="menuitem" tabindex="-1"
-							onclick="showView('${t.writer}')"	>쪽지 보내기</a></li>
+							onclick="showView('${t.writer}')"	 style="font-family: 'Nanum Gothic', sans-serif;">쪽지 보내기</a></li>
 						</ul>
 					</div>
 				</td>
@@ -56,7 +61,7 @@
 <!-- 게시글 작성기능 -->
 <form action="/community/writepage">
 	<button type="submit"  id="writing" class="btn btn-default"
-		style="border-color: white;">게시글 작성</button>
+		style="border-color: white; font-family: 'Nanum Gothic', sans-serif;">게시글 작성</button>
 </form>
 
 <!-- 검색기능 -->
