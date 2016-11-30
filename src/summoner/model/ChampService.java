@@ -18,7 +18,13 @@ public class ChampService {
 		RestTemplate rt = new RestTemplate();
 		//String url = "https://kr.api.pvp.net/api/lol/kr/v1.3/stats/by-summoner/"+id+"/ranked?season=SEASON2016&api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
 		String url = "https://kr.api.pvp.net/api/lol/kr/v1.3/stats/by-summoner/"+bsvc.sinfo.get("id")+"/ranked?season=SEASON2016&api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
-		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try {
+			map = rt.getForObject(url, LinkedHashMap.class);
+		}catch (Exception e) {
+			return null;
+		}
+		
 		ArrayList champs = (ArrayList)map.get("champions");
 		ArrayList res = new ArrayList<>();
 		for(int i=0; i<champs.size(); i++) {
