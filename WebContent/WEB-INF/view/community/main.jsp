@@ -46,6 +46,8 @@
 	</tbody>
 </table>
 <!-- 페이지 기능 -->
+
+
 <ul class="pagination">
 	<c:forEach var="i" begin="1" end="${total}">
 		<c:choose>
