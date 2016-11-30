@@ -16,29 +16,30 @@ ul{
 }
 .mastery_title{
 	text-align: center;
+	white-space: nowrap;
 }
 ul.mastery_title li{
-	float : left;
-	display: block;
+	display: inline-block;
 	width: 200px;
 	padding: 10px 5px 2px 0px;
 	color: blue;
 }
 
 .mastery{
+	display: inline-block;
 	height: 444px;
-	width: 201px;
-	border: 1px solid gray;
-	float: left;
+	width: 200px;
+	border: 1px solid gray;	
 	padding: 0px;
 	margin: 0px;
 }
 .mastery_ul{
-	padding: 0px;	
+	padding: 0px;
+	white-space: nowrap;	
 }
-ul.mastery_ul li{
+ul.mastery_ul > li{
 	padding:0px;	
-	float: left;
+	display: inline-block;
 	text-align: center;
 }
 
@@ -61,7 +62,6 @@ ul.mastery_ul li{
 }
 
 .attrBox{
-	display: inline-block;
 	height: 53px;
 	width: 50px;
 	margin: 5 0 0 8;
