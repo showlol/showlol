@@ -44,7 +44,7 @@
 	<form action="/community/reply">
 		<input type="hidden" name="nick" value="${nick }">${nick }<br />
 		<input type="hidden" name="parentNum" value="${cdata.num }">
-		<textarea rows="4" name="area"></textarea>
+		<textarea rows="4" name="area" style="resize: none;"></textarea>
 		<br /> <input type="submit" value="댓글 작성" class="btn-sm btn-primary" />
 	</form>
 </c:if>
@@ -130,7 +130,7 @@
 		});
 	});
 	var replyBox = document.createElement("div");
-		replyBox.innerHTML = "<textarea rows='4' id='follow'></textarea> <input type='button' value='작성 완료' class='btn-sm btn-primary' style='font-size:11;' id='repbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='follow' style='resize: none;'></textarea> <input type='button' value='작성 완료' class='btn-sm btn-primary' style='font-size:11;' id='repbt'/>";
 	
 	//대댓글
 	function rep(button) {
@@ -149,7 +149,7 @@
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
 		//window.alert(tar);
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content' style='resize: none;'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			alert(content.value);
 			$.ajax({
@@ -173,7 +173,7 @@
 	function updateReply2(up, id) {
 		up.parent().append(replyBox);
 		var tar = document.getElementById("cotent_"+id).innerHTML;
-		replyBox.innerHTML = "<textarea rows='4' id='content'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='content' style='resize: none;'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
 			$.ajax({
 				method : "get",
