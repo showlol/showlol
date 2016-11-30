@@ -9,6 +9,7 @@
 </style>
 <script src="/ckeditor/ckeditor.js"></script>
 <link href="/css/tactics.css" rel="stylesheet">
+<link rel='stylesheet' href='/css/tactics/runeSetting.css' >
 <title>공략 글쓰기</title>
 </head>
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
@@ -54,7 +55,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {		
-		$(".nav-tabs a").click(function() {
+		$(".nav-tabs a").click(function() {			
 			$(this).tab('show');
 			
 		});			
@@ -71,9 +72,10 @@
 					+ "#";
 		}
 		var skillBuild = "";
-		$("#skillTree").children("img").each(function(elt){
+		$("#skillTree").children("img[id='setSkill']").each(function(elt){
 			skillBuild += this.getAttribute("info")+"#";
 		});
+		alert(skillBuild);
 		var itemBuild = "";
 		$("#itemTree").children("img").each(function(elt){
 			itemBuild += this.getAttribute("info")+"#";

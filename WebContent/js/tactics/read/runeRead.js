@@ -31,11 +31,16 @@ $("runeRead.js").ready(function(){
 			}			
 			var img = list[id].image.full;
 			var type = list[id].rune.type;
+			var h=44; var w=44;
+			if(num==9 || num==19 || num==29){
+				h=70; w=70;
+			}
 			
 			var runeBox = "<div id='rune' type='"+type+"' value='"+id
-			+"' title='"+list[id].description+"' style='height: 40px; width: 40px;"
+			+"' title='"+list[id].description+"' style='height: "+w+"px; width: "+h+"px;"
 			 +"background-image: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"+img+"\");"
 			 +"background-size: cover; '></div>";
+			$("#runeNum"+num).attr("data", "full");
 			$("#runeNum"+num).append(runeBox);
 			
 			var abilist = runeAbil[id][0];

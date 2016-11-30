@@ -31,7 +31,7 @@ ul.mastery_title li{
 	width: 200px;
 	border: 1px solid gray;	
 	padding: 0px;
-	margin: 0px;
+	margin: 0px;	
 }
 .mastery_ul{
 	padding: 0px;
@@ -73,6 +73,7 @@ ul.mastery_ul > li{
 }
 
 .runeBox{
+	position: absolute;
 	height: 45px;
 	width: 45px;
 	margin: 7 0 0 5;

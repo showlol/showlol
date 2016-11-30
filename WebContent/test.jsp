@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <head>
 	<link href="/css/main.css" rel="stylesheet" >
 	<!-- Latest compiled and minified CSS -->
@@ -62,6 +63,7 @@
 <div id="da1"></div>
 <hr/>
 <div id="datepicker"></div>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -80,6 +82,16 @@ var time = t1.getDate();
 // t2 = t2.getDate();
 var b = t1==t2? true : false;
 console.log(time);
+
+var skillTree={
+		level : 0,
+		0 : 3,
+		1 : 4,
+		2 : 0,
+		3 : 0,
+};
+console.log(skillTree[0]);
+console.log("크기:"+skillTree.hasOwnProperty("aa"));
 
 
 // $("[name]").each(function(i){
