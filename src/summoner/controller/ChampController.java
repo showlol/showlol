@@ -19,7 +19,8 @@ public class ChampController {
 	public ModelAndView champion(String userName) {
 		ModelAndView mav = new ModelAndView("/summoner/champion");
 		ArrayList list = csvc.getChampData(0);
-		mav.addObject("list", list);
+		if(list != null)
+			mav.addObject("list", list);
 		
 		return mav;
 	}
