@@ -9,7 +9,7 @@
 		font-family: 'Oswald', sans-serif;
 	}
 </style>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #339966;">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -21,7 +21,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/tactics/">Tactics</a></li>
 				<li><a href="/community/review2">Community</a></li>
 			</ul>
