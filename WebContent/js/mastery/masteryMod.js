@@ -51,12 +51,13 @@ console.log("masteryMod load...");
 											
 								}else{
 									var index = 5*mod+1;
-									var enough;
+									var enough=0;
 									for(i = index; i<index+2; i++){						
 										enough += $("#mastery_ul").find("#"+i+">span").html()/1											
 									}
+									
+									isEnough = enough>4 ? true : false;
 									console.log("이전 인덱스 계산:"+index+"/"+enough);
-									isEnough = enough>4 ? true : false; 
 								}
 							}
 							if(isEnough==false){
@@ -102,33 +103,22 @@ console.log("masteryMod load...");
 							}
 							
 							//특성 카운트
-							console.log()
-							$(this).parents(".mastery").children("attrBox").each(function(){
-								console.log(this.firstChildNode);
+							var mTotal=0;
+							$(this).parents(".mastery").find(".attrBox").each(function(){
+								mTotal += this.firstChild.innerHTML/1;
 							});
-//							for(i = 1; i<=15; i++){
-//								
-//							}
-//							for(i = 16; i<=30; i++){
-//								
-//							}
-//							for(i = 30; i<=16; i++){
-//								
-//							}
-							switch ($(this).parents(".mastery").attr("id")) {
+							switch($(this).parents(".mastery").attr("id")){
 							case "m0":
-								var p = $("#ferocity").html() / 1 + 1;
-								$("#ferocity").html(p);
+								$("#ferocity").html(mTotal);
 								break;
 							case "m1":
-								var p = $("#cunning").html() / 1 + 1;
-								$("#cunning").html(p);
+								$("#cunning").html(mTotal);
 								break;
 							case "m2":
-								var p = $("#resolve").html() / 1 + 1;
-								$("#resolve").html(p);
+								$("#resolve").html(mTotal);
 								break;
 							}
+
 							console.log(totalPoint);
 		}); // attrBox bind click
 		
