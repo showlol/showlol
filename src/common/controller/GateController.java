@@ -22,7 +22,7 @@ public class GateController {
 	
 	@RequestMapping({"/","index"})
 	public ModelAndView gate(@CookieValue(required=false) String hist, @RequestParam(defaultValue="0") int startIdx) {
-		ModelAndView mav = new ModelAndView("frontgate");
+		ModelAndView mav = new ModelAndView("frontgateMain");
 		
 		List list = gsvc.getChallenger(startIdx);
 		mav.addObject("list", list);

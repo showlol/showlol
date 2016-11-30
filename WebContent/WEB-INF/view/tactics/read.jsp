@@ -9,7 +9,7 @@
 </head>
 <div style=' margin: 0 auto; padding: 3%; width: 670px; overflow: auto; white-space: nowrap;'>
 
-	<H3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </H3>
+	<h3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </h3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
 		border-radius: 4%; padding: 10px; ">

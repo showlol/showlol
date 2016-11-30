@@ -8,7 +8,7 @@
 </head>
 <form action="/community/writeUpdate2" method="get">
 	<input type="hidden" value="${nick }" name="writer">${nick }<br/>
-		<b>제목 :</b><input type="text" name="title" id="title" size="50" value="${sessionScope.wdata.title }"><br/>
+		<b style="font-family: 'Nanum Gothic', sans-serif;">제목 : </b><input type="text" name="title" id="title" size="50" value="${sessionScope.wdata.title }"><br/>
 		<br/>
 		<textarea cols="100" rows="30" name="memo" id="memo" >${sessionScope.wdata.memo }</textarea>
 		<script>CKEDITOR.replace("memo");</script>
