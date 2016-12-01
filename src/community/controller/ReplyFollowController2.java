@@ -7,13 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import community.model.ReplyFollowService2;
 import tactics.model.ReplyFollowService;
 
 @Controller
 @RequestMapping("/community")
 public class ReplyFollowController2 {
 	@Autowired
-	ReplyFollowService rfs;
+	ReplyFollowService2 rfs;
 	
 	@RequestMapping("/follow")
 	@ResponseBody

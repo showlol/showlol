@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import community.model.CommunityData;
 import community.model.CommunityService;
+import community.model.ReplyFollowService2;
 import tactics.model.ReplyFollowService;
 
 @Controller
@@ -27,7 +28,7 @@ public class CommunityController {
 	@Autowired
 	CommunityService cs;
 	@Autowired
-	ReplyFollowService rfs;
+	ReplyFollowService2 rfs;
 
 		//
 		@RequestMapping("/community/review")

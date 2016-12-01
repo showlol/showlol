@@ -54,9 +54,12 @@
 <c:forEach var="r" items="${readReply }">
 	<!-- 댓글 -->
 	<div>
-		<b style="font-size: 12pt;">작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE }) <input type="button"
-			kind="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }"
-			class="btn-sm btn-primary" />
+		<b style="font-size: 12pt;">작성자:${r.WRITER }</b> (작성일:${r.WRITEDATE })
+		<c:if test="${nick!=null }"> 
+			<input type="button"
+				kind="reFollow" value="댓글 남기기" style="font-size: 9;" id="${r.NUM }"
+				class="btn-sm btn-primary" />
+		</c:if>
 		<c:if test="${r.WRITER==nick }">
 			<input type="button" class="btn-sm btn-primary" kind="upReply"
 				value="수정" id="${r.NUM }" style="font-size: 9;" />
@@ -137,12 +140,13 @@
 	function rep(button) {
 		button.parent().append(replyBox);
 		document.getElementById("repbt").addEventListener("click", function() {
-			alert(follow.value);
+			//alert(follow.value);
 			
 			$.ajax({
 				method : "get",
 				url : "/community/follow?writer=${nick}&follow="+follow.value+"&parentNum="+button.attr("id")
 			});
+			location.href="";
 		});
 	};
 	//댓글 수정
@@ -152,7 +156,7 @@
 		//window.alert(tar);
 		replyBox.innerHTML = "<textarea rows='4' id='content' style='resize: none;'>"+tar+"</textarea> <input type='button' value='수정하기' class='btn-sm btn-primary' style='font-size:11;' id='upbt'/>";
 		document.getElementById("upbt").addEventListener("click", function() {
-			alert(content.value);
+			//alert(content.value);
 			$.ajax({
 				method : "get",
 				url : "/community/upReply?content="+content.value+"&num="+up.attr("id")

@@ -7,13 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import community.model.UpDelReplyService2;
 import tactics.model.UpDelReplyService;
 
 @Controller
 @RequestMapping("/community")
 public class UpDelReplyController2 {
 	@Autowired
-	UpDelReplyService urs;
+	UpDelReplyService2 urs;
 	
 	//´ñ±Û ¼öÁ¤
 	@RequestMapping("/upReply")
