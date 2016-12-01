@@ -13,14 +13,21 @@ a, a:link {
 	clear: both;
 }
 header{
-	style="font-family: 'Oswald', sans-serif;
+	font-family: 'Oswald', sans-serif;	
 }
 article{
 	height: 100%;
 	padding: 80px;
 	margin: 0 auto;
 	background-color: #F6F6F6;
-	
+
+}
+article #champContainer a{
+	color: black;
+}
+article #champContainer a:hover{
+	color: green;
+
 }
 footer{
 	clear: both;

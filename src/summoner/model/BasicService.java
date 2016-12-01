@@ -37,7 +37,13 @@ public class BasicService {
 	public LinkedHashMap getSummonerInfo(String name) {
 		RestTemplate rt = new RestTemplate();	
 		String url = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/"+name+"?api_key=RGAPI-23040d79-d49d-4850-a32e-a238bbe04e09";
-		LinkedHashMap map = rt.getForObject(url, LinkedHashMap.class);
+		LinkedHashMap map = new LinkedHashMap<>();
+		try{
+			map = rt.getForObject(url, LinkedHashMap.class);
+		}catch(Exception e) {
+			return null;
+		}
+		
 		String name1 = name.replaceAll(" ", "");
 		String name2 = name1.toLowerCase();		
 		LinkedHashMap data = (LinkedHashMap)map.get(name2);	

@@ -184,6 +184,8 @@ public class MatchesService {
 		ArrayList participantIdentities = (ArrayList)map.get("participantIdentities");
 		int matchDuration = (int)map.get("matchDuration");
 		resMap.put("matchDuration", new Date(matchDuration));
+		ArrayList teams = (ArrayList)map.get("teams");
+		resMap.put("teams", teams);
 		
 		HashMap sNameMap = new HashMap<>();
 		for(int i=0; i<participantIdentities.size(); i++) {
@@ -197,6 +199,9 @@ public class MatchesService {
 		
 		List<HashMap> plist = new ArrayList<>();
 		ArrayList participants = (ArrayList)map.get("participants");
+		int totalKill100 = 0, totalKill200 = 0;
+		int totalDeath100 = 0, totalDeath200 = 0;
+		int totalAssist100 = 0, totalAssist200 = 0;
 		for(int i=0; i<participants.size(); i++) {
 			LinkedHashMap data = (LinkedHashMap)participants.get(i);
 			LinkedHashMap stats = (LinkedHashMap)data.get("stats");
@@ -238,6 +243,16 @@ public class MatchesService {
 			participant.put("deaths", deaths);
 			participant.put("assists", assists);
 			participant.put("kda", kda);
+			
+			if((int)data.get("teamId") == 100) {
+				totalKill100 += kills;
+				totalDeath100 += deaths;
+				totalAssist100 += assists;
+			}else {
+				totalKill200 += kills;
+				totalDeath200 += deaths;
+				totalAssist200 += assists;
+			}
 			int totalDamageDealtToChampions = (int)stats.get("totalDamageDealtToChampions");
 			participant.put("totalDamageDealtToChampions", totalDamageDealtToChampions);
 			int wardsPlaced = (int)stats.get("wardsPlaced");
@@ -257,6 +272,12 @@ public class MatchesService {
 			plist.add(participant);
 		}
 		resMap.put("plist", plist);
+		resMap.put("totalKill100", totalKill100);
+		resMap.put("totalKill200", totalKill200);
+		resMap.put("totalDeath100", totalDeath100);
+		resMap.put("totalDeath200", totalDeath200);
+		resMap.put("totalAssist100", totalAssist100);
+		resMap.put("totalAssist200", totalAssist200);
 		
 		return resMap;
 	}
