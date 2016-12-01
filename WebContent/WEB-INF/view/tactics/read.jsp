@@ -15,43 +15,45 @@
 		border-radius: 4%; padding: 10px; ">
 		<b style="display: inline; font-family: 'Nanum Gothic', sans-serif;" >${tactics.title }</b><br/>	
 		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
-		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">${tactics.writeDate }</span><br/>
+		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">
+			<fmt:formatDate value="${tactics.writeDate }" pattern="MM/dd " />
+		</span><br/>
 	</div>
-
-	<ul class="nav nav-tabs">
-			<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
-			<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
-			<li><a href="#skill" style="font-family: 'Nanum Gothic', sans-serif;">스킬</a>
-			<li><a href="#items" style="font-family: 'Nanum Gothic', sans-serif;">아이템</a>
-		</ul>
-		<div class="tab-content">	
-			<div id="mastery" class="tab-pane fade in active ">
-				<c:import url="tactics/read/readMastery.jsp"></c:import>
+	<div class='well' style='width: 770px; margin: 10px 0;'>
+		<ul class="nav nav-tabs">
+				<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
+				<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
+				<li><a href="#skill" style="font-family: 'Nanum Gothic', sans-serif;">스킬</a>
+				<li><a href="#items" style="font-family: 'Nanum Gothic', sans-serif;">아이템</a>
+			</ul>
+			<div class="tab-content">	
+				<div id="mastery" class="tab-pane fade in active ">
+					<c:import url="tactics/read/readMastery.jsp"></c:import>
+				</div>
+				<div id="rune" class="tab-pane fade in">
+					<c:import url="tactics/read/readRune.jsp"></c:import>			
+				</div>
+				<div id="skill" class="tab-pane fade in">
+					<c:import url="tactics/read/readSkills.jsp"></c:import>			
+				</div>
+				<div id="items" class="tab-pane fade in">
+					<c:import url="tactics/read/readItems.jsp"></c:import>			
+				</div>
 			</div>
-			<div id="rune" class="tab-pane fade in">
-				<c:import url="tactics/read/readRune.jsp"></c:import>			
-			</div>
-			<div id="skill" class="tab-pane fade in">
-				<c:import url="tactics/read/readSkills.jsp"></c:import>			
-			</div>
-			<div id="items" class="tab-pane fade in">
-				<c:import url="tactics/read/readItems.jsp"></c:import>			
-			</div>
+		
+		<br/>
+		<hr style="clear: left;">
+	
+		<div style="clear: left; width: 580; " align='center' >
+			<button type='button' id='recommend-good'><img src='/image/good-orgin.png' width='30px' height='30px'><br/>
+				<span>${tactics.good }</span>
+			</button>
+			<button type='button' id='recommend-bad'><img src='/image/bad.png' width='30px' height='30px'><br/>
+				<span>${tactics.bad }</span>
+			</button>
+			<br/>		
 		</div>
-	
-	<br/>
-	<hr style="clear: left;">
-
-	<div style="clear: left;" align='center' >
-		<button type='button' id='recommend-good'><img src='/image/good-orgin.png' width='30px' height='30px'><br/>
-			<span>${tactics.good }</span>
-		</button>
-		<button type='button' id='recommend-bad'><img src='/image/bad.png' width='30px' height='30px'><br/>
-			<span>${tactics.bad }</span>
-		</button>
-		<br/>		
 	</div>
-	
 	<c:if test="${tactics.writer==nick }">
 		<div id="btnGroup" align="right" style='margin: 3%;'>
 			<button id = "tacticsDel" type="button" class='btn btn-success' >삭제</button>
@@ -153,7 +155,7 @@
 			}
 			var span = $(this).children("span");
 			$.ajax({
-				url : "/tactics/recommend/"+sel,
+				url : "/tactics/recommend/${tactics.num}/"+sel,
 				async : false
 			}).done(function(r){
 				span.html(span.html()/1+1);				

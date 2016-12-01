@@ -95,9 +95,9 @@ public class ContentsManager {
 		sql.close();
 		return r;
 	}
-	public int recommend(String rec) {
+	public int recommend(int writeNum, String rec) {
 		SqlSession sql = fac.openSession();		
-		int num = sql.update("tactics.recommend-"+rec);
+		int num = sql.update("tactics.recommend-"+rec, writeNum);
 		System.out.println("추천:"+num);
 		sql.close();
 		return num;

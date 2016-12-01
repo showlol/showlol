@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="champInfo" style="height: 300px; overflow-y:auto; ">
+<div id="champInfo" style="height: 300px; overflow-y:auto; margin : 10px 0; border-bottom: 1px solid lightgray;">
 	<c:forEach var="i" begin="0" end="4" step="1">
 		<b id='champSkill${i }'></b><br/>
 		<div id='skillImage${i }' style='float: left;'></div>
@@ -12,6 +12,7 @@
 	</c:forEach>	
 </div>
 <div>
+	skillBuild
 	<div id="skillTree" ></div>
 	
 	<div id='initSkillWrap' class='clearBtnWrap'></div>

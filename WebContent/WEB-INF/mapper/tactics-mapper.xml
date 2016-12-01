@@ -60,10 +60,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	<!-- 추천 -->
 	<update id="recommend-good">
-		update improvedtactics_content set good=good+1 
+		update improvedtactics_content set good=good+1 where num=#{num}
 	</update>
 	<update id="recommend-bad">
-		update improvedtactics_content set bad=bad+1
+		update improvedtactics_content set bad=bad+1 where num=#{num}
 	</update>
 	<!-- 댓글 -->
 	<update id="upReply" parameterType="java.util.HashMap">
