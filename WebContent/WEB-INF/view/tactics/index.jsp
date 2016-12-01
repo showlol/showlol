@@ -39,13 +39,14 @@ CHAMPION<br/><hr/>
 	<table class="table table-hover " id="tacticsList" style="display: none;">
 		<thead>
 			<tr>
-				<th>글번호<th>제목<th>작성자<th>작성일
+				<th>글번호<th width='200px' style='text-overflow: ellipsis;'>제목<th>작성자<th>작성일<th>good/bad
 			</tr>		
 		</thead>		
 		<tbody></tbody>
 	</table>
-	<button id="writeTactics" class='btn btn-success' style="display:none; float:right;">공략쓰기</button>
-	
+	<div id="writeTacticsBtnWrap" align='center'>
+	<button id="writeTactics" class='btn btn-success' style="display:none; ">공략쓰기</button>
+	</div>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/util/DateFormat.js" ></script>
 <script>
@@ -76,7 +77,8 @@ CHAMPION<br/><hr/>
 			
 			$("#tacticsList").children("tbody").append(
 				"<tr class='danger'><td id='num'>"+r[i].num+"<td>"
-				+r[i].title+"<td>"+r[i].writer+"<td>"+time+"</tr>")			
+				+r[i].title+"<td>"+r[i].writer+"<td>"+time+"<td>"+r[i].good
+				+"/"+r[i].bad+"</tr>")			
 		}
 		$("#writeTactics").show().click(function(){
 			if(${nick==null }){

@@ -13,7 +13,11 @@
 					+ "#";
 		}
 		var skillBuild = "";
-		$("#skillTree").children("img").each(function(elt){
+		console.log("스킬트리 찾기");
+		console.log($("#skillTree").children("img[id='setSkill']"));
+		$("#skillTree").children("img[id='setSkill']").each(function(elt){
+			console.log("이미지 찾기");
+			console.log(this);
 			skillBuild += this.getAttribute("info")+"#";
 		});
 		var itemBuild = "";
@@ -25,4 +29,4 @@
 		$("#tacticsModForm").append("<input type='hidden' name='skillBuild' value='"+skillBuild+"' />");
 		$("#tacticsModForm").append("<input type='hidden' name='runeData' value='"+runeData+"' />");
 		$("#tacticsModForm").append("<input type='hidden' name='itemBuild' value='"+itemBuild+"' />");
-
+		

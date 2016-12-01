@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
-	<link rel='stylesheet' href='/css/runeMap.css' >
+	<link rel='stylesheet' href='/css/tactics/runeSetting.css' >
 </head>
 <style>
 	option {
@@ -10,10 +10,7 @@
 		font-weight: bold;
 	}
 </style>
-<div id="runeSetter" style="white-space: nowrap; height: 300px; max-width: 650px; overflow: auto;	
-	 background-image: url('https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png');
-	 background-size: 600px 300px ;
-	 background-repeat: no-repeat; ">
+<div id="runeSetter" >
 	<c:forEach var="i" begin="0" end="29">
 		<div id="runeNum${i }" class="runeBox" data="empty"></div>
 		<c:if test="${i%10==9 }">
@@ -55,7 +52,8 @@
 			console.log(target);
 			if(target.attr("id")=="rune"){
 				if(addRune(target)){
-					console.log("룬추가중");
+				//rune 수치 합 계산
+					console.log("룬추가중"); 
 					var abilist = runeAbil[target.attr("value")][0];					
 					runeKind[abilist[0]]+=abilist[1];		
 					
@@ -67,6 +65,7 @@
 						}			
 					});
 					$("#runeAbility").html(runeAbility);
+					runeAbility = "";
 				}
 			}
 				
@@ -78,6 +77,7 @@
 			if(e.target.getAttribute("id")=="rune"){
 				
 				var target=$(e.target);
+				console.log(target.attr("value"));
 				console.log(runeAbil[target.attr("value")][0]);
 				var abilist = runeAbil[target.attr("value")][0];
 				runeKind[abilist[0]]-=abilist[1];		
@@ -179,6 +179,7 @@
 			for(i = 9; i<30; i+=10){
 				if($("#runeNum"+i).attr("data")=="empty"){
 					$("#runeNum"+i).attr("data", "full");
+					target.css("width", "70px").css("height", "70px");
 					$("#runeNum"+i).append(target);					
 					isSettable=true;
 					return true;

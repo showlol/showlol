@@ -4,6 +4,7 @@
 <head>
 <script src="/ckeditor/ckeditor.js"></script>
 <link href="/css/tactics.css" rel="stylesheet">
+<link rel='stylesheet' href='/css/tactics/runeSetting.css' >
 <title>공략 글쓰기</title>
 </head>
 <style>
@@ -11,7 +12,7 @@
 		font-family: 'Nanum Gothic', sans-serif;
 	}
 </style>
-<form action="/tactics/writeUpdate2" id='tacticsModForm' method="get" onsubmit='return transferTactics();' >
+<form action="/tactics/writeUpdate2" id='tacticsModForm' method="post" onsubmit='return transferTactics();' >
 
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${sessionScope.champData.image1}" >
 	<input name='title' style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
@@ -41,13 +42,7 @@
 	</div>	
 	<hr style="clear: left;">
 	<input type='hidden' name='num' value='${tactics.num }' >
-<<<<<<< HEAD
-	<input type="submit" value="등록" />
-
-=======
 	<input type="submit" value="등록" class="btn-sm btn-primary" />
-</div>
->>>>>>> branch 'master' of https://github.com/showlol/showlol.git
 </form>
 
 <script
@@ -75,8 +70,7 @@
 // 	$("#mastery_ul").find(".attrBox").each(function(){
 // 		var span = $(this).children("span#point")[0];
 // 		console.log(span);
-// 	});
-	
+// 	});	
 	
 	console.log("totalPoint:"+totalPoint);
 	
@@ -87,21 +81,21 @@
 		}
 		
 	}
-
+	
 	function transferTactics() {
+		var isSendable=false;
 		console.log(this);
 		$.ajax({
 			url: "/js/mastery/transferTactics.js",
 			async: false
 		}).done(function(r){
-			console.log("계산 결과");
-			console.log($("#tacticsModForm").find("[name]"));
-			alert("계산 완료");
-			return true; 
+			isSendable = true 
 		}).fail(function(r){
-			alert(r);
+			alert('데이터 처리 실패');
+			console.log(r);
 			return false;
-		});		
+		});
+		return isSendable;
 	}
 	
 </script>

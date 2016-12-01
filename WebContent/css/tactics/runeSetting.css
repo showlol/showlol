@@ -1,0 +1,158 @@
+@CHARSET "EUC-KR";
+#runeSetter{
+	position : relative;
+	white-space: nowrap; height: 330px; max-width: 600px; overflow: auto;	
+	background-image: url('https://s3-us-west-1.amazonaws.com/riot-api/img/rune-slot-ids.png');
+	background-size: 580px 280px ;
+	background-repeat: no-repeat; 
+}
+
+#runeNum0 {
+	top: 230px;
+	left: 19px;
+}
+#runeNum1 {
+	top: 230px;
+	left: 75px;
+}
+
+#runeNum2 {
+	top: 230px;
+	left: 135px;
+}
+
+#runeNum3 {
+	top: 189px;
+	left: 5px;
+}
+
+#runeNum4 {
+	top: 189px;
+	left: 58px;
+}
+
+#runeNum5 {
+	top: 195px;
+	left: 107px;
+}
+
+#runeNum6 {
+	top: 154px;
+	left: 26px;
+}
+
+#runeNum7 {
+	top: 156px;
+	left: 95px;
+}
+
+#runeNum8 {
+	top: 137px;
+	left: 59px;
+}
+
+#runeNum9 {	
+	top: 13px;
+	left: 35px;
+}
+
+#runeNum10 {
+	top: 105px;
+	left: 30px;
+}
+
+#runeNum11 {	
+	top: 101px;
+	left: 91px;
+}
+
+#runeNum12 {
+	top: 76px;
+	left: 56px;
+}
+
+#runeNum13 {
+	top: 60px;
+	left: 104px;
+}
+
+#runeNum14 {
+	top: 30px;
+	left: 132px;
+}
+
+#runeNum15 {
+	top: 11px;
+	left: 183px;
+}
+
+#runeNum16 {
+	top: 5px;
+	left: 234px;
+}
+
+#runeNum17 {
+	top: -7px;
+	left: 291px;
+}
+
+#runeNum18 {
+	top: 20px;
+	left: 315px;
+}
+
+#runeNum19 {
+	top: 130px;
+	left: 173px;
+}
+
+#runeNum20 {
+	top: -8px;
+	left: 350px;
+}
+
+#runeNum21 {
+	top: -8px;
+	left: 407px;
+}
+
+#runeNum22 {
+	top: -8px;
+	left: 478px;	
+}
+/* ¿ìÃø ³¡ */
+#runeNum23 {
+	top: 17px;
+	left: 525px;
+}
+
+#runeNum24 {
+	top: 24px;
+	left: 382px;
+	
+}
+
+#runeNum25 {
+	top: 42px;
+	left: 418px;
+}
+
+#runeNum26 {
+	top: 17px;
+	left: 451px;
+}
+
+#runeNum27 {
+	top: 30x;
+	left: 487px;
+}
+
+#runeNum28 {
+	top: 73px;
+	left: 508px;
+}
+
+#runeNum29 {
+	top: 100px;
+	left: 379px;	
+}

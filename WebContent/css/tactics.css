@@ -15,7 +15,7 @@ ul{
 	padding: 0px;
 }
 .mastery_title{
-	text-align: center;
+	margin: 10px 0 0 70px;
 	white-space: nowrap;
 }
 ul.mastery_title li{
@@ -31,7 +31,7 @@ ul.mastery_title li{
 	width: 200px;
 	border: 1px solid gray;	
 	padding: 0px;
-	margin: 0px;
+	margin: 0px;	
 }
 .mastery_ul{
 	padding: 0px;
@@ -46,33 +46,37 @@ ul.mastery_ul > li{
 .tier_even{
 	height: 74px;
 	width: 190;
-	padding: 0px;	
+	padding: 5px 0 13px 3px;	
 	margin: 0 auto;
 	text-align: center;
 }
 .tier_odd{
 	height: 74px;
 	width: auto;
-	padding: 12px 0 0 2px;	
+	padding: 8px 0 0 0;	
 	margin-top:0px;
 	margin-bottom:0px;
-	margin-left:40px;
+	margin-left:42px;
 	margin-right:auto;
 	text-align: center;
 }
 
 .attrBox{
+	position : relative;
 	height: 53px;
-	width: 50px;
-	margin: 5 0 0 8;
+	width: 53px;
+	margin: 4 0 0 7;
 	padding-top: 45px;	
 	border: 1px solid gray;
+	border-radius: 2px;
 	float: left;	
 	z-index: 5;
 	color: blue;
+	text-align: right;	 
 }
 
 .runeBox{
+	position: absolute;
 	height: 45px;
 	width: 45px;
 	margin: 7 0 0 5;

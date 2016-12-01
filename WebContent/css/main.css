@@ -49,6 +49,20 @@ footer{
 	overflow-y: scroll;
 	border: 1px solid gray;	
 }
+.chatPane{
+	display: none;
+	position : fixed;
+	top : 100px;
+	left : 15px;
+	height: 300px;
+	width: 200px;
+	overflow-y: scroll;
+	border: 1px solid gray;
+	border-radius: 2px;
+	background-color: #eaeaea;
+}
+
+
 /* footer div{ */
 /* 	maring: auto; */
 /* 	vertical-align: middle; */
