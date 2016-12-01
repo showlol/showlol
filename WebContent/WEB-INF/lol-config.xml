@@ -25,6 +25,7 @@
 	<context:component-scan base-package="staticJSON" />
 	<context:component-scan base-package="gameData" />
 	<context:component-scan base-package="memo" />
+	<context:component-scan base-package="ChampInfo" />
 	<mvc:default-servlet-handler /> 
 	<!-- responseBody -->
 	<mvc:annotation-driven>

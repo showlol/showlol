@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<table>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td>생명력</td>
+									<td style="padding-left:5px;">	
+										<div class="test" style="position:relative;width:100px; height:15px;background-color:grey;">
+											<div style="position:absolute;width:${info.info.defense * 10};height:100%;background-color:green;" >
+							  				</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table>
+								<tr>
+									<td style="padding-left:10px;">공격력</td>
+									<td style="padding-left:5px;">	
+										<div class="test" style="position:relative;width:100px; height:15px;background-color:grey;">
+											<div style="position:absolute;width:${info.info.attack * 10};height:100%;background-color:red;" >
+							  				</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table>
+								<tr>
+									<td style="padding-left:10px;">주문력</td>
+									<td style="padding-left:5px;">	
+										<div class="test" style="position:relative;width:100px; height:15px;background-color:grey;">
+											<div style="position:absolute;width:${info.info.magic * 10};height:100%;background-color:blue;" >
+							  				</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>
+							<table>
+								<tr>
+									<td style="padding-left:10px;">난이도</td>
+									<td style="padding-left:5px;">	
+										<div class="test" style="position:relative;width:100px; height:15px;background-color:grey;">
+											<div style="position:absolute;width:${info.info.difficulty * 10};height:100%;background-color:purple;" >
+							  				</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
