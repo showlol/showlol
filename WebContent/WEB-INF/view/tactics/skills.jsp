@@ -92,7 +92,7 @@
 	var skillBuild=""; // save
 	function appendSkill(skill){
 		var n = skill.attr("info");		
-		if(skillTree["level"]>=16)
+		if(skillTree["level"]>=18)
 			return false;
 		if (n == 3) {
 			console.log("레벨:"+skillTree["level"]);
