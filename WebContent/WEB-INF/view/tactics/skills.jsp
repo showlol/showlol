@@ -66,6 +66,13 @@
 				+" class='btn-sm btn-danger' value='초기화' style='width:"
 				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
 		$("#initSkillBtn").click(function(){
+			skillTree={
+					level : 0,
+					0 : 0,
+					1 : 0,
+					2 : 0,
+					3 : 0,
+			};
 			$("#skillTree").empty();			
 		});
 		
@@ -85,13 +92,12 @@
 	var skillBuild=""; // save
 	function appendSkill(skill){
 		var n = skill.attr("info");		
-	
+		if(skillTree["level"]>=16)
+			return false;
 		if (n == 3) {
-			console.log((skillTree[n] + 1) * 6 + "/"
-					+ (skillTree["level"] / 1 + 1));
-			if ((skillTree[n] + 1) * 6 > parseFloat(skillTree["level"]) + 1) {
-				return false;
-			} else if (skillTree[n] + 1 > 3) {
+			console.log("레벨:"+skillTree["level"]);
+			console.log(5*(skillTree[n]+1)+1);
+			if (skillTree["level"]<5*(skillTree[n]+1)) {
 				return false;
 			}
 		}
