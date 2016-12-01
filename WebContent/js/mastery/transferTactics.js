@@ -29,4 +29,4 @@
 		$("#tacticsModForm").append("<input type='hidden' name='skillBuild' value='"+skillBuild+"' />");
 		$("#tacticsModForm").append("<input type='hidden' name='runeData' value='"+runeData+"' />");
 		$("#tacticsModForm").append("<input type='hidden' name='itemBuild' value='"+itemBuild+"' />");
-
+		

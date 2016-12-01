@@ -12,7 +12,7 @@
 	</c:forEach>	
 </div>
 <div>
-	<div id="skillTree" style="height: 150px; "></div>
+	<div id="skillTree" ></div>
 	
 	<div id='initSkillWrap' class='clearBtnWrap'></div>
 	<textarea name="skillContent" id="skillContent" style="resize: none;">${tactics.skillContent }</textarea>

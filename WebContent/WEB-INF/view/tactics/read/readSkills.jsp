@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="skillTree" style="height: 150px; width: auto;"></div>
+<div id="skillTree" ></div>
 <div style='clear: left;'></div>
 <div id="skillContent" class="tacticsContent" >${tactics.skillContent }</div>
 <script>

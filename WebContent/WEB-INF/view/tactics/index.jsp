@@ -44,8 +44,9 @@ CHAMPION<br/><hr/>
 		</thead>		
 		<tbody></tbody>
 	</table>
-	<button id="writeTactics" class='btn btn-success' style="display:none; float:right;">공략쓰기</button>
-	
+	<div id="writeTacticsBtnWrap" align='center'>
+	<button id="writeTactics" class='btn btn-success' style="display:none; ">공략쓰기</button>
+	</div>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/util/DateFormat.js" ></script>
 <script>

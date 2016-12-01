@@ -43,7 +43,6 @@
 	<hr style="clear: left;">
 	<input type='hidden' name='num' value='${tactics.num }' >
 	<input type="submit" value="등록" class="btn-sm btn-primary" />
-</div>
 </form>
 
 <script
@@ -82,22 +81,21 @@
 		}
 		
 	}
-
+	
 	function transferTactics() {
+		var isSendable=false;
 		console.log(this);
 		$.ajax({
 			url: "/js/mastery/transferTactics.js",
 			async: false
 		}).done(function(r){
-			console.log("계산 결과");
-			console.log($("#tacticsModForm").find("[name='skillBuild']"));
-			alert("계산 완료");
-			return false; 
+			isSendable = true 
 		}).fail(function(r){
-			alert(r);
+			alert('데이터 처리 실패');
+			console.log(r);
 			return false;
 		});
-		return false;
+		return isSendable;
 	}
 	
 </script>

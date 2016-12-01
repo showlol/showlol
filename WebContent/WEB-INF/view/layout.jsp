@@ -23,8 +23,8 @@
 		<tiles:insertAttribute name="header" />
 	</header>
 	<article style="overflow: scroll; ">		
-		<div id="top"></div>
-		<tiles:insertAttribute name="article" />		
+		<div id="top"></div>	
+		<tiles:insertAttribute name="article" />			
 	</article>
 	<footer style="position: fixed; bottom: 0; width: 100%;height: 30px;">
 		<tiles:insertAttribute name="footer" />

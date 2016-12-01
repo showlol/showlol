@@ -15,7 +15,7 @@ ul{
 	padding: 0px;
 }
 .mastery_title{
-	text-align: center;
+	margin: 10px 0 0 70px;
 	white-space: nowrap;
 }
 ul.mastery_title li{
