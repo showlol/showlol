@@ -7,7 +7,7 @@
 	<script src="/ckeditor/ckeditor.js"></script>
 	<link href="/css/tactics.css" rel="stylesheet">
 </head>
-<div style=' margin: 0 auto; padding: 3%; width: 670px; overflow: auto; white-space: nowrap;'>
+<div style=' margin: 0 auto; padding: 3%; width: 720px; overflow: auto; white-space: nowrap;'>
 
 	<h3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </h3>
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
@@ -19,7 +19,7 @@
 			<fmt:formatDate value="${tactics.writeDate }" pattern="MM/dd " />
 		</span><br/>
 	</div>
-	<div class='well' style='width: 770px; margin: 10px 0;'>
+	<div class='well' style='width: 650px; margin: 10px 0;'>
 		<ul class="nav nav-tabs">
 				<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
 				<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
