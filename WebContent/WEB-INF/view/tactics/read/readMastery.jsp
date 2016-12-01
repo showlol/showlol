@@ -5,8 +5,8 @@
 
 <ul id="mastery_title" class="mastery_title">
 		<li>흉포 : <b id="ferocity" name="m0">0</b>
-		<li>교활 : <b id="cunning" name="m1">0</b>
-		<li>결의 : <b id="resolve" name="m2">0</b>
+		<li>결의 : <b id="cunning" name="m1">0</b>
+		<li>교활 : <b id="resolve" name="m2">0</b>
 </ul>
 	<span class="clearfix"><br></span>
 	<ul class="mastery_ul" id="mastery_ul" style='display: inline-block; ' ></ul>

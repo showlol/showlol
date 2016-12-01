@@ -13,7 +13,10 @@
 	<a>|</a>
 	<a onclick="showMemo('${nick}')" style="cursor:pointer;text-decoration:none;"><strong style="color: white;">MESSAGE</strong></a>
 	<a>|</a>
+	<a onclick='chatSocket()'>£À</a>
 </div>
+
+<div id='chatPane' class='chatPane' ></div>
 <script>
 function showMemo(nick) {
 	if(nick == "")
@@ -23,4 +26,12 @@ function showMemo(nick) {
 		window.open(url, "", "width=550,height=450");
 	}
 }
+
+function chatSocket(){
+ 	console.log("Ã¤ÆÃ");
+	$("#chatPane").toggle();
+}
+
 </script>
+
+
