@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="itemTree" style='clear: left;'></div>
+<div id="itemTree" style='clear: left; white-space: normal;'></div>
 <div id="itemContent" class="tacticsContent" >${tactics.itemContent }</div>
 
 <script>

@@ -83,6 +83,14 @@ ul.mastery_ul > li{
 	padding: 0;		
 	display: inline-block;
 }
+#skillTree{
+	margin-top: 15px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.tacticsContent{
+	white-space: normal;
+	margin-top: 15px;
+}
 .clearBtnWrap{
 	clear: left;
 	text-align: center;

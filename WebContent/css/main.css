@@ -1,7 +1,8 @@
 
 @CHARSET "EUC-KR";
-body{
+body:not(header){
 	margin:0;
+	font-family: "Nanum Gothic", sans-serif;
 }
 .container{
 	padding: 0;

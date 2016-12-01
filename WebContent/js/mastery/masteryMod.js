@@ -154,14 +154,32 @@ console.log("masteryMod load...");
 			}
 			target.innerHTML--;
 			totalPoint++;
-			console.log(totalPoint);
+			$(this).parents("#m0").length == 1 ? $("#ferocity").html($("#ferocity").html()-1) : 0;
+			$(this).parents("#m1").length == 1 ? $("#cunning").html($("#cunning").html()-1) : 0;
+			$(this).parents("#m2").length == 1 ? $("#resolve").html($("#resolve").html()-1) : 0;
+
+			console.log("totalPoint :"+totalPoint);
 			return false;
-		});
+		});//contextMenu end
 		var btnWidth = 100;
 		$("#initMasteryWrap").append("<input type='button' id='initMasteryBtn'"
 				+" class='btn-sm btn-danger' value='초기화' style='width:"
 				+btnWidth+"; margin-left: "+(-btnWidth/2)+";' >");
 		$("#initMasteryBtn").click(function(){
-			alert("초기화");
-		});
+			initAttrBox();
+		});		
 	}//end addPoint
+	
+	function initAttrBox(){
+		$(".attrBox").each(function(){
+			this.firstChild.innerHTML=0;
+			
+		});
+		$(".mastery_title > li").each(function(){			
+			this.childNodes[1].innerHTML=0;
+		});
+		totalPoint = 30;
+	}
+	
+	
+	

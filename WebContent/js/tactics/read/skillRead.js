@@ -32,7 +32,7 @@ $.get("/champData/"+champKey, function(r){
 			}		
 			$("#skillTree").append(spell);
 			if(level%6==0)
-				$("#skillTree").append("<br/>");
+				$("#skillTree").append("<br/><br/>");
 		}
 	}catch(err){
 		alert("스킬트리를 읽을 수 없습니다.");

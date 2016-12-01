@@ -73,7 +73,7 @@ $("readRune.jsp").ready(function(){
 		console.log(runeKind[keys[0]]);
 		keys.forEach(function(key){
 			if(runeKind[key]!=0){
-				runeAbility += key+":"+runeKind[key]+" / ";
+				runeAbility += key+":"+runeKind[key].toFixed(2)+" / ";
 			}			
 		});
 		$("#runeAbility").html(runeAbility);
