@@ -1,5 +1,6 @@
 package ChampInfo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ChampInfoController {
 	
 	@RequestMapping("/champInfo/list")
 	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("champInfo/list");
+		ModelAndView mav = new ModelAndView("cm:champInfo/list");
 		List list = cs.championList();
 		mav.addObject("champList", list);
 		return mav;
@@ -31,9 +32,19 @@ public class ChampInfoController {
 	
 	@RequestMapping("champInfo/info/{id}")
 	public ModelAndView info(@PathVariable int id) {
-		ModelAndView mav = new ModelAndView("champInfo/info");
+		ModelAndView mav = new ModelAndView("cm:champInfo/info");
 		HashMap map = cisvc.getChampInfo(id);
 		mav.addObject("info", map);
+		
+		return mav;
+	}
+	
+	@RequestMapping("/champInfo/skin/{name}/{id}")
+	public ModelAndView skin(@PathVariable String name, @PathVariable int id) {
+		ModelAndView mav = new ModelAndView("cm:champInfo/skin");
+		ArrayList list = cisvc.getChampSkin(id);
+		mav.addObject("name", name);
+		mav.addObject("skins", list);
 		
 		return mav;
 	}

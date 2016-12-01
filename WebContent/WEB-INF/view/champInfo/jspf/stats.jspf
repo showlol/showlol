@@ -1,0 +1,177 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+
+th, td {
+    text-align: center;
+    padding: 3px;
+    border: 1px solid #000000;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+
+<table style="border-collapse: collapse; border: 1px solid #000000">
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td>생명력</td>
+					<td style="padding-left: 5px;">
+						<div class="test"
+							style="position: relative; width: 150px; height: 15px; background-color: grey;">
+							<div
+								style="position:absolute;width:${info.info.defense * 15};height:100%;background-color:green;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<td style="padding-left: 10px;">공격력</td>
+					<td style="padding-left: 5px;">
+						<div class="test"
+							style="position: relative; width: 150px; height: 15px; background-color: grey;">
+							<div
+								style="position:absolute;width:${info.info.attack * 15};height:100%;background-color:red;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<td style="padding-left: 10px;">주문력</td>
+					<td style="padding-left: 5px;">
+						<div class="test"
+							style="position: relative; width: 150px; height: 15px; background-color: grey;">
+							<div
+								style="position:absolute;width:${info.info.magic * 15};height:100%;background-color:blue;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<td style="padding-left: 10px;">난이도</td>
+					<td style="padding-left: 5px;">
+						<div class="test"
+							style="position: relative; width: 150px; height: 15px; background-color: grey;">
+							<div
+								style="position:absolute;width:${info.info.difficulty * 15};height:100%;background-color:purple;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table>
+<tr>
+<td>
+<table style="border-collapse: collapse; width: 500px; border: 1px solid #000000">
+	<tr style="border: 1px solid #000000">
+		<th>구분</th>
+		<th>1레벨(레벨당 성장수치)</th>
+		<th>18레벨</th>
+	</tr>
+	<tr>
+		<td>체력</td>
+		<td>${info.stats.hp }(+${info.stats.hpperlevel })</td>
+		<td><c:set var="hp18"
+				value="${info.stats.hp + (info.stats.hpperlevel * 17) }" /> <fmt:formatNumber pattern="0.00">${hp18 }</fmt:formatNumber>
+		</td>
+	</tr>
+	<tr>
+		<td>마나</td>
+		<td>${info.stats.mp }(+${info.stats.mpperlevel })</td>
+		<td><c:set var="mp18"
+				value="${info.stats.mp + (info.stats.mpperlevel * 17) }" /> <fmt:formatNumber pattern="0.00">${mp18 }</fmt:formatNumber>
+		</td>
+	</tr>
+	<tr>
+		<td>공격력</td>
+		<td>${info.stats.attackdamage }
+			(+${info.stats.attackdamageperlevel })</td>
+		<td><c:set var="atk18"
+				value="${info.stats.attackdamage + (info.stats.attackdamageperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${atk18 }</fmt:formatNumber></td>
+	</tr>
+	<!--  
+	<tr>
+		<td>공격 속도</td>
+		<td>${info.stats.attackspeedoffset }
+			(+${info.stats.attackspeedperlevel }%)</td>
+		<td><c:set var="atk18"
+				value="${info.stats.attackspeedoffset + (info.stats.attackspeedperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${atk18 }</fmt:formatNumber></td>
+	</tr>
+	-->
+	<tr>
+		<td>5초당 체력회복</td>
+		<td>${info.stats.hpregen } (+${info.stats.hpregenperlevel })</td>
+		<td><c:set var="hpr18"
+				value="${info.stats.hpregen + (info.stats.hpregenperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${hpr18 }</fmt:formatNumber></td>
+		</td>
+	</tr>
+	<tr>
+		<td>5초당 마나회복</td>
+		<td>${info.stats.mpregen } (+${info.stats.mpregenperlevel })</td>
+		<td><c:set var="mpr18"
+				value="${info.stats.mpregen + (info.stats.mpregenperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${mpr18 }</fmt:formatNumber></td>
+		</td>
+	</tr>
+	<tr>
+		<td>방어력</td>
+		<td>${info.stats.armor } (+${info.stats.armorperlevel })</td>
+		<td><c:set var="arm18"
+				value="${info.stats.armor + (info.stats.armorperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${arm18 }</fmt:formatNumber></td>
+		</td>
+	</tr>
+	<tr>
+		<td>마법 저항력</td>
+		<td>${info.stats.spellblock } (+${info.stats.spellblockperlevel })</td>
+		<td><c:set var="arm18"
+				value="${info.stats.spellblock + (info.stats.spellblockperlevel * 17) }" />
+			<fmt:formatNumber pattern="0.00">${arm18 }</fmt:formatNumber></td>
+		</td>
+	</tr>
+	<tr>
+		<td>이동 속도</td>
+		<td>${info.stats.movespeed }</td>
+		<td>${info.stats.movespeed }</td>
+		</td>
+	</tr>
+	<tr>
+		<td>사정 거리</td>
+		<td>${info.stats.attackrange }</td>
+		<td>${info.stats.attackrange }</td>
+		</td>
+	</tr>
+</table>
+</td>
+<td>
+	<table style="border-collapse: collapse; width: 400px; border: 1px solid #000000">
+		<tr style="border: 1px solid #000000"><th>챔피언 소개 영상</th></tr>
+		<tr><td><iframe width="386" height="227" src="https://www.youtube.com/embed/hUGh9OFRazs" frameborder="0" allowfullscreen></iframe></td></tr>
+	</table>
+</td>
+</tr>
+</table>

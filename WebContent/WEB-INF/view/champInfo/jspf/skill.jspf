@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+#floating-box {
+   float: left;
+   width: 70px;
+   margin: 5px;
+}
+
+#content {
+   clear: left;
+   width: 500px;
+   height:200px;
+   margin: 5px;
+   border: 1px solid #4CAF50;
+   background-color: #041021;
+   color :#A0ACBD;
+}
+</style>
+<div>
+	<div id="floating-box">
+	<img
+		src="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/passive/${info.passive.image.full }"
+		onmouseover="showPassive()" style="border:3px solid #02699F"/><br/>패시브
+	</div>
+<c:forEach var="i" begin="0" end="3">
+	<div id="floating-box">
+	<img
+		src="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/${info.spells[i].image.full }" 
+		onmouseover="showSpell(${i})" style="border:3px solid #02699F"/><br/>
+		<c:choose>	
+			<c:when test="${i == 0}">Q</c:when>
+			<c:when test="${i == 1}">W</c:when>
+			<c:when test="${i == 2}">E</c:when>
+			<c:when test="${i == 3}">R</c:when>
+		</c:choose>
+	</div>
+</c:forEach>
+</div>
+
+<div id="content">
+<div id="passive" class="skillCls">
+	<div style="float: left;width: 100px; padding : 10px;">
+		<img src="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/passive/${info.passive.image.full }" style="border:3px solid #02699F"/>
+	</div>
+	<div style="float: left;width: 370px; padding : 10px;">
+		<font color="#F6700E"><b>${info.passive.name }</b></font><br/>
+		${info.passive.description }
+	</div>
+</div>
+<c:forEach var="i" begin="0" end="3">
+<div id="skill${i }"  class="skillCls">
+	<div style="float: left;width: 100px; padding : 10px;">
+		<img src="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/${info.spells[i].image.full }" style="border:3px solid #02699F"/>
+	</div>
+	<div style="float: left;width: 370px; padding : 10px;">
+		<font color="#F6700E"><b>${info.spells[i].name }</b></font><br/>
+		${info.spells[i].description }
+	</div>
+</div>
+</c:forEach>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	
+window.onload = function() {
+	for(var i=0; i<=3; i++) {
+		document.getElementById("skill"+i).style.display = "none";
+	}
+}
+
+function hideAll() {
+	for(var i=0; i<=3; i++) {
+		document.getElementById("skill"+i).style.display = "none";
+	}
+	document.getElementById("passive").style.display = "none";
+}
+
+function showPassive() {
+	hideAll();
+	document.getElementById("passive").style.display = "block";
+}
+
+function showSpell(idx) {
+	hideAll();
+	document.getElementById("skill"+idx).style.display = "block";
+}
+	
+</script>
