@@ -34,7 +34,7 @@
 		}).done(function(r) {
 			
 			if(r=="true"){
-				alert("멤버조인성공");
+				alert("가입이 완료되었습니다.")
 				location.href="/";
 				return true;
 			}
@@ -71,7 +71,7 @@
 				memberJoin();	
 				
 			}else{
-				alert("가입 실패!");
+				alert("가입에 실패하였습니다.");
 			}
 			
 		});

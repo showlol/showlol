@@ -49,9 +49,9 @@ public class MemberController {
 			MimeMessage message = sender.createMimeMessage();
 			message.setRecipients(RecipientType.TO, email);
 			message.setFrom(new InternetAddress("ss"));
-			message.setSubject("��û�Ͻ� ����Ű�Դϴ�.");
+			message.setSubject("요청하신 인증키입니다.");
 			String text = "";
-			text += "����Ű�� ������ �Է����ּ���.<br/>";
+			text += "인증키를 복사하여 적어주세요.<br/>";
 			text += "["+uuid+"]";
 			message.setText(text, "utf-8", "html");
 			
