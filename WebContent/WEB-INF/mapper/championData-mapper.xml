@@ -6,4 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="imageList" resultType="java.util.HashMap">
 		select name, key, image1, id, video from champion order by name
 	</select>
+	
+	<select id="getVideo" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select video from champion where id = #{id}
+	</select>
 </mapper>

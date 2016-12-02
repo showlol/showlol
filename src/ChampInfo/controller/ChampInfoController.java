@@ -35,16 +35,10 @@ public class ChampInfoController {
 		ModelAndView mav = new ModelAndView("cm:champInfo/info");
 		HashMap map = cisvc.getChampInfo(id);
 		mav.addObject("info", map);
+		String video = cs.getVideo(id);
 		
-		return mav;
-	}
-	
-	@RequestMapping("champInfo/info/{id}/{video}")
-	public ModelAndView info(@PathVariable int id, @PathVariable String video) {
-		ModelAndView mav = new ModelAndView("cm:champInfo/info");
-		HashMap map = cisvc.getChampInfo(id);
-		mav.addObject("info", map);
-		mav.addObject("video", video);
+		if(video != null)
+			mav.addObject("video", video);
 		
 		return mav;
 	}

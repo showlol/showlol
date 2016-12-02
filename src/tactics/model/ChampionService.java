@@ -22,4 +22,12 @@ public class ChampionService {
 		//System.out.println(list.toString());
 		return list;
 	}
+	
+	public String getVideo(int id) {
+		SqlSession sql = fac.openSession();
+		String video = sql.selectOne("championData.getVideo", id);
+		sql.close();
+		//System.out.println(list.toString());
+		return video;
+	}
 }
