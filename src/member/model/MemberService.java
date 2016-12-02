@@ -17,7 +17,13 @@ public class MemberService {
 	
 	public boolean register(MemberData data) {
 		SqlSession session = fac.openSession();
+		String email = session.selectOne("member.emailCheck", data.getEmail());
+		System.out.println("register:"+email);
+		if(email!=null){
+			return false;
+		}
 		boolean r = session.insert("member.regist", data)==1? true : false;
+		System.out.println("regi:"+r);
 		session.close();		
 		return r;
 	}
@@ -28,13 +34,19 @@ public class MemberService {
 		map.put("email", email);
 		map.put("uuid", uuid);
 		boolean r = session.insert("member.sendEmail", map)==1? true : false;
+		System.out.println("UUID생성:"+uuid);
+		System.out.println("sendEmail:"+r);
 		session.close();
 		return uuid;
 	}
-	public List authMail(String email) {
+	public boolean authMail(String email, String uuid) {
 		SqlSession session = fac.openSession();
-		List list = session.selectList("member.uuidData");
+		boolean r=false;
+		if(uuid.equals(session.selectOne("member.uuidData", email)) )
+			r = true;
+		System.out.println("authMail:"+email);
+		System.out.println("authMail:"+r);
 		session.close();
-		return list;
+		return r;
 	}
 }

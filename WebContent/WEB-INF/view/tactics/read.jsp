@@ -10,16 +10,22 @@
 <div style=' margin: 0 auto; padding: 3%; width: 720px; overflow: auto; white-space: nowrap;'>
 
 	<h3 style="font-family: 'Nanum Gothic', sans-serif;">${tactics.champ } 공략글 </h3>
-	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
-	<div style="display: inline-block; width: 300px; height: 115px; background-color: #E7E3F0;
-		border-radius: 4%; padding: 10px; ">
-		<b style="display: inline; font-family: 'Nanum Gothic', sans-serif;" >${tactics.title }</b><br/>	
-		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
-		<span style="float: right; font-family: 'Nanum Gothic', sans-serif;">
-			<fmt:formatDate value="${tactics.writeDate }" pattern="MM/dd " />
-		</span><br/>
+	<div style="float: left;">
+		<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	</div>
-	<div class='well' style='width: 650px; margin: 10px 0;'>
+	
+	<div style="float:left; width: 300px; height: 115px; background-color: #E7E3F0;
+		border-radius: 3px; padding: 10px; margin: 0 8px; white-space: normal;">
+		<b style="display: inline; width: 290px; text-align:left;  inhfont-family: 'Nanum Gothic', sans-serif;" >${tactics.title }</b><br/>
+		<div align='right'>
+		<span style=" font-family: 'Nanum Gothic', sans-serif;">작성자 : ${tactics.writer }</span><br/>
+		<span style="font-family: 'Nanum Gothic', sans-serif;">
+			<fmt:formatDate value="${tactics.writeDate }" pattern="MM/dd " />
+		</span>
+		</div>	
+	</div>
+	<br/>
+	<div class='well' style='clear: left; width: 650px; margin: 10px 0;'>
 		<ul class="nav nav-tabs">
 				<li class="active"><a a data-toggle="tab" href="#mastery" style="font-family: 'Nanum Gothic', sans-serif;">특성</a>
 				<li><a href="#rune" style="font-family: 'Nanum Gothic', sans-serif;">룬</a>
@@ -103,22 +109,22 @@
 </c:forEach>
 </div>
 <!-- Modal -->
-<div id="confirmModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+<!-- <div id="confirmModal" class="modal fade" role="dialog"> -->
+<!--   <div class="modal-dialog modal-sm"> -->
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>       
-      </div>
-      <div class="modal-body">        		
-		<button class="btn" id="login" ></button>
-		<button class="btn" value="로그인" id="login" ></button>
-      </div>      
-    </div>
+<!--     Modal content -->
+<!--     <div class="modal-content"> -->
+<!--       <div class="modal-header"> -->
+<!--         <button type="button" class="close" data-dismiss="modal">&times;</button>        -->
+<!--       </div> -->
+<!--       <div class="modal-body">        		 -->
+<!-- 		<button class="btn" id="login" ></button> -->
+<!-- 		<button class="btn" value="로그인" id="login" ></button> -->
+<!--       </div>       -->
+<!--     </div> -->
 
-  </div>
-</div>
+<!--   </div> -->
+<!-- </div> -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -162,30 +168,28 @@
 			});	
 		});
 		
-		$("input").click(function() {
-			console.log($(this));			
-			$("input.reFollow").click(function() {
+				
+		$("input[name='reFollow']").click(function() {
 				console.log($(this));
-				rep($(this));
-			});		
+				rep($(this));					
 		});
 		//댓글 수정
 		if(${nick!=null }) {
-			$("input.upReply").click(function() {
+			$("input[name='upReply']").click(function() {
 				console.log($(this).attr("id"));
 				updateReply($(this), $(this).attr("id"));
 			});
 		};
 		//댓글 삭제
 		if(${nick!=null }) {
-			$("input.delReply").click(function() {
+			$("input[name='delReply']").click(function() {
 				console.log($(this).attr("id"));
 				deleteReply($(this).attr("id"));
 			});
 		};
 		//대댓글 수정
 		if(${nick!=null }) {
-			$("input.upReply2").click(function() {
+			$("input[name='upReply2']").click(function() {
 				console.log($(this).attr("id"));
 				updateReply2($(this), $(this).attr("id"));
 			});
@@ -193,7 +197,7 @@
 		//대댓글 삭제
 
 		if(${nick!=null }) {
-			$("input.delReply2").click(function() {
+			$("input[name='delReply2']").click(function() {
 				console.log($(this).attr("id"));
 				deleteReply2($(this).attr("id"));
 			});
@@ -212,7 +216,8 @@
 	}	
 	
 	var replyBox = document.createElement("div");
-		replyBox.innerHTML = "<textarea rows='4' id='follow' style='resize: none;'></textarea> <input type='button' value='작성 완료' style='font-size:11;' id='repbt'/>";
+		replyBox.innerHTML = "<textarea rows='4' id='follow' style='resize: none; '></textarea><br/>"
+			+"<input type='button' value='작성 완료' class='btn btn-default' style='font-size:11; margin: 5px; ' id='repbt'/>";
 	
 	//대댓글
 	function rep(button) {
@@ -223,6 +228,8 @@
 			$.ajax({
 				method : "get",
 				url : "/tactics/follow?writer=${nick}&follow="+follow.value+"&parentNum="+button.attr("id")
+			}).done(function(){
+				location.reload();
 			});
 		});
 	};

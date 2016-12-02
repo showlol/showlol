@@ -15,9 +15,8 @@
 <div style='width: 770px; padding : 3%; margin: 0 auto;'>
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
-	<input name='title' style="display: inline-block; width: 400px; height: 115px; background-color: #E7E3F0;
-		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required" value='${tactics.title }' >
-			
+	<input id='titleInput' name='title' style="display: inline-block; width: 400px; height: 115px; background-color: #E7E3F0;
+		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required" value='${tactics.title }' >	
 	
 	<input type='hidden' name='champ' value='${champData.name }' />
 	<input type='hidden' name='writer' value='${nick }' />
@@ -60,10 +59,20 @@
 		$(".nav-tabs a").click(function() {			
 			$(this).tab('show');
 			
-		});			
+		});		
+		
+		$("#titleInput").keyup(function(){			
+			if(this.value.length>50){
+				alert('입력가능한 글자수를 초과하였습니다.');
+			}
+		});
 	});
 	
 	function transferTactics() {
+		if(this.value.length>50){
+			alert('제목이 너무 깁니다.');
+			return false;
+		}
 		var masteryData = ""; //마스터리는 1부터 30까지
 		for (i = 1; i <= 45; i++) {
 			masteryData += $("#" + i).children("#point").html() + "#";

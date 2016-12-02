@@ -65,14 +65,7 @@ public class MemberController {
 	@RequestMapping("/member/complete")
 	@ResponseBody
 	public boolean authMail(String email, String uuid) {
-		List auth = ms.authMail(email);
-		List auth2 = new ArrayList<>();
-		auth2.add(email);
-		auth2.add(uuid);
-		if(auth==auth2) {
-			return true;
-		} else {
-		return false;
-		}
+		boolean r =  ms.authMail(email, uuid);		
+		return r;
 	}
 }

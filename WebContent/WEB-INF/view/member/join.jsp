@@ -19,9 +19,7 @@
 		document.getElementById("create").addEventListener("click", function() {
 			sendEmail();
 		});
-		$("#gameid").change(function() {
-			sendEmail();
-		});
+	
 		document.getElementById("auth").addEventListener("click", function() {
 			authEmail();
 		});
@@ -31,9 +29,17 @@
 	function memberJoin(){
 		$.ajax({
 			method:"get",
+			async: false,
 			url : "/member/regist?email="+memberid.value+"&pass="+memberpass.value+"&nick="+nick.value+"&gameid="+gameid.value
-		}).done(function() {
-			location.href="/";
+		}).done(function(r) {
+			
+			if(r=="true"){
+				alert("멤버조인성공");
+				location.href="/";
+				return true;
+			}
+				
+			return false;
 		});
 	};
 	//인증 이메일 보내기
@@ -44,6 +50,7 @@
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState==4 && xhr.status==200) {
 				var resp = xhr.responseText;
+				console.log(resp);
 				if(resp == "Y") {
 					window.alert("인증키가 발송되었습니다.");
 				} else {
@@ -58,10 +65,15 @@
 		$.ajax({
 			method : "get",
 			url : "/member/complete?email="+document.getElementById("memberid").value+"&uuid="+authuuid.value
-		}).done(function() {
-			memberJoin();
-			window.alert("회원가입이 완료되었습니다.");
-			location.href="/";
+		}).done(function(r) {		
+			console.log(r);
+			if(r==true){
+				memberJoin();	
+				
+			}else{
+				alert("가입 실패!");
+			}
+			
 		});
 	};
 </script>

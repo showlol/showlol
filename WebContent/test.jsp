@@ -23,7 +23,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<% out.print(application.getRealPath("/")); %>
 <div class="container">
   <h2>Dynamic Tabs with jQuery</h2>
   <p>Click on the Tabs to display the active and previous tab.</p>

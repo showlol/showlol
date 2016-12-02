@@ -12,8 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="data" parameterType="member.model.pojo.MemberData" resultType="member.model.pojo.MemberData">
 		select * from member where email=#{email} and password=#{pass}
 	</select>
-	<select id="uuidData" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from joinuuid order by sysdate desc
+	<select id="emailCheck" resultType="java.lang.String" >
+		select email from member where email=#{email}
+	</select>
+	<select id="uuidData" parameterType="java.lang.String" resultType="java.lang.String">
+		select uuid from JOINUUID where UUIDDATE=(select MAX(temp.UUIDDATE) from (select * from joinuuid j where id=#{email}) temp)
 	</select>
 	<delete id="delMember" parameterType="java.lang.String">
 		delete from member where email=#{email}

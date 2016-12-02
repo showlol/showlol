@@ -61,7 +61,7 @@
 					console.log(runeKind[keys[0]]);
 					keys.forEach(function(key){
 						if(runeKind[key]!=0){
-							runeAbility += key+":"+runeKind[key]+" / ";
+							runeAbility += key+":"+runeKind[key].toFixed(2)+" / ";
 						}			
 					});
 					$("#runeAbility").html(runeAbility);
@@ -232,21 +232,21 @@
 	}
 	function appendRuneData(type){
 		$("#runeSelector").empty();
-		runeList.forEach(function(elt) {
-
+		var cols = 0;
+		runeList.forEach(function(elt) {			
 			if(elt.type==type){
 				var runeBox = "<div id='rune' type='"+elt.type+"' value='"+elt.id
-					+"' title='"+elt.description+"' style='height: 40px; width: 40px;"
+					+"' title='"+elt.description+"' style='float:left; height: 40px; width: 40px;"
 					 +"background-image: url(\"http://ddragon.leagueoflegends.com/cdn/6.22.1/img/rune/"+elt.image+"\");"
 					 +"background-size: cover; '></div>";				
 				$('#runeSelector').append(runeBox);
-				$('#runeSelector').append("<div>"+elt.name+"</div>");
-// 				var stats = runeJSON[elt.id].stats; 
-// 				console.log(stats);
-// 				for(key in stats){
-// 					runeKind[key]+=stats[key];	
-// 				}
+				$('#runeSelector').append("<div style='float: left; width:112px; height:40px; font-size:10pt; border-radius: 3px;"
+					+"background-color: #D5D5D5; margin-right: 3px;'>"+elt.name+"</div>");
+				if(cols%4==3)
+					$('#runeSelector').append("<br style='clear: left;'/><div style='height: 2px'></div>");
+				cols++;
 			}
+			
 		});		
 	}	
 	
