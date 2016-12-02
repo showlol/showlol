@@ -24,7 +24,7 @@
 				<li><a href="/">Home</a></li>
 				<li><a href="/tactics/">Tactics</a></li>
 				<li><a href="/community/review2">Community</a></li>
-				<li><a href="/champInfo/list">Info</a></li>
+				<li><a href="/champInfo/list">Champ</a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
