@@ -54,9 +54,9 @@
 		</c:otherwise>
 	</c:choose>
 	<tr bgcolor="${bgcolor3 }" style="height: 30px;">
-		<td colspan="2" align="center" width="140">${win1 }</td>
+		<td colspan="2" align="center" width="160">${win1 }</td>
 		<td align="center" width="170">아이템</td>
-		<td align="center" width="90">평점</td>
+		<td align="center" width="70">평점</td>
 		<td align="center" width="100">피해량</td>
 		<td align="center" width="100">와드</td>
 		<td align="center" width="100">CS</td>
@@ -153,9 +153,9 @@
 		</td>
 	</tr>
 	<tr bgcolor="${bgcolor4 }" style="height: 30px;">
-		<td colspan="2" align="center" width="140">${win2 }</td>
+		<td colspan="2" align="center" width="160">${win2 }</td>
 		<td align="center" width="170">아이템</td>
-		<td align="center" width="90">평점</td>
+		<td align="center" width="70">평점</td>
 		<td align="center" width="100">피해량</td>
 		<td align="center" width="100">와드</td>
 		<td align="center" width="100">CS</td>

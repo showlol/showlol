@@ -19,7 +19,7 @@ public class ChampionService {
 		SqlSession sql = fac.openSession();
 		List<HashMap> list = sql.selectList("championData.imageList");
 		sql.close();
-		System.out.println(list.toString());
+		//System.out.println(list.toString());
 		return list;
 	}
 }

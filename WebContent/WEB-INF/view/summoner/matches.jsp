@@ -17,7 +17,7 @@
 				<c:set var="bgcolor" value="#E2B6B3"/>
 			</c:otherwise>
 		</c:choose>
-		<table border="1">
+		<table border="1" style="width: 800px;">
 			<tr bgcolor="${bgcolor }">	
 				<td width="100px">
 					<table>
@@ -251,10 +251,10 @@
 					<table>
 						<c:choose>
 							<c:when test="${fn:startsWith(g.subType, 'RANKED_')}">
-								<tr><td><input type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId }, ${g.win })"/></td></tr>
+								<tr><td><input id="detailbt${g.gameId }" class="btn-sm btn-primary" type="button" value="상세" onclick="openDetail(${g.gameId }, ${g.teamId }, ${g.win })"/></td></tr>
 							</c:when>
 							<c:otherwise>
-								<tr><td width="44"></td></tr>
+								<tr><td width="50"></td></tr>
 							</c:otherwise>
 						</c:choose>
 					</table>
@@ -262,9 +262,7 @@
 			</tr>
 		</table>
 		<table id="table_${g.gameId }" style="display:none;" >
-			<tr>
-				<td>${g.gameId }</td>
-			<tr>
+			
 		</table>
 		<table><tr height="10px"><td></td></tr></table>
 	</c:forEach>
@@ -282,11 +280,13 @@
 			).done(function(obj) {
 				document.getElementById("table_"+gid).style.display = "block";
 				$("#table_"+gid).html(obj);
+				document.getElementById("detailbt"+gid).value = "닫기";
 			}).fail(function() {
 				alert("ERROR");
 			});
 		}else {
 			document.getElementById("table_"+gid).style.display = "none";
+			document.getElementById("detailbt"+gid).value = "상세";
 		}
 	}
 	
