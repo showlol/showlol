@@ -5,9 +5,11 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.request.servlet.ServletApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -28,6 +30,7 @@ public class BasicController {
 	
 	@RequestMapping("/summoner/index")
 	public ModelAndView index(String userName, HttpServletResponse resp) {
+		
 		ModelAndView mav = new ModelAndView();
 		//mav.addObject("userName", userName);
 		HashMap map = bsvc.getSummonerInfo(userName);
