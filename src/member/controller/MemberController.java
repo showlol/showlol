@@ -49,9 +49,9 @@ public class MemberController {
 			MimeMessage message = sender.createMimeMessage();
 			message.setRecipients(RecipientType.TO, email);
 			message.setFrom(new InternetAddress("ss"));
-			message.setSubject("¿äÃ»ÇÏ½Å ÀÎÁõÅ°ÀÔ´Ï´Ù.");
+			message.setSubject("ï¿½ï¿½Ã»ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½Ô´Ï´ï¿½.");
 			String text = "";
-			text += "ÀÎÁõÅ°¸¦ º¹»çÇØ ÀÔ·ÂÇØÁÖ¼¼¿ä.<br/>";
+			text += "ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.<br/>";
 			text += "["+uuid+"]";
 			message.setText(text, "utf-8", "html");
 			
@@ -65,14 +65,7 @@ public class MemberController {
 	@RequestMapping("/member/complete")
 	@ResponseBody
 	public boolean authMail(String email, String uuid) {
-		List auth = ms.authMail(email);
-		List auth2 = new ArrayList<>();
-		auth2.add(email);
-		auth2.add(uuid);
-		if(auth==auth2) {
-			return true;
-		} else {
-		return false;
-		}
+		boolean r =  ms.authMail(email, uuid);		
+		return r;
 	}
 }
