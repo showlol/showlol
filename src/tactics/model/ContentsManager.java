@@ -24,6 +24,7 @@ public class ContentsManager {
 		return r;
 	}
 	public int write(ImprovedTactics tac) {
+		System.out.println("입력 챔피언 정보");
 		System.out.println(tac.toString());
 		SqlSession sql = fac.openSession();
 		boolean r = sql.insert("tactics.write2", tac)==1?true:false;

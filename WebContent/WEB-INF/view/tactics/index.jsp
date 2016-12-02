@@ -69,7 +69,15 @@ CHAMPION<br/><hr/>
 			var millis = new Date(r[i].writeDate);
 			var now = new Date();
 			var time;
-			if(millis.getDate()<now.getDate()){
+			console.log(now.getFullYear());
+			console.log(millis.getFullYear());
+			console.log(millis.getFullYear()<now.getFullYear());
+			if(millis.getFullYear()<now.getFullYear()){					
+				time = millis.format("yyyy/m");
+			}else if(millis.getMonth()<now.getMonth()){
+				time = millis.format("m/dd");
+				
+			}else if(millis.getDate()<now.getDate()){
 				time = millis.format("m/dd");
 			}else{
 				time = millis.format("h:MM");

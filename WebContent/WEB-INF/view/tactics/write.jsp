@@ -13,7 +13,7 @@
 <title>공략 글쓰기</title>
 </head>
 <div style='width: 770px; padding : 3%; margin: 0 auto;'>
-<form action="/tactics/write2" method='post' onsubmit="return transferTactics();">
+<form action="/tactics/write2" method='post' onsubmit="return transferTactics()">
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<input id='titleInput' name='title' style="display: inline-block; width: 400px; height: 115px; background-color: #E7E3F0;
 		border-radius: 4%; padding: 10px; " placeholder="제목을 작성해 주세요" required="required" value='${tactics.title }' >	
@@ -23,7 +23,7 @@
 	<br/><br/>
 	<div class='well' >
 		<ul class="nav nav-tabs ">
-			<li class="active"><a a data-toggle="tab" href="#mastery">특성</a>
+			<li class="active"><a data-toggle="tab" href="#mastery">특성</a>
 			<li><a href="#rune">룬</a>
 			<li><a href="#skill">스킬</a>
 			<li><a href="#items">아이템</a>
@@ -69,10 +69,7 @@
 	});
 	
 	function transferTactics() {
-		if(this.value.length>50){
-			alert('제목이 너무 깁니다.');
-			return false;
-		}
+		
 		var masteryData = ""; //마스터리는 1부터 30까지
 		for (i = 1; i <= 45; i++) {
 			masteryData += $("#" + i).children("#point").html() + "#";
@@ -85,8 +82,8 @@
 		var skillBuild = "";
 		$("#skillTree").children("img[id='setSkill']").each(function(elt){
 			skillBuild += this.getAttribute("info")+"#";
-		});
-		alert(skillBuild);
+		});	
+		
 		var itemBuild = "";
 		$("#itemTree").children("img").each(function(elt){
 			itemBuild += this.getAttribute("info")+"#";
@@ -95,6 +92,10 @@
 		$("[name=runeData]").val(runeData);
 		$("[name=skillBuild]").val(skillBuild);
 		$("[name=itemBuild]").val(itemBuild);		
+		
+		$("[name]").each(function(){
+			console.log(this.value);
+		});
 		return true;
 	}
 	
