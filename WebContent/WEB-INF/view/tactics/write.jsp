@@ -69,7 +69,10 @@
 	});
 	
 	function transferTactics() {
-		
+		if($(titleInput).val().length>50){
+			alert("제목이 너무 깁니다.");
+			return false;
+		}		
 		var masteryData = ""; //마스터리는 1부터 30까지
 		for (i = 1; i <= 45; i++) {
 			masteryData += $("#" + i).children("#point").html() + "#";
