@@ -9,7 +9,7 @@
 <body>
 <ul class="bxslider">
 	<c:forEach var="i" items="${skins }">
-		<li ><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name }_${i.num }.jpg" 
+		<li><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name }_${i.num }.jpg" 
 		width="800px;" title="${i.name }"/></li>
 	</c:forEach>
 </ul>
