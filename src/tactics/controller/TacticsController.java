@@ -55,7 +55,11 @@ public class TacticsController {
 	}
 // 글 수정 컨트롤러	
 	@RequestMapping("/modify")
-	public String modify(){
+	public String modify(HttpSession session, Map map){
+		ImprovedTactics tac = (ImprovedTactics)session.getAttribute("tactics");
+		ChampData champData = champDbService.showByName(tac.getChamp());
+		System.out.println("modify:"+champData.getKey());
+		map.put("champKey", champData.getKey());
 		return "t:tactics/modify/";
 	}
 	

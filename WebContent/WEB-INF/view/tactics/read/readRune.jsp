@@ -67,10 +67,8 @@ $("readRune.jsp").ready(function(){
 			var abilist = runeId[0];
 			runeKind[abilist[0]]+=abilist[1];		
 		}
-		console.log(runeKind);
 		var runeAbility="";
 		var keys = Object.keys(runeKind);
-		console.log(runeKind[keys[0]]);
 		keys.forEach(function(key){
 			if(runeKind[key]!=0){
 				runeAbility += key+":"+runeKind[key].toFixed(2)+" / ";

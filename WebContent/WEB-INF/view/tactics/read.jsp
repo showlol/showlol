@@ -6,6 +6,9 @@
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
 	<link href="/css/tactics.css" rel="stylesheet">
+	<script>var champKey = "${champData.key}";
+		console.log("테스트:"+champKey);
+	</script>
 </head>
 <div style=' margin: 0 auto; padding: 3%; width: 720px; overflow: auto; white-space: nowrap;'>
 
@@ -127,7 +130,7 @@
 <!-- </div> -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
+<script>	
 	$(document).ready(function() {
 		$(".nav-tabs a").click(function() {
 			$(this).tab('show');

@@ -5,6 +5,9 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <link href="/css/tactics.css" rel="stylesheet">
 <link rel='stylesheet' href='/css/tactics/runeSetting.css' >
+<script>var champKey = "${champKey}";
+		console.log("modi테스트:"+champKey)
+	</script>
 <title>공략 글쓰기</title>
 </head>
 <style>

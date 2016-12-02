@@ -8,6 +8,9 @@
 	}
 </style>
 <script src="/ckeditor/ckeditor.js"></script>
+<script>var champKey = "${champData.key}";
+		console.log("테스트:"+champKey);
+	</script>
 <link href="/css/tactics.css" rel="stylesheet">
 <link rel='stylesheet' href='/css/tactics/runeSetting.css' >
 <title>공략 글쓰기</title>
