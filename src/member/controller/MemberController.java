@@ -49,9 +49,9 @@ public class MemberController {
 			MimeMessage message = sender.createMimeMessage();
 			message.setRecipients(RecipientType.TO, email);
 			message.setFrom(new InternetAddress("ss"));
-			message.setSubject("¿äÃ»ÇÏ½Å ÀÎÁõÅ°ÀÔ´Ï´Ù.");
+			message.setSubject("ìš”ì²­í•˜ì‹  ì¸ì¦í‚¤ì…ë‹ˆë‹¤.");
 			String text = "";
-			text += "ÀÎÁõÅ°¸¦ º¹»çÇØ ÀÔ·ÂÇØÁÖ¼¼¿ä.<br/>";
+			text += "ì¸ì¦í‚¤ë¥¼ ë³µì‚¬í•˜ì—¬ ì ì–´ì£¼ì„¸ìš”.<br/>";
 			text += "["+uuid+"]";
 			message.setText(text, "utf-8", "html");
 			
