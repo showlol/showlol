@@ -80,10 +80,10 @@ th {
 		</td>
 	</tr>
 </table>
-<table>
+<table style="width: 900px;">
 <tr>
 <td>
-<table style="border-collapse: collapse; width: 500px; border: 1px solid #000000">
+<table style="border-collapse: collapse; width: 400px; border: 1px solid #000000">
 	<tr style="border: 1px solid #000000">
 		<th>구분</th>
 		<th>1레벨(레벨당 성장수치)</th>
@@ -170,7 +170,15 @@ th {
 <td>
 	<table style="border-collapse: collapse; width: 400px; border: 1px solid #000000">
 		<tr style="border: 1px solid #000000"><th>챔피언 소개 영상</th></tr>
-		<tr><td><iframe width="386" height="227" src="https://www.youtube.com/embed/hUGh9OFRazs" frameborder="0" allowfullscreen></iframe></td></tr>
+		<c:choose>
+			<c:when test="${video != null }">
+				<tr><td><iframe width="386" height="227" src="https://www.youtube.com/embed/${video }" frameborder="0" allowfullscreen></iframe></td></tr>
+			</c:when>
+			<c:otherwise>
+				<tr><td>준비중입니다.</td></tr>
+			</c:otherwise>
+		</c:choose>
+		
 	</table>
 </td>
 </tr>

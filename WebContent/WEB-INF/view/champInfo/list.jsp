@@ -4,7 +4,15 @@
 
 <div id="champContainer">
 	<c:forEach var="list" items="${champList}">
-		<a href="/champInfo/info/${list.ID }">
+		<c:choose>
+			<c:when test="${list.VIDEO == null }">
+				<a href="/champInfo/info/${list.ID }">
+			</c:when>
+			<c:otherwise>
+				<a href="/champInfo/info/${list.ID }/${list.VIDEO }">
+			</c:otherwise>
+		</c:choose>
+		
 			<div id="champPortrait">			
 				<img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${list.IMAGE1 }"
 					 width="50"/><br/>
