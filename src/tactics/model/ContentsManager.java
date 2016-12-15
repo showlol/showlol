@@ -73,6 +73,7 @@ public class ContentsManager {
 	public List champTactics(String name) {
 		SqlSession sql = fac.openSession();
 		List list = sql.selectList("tactics.champTactics", name);
+		System.out.println(list.toString());
 		sql.close();
 		return list;
 	}

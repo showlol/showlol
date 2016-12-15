@@ -76,7 +76,7 @@ th {
 		  					</div>
 						</div>
 					</td>
-					<td style="padding-left: 5px;"><font color="grey"><fmt:formatNumber pattern="0">${rate }</fmt:formatNumber>%</font></td>
+					<td style="padding-left: 5px;"><font color="grey"><fmt:formatNumber pattern="0">${(i.wins / (i.wins + i.losses)) * 100 }</fmt:formatNumber>%</font></td>
 				</tr>
 			</table>
 			</td>

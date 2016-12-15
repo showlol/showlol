@@ -31,3 +31,10 @@
 	</footer>
 </body>
 </html>
+<script>
+	if(navigator.userAgent.toLowerCase().includes("trident"))
+		alert("Internet Explore에서는 정상 작동하지 않습니다.\n Chrom 브라우저에 최적화 되있습니다. \n"+
+				"It does not work in Internet Explorer. \ NYou are optimized for Chrom browser.");
+	
+	
+</script>

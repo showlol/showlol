@@ -15,7 +15,7 @@
 <link rel='stylesheet' href='/css/tactics/runeSetting.css' >
 <title>공략 글쓰기</title>
 </head>
-<div style='width: 770px; padding : 3%; margin: 0 auto;'>
+<div style='width: 800px; padding : 3%; margin: 0 auto;'>
 <form action="/tactics/write2" method='post' onsubmit="return transferTactics()">
 	<img class="img-rounded" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/${champData.image1}" >
 	<input id='titleInput' name='title' style="display: inline-block; width: 400px; height: 115px; background-color: #E7E3F0;

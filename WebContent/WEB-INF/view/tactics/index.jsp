@@ -59,7 +59,6 @@ CHAMPION<br/><hr/>
 	function champTactics(name, key){
  		$("#tacticsList").children("tbody").html("");
 		$.get("/tactics/"+name, function(r){
-			console.log(r);
 			appendList(r, name, key);
 		});
 	}

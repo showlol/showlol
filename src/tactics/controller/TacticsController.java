@@ -85,10 +85,10 @@ public class TacticsController {
 		return "tactics/modify/modiMastery";
 	}
 	
-	@RequestMapping("/rune")
-	public String modRune(){
-		return "tactics/rune";
-	}
+//	@RequestMapping("/rune")
+//	public String modRune(){
+//		return "tactics/rune";
+//	}
 	
 	@RequestMapping("/{page}/{length}")
 	public ModelAndView index(@PathVariable int page, @PathVariable int length){
@@ -108,6 +108,7 @@ public class TacticsController {
 	@RequestMapping("/{name}") // 챔프별 공략
 	@ResponseBody
 	public List champTactics(@PathVariable String name){
+		System.out.println("챔프별 공략:"+name);
 		return cm.champTactics(name);		
 	}
 	

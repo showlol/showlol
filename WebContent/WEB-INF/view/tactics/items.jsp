@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div style="min-height: 400px; overflow: auto;">
 		
-		<div style='display: inline-block; height: inherit; float: left;'>
+		<div style='display: inline-block; height: 350px; float: left;'>
 			<button id='jungle' type='button' class='btn btn-primary'
 				style='display: block;'>정글</button>
 			<button id='support' type='button' class='btn btn-primary'
@@ -17,7 +17,7 @@
 			<button id='move' type='button' class='btn btn-primary'
 				style='display: block;'>이동</button>
 		</div>
-		<div id="itemBox" style="diplay: iniline-block;">
+		<div id="itemBox" style="diplay: iniline-block; height: 350px; overflow-y: scroll;">
 			<div id="div-jungle" style='display: block;'></div>
 			<div id="div-support" style='display: none;'></div>
 			<div id="div-attack" style='display: none;'></div>
@@ -25,9 +25,10 @@
 			<div id="div-magic" style='display: none;'></div>
 			<div id="div-move" style='display: none;'></div>
 		</div>
-		<div id="itemTree" style='clear: left;'>
-			ItemTree<br />
+		<div id="clearDiv" style='clear: left;'>
+			<h5>ItemTree</h5>
 		</div>
+		<div id="itemTree" style='clear: left;'></div>
 		<div id='initItemWrap' class='clearBtnWrap'></div>		
 	<textarea name="itemContent" id="itemContentd">${tactics.itemContent }</textarea>
 	<script>
